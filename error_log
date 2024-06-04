@@ -1,0 +1,4 @@
+[07-Dec-2021 03:03:44 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: No route to host
+	Is the server running on host &quot;10.238.12.66&quot; and accepting
+	TCP/IP connections on port 5432? in /home/hojasdevida/public_html/InscripcionDocente/Tablero/clases/conectar.php on line 11
+[07-Dec-2021 03:03:44 UTC] PHP Warning:  pg_last_error(): No PostgreSQL link opened yet in /home/hojasdevida/public_html/InscripcionDocente/Tablero/clases/conectar.php on line 12
