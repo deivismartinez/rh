@@ -75,22 +75,16 @@ if (isset($_SESSION['usuario'])) {
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="active">
+                    <li>
                         <a href="inicioAdmin.php">
                             <i class="pe-7s-photo-gallery"></i>
                             <p>Inscritos por Áreas</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="Calificados.php">
                             <i class="pe-7s-photo-gallery"></i>
                             <p>Inscritos Calificados</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="AgregarPrograma.php">
-                            <i class="pe-7s-photo-gallery"></i>
-                            <p>Agregar</p>
                         </a>
                     </li>
                     <li>
@@ -144,15 +138,15 @@ if (isset($_SESSION['usuario'])) {
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Consulta General de Inscritos
+                                Consulta General de Calificados
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-xs-5">
+                                    <div class="col-md-5">
                                         <label> Criterio de busqueda</label>
                                         <input id="busqueda" type="text" class="form-control" />
                                     </div>
-                                    <div class="col-xs-5">
+                                    <div class="col-md-4">
                                         <label> Áreas de Conocimiento</label>
                                         <select class="form-control" id="areasCmb" name="areasCmb" required="true">
                                             <option value="">TODOS</option>
@@ -165,9 +159,10 @@ if (isset($_SESSION['usuario'])) {
 
                                         </select>
                                     </div>
-                                    <div class="col-xs-2">
-                                        <label> Hacer la busqueda</label>
+                                    <div class="col-md-3">
+                                        <label> </label>
                                         <button onclick="buscar()" class="btn btn-primary">Buscar</button>
+                                        <button onclick="imprimir()" class="btn btn-danger">Imprimir</button>
                                     </div>
                                 </div>
                                 <br>
@@ -196,7 +191,7 @@ if (isset($_SESSION['usuario'])) {
         //hace la búsqueda                                                                                  
         $.ajax({
             type: "POST",
-            url: "buscar.php",
+            url: "buscarCalificado.php",
             data: {
                 'b': $("#busqueda").val(),
                 'area': area
@@ -214,6 +209,13 @@ if (isset($_SESSION['usuario'])) {
                 $("#resultado").append(data);
             }
         });
+    }
+
+    function imprimir() {
+        consulta = $("#busqueda").val();
+        area = $("#areasCmb").val();
+        url = "Imprimir.php?area=" + area + "&b=" + consulta;
+        window.open(url, "nombre de la ventana", "width=300, height=200")
     }
     $(function() {
         $('#mi-tabla').tablesorter();
