@@ -88,6 +88,12 @@ if (isset($_SESSION['usuario'])) {
                         </a>
                     </li>
                     <li>
+                        <a href="AgregarPrograma.php">
+                            <i class="pe-7s-photo-gallery"></i>
+                            <p>Agregar</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="ModificarClave.php">
                             <i class="pe-7s-photo-gallery"></i>
                             <p>cambiar mi Clave</p>
