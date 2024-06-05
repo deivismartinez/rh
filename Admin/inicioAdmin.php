@@ -88,7 +88,7 @@ if (isset($_SESSION['usuario'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="AgregarPrograma.php">
+                        <a href="../Tablero/AgregarPrograma.php">
                             <i class="pe-7s-photo-gallery"></i>
                             <p>Agregar</p>
                         </a>
