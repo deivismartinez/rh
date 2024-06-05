@@ -140,7 +140,24 @@ if (isset($_SESSION['usuario'])) {
                             <div class="panel-heading">
                                 Consulta General de Calificados
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body
+                                 <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <a href="NuevoArticulo.php"><i class="pe-7s-plus"></i> <ins><b> Programa Académico</b></ins></a>
+                                                </div>
+                                        <div class="col-xs-4">
+                                            <a href="NuevaMonografia.php"><i class="pe-7s-plus"></i> <ins><b> Jefe de Departamento</b></ins></a>
+                                            <a href="NuevoVideo.php"><i class="pe-7s-plus"></i> <ins><b>Perfil</b></ins></a>
+                                                </div>
+                                        <div class="col-xs-4">
+                                                    <a href="NuevoLibro.php"><i class="pe-7s-plus"></i> <ins><b> Evaluador</b></ins></a>
+                                                </div>
+                                        <div class="col-xs-0">
+                                                </div>
+                                        <div class="col-xs-0">
+                                            
+                                                </div>
+                                    </div>
                                 <div class="row">
                                     <div class="col-md-5">
                                         <label> Criterio de busqueda</label>
