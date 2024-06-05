@@ -131,7 +131,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-xs-12">
                     <h5>
-                        <?php echo $nombre; ?>
+                        <?php //echo $nombre; ?>
                     </h5>
                 </div>
                 <div class="row">
