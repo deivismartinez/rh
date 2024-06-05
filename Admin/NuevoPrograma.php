@@ -145,37 +145,27 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <label for="telefono">Facultad</label>
-                                                
+                                                <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange=<?php
+                                                    ?>>
+                                                        <option value="">SELECCIONE</option>
+                                                        <?php
+                                                        $facultades = $p->getFacultadesDocentePostgrado();
+                                                            echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                        <?php
+                                                        ?>
 
                                             </div>
                                             <div class="col-xs-6">
-                                                <label for="telefono">Departamento</label>
+                                                <label for="telefono">Nombre del nuevo Departamento</label>
                                                 <div id="comboProg">
-                                                    <select class="form-control" id="programaCmb" name="programaCmb" required="true" onchange="cargarAreas(this.value)">
-                                                        <option value="">SELECCIONE</option>
-                                                       
-                                                    </select>
+                                                    <input type="text" id="program" name="program">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xs-6">
-                                                <label for="telefono">Área de Conocimiento</label>
-                                                <div id="comboAreas">
-                                                    <select class="form-control" id="areasCmb" name="areasCmb" required="true" onchange="cargarAsignaturas(this.value)">
-                                                        <option value="">SELECCIONE</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label for="telefono">Asignaturas (Solo para referencia, se registra el
-                                                    área)</label>
-                                                <div id="comboAsig">
-                                                    <textarea rows="4" cols="50" disabled="false"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <hr />
                                         <input type="submit" value="Guardar" class="btn btn-primary" />
                                         <div class="col-md-12">
