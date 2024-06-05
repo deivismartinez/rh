@@ -145,40 +145,15 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <label for="telefono">Facultad</label>
-                                                <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange=<?php
-                                                                                                                                            ///CARGA SOLO LOS PROGRAMAS DE POSTGRADO
-                                                                                                                                            echo '"cargarProgPost(this.value)"';
+                                                
 
-                                                                                                                                            ?>>
-                                                    <option value="">SELECCIONE</option>
-                                                    <?php
-
-
-                                                    //CARGA SOLO FACULTADES CON POSTGRADOS
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-
-
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
-
-                                                    ?>
-                                                </select>
-                                                <?php
-
-                                                ?>
                                             </div>
                                             <div class="col-xs-6">
                                                 <label for="telefono">Departamento</label>
                                                 <div id="comboProg">
                                                     <select class="form-control" id="programaCmb" name="programaCmb" required="true" onchange="cargarAreas(this.value)">
                                                         <option value="">SELECCIONE</option>
-                                                        <?php
-                                                        $program = $p->getProgramasDocente(0);
-                                                        foreach ($program as $arregloPro) {
-                                                            echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
-                                                        }
-                                                        ?>
+                                                       
                                                     </select>
                                                 </div>
                                             </div>
@@ -189,12 +164,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <div id="comboAreas">
                                                     <select class="form-control" id="areasCmb" name="areasCmb" required="true" onchange="cargarAsignaturas(this.value)">
                                                         <option value="">SELECCIONE</option>
-                                                        <?php
-                                                        $areas = $p->getAreas(0);
-                                                        foreach ($areas as $arregloAreas) {
-                                                            echo '<OPTION value="' . $arregloAreas[1] . '">' . $arregloAreas[0] . '</OPTION>';
-                                                        }
-                                                        ?>
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
