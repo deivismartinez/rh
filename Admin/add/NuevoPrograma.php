@@ -140,47 +140,81 @@ if (isset($_SESSION['usuario'])) {
                             <div class="panel-heading">
                                 Consulta General de Calificados
                             </div>
-                            <div class="panel-body>
-                                 <div class="col-xs-12">
-                                                <div class="col-xs-4">
-                                                    <a href="add/NuevoPrograma.php"><i class="pe-7s-plus"></i> <ins><b> Programa Académico</b></ins></a>
-                                                </div>
-                                        <div class="col-xs-4">
-                                            <a href="NuevaMonografia.php"><i class="pe-7s-plus"></i> <ins><b> Jefe de Departamento</b></ins></a>
-                                            <a href="NuevoVideo.php"><i class="pe-7s-plus"></i> <ins><b>Perfil</b></ins></a>
-                                                </div>
-                                        <div class="col-xs-4">
-                                                    <a href="NuevoLibro.php"><i class="pe-7s-plus"></i> <ins><b> Evaluador</b></ins></a>
-                                                </div>
-                                        <div class="col-xs-0">
-                                                </div>
-                                        <div class="col-xs-0">
-                                            
-                                                </div>
-                                    </div>
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <label> Criterio de busqueda</label>
-                                        <input id="busqueda" type="text" class="form-control" />
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label> Áreas de Conocimiento</label>
-                                        <select class="form-control" id="areasCmb" name="areasCmb" required="true">
-                                            <option value="">TODOS</option>
-                                            <?php
-                                            $areas = $p->getAreas($programa);
-                                            foreach ($areas as $arregloAreas) {
-                                                echo '<OPTION value="' . $arregloAreas[1] . '">' . $arregloAreas[0] . '</OPTION>';
-                                            }
-                                            ?>
+                             <div class="panel-body">
+                                    <form name="form" action="" method="post" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <label for="telefono">Facultad</label>
+                                                <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange=<?php
+                                                                                                                                            ///CARGA SOLO LOS PROGRAMAS DE POSTGRADO
+                                                                                                                                            echo '"cargarProgPost(this.value)"';
 
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label> </label>
-                                        <button onclick="buscar()" class="btn btn-primary">Buscar</button>
-                                        <button onclick="imprimir()" class="btn btn-danger">Imprimir</button>
-                                    </div>
+                                                                                                                                            ?>>
+                                                    <option value="">SELECCIONE</option>
+                                                    <?php
+
+
+                                                    //CARGA SOLO FACULTADES CON POSTGRADOS
+                                                    $facultades = $p->getFacultadesDocentePostgrado();
+
+
+                                                    foreach ($facultades as $arregloFac) {
+                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                    }
+
+                                                    ?>
+                                                </select>
+                                                <?php
+
+                                                ?>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <label for="telefono">Departamento</label>
+                                                <div id="comboProg">
+                                                    <select class="form-control" id="programaCmb" name="programaCmb" required="true" onchange="cargarAreas(this.value)">
+                                                        <option value="">SELECCIONE</option>
+                                                        <?php
+                                                        $program = $p->getProgramasDocente(0);
+                                                        foreach ($program as $arregloPro) {
+                                                            echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <label for="telefono">Área de Conocimiento</label>
+                                                <div id="comboAreas">
+                                                    <select class="form-control" id="areasCmb" name="areasCmb" required="true" onchange="cargarAsignaturas(this.value)">
+                                                        <option value="">SELECCIONE</option>
+                                                        <?php
+                                                        $areas = $p->getAreas(0);
+                                                        foreach ($areas as $arregloAreas) {
+                                                            echo '<OPTION value="' . $arregloAreas[1] . '">' . $arregloAreas[0] . '</OPTION>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <label for="telefono">Asignaturas (Solo para referencia, se registra el
+                                                    área)</label>
+                                                <div id="comboAsig">
+                                                    <textarea rows="4" cols="50" disabled="false"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                                        <div class="col-md-12">
+                                            <a href="ProgramaPostgrado.php">
+                                                <h4><i class="pe-7s-back"></i>Volver</h4>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
                                 </div>
                                 <br>
                                 <div class="row">
