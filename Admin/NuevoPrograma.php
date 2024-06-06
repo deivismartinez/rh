@@ -188,14 +188,16 @@ if (isset($_SESSION['usuario'])) {
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
-                                            <th><span>Identidad</span></th>
+                                            <th><span>Programa</span></th>
+                                            <th><span>Facultad</span></th>
+                                            <th><span>Alcance</span></th>
                                             <th><span></span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        foreach ($lista as $arreglo) {
+                                        foreach ($programasCreados as $arreglo) {
                                             $i = $i + 1;
                                             ?>
                                             <tr>
