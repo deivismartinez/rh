@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
 
-    if (isset($_POST["tituloTxt"])) {
+    if (isset($_POST["programTxt"])) {
         $gestion = new Gestion();
         $gestion->insertarPrograma();
     }
@@ -156,7 +156,7 @@ foreach ($facultades as $arregloFac) {
                                                 </select>
                                             </div>
                                             <div class="col-xs-4">
-                                                <label for="telefono">Nombre del nuevo Departamento</label>
+                                                <label for="telefono">Nombre del nuevo Programa</label>
                                                 <div id="comboProg">
                                                     <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
                                                 </div>
