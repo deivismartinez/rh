@@ -74,9 +74,7 @@ if (isset($_SESSION['usuario'])) {
                         Consulta de Inscritos a el Departamento
                     </a>
                 </div>
-                <ul class="nav">
                  <?php include("includes/menu.html");?>   
-                </ul>
             </div>
         </div>
 
