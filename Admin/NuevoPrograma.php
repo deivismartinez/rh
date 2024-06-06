@@ -9,6 +9,7 @@ if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
+    $programasCreados = $p->getProgramasVer();
 
     if (isset($_POST["programTxt"])) {
         $gestion = new Gestion();
@@ -132,14 +133,14 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                     <div class="col-xs-12">
                         <h5>
-<?php echo $nombre;  ?>
+                            <?php echo $nombre; ?>
                         </h5>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Consulta General de Calificados
+                                    estionar programa académico
                                 </div>
                                 <div class="panel-body">
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
@@ -147,12 +148,12 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="col-xs-4">
                                                 <label for="telefono">Facultad</label>
                                                 <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-<?php
-$facultades = $p->getFacultadesDocentePostgrado();
-foreach ($facultades as $arregloFac) {
-    echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-}
-?>
+                                                    <?php
+                                                    $facultades = $p->getFacultadesDocentePostgrado();
+                                                    foreach ($facultades as $arregloFac) {
+                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="col-xs-4">
@@ -179,7 +180,41 @@ foreach ($facultades as $arregloFac) {
                                             </a>
                                         </div>
                                     </form>
-                                </div>
+                                </div
+
+
+
+                                <table cellspacing="0" cellpadding="0" id="mi-tabla" class="table-bordered tabla">
+                                    <thead>
+                                        <tr>
+                                            <th><span>No.</span></th>
+                                            <th><span>Identidad</span></th>
+                                            <th><span></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 0;
+                                        foreach ($lista as $arreglo) {
+                                            $i = $i + 1;
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $arreglo[0] ?></td>
+                                                <td><?php echo $arreglo[1] ?></td>
+                                                <td><?php echo $arreglo[2] ?></td>
+
+                                                <?php
+                                                $urlVer = "../Tablero/controller/Ver.php?id=" . $arreglo[6] . "&nombre=" . $arreglo[1] . "&tipo=1";
+                                                ?>
+                                                <td>
+                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+
                             </div>
                             <br>
                             <div class="row">
