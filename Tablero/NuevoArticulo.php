@@ -104,79 +104,80 @@ if (isset($_POST["tituloTxt"])) {
                 </nav>
                 <div class="content">
                     <div class="row">
-                            <div class="col-xs-12">
-                                <div class="col-xs-11">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Agregando un nuevo articulo</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <form name="form" action="" method="post" enctype="multipart/form-data">
-                                                <div class="row">
-                                                    <div class="col-xs-6">
-                                                        <label for="telefono">Clasificación de la revista Según COLCIENCIAS *</label>
-                                                        <select class="form-control" id="tipoRevistaCmb" name="tipoRevistaCmb" required="true">
-                                                            <option value="">SELECCIONE</option>
-                                                            <option value="A1">CLASIFICACIÓN A1</option>
-                                                            <option value="A2">CLASIFICACIÓN A2</option>
-                                                            <option value="B1">CLASIFICACIÓN B</option>
-                                                            <option value="C1">CLASIFICACIÓN C</option>
-                                                            <option value="D1">MEDIO RECONOCIDO ISBN/ISSN (SIN CLASIFICACIÓN COLCIENCIAS)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <label for="telefono">Título de Artículo</label>
-                                                        <input type="text" id="tituloTxt" name="tituloTxt" placeholder="" class="form-control" required="true" required="true"/>
-                                                    </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-11">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Agregando un nuevo articulo</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form name="form" action="" method="post" enctype="multipart/form-data">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <label for="telefono">Clasificación de la revista Según COLCIENCIAS *</label>
+                                                    <select class="form-control" id="tipoRevistaCmb" name="tipoRevistaCmb" required="true">
+                                                        <option value="">SELECCIONE</option>
+                                                        <option value="A1">CLASIFICACIÓN A1</option>
+                                                        <option value="A2">CLASIFICACIÓN A2</option>
+                                                        <option value="B1">CLASIFICACIÓN B</option>
+                                                        <option value="C1">CLASIFICACIÓN C</option>
+                                                        <option value="D1">MEDIO RECONOCIDO ISBN/ISSN (SIN CLASIFICACIÓN COLCIENCIAS)</option>
+                                                    </select>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-xs-6">
-                                                        <label for="nombre">Nombre de la Revista *</label>
-                                                        <input type="text" name="revistaTxt" id="revistaTxt" placeholder="" autofocus="true" class="form-control" required="true"/>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <label for="correo">Numero de Autores *</label>
-                                                        <input type="number" name="numeroAutoresNbr" id="numeroAutoresNbr" required="true" class="form-control" required="true"/>
-                                                    </div>
-                                                    
+                                                <div class="col-xs-6">
+                                                    <label for="telefono">Título de Artículo</label>
+                                                    <input type="text" id="tituloTxt" name="tituloTxt" placeholder="" class="form-control" required="true" required="true"/>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-xs-6">
-                                                        <label for="nombre">ISSN de la Revista*</label>
-                                                        <input type="text" name="issnTxt" id="issnTxt" placeholder="" autofocus="true" class="form-control" required="true"/>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <label for="nombre">Fecha de Publicación *</label>
-                                                        <input type="date" max="<?php $hoy = date("Y-m-d");
-echo $hoy; ?>" name="fechaPublicacionDtp" id="fechaPublicacionDtp" placeholder="" autofocus="true" class="form-control" required="true"/>
-                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <label for="nombre">Nombre de la Revista *</label>
+                                                    <input type="text" name="revistaTxt" id="revistaTxt" placeholder="" autofocus="true" class="form-control" required="true"/>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="correo">Numero de Autores *</label>
+                                                    <input type="number" name="numeroAutoresNbr" id="numeroAutoresNbr" required="true" class="form-control" required="true"/>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <label for="soporteFle">Adjuntar soporte en formato pdf *</label>
-                                                        <input type="file" name="soporteFle" accept="application/pdf" name="soporteFle" required="true" class="form-control"/>
-                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <label for="nombre">ISSN de la Revista*</label>
+                                                    <input type="text" name="issnTxt" id="issnTxt" placeholder="" autofocus="true" class="form-control" required="true"/>
                                                 </div>
-                                                <hr />
-                                                <input type="submit" value="Guardar" class="btn btn-primary"/>
-                                                <div class="col-md-12">
-                                                    <a href="Produccion.php">
-                                                        <h4><i class="pe-7s-back"></i>Volver</h4>
-                                                    </a>
+                                                <div class="col-xs-6">
+                                                    <label for="nombre">Fecha de Publicación *</label>
+                                                    <input type="date" max="<?php $hoy = date("Y-m-d");
+echo $hoy;
+?>" name="fechaPublicacionDtp" id="fechaPublicacionDtp" placeholder="" autofocus="true" class="form-control" required="true"/>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <div class="panel-footer">
-                                            &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica 
-                                        </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <label for="soporteFle">Adjuntar soporte en formato pdf *</label>
+                                                    <input type="file" name="soporteFle" accept="application/pdf" name="soporteFle" required="true" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <input type="submit" value="Guardar" class="btn btn-primary"/>
+                                            <div class="col-md-12">
+                                                <a href="Produccion.php">
+                                                    <h4><i class="pe-7s-back"></i>Volver</h4>
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="panel-footer">
+                                        &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica 
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
 
@@ -199,20 +200,18 @@ echo $hoy; ?>" name="fechaPublicacionDtp" id="fechaPublicacionDtp" placeholder="
     <script src="assets/js/demo.js"></script>
 
     <script type="text/javascript">
-                                                $(document).ready(function () {
+                                            $(document).ready(function () {
+                                                demo.initChartist();
+                                                $.notify({
+                                                    icon: 'pe-7s-notebook',
+                                                    message: "Por favor diligencie <b>Su información Académica</b>"
 
-                                                    demo.initChartist();
-
-                                                    $.notify({
-                                                        icon: 'pe-7s-notebook',
-                                                        message: "Por favor diligencie <b>Su información Académica</b>"
-
-                                                    }, {
-                                                        type: 'info',
-                                                        timer: 4000
-                                                    });
-
+                                                }, {
+                                                    type: 'info',
+                                                    timer: 4000
                                                 });
+
+                                            });
     </script>
 
 </html>

@@ -107,9 +107,9 @@ if (isset($_SESSION['usuario'])) {
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Consulta General de Calificados
+                                Agregar programa acad&eacute;mico
                             </div>
-                            <div class="panel-body>
+                            <div class="panel-body">
                                  <div class="col-xs-12">
                                                 <div class="col-xs-4">
                                                     <a href="NuevoPrograma.php"><i class="pe-7s-plus"></i> <ins><b> Programa Académico</b></ins></a>
