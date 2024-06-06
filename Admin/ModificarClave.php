@@ -90,36 +90,7 @@ if (isset($_SESSION['usuario'])) {
                         </a>
                     </div>
                     <ul class="nav">
-                        <li class="active">
-                            <a href="inicioAdmin.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>Inscritos por Áreas</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Calificados.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>Inscritos Calificados</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="ModificarClave.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>cambiar mi Clave</p>
-                            </a>
-                        </li>
-<!--                        <li>
-                            <a href="../Tablero/restaurarclaveAdmin.php">
-                                <i class="pe-7s-display1"></i>
-                                <p>Cambiar Clave</p>
-                            </a>
-                        </li>-->
-                        <li class="active-pro">
-                            <a href="index.php">
-                                <i class="pe-7s-power"></i>
-                                <p>Salir</p>
-                            </a>
-                        </li>
+                        <?php include("includes/menu.html");?>
                     </ul>
                 </div>
             </div>
