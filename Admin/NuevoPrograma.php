@@ -34,6 +34,7 @@ if (isset($_SESSION['usuario'])) {
         <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
         <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
         <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        
         <style>
             body {
                 padding-top: 15px;
@@ -184,7 +185,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-                                <table cellspacing="0" cellpadding="0" id="mi-tabla" class="table-bordered tabla">
+                                <table cellspacing="0" cellpadding="1">
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
