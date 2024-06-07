@@ -185,7 +185,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-                                <table cellspacing="0" cellpadding="1">
+                                <table cellspacing="0" cellpadding="1" id="mi-tabla" class="table-bordered tabla">
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
