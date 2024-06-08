@@ -127,11 +127,14 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="row">
                                             <div class="col-xs-3">
                                                 <label for="telefono">Facultad</label>
+                                                <?php ?>
                                                 <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
                                                     <?php
                                                     $facultades = $p->getFacultadesDocentePostgrado();
+                                                    $facId = $editable[0][1];
                                                     foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                        if ($facId == $arregloFac[0]){$facId='selected';}else{$facId='';}
+                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . ' '. $facId . ' </OPTION>';
                                                     }
                                                     ?>
                                                 </select>
@@ -139,7 +142,7 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="col-xs-3">
                                                 <label for="telefono">Nombre del nuevo Programa</label>
                                                 <div id="comboProg">
-                                                    <input class="form-control" type="text" id="programTxt" value = "<?php echo $editable[0];?>" name="programTxt" required="true">
+                                                    <input class="form-control" type="text" id="programTxt" value = "<?php echo $editable[0][0];?>" name="programTxt" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-xs-3">
