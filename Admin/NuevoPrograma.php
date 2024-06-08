@@ -43,7 +43,7 @@ if (isset($_SESSION['usuario'])) {
             }
 
             .tabla {
-                margin: 0 auto;
+                margin: 10px auto;
             }
 
             .tabla thead {
