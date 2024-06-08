@@ -133,6 +133,9 @@ if (isset($_SESSION['usuario'])) {
                     <div class="container-fluid">
                     </div>
                     <div class="col-xs-12">
+                    <a href="AgregarPrograma.php">
+                    <h4><i class="pe-7s-back"></i>Volver</h4>
+                    </a>                                       
                         <h5>
                             <?php echo $nombre; ?>
                         </h5>
@@ -141,12 +144,12 @@ if (isset($_SESSION['usuario'])) {
                         <div class="col-xs-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    estionar programa académico
+                                    Gestionar programa académico
                                 </div>
                                 <div class="panel-body">
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
                                         <div class="row">
-                                            <div class="col-xs-4">
+                                            <div class="col-xs-3">
                                                 <label for="telefono">Facultad</label>
                                                 <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
                                                     <?php
@@ -157,13 +160,13 @@ if (isset($_SESSION['usuario'])) {
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="col-xs-4">
+                                            <div class="col-xs-3">
                                                 <label for="telefono">Nombre del nuevo Programa</label>
                                                 <div id="comboProg">
                                                     <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
                                                 </div>
                                             </div>
-                                            <div class="col-xs-4">
+                                            <div class="col-xs-3">
                                                 <label for="telefono">Alcance</label>
                                                 <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">    
                                                     <OPTION value="">[SELECCIONE]</OPTION>
@@ -172,13 +175,8 @@ if (isset($_SESSION['usuario'])) {
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <hr />
-                                        <input type="submit" value="Guardar" class="btn btn-primary" />
-                                        <div class="col-md-12">
-                                            <a href="ProgramaPostgrado.php">
-                                                <h4><i class="pe-7s-back"></i>Volver</h4>
-                                            </a>
+                                        <div class="col-xs-3">
+                                            <input type="submit" value="Guardar" class="btn btn-primary" />
                                         </div>
                                     </form>
                                 </div>
