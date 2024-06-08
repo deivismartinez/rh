@@ -132,7 +132,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="content">
                     <div class="container-fluid">
                     </div>
-                    <div class="col-xs-12">
+                    <div class="col-xs-4">
                     <a href="AgregarPrograma.php">
                     <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>                                       
@@ -174,9 +174,10 @@ if (isset($_SESSION['usuario'])) {
                                                     <OPTION value="true">POSGRADO</OPTION>
                                                 </select>
                                             </div>
-                                        </div>
+                                        
                                         <div class="col-xs-3">
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
+                                        </div>
                                         </div>
                                     </form>
                                 </div>
