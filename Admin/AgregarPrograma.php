@@ -113,45 +113,45 @@ if (isset($_SESSION['usuario'])) {
                              
                             <div class="col-xs-12">
                                 <div class="col-xs-3">
-                                              <div class="card" style="width:200px">
+                                              <div class="card" style="width:150px">
                                                 <img class="card-img-top" src="../images/programa.png" alt="" style="width:100%">
                                                 <div class="card-body">
                                                     <div class="col-xs-12">
-                                                      <h5 class="card-title">Nuevo Programa</h5>                                  
-                                                      <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a>
+                                                      <h5 class="card-title">Programas</h5>                                  
+                                                      <a href="NuevoPrograma.php" class="btn btn-primary">Ir</a>
                                                   </div>
                                               </div>  
                                           </div>    
                                 </div>                          
                                 <div class="col-xs-3">
-                                          <div class="card" style="width:200px">
+                                          <div class="card" style="width:150px">
                                             <img class="card-img-top" src="../images/departamento.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                  <h5 class="card-title">Nuevo Departamento</h5>                                  
-                                                  <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a>    
+                                                  <h5 class="card-title">Departamentos</h5>                                  
+                                                  <a href="NuevoPrograma.php" class="btn btn-primary">Ir</a>    
                                               </div>
                                           </div>  
                                       </div>    
                                 </div>
                                 <div class="col-xs-3">
-                                          <div class="card" style="width:200px">
+                                          <div class="card" style="width:150px">
                                             <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                  <h5 class="card-title">Nuevo Perfil</h5>                                  
-                                                  <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a> 
+                                                  <h5 class="card-title">Perfiles</h5>                                  
+                                                  <a href="NuevoPrograma.php" class="btn btn-primary">Ir</a> 
                                               </div>
                                           </div>  
                                       </div>    
                                 </div> 
                                 <div class="col-xs-3"> 
-                                  <div class="card" style="width:200px">
+                                  <div class="card" style="width:150px">
                                     <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:100%">
                                     <div class="card-body">
                                         <div class="col-xs-12">
-                                          <h5 class="card-title">Nuevo Evaluador</h5>                                  
-                                          <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a> 
+                                          <h5 class="card-title">Evaluadores</h5>                                  
+                                          <a href="NuevoPrograma.php" class="btn btn-primary">Ir</a> 
                                         </div>
                                       </div>  
                                   </div>    
@@ -168,32 +168,7 @@ if (isset($_SESSION['usuario'])) {
 <script src="../Tablero/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src='../Tablero/assets/js/jquery2.1.3sorter.js'></script>
 <script>
-    function buscar() {
-        //obtenemos el texto introducido en el campo de búsqueda
-        consulta = $("#busqueda").val();
-        area = $("#areasCmb").val();
-        //hace la búsqueda                                                                                  
-        $.ajax({
-            type: "POST",
-            url: "buscarCalificado.php",
-            data: {
-                'b': $("#busqueda").val(),
-                'area': area
-            },
-            dataType: "html",
-            beforeSend: function() {
-                //imagen de carga
-                $("#resultado").html("<p align='center'><img src='../images/load.gif' /></p>");
-            },
-            error: function() {
-                alert("error petición ajax");
-            },
-            success: function(data) {
-                $("#resultado").empty();
-                $("#resultado").append(data);
-            }
-        });
-    }
+   
 
     function imprimir() {
         consulta = $("#busqueda").val();
