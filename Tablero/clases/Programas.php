@@ -113,7 +113,7 @@ class Programas extends conectar {
     }
 
     public function getProgramasVer() {
-        $sql = "SELECT p.nombre,f.nombre, CASE when postgrado = 'true' then 'POSGRADO' else 'PREGRADO' end FROM programa p inner join facultad f on (p.facultad_id=f.id)";
+        $sql = "SELECT p.nombre,f.nombre, CASE when postgrado = 'true' then 'POSGRADO' else 'PREGRADO' end FROM programa p inner join facultad f on (p.facultad_id=f.id) order by p.id desc";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {

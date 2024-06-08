@@ -158,6 +158,7 @@ if (isset($_SESSION['usuario'])) {
                                     </form>
                                 </div>
 
+
                             <div class="row">
                                 <div class="col-xs-12">
                                 <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
@@ -186,7 +187,7 @@ if (isset($_SESSION['usuario'])) {
                                                 $urlVer = "../Tablero/controller/Ver.php?id=" . $arreglo[6] . "&nombre=" . $arreglo[1] . "&tipo=1";
                                                 ?>
                                                 <td>
-                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-edit"></i></a>
+                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
