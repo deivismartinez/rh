@@ -10,10 +10,10 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
     
+    $gestion = new Gestion();
     $programId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
-    $editable = $p->getNameProgramFacId($programId);
+    $editable = $gestion->getNameProgramFacId($programId);
     if (isset($_POST["programTxt"])) {
-        $gestion = new Gestion();
         $gestion->insertarPrograma();
     }
 } else {
