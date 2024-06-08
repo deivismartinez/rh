@@ -176,6 +176,7 @@ if (isset($_SESSION['usuario'])) {
                                             </div>
                                         
                                         <div class="col-xs-3">
+                                            <br>
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
                                         </div>
                                         </div>
@@ -184,7 +185,7 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-                                <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered tabla">
+                                <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
