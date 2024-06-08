@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
     
-    $programId = strtoupper(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
+    $programId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
     $editable = $p->getNameProgramFacId($programId);
     if (isset($_POST["programTxt"])) {
         $gestion = new Gestion();

@@ -186,7 +186,7 @@ if (isset($_SESSION['usuario'])) {
                                                 $urlVer = "EditProgram.php?id=" . $arreglo[3];
                                                 ?>
                                                 <td>
-                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-edit"></i></a>
+                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
