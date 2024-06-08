@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/controller/Validar.php</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/controller/VerEspecializacion.php</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/clases/Estudios.php</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Entrada.html</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/Basica.php</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/Academica.php</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/NuevaEscializacion.php</file>
-            <file>file:/C:/xampp/htdocs/InscripcionDocente/Tablero/clases/Docente.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Tablero/Produccion.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Tablero/clases/Gestion.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Admin/buscarCalificado.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Tablero/clases/Programas.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Admin/Calificados.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Admin/NuevoPrograma.php</file>
+            <file>file:/C:/xampp/htdocs/rh/Admin/AgregarPrograma.php</file>
         </group>
     </open-files>
 </project-private>
