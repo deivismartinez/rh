@@ -51,6 +51,16 @@ class Gestion extends conectar {
                 exit;
     }
     
+    public function getNameProgramFacId($id) {
+        $sql = "SELECT nombre,facultad_id FROM programa where id = $id";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
+    
     public function actualizarArticulo() {
         require_once './vo/UsuarioVO.php';
         session_start();

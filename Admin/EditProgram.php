@@ -9,8 +9,9 @@ if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    $programasCreados = $p->getProgramasVer();
-
+    
+    $programId = strtoupper(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
+    $editable = $p->getNameProgramFacId($programId);
     if (isset($_POST["programTxt"])) {
         $gestion = new Gestion();
         $gestion->insertarPrograma();
@@ -119,7 +120,7 @@ if (isset($_SESSION['usuario'])) {
                         <div class="col-xs-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Gestionar programa académico
+                                    Editar programa académico
                                 </div>
                                 <div class="panel-body">
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
@@ -138,7 +139,7 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="col-xs-3">
                                                 <label for="telefono">Nombre del nuevo Programa</label>
                                                 <div id="comboProg">
-                                                    <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
+                                                    <input class="form-control" type="text" id="programTxt" value = "<?php echo $editable[0];?>" name="programTxt" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-xs-3">
@@ -152,48 +153,13 @@ if (isset($_SESSION['usuario'])) {
                                         
                                         <div class="col-xs-3">
                                             <br>
-                                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                                            <input type="submit" value="Editar" class="btn btn-primary" />
                                         </div>
                                         </div>
                                     </form>
                                 </div>
 
-                            <div class="row">
-                                <div class="col-xs-12">
-                                <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
-                                    <thead>
-                                        <tr>
-                                            <th><span>No.</span></th>
-                                            <th><span>Programa</span></th>
-                                            <th><span>Facultad</span></th>
-                                            <th><span>Alcance</span></th>
-                                            <th><span></span></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 0;
-                                        foreach ($programasCreados as $arreglo) {
-                                            $i = $i + 1;
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $i ?></td>
-                                                <td><?php echo $arreglo[0] ?></td>
-                                                <td><?php echo $arreglo[1] ?></td>
-                                                <td><?php echo $arreglo[2] ?></td>
-
-                                                <?php
-                                                $urlVer = "EditProgram.php?id=" . $arreglo[3];
-                                                ?>
-                                                <td>
-                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-edit"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                                </div>
-                            </div>
+                         
                             </div>
                             <br>
                             <div class="row">
