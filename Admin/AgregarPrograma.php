@@ -110,58 +110,53 @@ if (isset($_SESSION['usuario'])) {
                                 Agregar programa acad&eacute;mico
                             </div>
                             <div class="panel-body">
-                                 <div class="col-xs-12">
-                                                <div class="col-xs-3">
-                                                    <a href="NuevoPrograma.php"><i class="pe-7s-plus"></i> <ins><b> Programa Académico</b></ins></a>
-                                                </div>
-                                        <div class="col-xs-3">
-                                            <a href="NuevoJefeDepartamento.php"><i class="pe-7s-plus"></i> <ins><b> Jefe de Departamento</b></ins></a>
-                                         </div> 
-                                         <div class="col-xs-3">  
-                                            <a href="NuevoPerfil.php"><i class="pe-7s-plus"></i> <ins><b>Perfil</b></ins></a>
-                                                </div>
-                                        <div class="col-xs-3">
-                                                    <a href="NuevoEvaluador.php"><i class="pe-7s-plus"></i> <ins><b> Evaluador</b></ins></a>
-                                                </div>
-                                        <div class="col-xs-3">
-
-                                                </div>
-                                        <div class="col-xs-0">
-                                            
-                                                </div>
-                                    </div>
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <label> Criterio de busqueda</label>
-                                        <input id="busqueda" type="text" class="form-control" />
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label> Áreas de Conocimiento</label>
-                                        <select class="form-control" id="areasCmb" name="areasCmb" required="true">
-                                            <option value="">TODOS</option>
-                                            <?php
-                                            $areas = $p->getAreas($programa);
-                                            foreach ($areas as $arregloAreas) {
-                                                echo '<OPTION value="' . $arregloAreas[1] . '">' . $arregloAreas[0] . '</OPTION>';
-                                            }
-                                            ?>
-
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label> </label>
-                                        <button onclick="buscar()" class="btn btn-primary">Buscar</button>
-                                        <button onclick="imprimir()" class="btn btn-danger">Imprimir</button>
-                                    </div>
+                             
+                            <div class="col-xs-12">
+                                <div class="col-xs-3">
+                                              <div class="card" style="width:200px">
+                                                <img class="card-img-top" src="../images/programa.png" alt="" style="width:100%">
+                                                <div class="card-body">
+                                                    <div class="col-xs-12">
+                                                      <h5 class="card-title">Nuevo Programa</h5>                                  
+                                                      <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a>
+                                                  </div>
+                                              </div>  
+                                          </div>    
+                                </div>                          
+                                <div class="col-xs-3">
+                                          <div class="card" style="width:200px">
+                                            <img class="card-img-top" src="../images/departamento.png" alt="" style="width:100%">
+                                            <div class="card-body">
+                                                <div class="col-xs-12">
+                                                  <h5 class="card-title">Nuevo Departamento</h5>                                  
+                                                  <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a>    
+                                              </div>
+                                          </div>  
+                                      </div>    
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div id="resultado">
-
+                                <div class="col-xs-3">
+                                          <div class="card" style="width:200px">
+                                            <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
+                                            <div class="card-body">
+                                                <div class="col-xs-12">
+                                                  <h5 class="card-title">Nuevo Perfil</h5>                                  
+                                                  <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a> 
+                                              </div>
+                                          </div>  
+                                      </div>    
+                                </div> 
+                                <div class="col-xs-3"> 
+                                  <div class="card" style="width:200px">
+                                    <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:100%">
+                                    <div class="card-body">
+                                        <div class="col-xs-12">
+                                          <h5 class="card-title">Nuevo Evaluador</h5>                                  
+                                          <a href="NuevoPrograma.php" class="btn btn-primary">Crear</a> 
                                         </div>
-                                    </div>
-                                </div>
+                                      </div>  
+                                  </div>    
+                                </div>              
+                            </div>                                   
                             </div>
                         </div>
                     </div>
