@@ -111,17 +111,20 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                             <div class="panel-body">
                                  <div class="col-xs-12">
-                                                <div class="col-xs-4">
+                                                <div class="col-xs-3">
                                                     <a href="NuevoPrograma.php"><i class="pe-7s-plus"></i> <ins><b> Programa Académico</b></ins></a>
                                                 </div>
-                                        <div class="col-xs-4">
-                                            <a href="NuevaMonografia.php"><i class="pe-7s-plus"></i> <ins><b> Jefe de Departamento</b></ins></a>
-                                            <a href="NuevoVideo.php"><i class="pe-7s-plus"></i> <ins><b>Perfil</b></ins></a>
+                                        <div class="col-xs-3">
+                                            <a href="NuevoJefeDepartamento.php"><i class="pe-7s-plus"></i> <ins><b> Jefe de Departamento</b></ins></a>
+                                         </div> 
+                                         <div class="col-xs-3">  
+                                            <a href="NuevoPerfil.php"><i class="pe-7s-plus"></i> <ins><b>Perfil</b></ins></a>
                                                 </div>
-                                        <div class="col-xs-4">
-                                                    <a href="NuevoLibro.php"><i class="pe-7s-plus"></i> <ins><b> Evaluador</b></ins></a>
+                                        <div class="col-xs-3">
+                                                    <a href="NuevoEvaluador.php"><i class="pe-7s-plus"></i> <ins><b> Evaluador</b></ins></a>
                                                 </div>
-                                        <div class="col-xs-0">
+                                        <div class="col-xs-3">
+
                                                 </div>
                                         <div class="col-xs-0">
                                             
