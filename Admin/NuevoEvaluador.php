@@ -80,7 +80,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="#" class="simple-text">
-                            Consulta de Inscritos a el Departamento.
+                            Gestionar Evaluadores.
                         </a>
                     </div>
                     <?php include("includes/menu.html");?>
@@ -165,8 +165,8 @@ if (isset($_SESSION['usuario'])) {
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
-                                            <th><span>Programa</span></th>
-                                            <th><span>Facultad</span></th>
+                                            <th><span>Nombres</span></th>
+                                            <th><span>Tipo</span></th>
                                             <th><span>Alcance</span></th>
                                             <th><span></span></th>
                                         </tr>
