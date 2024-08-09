@@ -1,3 +1,26 @@
+<?php
+require_once '../Tablero/vo/UsuarioVO.php';
+require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Gestion.php");
+
+$p = new Programas();
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+    $nombre = $usuario->getName();
+    $programa = $usuario->getlastName();
+    $programasCreados = $p->getProgramasVer();
+
+    if (isset($_POST["programTxt"])) {
+        $gestion = new Gestion();
+        $gestion->insertarPrograma();
+    }
+} else {
+    header('Location: AccesoNoautorizado.html');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
