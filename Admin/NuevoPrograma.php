@@ -169,6 +169,12 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="col-xs-3">
                                                 <label for="telefono">Facultad</label>
                                                 <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
+                                                     <?php
+                                                    $facultades = $p->getFacultadesDocentePostgrado();
+                                                    foreach ($facultades as $arregloFac) {
+                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                    }
+                                                    ?>
                                                     
                                                 </select>
                                             </div>
