@@ -53,7 +53,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="../images/logo.png" alt="logo" srcset=""></a>
+                            <a href="index.php"><img src="../images/logo.png" alt="logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -97,11 +97,18 @@ if (isset($_SESSION['usuario'])) {
                            
                         
 
-                        <li class="sidebar-item  active ">
+                        <li class="sidebar-item active has-sub ">
                             <a href="Agregar.php" class='sidebar-link'>
                                 <i class="bi bi-pen-fill"></i>
                                 <span>Administrar</span>
                             </a>
+
+                            <ul class="submenu active">   
+                                <li class="submenu-item ">
+                                    <a href="NuevoPrograma.php">Programa</a>
+                                </li>
+                                
+                            </ul>
                         </li>
 
                         <li class="sidebar-item ">
@@ -110,7 +117,7 @@ if (isset($_SESSION['usuario'])) {
                                 <span>Usuario</span>
                             </a>
                            
-                        </li>                       
+                        </li>                      
 
                     </ul>
                 </div>
