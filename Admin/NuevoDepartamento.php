@@ -164,7 +164,7 @@ if (isset($_SESSION['usuario'])) {
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
-                                            <th><span>Departamentos</span></th>
+                                            <th><span>Departamento</span></th>
                                             <th><span>Facultad</span></th>
                                             <th><span>Alcance</span></th>
                                             <th><span></span></th>
