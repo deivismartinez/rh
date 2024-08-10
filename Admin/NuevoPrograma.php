@@ -103,8 +103,8 @@ if (isset($_SESSION['usuario'])) {
                                 <span>Administrar</span>
                             </a>
 
-                            <ul class="submenu active">   
-                                <li class="submenu-item ">
+                            <ul class="submenu">   
+                                <li class="submenu-item active ">
                                     <a href="NuevoPrograma.php">Programa</a>
                                 </li>
                                                                              
@@ -115,7 +115,7 @@ if (isset($_SESSION['usuario'])) {
                                 <li class="submenu-item ">
                                     <a href="NuevoPerfil.php">Perfiles</a>
                                 </li>
-                                                            
+
                                 <li class="submenu-item ">
                                     <a href="NuevoEvaluador.php">Evaluadores</a>
                                 </li>
