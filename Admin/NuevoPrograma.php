@@ -53,7 +53,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.php"><img src="../images/logo.png" alt="logo" srcset=""></a>
+                            <a href="inicioAdmin.php"><img src="../images/logo.png" alt="logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -109,6 +109,27 @@ if (isset($_SESSION['usuario'])) {
                                 </li>
                                 
                             </ul>
+
+                            <ul class="submenu">   
+                                <li class="submenu-item ">
+                                    <a href="NuevoDepartamento.php">Departamentos</a>
+                                </li>
+                                
+                            </ul>
+
+                            <ul class="submenu">   
+                                <li class="submenu-item ">
+                                    <a href="NuevoPerfil.php">Perfiles</a>
+                                </li>
+                                
+                            </ul>
+
+                            <ul class="submenu">   
+                                <li class="submenu-item ">
+                                    <a href="NuevoEvaluador.php">Evaluadores</a>
+                                </li>
+                                
+                            </ul>
                         </li>
 
                         <li class="sidebar-item ">
@@ -143,7 +164,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Administrar</a></li>
+                        <li class="breadcrumb-item"><a href="Agregar.php">Administrar</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Programas Académicos</li>
 
                     </ol>
