@@ -107,24 +107,15 @@ if (isset($_SESSION['usuario'])) {
                                 <li class="submenu-item ">
                                     <a href="NuevoPrograma.php">Programa</a>
                                 </li>
-                                
-                            </ul>
-
-                            <ul class="submenu">   
+                                                                             
                                 <li class="submenu-item ">
                                     <a href="NuevoDepartamento.php">Departamentos</a>
                                 </li>
-                                
-                            </ul>
-
-                            <ul class="submenu">   
+                               
                                 <li class="submenu-item ">
                                     <a href="NuevoPerfil.php">Perfiles</a>
                                 </li>
-                                
-                            </ul>
-
-                            <ul class="submenu">   
+                                                            
                                 <li class="submenu-item ">
                                     <a href="NuevoEvaluador.php">Evaluadores</a>
                                 </li>
