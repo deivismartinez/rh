@@ -244,7 +244,7 @@ if (isset($_SESSION['usuario'])) {
                                                 $urlVer = "../Tablero/controller/Ver.php?id=" . $arreglo[6] . "&nombre=" . $arreglo[1] . "&tipo=1";
                                                 ?>
                                                 <td>
-                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>
+                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="bi bi-pen-fill"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
