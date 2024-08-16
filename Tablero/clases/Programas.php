@@ -426,6 +426,7 @@ class Programas extends conectar {
                 $usuarioId = $id;
                 $sql = "INSERT INTO perfil(grupo,area1,programa_id,"
                         . "asignatura,perfil,fecharegistro,usuario,periodo_id) VALUES('GRUPO','".$area."', ".$idPrograma.",'','PERFIL',now(),".$usuarioId.",2);";
+               var_dump($sql);
                 pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
                var_dump($sql);
                //header("Location: NewArea.php");
