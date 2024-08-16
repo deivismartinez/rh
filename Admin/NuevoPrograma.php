@@ -12,7 +12,11 @@ if (isset($_SESSION['usuario'])) {
     $programasCreados = $p->getProgramasVer();
 
     if (isset($_POST["programTxt"])) {
-        $p->insertProgram();
+        if($p->existProgram($_POST["programTxt"])){
+            $p->insertProgram();
+        }else{
+            echo '<script>alert(1)</script>';
+        }
     }
 } else {
     header('Location: AccesoNoautorizado.html');

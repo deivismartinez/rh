@@ -325,9 +325,9 @@ class Programas extends conectar {
         return false;
     }
     
-    public function existProgram($id, $idArea) {
+    public function existProgram($name) {
         try {
-            $sql = "SELECT docente_id FROM docenteperfilposgrado WHERE perfil_id=" . $idArea . " and docente_id=" . $id . ";";
+            $sql = "SELECT nombre FROM programa WHERE nombre='" . $name . "';";
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 return true;
