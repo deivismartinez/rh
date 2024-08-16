@@ -14,6 +14,7 @@ if (isset($_SESSION['usuario'])) {
     if (isset($_POST["programTxt"])) {
         if($p->existProgram($_POST["programTxt"])){
             $p->insertProgram();
+            echo '<script>alert(0)</script>';
         }else{
             echo '<script>alert(1)</script>';
         }
