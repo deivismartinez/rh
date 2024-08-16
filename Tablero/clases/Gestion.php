@@ -31,7 +31,7 @@ class Gestion extends conectar {
         return $arreglo;
     }
     
-    public function insertarPrograma() {
+    public function insertarPrograma_eliminar() {
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];

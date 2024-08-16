@@ -12,8 +12,7 @@ if (isset($_SESSION['usuario'])) {
     $programasCreados = $p->getProgramasVer();
 
     if (isset($_POST["programTxt"])) {
-        $gestion = new Gestion();
-        $gestion->insertarPrograma();
+        $p->insertProgram();
     }
 } else {
     header('Location: AccesoNoautorizado.html');

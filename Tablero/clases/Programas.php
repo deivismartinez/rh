@@ -324,6 +324,39 @@ class Programas extends conectar {
         }
         return false;
     }
+    
+    public function existProgram($id, $idArea) {
+        try {
+            $sql = "SELECT docente_id FROM docenteperfilposgrado WHERE perfil_id=" . $idArea . " and docente_id=" . $id . ";";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                return true;
+            }
+        } catch (Exception $error) {
+            
+        }
+        return false;
+    }
+    
+    public function insertProgram() {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+        $status = "";
+                $facultadId = strtoupper(filter_input(INPUT_POST, 'facultadCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+                $nombrePrograma = strtoupper(filter_input(INPUT_POST, 'programTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+                $posgrado = strtoupper(filter_input(INPUT_POST, 'posgradoCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+                $usuarioId = $id;
+                $sql = "INSERT INTO programa(nombre, facultad_id, estado, postgrado) "
+                        . " VALUES('".$nombrePrograma."', '".$facultadId."', 'ACTIVO','".$posgrado."')";
+                $oid = pg_query($this->db, $sql);
+                header("Location: NuevoPrograma.php");
+                exit;
+    }
 
     public function insertarArea($usuarioId, $docenteId, $idArea) {
         $sql = "INSERT INTO docenteperfil(perfil_id, docente_id, fecharegistro, usuario) VALUES(" . $idArea . ", " . $docenteId . ", now(), " . $usuarioId . ");";
