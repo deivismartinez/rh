@@ -78,25 +78,7 @@ class Programas extends conectar {
                 exit;
     }
     
-    public function insertArea() {
-        require_once './vo/UsuarioVO.php';
-        session_start();
-        if (isset($_SESSION['usuario'])) {
-            $usuario = $_SESSION['usuario'];
-            $id = $usuario->getId();
-        } else {
-            header('Location: AccesoNoautorizado.html');
-        }
-                $area = strtoupper(filter_input(INPUT_POST, 'areaTxt', FILTER_SANITIZE_SPECIAL_CHARS));
-                $idPrograma = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
-                $usuarioId = $id;
-                $sql = "INSERT INTO perfil(grupo,area1,programa_id,"
-                        . "asignatura,perfil,fecharegistro,usuario,periodo_id) VALUES('GRUPO','".$area."', ".$idPrograma.",'','PERFIL',now(),".$usuarioId.",2);";
-                pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
-               
-                header("Location: Programa.php");
-                exit;
-    }
+   
 
     public function eliminarPrograma($idPrograma,$idUsuario) {
         $sql = "DELETE FROM docente_programa where programa_id=" . $idPrograma . " and docente_id=".$idUsuario.";";
