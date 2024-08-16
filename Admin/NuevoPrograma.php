@@ -108,7 +108,7 @@ if (isset($_SESSION['usuario'])) {
                     <div class="container-fluid">
                     </div>
                     <div class="col-xs-4">
-                    <a href="AgregarPrograma.php">
+                    <a href="Agregar.php">
                     <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>                                       
                         <h5>

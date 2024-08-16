@@ -119,7 +119,7 @@ if (isset($_SESSION['usuario'])) {
                         <div class="col-xs-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Gestionar programa académico
+                                    Gestionar perfiles de usuario
                                 </div>
                                 <div class="panel-body">
                                     <form name="form" action="" method="post" enctype="multipart/form-data">

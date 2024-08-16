@@ -107,7 +107,7 @@ if (isset($_SESSION['usuario'])) {
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Agregar programa acad&eacute;mico
+                                Gestionar  depertamentos, programas, perfiles y evaluadores
                             </div>
                             <div class="panel-body">
                              
