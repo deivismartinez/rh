@@ -10,9 +10,9 @@ $misesion=session_status();
 if ($p->existeTresAreas($usuario->getId())) {
     header('Location: YaRegistrado.php');
 } else {
-    if (isset($_POST["areasCmb"])) {
+    if (isset($_POST["areaTxt"])) {
         $u = new Programas();
-        $u->insertar();
+        $u->insertArea();
     }
     ?>
 <!DOCTYPE html>
@@ -137,7 +137,6 @@ if ($p->existeTresAreas($usuario->getId())) {
                     </div>
                 </div>
             </nav>
- 
             <div class="content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -163,8 +162,6 @@ if ($p->existeTresAreas($usuario->getId())) {
                                                     >
                                                     <option value="">SELECCIONE</option>
                                                     <?php
-                                                    
-                                                   
                                                        if ($p->esPostgrados($usuario->getId()) ) {
                                                                 $facultades = $p->getFacultadesDocentePostgrado();
                                                           } else {
@@ -185,7 +182,7 @@ if ($p->existeTresAreas($usuario->getId())) {
                                                 <label for="telefono">Departamento</label>
                                                 <div id="comboProg">
                                                     <select class="form-control" id="programaCmb" name="programaCmb"
-                                                        required="true" onchange="cargarAreas(this.value)">
+                                                        required="true">
                                                         <option value="">SELECCIONE</option>
                                                         <?php
 $program = $p->getProgramasDocente(0);
@@ -198,27 +195,9 @@ $program = $p->getProgramasDocente(0);
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xs-6">
+                                            <div class="col-xs-12">
                                                 <label for="telefono">Área de Conocimiento</label>
-                                                <div id="comboAreas">
-                                                    <select class="form-control" id="areasCmb" name="areasCmb"
-                                                        required="true" onchange="cargarAsignaturas(this.value)">
-                                                        <option value="">SELECCIONE</option>
-                                                        <?php
-$areas = $p->getAreas(0);
-    foreach ($areas as $arregloAreas) {
-        echo '<OPTION value="' . $arregloAreas[1] . '">' . $arregloAreas[0] . '</OPTION>';
-    }
-    ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label for="telefono">Asignaturas (Solo para referencia, se registra el
-                                                    área)</label>
-                                                <div id="comboAsig">
-                                                    <textarea rows="4" cols="50" disabled="false"></textarea>
-                                                </div>
+                                                <input type="text" class="form-control" id="areaTxt" name="areaTxt">
                                             </div>
                                         </div>
                                         <hr />
