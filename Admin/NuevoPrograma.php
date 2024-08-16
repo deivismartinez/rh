@@ -13,10 +13,10 @@ if (isset($_SESSION['usuario'])) {
 
     if (isset($_POST["programTxt"])) {
         if($p->existProgram($_POST["programTxt"])){
-            $p->insertProgram();
-            echo '<script>alert(0)</script>';
+            echo '<script type="text/javascript">alert("dsdsdsdsds")</script>';
         }else{
-            echo '<script>alert(1)</script>';
+            $p->insertProgram();
+            echo '<script type="text/javascript">alert(1)</script>';
         }
     }
 } else {
