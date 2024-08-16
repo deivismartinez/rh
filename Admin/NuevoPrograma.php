@@ -13,10 +13,9 @@ if (isset($_SESSION['usuario'])) {
 
     if (isset($_POST["programTxt"])) {
         if($p->existProgram($_POST["programTxt"])){
-            echo '<script type="text/javascript">alert("dsdsdsdsds")</script>';
+            echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';
         }else{
             $p->insertProgram();
-            echo '<script type="text/javascript">alert(1)</script>';
         }
     }
 } else {
