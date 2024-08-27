@@ -1,5 +1,5 @@
 <?php
-require_once '../Tablero/vo/UsuarioVO.php';
+require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Gestion.php");
 
