@@ -1,7 +1,7 @@
 <?php
 require_once("conectar.php");
 require_once("helpers.php");
-require_once $_SERVER['DOCUMENT_ROOT'] .'/InscripcionDocente/Tablero/vo/UsuarioVO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/rh/Tablero/vo/UsuarioVO.php';
 ///se dehabilitó porque da un warning de doble inicio de sesion
 if (isset($_SESSION['usuario'])) {
 ///session_start();

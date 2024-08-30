@@ -207,7 +207,7 @@ class Usuario extends conectar {
                 $host = $_SERVER["HTTP_HOST"];
                 $url = $_SERVER["REQUEST_URI"];
                 
-                $trama = "http://hojasdevida.unicesar.edu.co/InscripcionDocente/Tablero/restaurarclave.php?email=" . $mail . "&identidad=" . $identidad . "&token=" . $token;
+                $trama = "http://hojasdevida.unicesar.edu.co/rh/Tablero/restaurarclave.php?email=" . $mail . "&identidad=" . $identidad . "&token=" . $token;
                 $para = $mail;
                 $titulo = 'Recuperación de su clave de acceso inscripción docente';
                 $mensaje = '<!DOCTYPE html>
@@ -221,7 +221,7 @@ class Usuario extends conectar {
                         <tr>
                            
                             <td width="100%" style="text-align:center" >
-                                <img alt="texto" src="https://hojasdevida.unicesar.edu.co/InscripcionDocente/images/titulo.png" width="446"
+                                <img alt="texto" src="https://hojasdevida.unicesar.edu.co/rh/images/titulo.png" width="446"
                                     height="77" style="display: block;">
                             </td>
                         </tr>

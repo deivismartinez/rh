@@ -3,7 +3,7 @@
 require_once("conectar.php");
 require_once("helpers.php");
 $ruta = $_SERVER['DOCUMENT_ROOT'];
-require_once $ruta . '/InscripcionDocente/Tablero/vo/PuntajesVO.php';
+require_once $ruta . '/rh/Tablero/vo/PuntajesVO.php';
 
 class Puntajes extends conectar {
 

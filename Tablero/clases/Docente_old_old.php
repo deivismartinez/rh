@@ -529,7 +529,7 @@ class Docente extends conectar
     {
         try {
             $ruta = $_SERVER['DOCUMENT_ROOT'];
-            require_once($ruta . "/InscripcionDocente/Tablero/vo/DocenteVO.php");
+            require_once($ruta . "/rh/Tablero/vo/DocenteVO.php");
             $docente = new DocenteVO();
             $sql = "SELECT nombre, apellidos, tipodocumento, documentoidentidad,"
                 . " email, estado_civil, genero, paisorigen, departamento, "
