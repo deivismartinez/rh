@@ -127,41 +127,31 @@ if (isset($_SESSION['usuario'])) {
                             <div class="row">
                                 <div class="col-xs-12">
                                 <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
-                                    <thead>
-                                        <tr>
-                                            <th><span>No.</span></th>
-                                            <th><span>Departamento</span></th>
-                                            <th><span>Facultad</span></th>
-                                            <th><span>Alcance</span></th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 0;
-                                        foreach ($consulta as $arreglo) {
-                                            $i = $i + 1;
-                                            $j=sizeof($arreglo)
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $i ?></td>
-
-                                                <?php 
-                                                for ($f = 0; $f <= $j; $i++) {
-                                                echo '<td>';    
-                                                 echo $arreglo[$f];
-                                                 echo '</td>';
-
-                                                
-                                                  }
-                                                }
-                                              
-                                                 ?>    
-                                               
-
-                                               
-                                    </tbody>
-                                </table>
+                                     <?php
+                                        if (!empty($consulta)) {
+                                        echo "<table border='1'>";
+                                        
+                                        // Encabezados de la tabla
+                                        echo "<tr>";
+                                        foreach (array_keys($consulta[0]) as $columna) {
+                                            echo "<th>" . htmlspecialchars($columna) . "</th>";
+                                        }
+                                        echo "</tr>";
+                                        
+                                        // Datos de la tabla
+                                        foreach ($consulta as $fila) {
+                                            echo "<tr>";
+                                            foreach ($fila as $valor) {
+                                                echo "<td>" . htmlspecialchars($valor) . "</td>";
+                                            }
+                                            echo "</tr>";
+                                        }
+                                        
+                                        echo "</table>";
+                                    } else {
+                                        echo "No se encontraron resultados.";
+                                    }
+                                    ?> 
                                 </div>
                             </div>
                             </div>
