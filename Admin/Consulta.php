@@ -1,4 +1,21 @@
+<?php
+require_once '../Tablero/vo/UsuarioVO.php';
+require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Gestion.php");
 
+$p = new Gestion();
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+    $nombre = $usuario->getName();
+    $programa = $usuario->getlastName();
+    $consulta = $p->consultarSql();
+
+  
+} else {
+    header('Location: AccesoNoautorizado.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,26 +119,51 @@
                                     Gestionar programa académico
                                 </div>
                                 <div class="panel-body">
-                                    <form name="form" action="Consulta2.php" method="post" enctype="multipart/form-data">
-                                        <div class="row">
-                                           
-                                            <div class="col-xs-9">
-                                                <label for="telefono">Ingrese su cunsulta</label>
-                                                <div id="comboProg">
-                                                    <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
-                                                </div>
-                                            </div>
-                                            
-                                        
-                                        <div class="col-xs-3">
-                                            <br>
-                                            <input type="submit" value="Buscar" class="btn btn-primary" />
-                                        </div>
-                                        </div>
+                                    <form name="form" action="" method="post" enctype="multipart/form-data">
+                                      
                                     </form>
                                 </div>
 
-                          
+                            <div class="row">
+                                <div class="col-xs-12">
+                                <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
+                                    <thead>
+                                        <tr>
+                                            <th><span>No.</span></th>
+                                            <th><span>Departamento</span></th>
+                                            <th><span>Facultad</span></th>
+                                            <th><span>Alcance</span></th>
+                                            <th><span></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 0;
+                                        foreach ($consulta as $arreglo) {
+                                            $i = $i + 1;
+                                            $j=sizeof($arreglo)
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+
+                                                <?php 
+                                                for ($f = 0; $f <= $j; $i++) {
+                                                echo '<td>';    
+                                                 echo $arreglo[$f];
+                                                 echo '</td>';
+
+                                                
+                                                  }
+                                                }
+                                              
+                                                 ?>    
+                                               
+
+                                               
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
                             </div>
                             <br>
                             <div class="row">
@@ -139,18 +181,6 @@
     </div>
 </div>
 </body>
-<script>
-        document.getElementById('form').addEventListener('submit', function(e) {
-            // Prevenir el envío por defecto del formulario
-            e.preventDefault();
-            
-            // Abrir una nueva pestaña
-            window.open('Consulta2.php', '_blank');
-            
-            // Enviar el formulario
-            this.submit();
-        });
-    </script>
 <script src="../Tablero/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src='../Tablero/assets/js/jquery2.1.3sorter.js'></script>
 <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>

@@ -32,13 +32,22 @@ class Gestion extends conectar {
             header('Location: AccesoNoautorizado.html');
         }
         
-        $sql = strtoupper(filter_input(INPUT_POST, 'sql', FILTER_SANITIZE_SPECIAL_CHARS));
+        
+        $sql = "SELECT categoria,nombregrupo,fechavinculacion,id FROM grupoinvestigacion where docenteid=" . $usuario->getId() . "  order by clasificacion limit 1;";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+   
+
   
         pg_query($this->db, $sql);
          ////////////////// cambia el estado de la calificacion si existe
          
          pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
          ///////////////////
+              return $arreglo;
     }
 
     public function getGrupoAdmInv($usuario) {
