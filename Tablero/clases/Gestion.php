@@ -21,6 +21,26 @@ class Gestion extends conectar {
          ///////////////////
     }
     
+
+    public function consultarSql() {
+
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+        
+        $sql = strtoupper(filter_input(INPUT_POST, 'sql', FILTER_SANITIZE_SPECIAL_CHARS));
+  
+        pg_query($this->db, $sql);
+         ////////////////// cambia el estado de la calificacion si existe
+         
+         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+         ///////////////////
+    }
+
     public function getGrupoAdmInv($usuario) {
         $sql = "SELECT categoria,nombregrupo,fechavinculacion,id FROM grupoinvestigacion where docenteid=" . $usuario->getId() . "  order by clasificacion limit 1;";
         $datos = pg_query($this->db, $sql);

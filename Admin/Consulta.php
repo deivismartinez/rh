@@ -3,18 +3,15 @@ require_once '../Tablero/vo/UsuarioVO.php';
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Gestion.php");
 
-$p = new Programas();
+$p = new Gestion();
 session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    $programasCreados = $p->getProgramasVer();
+    $consulta = $p->consultarSql();
 
-    if (isset($_POST["programTxt"])) {
-        $gestion = new Gestion();
-        $gestion->insertarPrograma();
-    }
+  
 } else {
     header('Location: AccesoNoautorizado.html');
 }
@@ -125,7 +122,7 @@ if (isset($_SESSION['usuario'])) {
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                            
-                                            <div class="col-xs-3">
+                                            <div class="col-xs-9">
                                                 <label for="telefono">Ingrese su cunsulta</label>
                                                 <div id="comboProg">
                                                     <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
@@ -156,14 +153,25 @@ if (isset($_SESSION['usuario'])) {
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        foreach ($programasCreados as $arreglo) {
+                                        foreach ($consulta as $arreglo) {
                                             $i = $i + 1;
+                                            $j=sizeof($arreglo)
                                             ?>
                                             <tr>
                                                 <td><?php echo $i ?></td>
-                                                <td><?php echo $arreglo[0] ?></td>
-                                                <td><?php echo $arreglo[1] ?></td>
-                                                <td><?php echo $arreglo[2] ?></td>
+
+                                                <?php 
+                                                for ($f = 0; $f <= $j; $i++) {
+                                                echo '<td>';    
+                                                 echo $arreglo[$f] 
+                                                 echo '</td>';
+
+                                                 ?>
+
+                                                }
+                                              
+                                                    
+                                               
 
                                                 <?php
                                                 $urlVer = "EditProgram.php?id=" . $arreglo[3];
