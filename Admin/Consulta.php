@@ -9,7 +9,7 @@ if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    //$consulta = $p->consultarSql();
+    $consulta = $p->consultarSql();
 
   
 } else {
@@ -166,21 +166,14 @@ if (isset($_SESSION['usuario'])) {
                                                  echo $arreglo[$f] 
                                                  echo '</td>';
 
-                                                 ?>
-
+                                                
+                                                  }
                                                 }
                                               
-                                                    
+                                                 ?>    
                                                
 
-                                                <?php
-                                                $urlVer = "EditProgram.php?id=" . $arreglo[3];
-                                                ?>
-                                                <td>
-                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
+                                               
                                     </tbody>
                                 </table>
                                 </div>
