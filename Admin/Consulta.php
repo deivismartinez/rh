@@ -1,5 +1,5 @@
 <?php
-require_once("../Tablero/vo/UsuarioVO.php");
+require_once '../Tablero/vo/UsuarioVO.php';
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Gestion.php");
 
@@ -9,14 +9,11 @@ if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    
-    $gestion = new Gestion();
-    $programId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
+    $programasCreados = $p->getProgramasVer();
 
-     echo '<script language="javascript">alert(hola)</script>';
-   // $editable = $gestion->EditProgram($programId);
     if (isset($_POST["programTxt"])) {
-      //  $gestion->insertarPrograma();
+        $gestion = new Gestion();
+        $gestion->insertarPrograma();
     }
 } else {
     header('Location: AccesoNoautorizado.html');
@@ -83,10 +80,10 @@ if (isset($_SESSION['usuario'])) {
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="#" class="simple-text">
-                            Consulta de Inscritos a el Departamento.
+                            Gestionar Departamentos.
                         </a>
                     </div>
-                    <?php include("includes/menu.html");?>
+                    
                 </div>
             </div>
 
@@ -111,7 +108,7 @@ if (isset($_SESSION['usuario'])) {
                     <div class="container-fluid">
                     </div>
                     <div class="col-xs-4">
-                    <a href="AgregarPrograma.php">
+                    <a href="Agregar.php">
                     <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>                                       
                         <h5>
@@ -122,49 +119,64 @@ if (isset($_SESSION['usuario'])) {
                         <div class="col-xs-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Editar programa académico
+                                    Gestionar programa académico
                                 </div>
                                 <div class="panel-body">
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
                                         <div class="row">
+                                           
                                             <div class="col-xs-3">
-                                                <label for="telefono">Facultad</label>
-                                                <?php ?>
-                                                <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                    $facId = $editable[0][1];
-                                                    foreach ($facultades as $arregloFac) {
-                                                        if ($facId == $arregloFac[0]){$facId='selected';}else{$facId='';}
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . ' '. $facId . ' </OPTION>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <label for="telefono">Nombre del nuevo Programa</label>
+                                                <label for="telefono">Ingrese su cunsulta</label>
                                                 <div id="comboProg">
-                                                    <input class="form-control" type="text" id="programTxt" value = "<?php echo $editable[0][0];?>" name="programTxt" required="true">
+                                                    <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
                                                 </div>
                                             </div>
-                                            <div class="col-xs-3">
-                                                <label for="telefono">Alcance</label>
-                                                <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">    
-                                                    <OPTION value="">[SELECCIONE]</OPTION>
-                                                    <OPTION value="false">PREGRADO</OPTION>
-                                                    <OPTION value="true">POSGRADO</OPTION>
-                                                </select>
-                                            </div>
+                                            
                                         
                                         <div class="col-xs-3">
                                             <br>
-                                            <input type="submit" value="Editar" class="btn btn-primary" />
+                                            <input type="submit" value="Buscar" class="btn btn-primary" />
                                         </div>
                                         </div>
                                     </form>
                                 </div>
 
-                         
+                            <div class="row">
+                                <div class="col-xs-12">
+                                <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
+                                    <thead>
+                                        <tr>
+                                            <th><span>No.</span></th>
+                                            <th><span>Departamento</span></th>
+                                            <th><span>Facultad</span></th>
+                                            <th><span>Alcance</span></th>
+                                            <th><span></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 0;
+                                        foreach ($programasCreados as $arreglo) {
+                                            $i = $i + 1;
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $arreglo[0] ?></td>
+                                                <td><?php echo $arreglo[1] ?></td>
+                                                <td><?php echo $arreglo[2] ?></td>
+
+                                                <?php
+                                                $urlVer = "EditProgram.php?id=" . $arreglo[3];
+                                                ?>
+                                                <td>
+                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
                             </div>
                             <br>
                             <div class="row">

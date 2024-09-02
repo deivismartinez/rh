@@ -50,6 +50,22 @@ class Gestion extends conectar {
                 header("Location: NuevoPrograma.php");
                 exit;
     }
+
+
+        public function EditProgram($id) {
+        ////////////////// actualiza 
+
+            $facultadId = strtoupper(filter_input(INPUT_POST, 'facultadCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+                $nombrePrograma = strtoupper(filter_input(INPUT_POST, 'programTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+                $posgrado = strtoupper(filter_input(INPUT_POST, 'posgradoCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        try {
+            $sql = "UPDATE programa SET nombre=".$nombrePrograma.", facultad_id=".$facultadId.", postgrado= ".$posgrado."  WHERE id =" . $id . ";";
+            pg_query($this->db, $sql);
+        } catch (SintaxError $e) {
+            
+        }
+        ///////////////////
+    }
     
     public function getNameProgramFacId($id) {
         $sql = "SELECT nombre,facultad_id FROM programa where id = $id";
