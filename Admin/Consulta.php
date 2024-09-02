@@ -9,7 +9,7 @@ if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    $consulta = $p->consultarSql();
+    //$consulta = $p->consultarSql();
 
   
 } else {
