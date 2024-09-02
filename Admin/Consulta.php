@@ -163,7 +163,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <?php 
                                                 for ($f = 0; $f <= $j; $i++) {
                                                 echo '<td>';    
-                                                 echo $arreglo[$f] 
+                                                 echo $arreglo[$f];
                                                  echo '</td>';
 
                                                 
