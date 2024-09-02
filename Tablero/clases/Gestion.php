@@ -40,14 +40,9 @@ class Gestion extends conectar {
             $arreglo[] = $row;
         }
    
-
+        return $arreglo;
   
-        pg_query($this->db, $sql);
-         ////////////////// cambia el estado de la calificacion si existe
-         
-         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
-         ///////////////////
-              return $arreglo;
+        
     }
 
     public function getGrupoAdmInv($usuario) {

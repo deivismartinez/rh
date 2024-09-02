@@ -133,7 +133,7 @@ if (isset($_SESSION['usuario'])) {
                                             <th><span>Departamento</span></th>
                                             <th><span>Facultad</span></th>
                                             <th><span>Alcance</span></th>
-                                            <th><span></span></th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
