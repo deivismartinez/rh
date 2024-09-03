@@ -122,6 +122,16 @@ class Programas extends conectar {
         return $arreglo;
     }
 
+    public function getFacultadVer() {
+        $sql = "SELECT nombre, estado, postgrado,id FROM facultad  order by id desc";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
+
     public function getProgramasJefe($facultad) {
         $sql = "SELECT id,nombre FROM programa where id=" . $facultad . " and nombre != '';";
         $datos = pg_query($this->db, $sql);

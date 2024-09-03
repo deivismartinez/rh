@@ -33,7 +33,7 @@ class Gestion extends conectar {
         }
         
         
-        $sql = "SELECT categoria,nombregrupo,fechavinculacion,id FROM grupoinvestigacion";
+        $sql = "SELECT * FROM grupoinvestigacion";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -55,7 +55,7 @@ class Gestion extends conectar {
         return $arreglo;
     }
     
-    public function insertarPrograma_eliminar() {
+    public function insertarPrograma() {
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
@@ -72,6 +72,26 @@ class Gestion extends conectar {
                         . " VALUES('".$nombrePrograma."', '".$facultadId."', 'ACTIVO','".$posgrado."')";
                 $oid = pg_query($this->db, $sql);
                 header("Location: NuevoPrograma.php");
+                exit;
+    }
+
+    public function insertarFacultad() {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+        $status = "";
+           
+                $facultadId = strtoupper(filter_input(INPUT_POST, 'facultadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+                $posgrado = strtoupper(filter_input(INPUT_POST, 'posgradoCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+                
+                $sql = "INSERT INTO facultad(nombre, estado, postgrado) "
+                        . " VALUES('".$nombrePrograma."', 'ACTIVO','".$posgrado."')";
+                $oid = pg_query($this->db, $sql);
+                header("Location: NewFacultad.php");
                 exit;
     }
 

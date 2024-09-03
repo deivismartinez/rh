@@ -9,11 +9,11 @@ if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    $programasCreados = $p->getProgramasVer();
+    $facultadCreados = $p->getFacultadVer();
 
     if (isset($_POST["programTxt"])) {
         $gestion = new Gestion();
-        $gestion->insertarPrograma();
+        $gestion->insertarFacultad();
     }
 } else {
     header('Location: AccesoNoautorizado.html');
@@ -80,7 +80,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="#" class="simple-text">
-                            Gestionar Departamentos.
+                            Gestionar Facultad.
                         </a>
                     </div>
                     <?php include("includes/menu.html");?>
@@ -119,26 +119,16 @@ if (isset($_SESSION['usuario'])) {
                         <div class="col-xs-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Gestionar programa académico
+                                    Gestionar facultad
                                 </div>
                                 <div class="panel-body">
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
                                         <div class="row">
+                                            
                                             <div class="col-xs-3">
-                                                <label for="telefono">Facultad</label>
-                                                <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <label for="telefono">Nombre del nuevo Programa</label>
+                                                <label for="telefono">Nueva facultad</label>
                                                 <div id="comboProg">
-                                                    <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
+                                                    <input class="form-control" type="text" id="facultadTxt" name="programTxt" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-xs-3">
@@ -164,8 +154,8 @@ if (isset($_SESSION['usuario'])) {
                                     <thead>
                                         <tr>
                                             <th><span>No.</span></th>
-                                            <th><span>Departamento</span></th>
                                             <th><span>Facultad</span></th>
+                                            <th><span>Estado</span></th>
                                             <th><span>Alcance</span></th>
                                             <th><span></span></th>
                                         </tr>
@@ -173,7 +163,7 @@ if (isset($_SESSION['usuario'])) {
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        foreach ($programasCreados as $arreglo) {
+                                        foreach ($facultadCreados as $arreglo) {
                                             $i = $i + 1;
                                             ?>
                                             <tr>
@@ -183,7 +173,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <td><?php echo $arreglo[2] ?></td>
 
                                                 <?php
-                                                $urlVer = "EditProgram.php?id=" . $arreglo[3];
+                                                $urlVer = "EditFacultad.php?id=" . $arreglo[3];
                                                 ?>
                                                 <td>
                                                     <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>

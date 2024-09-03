@@ -128,7 +128,7 @@ if (isset($_SESSION['usuario'])) {
                                             <img class="card-img-top" src="../images/departamento.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                  <h5 class="card-title">Departamentos</h5>                                  
+                                                  <h5 class="card-title">Facultad</h5>                                  
                                                   <a href="NuevoDepartamento.php" class="btn btn-primary">Ir</a>    
                                               </div>
                                           </div>  
@@ -139,7 +139,7 @@ if (isset($_SESSION['usuario'])) {
                                             <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                  <h5 class="card-title">Perfiles</h5>                                  
+                                                  <h5 class="card-title">Perfiles Docentes</h5>                                  
                                                   <a href="../Tablero/NewArea.php" class="btn btn-primary">Ir</a> 
                                               </div>
                                           </div>  
