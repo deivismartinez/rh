@@ -123,7 +123,7 @@ class Programas extends conectar {
     }
 
     public function getFacultadVer() {
-        $sql = "SELECT nombre, estado, postgrado,id FROM facultad  order by id desc";
+        $sql = "SELECT nombre,estado,posgrado,id FROM facultad  order by id desc";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
