@@ -13,14 +13,15 @@ if (isset($_SESSION['usuario'])) {
 
     if (isset($_POST["facultadTxt"])) {
         $gestion = new Gestion();
-        
-        $respuesta=$gestion->existeFacultad($_POST["facultadTxt"]);        
+        $facultadNew = new Programas();
+        $facultad= ($_POST["facultadTxt"]);
+        $facultadNew->existeFacultad($facultad);        
 
-    if (!$respuesta) { // Si no está marcado (false)
+    if (!$gestion->existeFacultad($facultad)) { // Si no está marcado (false)
         echo "<script>alert('La facultad ya exite.');</script>";
         // Detener más procesamiento si la validación falla
         exit;
-    }else $gestion->insertarFacultad();
+    }else {$gestion->insertarFacultad();}
     }
 } else {
 
