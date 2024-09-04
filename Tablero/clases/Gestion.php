@@ -85,11 +85,11 @@ class Gestion extends conectar {
         }
         $status = "";
            
-                $facultadId = strtoupper(filter_input(INPUT_POST, 'facultadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+                $facultadName = strtoupper(filter_input(INPUT_POST, 'facultadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
                 $posgrado = strtoupper(filter_input(INPUT_POST, 'posgradoCmb', FILTER_SANITIZE_SPECIAL_CHARS));
                 
                 $sql = "INSERT INTO facultad(nombre, estado, posgrado) "
-                        . " VALUES('".$nombrePrograma."', 'ACTIVO','".$posgrado."')";
+                        . " VALUES('".$facultadName."', 'ACTIVO','".$posgrado."')";
                 $oid = pg_query($this->db, $sql);
                 header("Location: NewFacultad.php");
                 exit;
