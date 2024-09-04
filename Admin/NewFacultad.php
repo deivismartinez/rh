@@ -13,12 +13,17 @@ if (isset($_SESSION['usuario'])) {
 
     if (isset($_POST["facultadTxt"])) {
         $gestion = new Gestion();
+        
         $facultadNew = new Programas();
+        
         $facultad= ($_POST["facultadTxt"]);
-        $facultadNew->existeFacultad($facultad);        
+        
+       $valor= $facultadNew->existeFacultad($facultad);  
+       $valor=true;
+       echo "<script type='text/javascript'>alert(',$valor, $facultad');</script>";
 
-    if (!$gestion->existeFacultad($facultad)) { // Si no está marcado (false)
-        echo "<script>alert('La facultad ya exite.');</script>";
+    if (!$valor) { // Si no está marcado (false)
+        echo "<script>alert('La facultad ya exite ok.');</script>";
         // Detener más procesamiento si la validación falla
         exit;
     }else {$gestion->insertarFacultad();}
@@ -131,7 +136,8 @@ if (isset($_SESSION['usuario'])) {
                                     Gestionar facultad
                                 </div>
                                 <div class="panel-body">
-                                    <form name="form" action="" method="post" enctype="multipart/form-data">
+                                    <form name="form" action="" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario(event);">
+                                        
                                         <div class="row">
                                             
                                             <div class="col-xs-3">
@@ -139,6 +145,13 @@ if (isset($_SESSION['usuario'])) {
                                                 <div id="comboProg">
                                                     <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true">
                                                 </div>
+
+                                                 <?php if ($mensaje): ?>
+                                                <div class="mensaje <?php echo ($mensaje == "La facultad ya existe. Por favor, verifique el nombre.") ? 'error' : 'exito'; ?>">
+                                                        <?php echo $mensaje; ?>
+                                                    </div>
+                                                <?php endif; ?>
+
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="telefono">Alcance</label>
@@ -210,6 +223,27 @@ if (isset($_SESSION['usuario'])) {
     </div>
 </div>
 </body>
+
+ <script>
+        function validarFormulario(event) {
+            // Obtener el valor del campo de texto
+            var facultadTxt = document.getElementById('facultadTxt').value;
+
+            // Verificar si el campo está vacío
+            if (facultadTxt.trim() === '') {
+                // Prevenir el envío del formulario
+                event.preventDefault();
+                // Mostrar un mensaje de alerta
+                alert('El campo de facultad no puede estar vacío.');
+                return false; // Detener el envío del formulario
+            }
+            
+            // Puedes agregar más validaciones aquí...
+
+            // Si pasa todas las validaciones, permitir el envío
+            return true;
+        }
+    </script>
 <script src="../Tablero/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src='../Tablero/assets/js/jquery2.1.3sorter.js'></script>
 <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>

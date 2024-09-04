@@ -187,7 +187,8 @@ class Programas extends conectar {
                 return true;
             }
         } catch (Exception $error) {
-            
+        
+        return $error;    
         }
         return false;
     }
