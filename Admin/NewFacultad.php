@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario'])) {
     $programa = $usuario->getlastName();
     $facultadCreados = $p->getFacultadVer();
 
-    if (isset($_POST["programTxt"])) {
+    if (isset($_POST["facultadTxt"])) {
         $gestion = new Gestion();
         $gestion->insertarFacultad();
     }
@@ -128,7 +128,7 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="col-xs-3">
                                                 <label for="telefono">Nueva facultad</label>
                                                 <div id="comboProg">
-                                                    <input class="form-control" type="text" id="facultadTxt" name="programTxt" required="true">
+                                                    <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-xs-3">
