@@ -14,8 +14,18 @@ if (isset($_SESSION['usuario'])) {
     if (isset($_POST["facultadTxt"])) {
         $gestion = new Gestion();
         $gestion->insertarFacultad();
+        $gestion->existeFacultad($_POST["facultadTxt"]);
+
+        
+
+    if (!$gestion) { // Si no está marcado (false)
+        echo 'la facultad ya existe.';
+        // Detener más procesamiento si la validación falla
+        exit;
+    }
     }
 } else {
+
     header('Location: AccesoNoautorizado.html');
 }
 ?>
@@ -157,7 +167,7 @@ if (isset($_SESSION['usuario'])) {
                                             <th><span>Facultad</span></th>
                                             <th><span>Estado</span></th>
                                             <th><span>Alcance</span></th>
-                                            <th><span></span></th>
+                                            <th><span>Edit</span></th>
                                         </tr>
                                     </thead>
                                     <tbody>

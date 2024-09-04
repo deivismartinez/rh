@@ -123,7 +123,7 @@ class Programas extends conectar {
     }
 
     public function getFacultadVer() {
-        $sql = "SELECT nombre,estado,posgrado,id FROM facultad  order by id desc";
+        $sql = "SELECT nombre,estado,CASE WHEN posgrado = 't' THEN 'Posgrado' WHEN posgrado = 'f' THEN 'Pregrado' END,id FROM facultad  order by id desc";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -168,6 +168,20 @@ class Programas extends conectar {
     public function existeInscripcion($id) {
         try {
             $sql = "SELECT docente_id cantidad FROM docente_programa WHERE docente_id=" . $id . ";";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                return true;
+            }
+        } catch (Exception $error) {
+            
+        }
+        return false;
+    }
+
+
+    public function existeFacultad($facultad) {
+        try {
+            $sql = "SELECT nombre FROM facultad WHERE nombre=" . $facultad . ";";
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 return true;
