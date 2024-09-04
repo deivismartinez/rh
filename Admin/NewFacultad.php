@@ -19,10 +19,10 @@ if (isset($_SESSION['usuario'])) {
         
 
     if (!$gestion) { // Si no está marcado (false)
-        echo 'la facultad ya existe.';
+        echo "<script>alert('La facultad ya exite.');</script>";
         // Detener más procesamiento si la validación falla
         exit;
-    }
+    }else
     }
 } else {
 
