@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario'])) {
         echo "<script>alert('La facultad ya exite.');</script>";
         // Detener más procesamiento si la validación falla
         exit;
-    }else
+    }
     }
 } else {
 
