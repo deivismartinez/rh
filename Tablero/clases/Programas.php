@@ -184,13 +184,13 @@ class Programas extends conectar {
             $sql = "SELECT nombre FROM facultad WHERE nombre=" . $facultad . ";";
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
-                return true;
+                 return "El dato es válido.";
             }
         } catch (Exception $error) {
         
-        return $error;    
+        return "El dato es erroneo.";  
         }
-        return false;
+         return "El dato esta por fuera.";
     }
 
     public function existeInscripcionPostgrado($id) {
