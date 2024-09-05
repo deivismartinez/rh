@@ -10,18 +10,21 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
     $facultadCreados = $p->getFacultadVer();
+    $facultadtxt= $_POST["facultadTxt"];
+    if (isset($facultadtxt ) && !empty($facultadtxt) ) {
+       $gestion = new Gestion();
+       $facultad= ($_POST["facultadTxt"]);
+       $existe= $p->existeFacultad($facultad);
+       echo "<script type='text/javascript'>alert('$existe');</script>";
+    
 
-    if (isset($_POST["facultadTxt"])) {
-        $gestion = new Gestion();
-        $facultadNew = new Programas();
-        $facultad= ($_POST["facultadTxt"]);
-        $gestion->existeFacultad($facultad);        
-
-    if (!$gestion->existeFacultad($facultad)) { // Si no está marcado (false)
-        echo "<script>alert('La facultad ya exite.');</script>";
-        // Detener más procesamiento si la validación falla
-        exit;
-    }else {$gestion->insertarFacultad();}
+    if (!$existe) { // Si no está marcado (false)
+    
+       $gestion->insertarFacultad();
+        
+    }else {
+         echo "<script type='text/javascript'>alert('El nombre de la Facultad no está disponible');</script>";
+           }
     }
 } else {
 
