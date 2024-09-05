@@ -10,20 +10,14 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
     $facultadCreados = $p->getFacultadVer();
-    $facultadtxt= $_POST["facultadTxt"];
+    $facultadtxt= strtoupper($_POST["facultadTxt"]);
     if (isset($facultadtxt ) && !empty($facultadtxt) ) {
        $gestion = new Gestion();
-       $facultad= ($_POST["facultadTxt"]);
-       $existe= $p->existeFacultad($facultad);
-      
-    
-
+       $existe= $p->existeFacultad($facultadtxt);
     if (!$existe) { // Si no está marcado (false)
-    
        $gestion->insertarFacultad();
-        
     }else {
-         echo "<script type='text/javascript'>alert('El nombre de la Facultad no está disponible');</script>";
+           $mensaje = "El nombre de la Facultad no está disponible";
            }
     }
 } else {
@@ -137,11 +131,17 @@ if (isset($_SESSION['usuario'])) {
                                     <form name="form" action="" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             
-                                            <div class="col-xs-3">
+                                            <div class="col-xs-6">
                                                 <label for="telefono">Nueva facultad</label>
                                                 <div id="comboProg">
                                                     <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true">
                                                 </div>
+                                               <!-- Mostrar mensaje de error si existe -->
+                                                <?php if ($mensaje): ?>
+                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
+                                                     <?php echo $mensaje; ?>
+                                                </div>
+                                               <?php endif; ?>
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="telefono">Alcance</label>
