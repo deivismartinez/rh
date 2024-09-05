@@ -15,7 +15,7 @@ if (isset($_SESSION['usuario'])) {
        $gestion = new Gestion();
        $facultad= ($_POST["facultadTxt"]);
        $existe= $p->existeFacultad($facultad);
-       echo "<script type='text/javascript'>alert('$existe');</script>";
+      
     
 
     if (!$existe) { // Si no está marcado (false)
