@@ -55,7 +55,7 @@ if (isset($usuario)) {
                             Inscripción Docentes Unicesar
                         </a>
                     </div>
-
+                     <?php include("includes/menu.html");?>
                     
                 </div>
             </div>
