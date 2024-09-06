@@ -1,6 +1,8 @@
 <?php
 require_once("../Tablero/vo/UsuarioVO.php");
-require_once("../Tablero/vo/DocenteVO.php");
+require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Gestion.php");
+//require_once("../Tablero/vo/DocenteVO.php");
 //require_once("../Tablero/clases/Docente.php");
 //require_once("../Tablero/vo/PeridoVO.php");
 session_start();
@@ -25,38 +27,24 @@ if (isset($usuario)) {
 
 ?>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+        <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-        <title>Inscripción Docente Unicesar</title>
-
+        <title>Administración Inscripción Docente Unicesar</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
-
-
-        <!-- Bootstrap core CSS     -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
-        <!-- Animation library for notifications   -->
-        <link href="assets/css/animate.min.css" rel="stylesheet"/>
-
-        <!--  Light Bootstrap Table core CSS    -->
-        <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-
-
-        <!--  CSS for Demo Purpose, don't include it in your project     -->
-        <link href="assets/css/demo.css" rel="stylesheet" />
-
-
-        <!--     Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-        <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+        <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/animate.min.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
+        <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+      
     </head>
+
     <body>
 
         <div class="wrapper">
@@ -68,74 +56,7 @@ if (isset($usuario)) {
                         </a>
                     </div>
 
-                    <ul class="nav">
-                        <li>
-                            <a href="inicio.php">
-                                <i class="pe-7s-home"></i>
-                                <p>Inicio</p>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="Basica.php">
-                                <i class="pe-7s-user"></i>
-                                <p>Información Básica</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Academica.php">
-                                <i class="pe-7s-study"></i>
-                                <p>Información Académica</p>
-                            </a>
-                        </li>
-                        <?php ///abre condicion sede A DISTANCIA
-                            if ($docente->getSede()!='A DISTANCIA') {
-                            ?>
-                        <li>
-                            <a href="Programa.php">
-                                <i class="pe-7s-note2"></i>
-                                <p>Área a inscribirse</p>
-                            </a>
-                        </li>
-                        <?php ///CIERRA condicion sede A DISTANCIA
-                                }
-                            ?>
-                        <li>
-                            <a href="ProgramaPostgrado.php">
-                                <i class="pe-7s-global"></i>
-                                <p>Docente de Postgrados o a Distancia</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Experiencia.php">
-                                <i class="pe-7s-display1"></i>
-                                <p>Experiencia Calificada</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Produccion.php">
-                                <i class="pe-7s-science"></i>
-                                <p>Producción Académica</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Resumen.php">
-                                <i class="pe-7s-bookmarks"></i>
-                                <p>Resumen del Puntaje</p>
-                            </a>
-                        </li>
-                        <li>
-                    <a href="ModificarMiClave.php">
-                        <i class="pe-7s-key"></i>
-                        <p>Cambio de Contraseña</p>
-                    </a>
-                </li>
-                        <li>
-                            <a href="../index.php">
-                                <i class="pe-7s-power"></i>
-                                <p>Salir</p>
-                            </a>
-                        </li>
-                    </ul>
+                    
                 </div>
             </div>
 
@@ -163,7 +84,6 @@ if (isset($usuario)) {
                                     <div class="panel-heading">
                                         Información Básica del docente
                                     </div>
-                                    <h4>En esta ventana encontrará la Categoria Docente Universitario, seleccione la correcta para usted, al usted iniciar como docente universitario será AUXILIAR.</h4>
                                     <div class="panel-body">
                                         <form name="form" action="" method="post" enctype="multipart/form-data">
                                             
@@ -185,7 +105,7 @@ if (isset($usuario)) {
                                                         <label for="">Facultad  *</label>
                                                          <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
                                                     <?php
-                                                    $facultades = $p->getFacultades();
+                                                    $facultades = $programa->getFacultades();
                                                     foreach ($facultades as $arregloFac) {
                                                         echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
                                                     }
@@ -197,7 +117,7 @@ if (isset($usuario)) {
                                                         <label for="">Rol  *</label>
                                                          <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
                                                     <?php
-                                                    $facultades = $p->getFacultades();
+                                                    $facultades = $programa->getFacultades();
                                                     foreach ($facultades as $arregloFac) {
                                                         echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
                                                     }
@@ -209,7 +129,7 @@ if (isset($usuario)) {
                                                         <label for="">Sede  *</label>
                                                          <select class="form-control" id="sedeCmb" name="sede<Cmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
                                                     <?php
-                                                    $facultades = $p->getFacultades();
+                                                    $facultades = $programa->getFacultades();
                                                     foreach ($facultades as $arregloFac) {
                                                         echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
                                                     }
@@ -224,49 +144,21 @@ if (isset($usuario)) {
                                                 <div class="col-xs-12">
                                                     <div class="col-xs-6">
                                                         <label for="">Usuario  *</label>
-                                                        <input value="<?php echo $docente->getDireccion() ?>" required="true" type="text" class="form-control" name="direccionTxt" id="usuarioiTxt" placeholder="">
+                                                        <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label for="">Contraseña</label>
-                                                        <input value="<?php echo $docente->getTelefono() ?>" type="text" class="form-control" name="telefonoTxt" id="telefonoTxt" placeholder="">
+                                                        <input value="" type="text" class="form-control" name="seguridadTxt" id="seguridadTxt" placeholder="">
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label for="">Repetir Contraseña</label>
-                                                        <input value="<?php echo $docente->getCelular() ?>" type="text" class="form-control" name="celularTxt" id="celularTxt" placeholder="">
+                                                        <input value="" type="text" class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
                                             
-                                            <br>
-                                          
-                                           
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-12">
-                                                        <div class="col-xs-6">
-                                                        </div>
-                                                        <div class="col-xs-3">
-                                                        </div>
-                                                        <div class="col-xs-3">
-                                                            <center>
-                                                            <?php
-                                                            ///////////////////////////////////////////////
-                                                            //var_dump($p->PeridoSede("'".$docente->getSede()."'"));
-                                                            if ($p->PeridoSede("'".$docente->getSede()."'")){
-                                                            //if ($p->PeridoSede("'".$docente->getSede()."'")){
-                                                            ?> 
-                                                              <button type="submit" class="btn btn-primary">
-                                                                    <i class="pe-7s-diskette"></i> Guardar
-                                                                </button>
-                                                            <?php
-                                                            }
-                                                            ///////////////////////////////////////
-                                                            ?>   
-                                                            </center>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        
+                                        
                                         </form>
                                     </div>
                                     <div class="panel-footer">
