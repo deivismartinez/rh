@@ -14,6 +14,7 @@ $_SESSION['id_usuario']=$usuario->getId();
 if (isset($usuario)) {
 
  $programa = new Programas();
+ $usuarioEvaluador= $programa->VerEvaluadores();
    
     if (isset($_POST["nombreCompletoTxt"])) {
         
@@ -95,7 +96,7 @@ if (isset($usuario)) {
                                                     </div>
                                                      <div class="col-xs-6">
                                                         <label for="">Email  *</label>
-                                                        <input value="" required="true" type="email" class="form-control" name="emailEml" id="emailEml" placeholder="">
+                                                        <input value="" required="true" type="email" class="form-control" name="emailEml" id="emailEml" placeholder="name@example.com">
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,26 +116,24 @@ if (isset($usuario)) {
 
                                                     <div class="col-xs-3">
                                                         <label for="">Rol  *</label>
-                                                         <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $programa->getFacultades();
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
-                                                    ?>
+                                                        <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">    
+                                                    <OPTION value="">[SELECCIONE]</OPTION>
+                                                    <OPTION value="false">DECANO</OPTION>
+                                                    <OPTION value="true">EVALUADOR</OPTION>
+                                                     <OPTION value="true">JEFE</OPTION>
+                                                      <OPTION value="true">RH</OPTION>
                                                 </select>
                                                     </div>
 
                                                      <div class="col-xs-3">
                                                         <label for="">Sede  *</label>
-                                                         <select class="form-control" id="sedeCmb" name="sede<Cmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $programa->getFacultades();
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
-                                                    ?>
-                                                </select>
+                                                         <select class="form-control" id="sedeCmb" name="sede<Cmb" required="true" onchange="">  
+                                                        <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">    
+                                                    <OPTION value="">[SELECCIONE]</OPTION>
+                                                    <OPTION value="false">A DISTANCIA</OPTION>
+                                                    <OPTION value="false">AGUACHICA</OPTION>
+                                                    <OPTION value="true">VALLEDUPAR</OPTION>
+                                                </select>                                                     
                                                     </div>
                                             </div>
                                             </div>
@@ -148,11 +147,11 @@ if (isset($usuario)) {
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label for="">Contraseña</label>
-                                                        <input value="" type="text" class="form-control" name="seguridadTxt" id="seguridadTxt" placeholder="">
+                                                        <input value=""  type="password"  class="form-control" name="seguridadTxt" id="seguridadTxt" placeholder="">
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label for="">Repetir Contraseña</label>
-                                                        <input value="" type="text" class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" placeholder="">
+                                                        <input value=""  type="password"  class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,6 +159,52 @@ if (isset($usuario)) {
                                         
                                         
                                         </form>
+
+
+                                        <div class="row">
+                                <div class="col-xs-12">
+                                <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
+                                    <thead>
+                                        <tr>
+                                            <th><span>No.</span></th>
+                                            <th><span>Nombre</span></th>
+                                            <th><span>Correo</span></th>
+                                            <th><span>Facultad</span></th>
+                                            <th><span>Tipo</span></th>
+                                            <th><span>Estado</span></th>
+                                            <th><span>Sede</span></th>
+                                            <th><span></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 0;
+                                        foreach ($usuariosEvaluadores as $arreglo) {
+                                            $i = $i + 1;
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $arreglo[0] ?></td>
+                                                <td><?php echo $arreglo[1] ?></td>
+                                                <td><?php echo $arreglo[2] ?></td>
+                                                <td><?php echo $arreglo[3] ?></td>
+                                                <td><?php echo $arreglo[4] ?></td>
+                                                <td><?php echo $arreglo[5] ?></td>
+
+                                                <?php
+                                                $urlVer = "EditEvaluadores.php?id=" . $arreglo[3];
+                                                ?>
+                                                <td>
+                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+
+
                                     </div>
                                     <div class="panel-footer">
                                         &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica 
