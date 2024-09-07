@@ -25,6 +25,16 @@ class Programas extends conectar {
         return $arreglo;
     }
 
+        public function getEvaluador() {
+        $sql = "SELECT  nombre, correo, facultad_id, tipo, estado, sede FROM usuario";";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
+
     public function getProgramaUsuarioPerfil($usuario) {
         $sql = "SELECT facultad.nombre as facultad, programa.nombre as programa, perfil.area1, docente_programa.programa_id "
                 . " FROM docente_programa, programa, facultad, docenteperfil, perfil "
