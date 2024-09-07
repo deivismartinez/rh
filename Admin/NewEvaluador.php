@@ -128,7 +128,7 @@ if (isset($usuario)) {
 
                                                      <div class="col-xs-3">
                                                         <label for="">Sede  *</label>
-                                                         <select class="form-control" id="sedeCmb" name="sede<Cmb" required="true" onchange="">  
+                                                        
                                                         <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">    
                                                     <OPTION value="">[SELECCIONE]</OPTION>
                                                     <OPTION value="false">A DISTANCIA</OPTION>
