@@ -44,6 +44,46 @@ if (isset($usuario)) {
         <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
         <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
         <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        
+         <style>
+            body {
+                padding-top: 8px;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 13px;
+            }
+
+            .tabla {
+                margin: 6px auto;
+            }
+
+            .tabla thead {
+                cursor: pointer;
+                background: #337ab7;
+                color: rgba(255, 255, 255, 1);
+                
+                
+            }
+
+            .tabla thead tr th {
+                font-weight: bold;
+                padding: 5px 5px;
+            }
+
+            .tabla thead tr th span {
+                padding-right: 5px;
+                background-repeat: no-repeat;
+                background-position: 100% 55%;
+            }
+
+            .tabla tbody tr td {
+                text-align: center;
+                padding: 5px 5px;
+            }
+
+            .tabla tbody tr td.align-left {
+                text-align: left;
+            }
+        </style>
       
     </head>
 
@@ -180,7 +220,7 @@ if (isset($usuario)) {
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        foreach ($usuariosEvaluadores as $arreglo) {
+                                        foreach ($usuarioEvaluador as $arreglo) {
                                             $i = $i + 1;
                                             ?>
                                             <tr>
