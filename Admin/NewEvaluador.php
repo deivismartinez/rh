@@ -14,12 +14,12 @@ $_SESSION['id_usuario']=$usuario->getId();
 if (isset($usuario)) {
 
  $programa = new Programas();
-       echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';
+       
  $usuarioEvaluador= $programa->getEvaluador();
    
     if (isset($_POST["nombreCompletoTxt"])) {
         
-     
+     $programa->insertarEvaluador();
       //  $u->insertar($usuario->getId());
                
     }

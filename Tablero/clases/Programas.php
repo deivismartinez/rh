@@ -291,6 +291,30 @@ class Programas extends conectar {
         return false;
     }
 
+
+     public function insertarEvaluador() {
+        require_once './vo/UsuarioVO.php';
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+        $nombreCompletoTxt = strtoupper(filter_input(INPUT_POST, 'nombreCompletoTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $emailEml = strtoupper(filter_input(INPUT_POST, 'emailEml', FILTER_SANITIZE_SPECIAL_CHARS));
+        $facultadCmb = strtoupper(filter_input(INPUT_POST, 'facultadCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $rolCmb = strtoupper(filter_input(INPUT_POST, 'rolCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $sedeCmb = strtoupper(filter_input(INPUT_POST, 'sedeCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $usuarioTxt = strtoupper(filter_input(INPUT_POST, 'usuarioTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $seguridadTxt = strtoupper(filter_input(INPUT_POST, 'seguridadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+
+        $sql = "INSERT INTO usuario(usuario ,clave, nombre, correo, habilitado, facultad_id, tipo, estado, sede) VALUES(" . $usuarioTxt . ", " . $seguridadTxt . ", " . $nombreCompletoTxt . ", " . $emailEml . ", "1", " . $facultadCmb . ", " . $rolCmb . ", "ACTIVO", " . $sedeCmb . ");";
+            pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        
+       header("Location: NewEvaluador.php");
+        exit;
+    }
+
     public function insertar() {
         require_once './vo/UsuarioVO.php';
         if (isset($_SESSION['usuario'])) {
