@@ -243,6 +243,12 @@ if (isset($usuario)) {
                                     </tbody>
                                 </table>
                                 </div>
+                                <div class="row">
+                                 <div class="col-xs-12">
+                                            <br>
+                                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                                        </div>
+                                    </div>
                             </div>
 
 
