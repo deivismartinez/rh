@@ -124,7 +124,7 @@ if (isset($usuario)) {
                             <div class="col-xs-11">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        Información Básica del docente
+                                        Información Básica del evaluador
                                     </div>
                                     <div class="panel-body">
                                         <form name="form" action="" method="post" enctype="multipart/form-data">
@@ -182,7 +182,7 @@ if (isset($usuario)) {
                                             
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <div class="col-xs-6">
+                                                    <div class="col-xs-3">
                                                         <label for="">Usuario  *</label>
                                                         <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                     </div>
@@ -194,13 +194,17 @@ if (isset($usuario)) {
                                                         <label for="">Repetir Contraseña</label>
                                                         <input value=""  type="password"  class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" placeholder="">
                                                     </div>
+                                                    <div class="col-xs-3">
+                                            <br>
+                                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                                        </div>
                                                 </div>
                                             </div>
                                             
                                         
                                         
                                         </form>
-
+                                        
 
                                         <div class="row">
                                 <div class="col-xs-12">
