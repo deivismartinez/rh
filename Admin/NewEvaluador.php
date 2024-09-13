@@ -17,7 +17,7 @@ if (isset($usuario)) {
      $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
 
      if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {       
-       $existe= $p->existeUsuario($usuarioTxt);
+       $existe= $programa->existeUsuario($usuarioTxt);
     if (!$existe) { // Si no está marcado (false)
         echo '<script type="text/javascript">alert("if existe")</script>';  
         $programa->insertarEvaluador();
