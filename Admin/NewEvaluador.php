@@ -15,28 +15,11 @@ if (isset($usuario)) {
  $programa = new Programas();       
  $usuarioEvaluador= $programa->getEvaluador();  
      $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
-    
-     
-
-
-
-     if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {
-         $seguridadRepTxt= strtoupper($_POST["seguridadRepTxt"]);
-         $seguridadTxt= strtoupper($_POST["seguridadTxt"]);
-
-          if ($seguridadTxt != $seguridadRepTxt)  {
-            $mensaje = "Las contraseñas no coinciden";
-            exit;
-
-            
-         }else {
-         
-
-       
+     if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {       
        $existe= $p->existeUsuario($usuarioTxt);
     if (!$existe) { // Si no está marcado (false)
         echo '<script type="text/javascript">alert("if existe")</script>';  
-        //$programa->insertarEvaluador();
+        $programa->insertarEvaluador();
     }else {
            $mensaje = "El nombre de la usuario no está disponible";
            }
@@ -203,7 +186,7 @@ if (isset($usuario)) {
                                             
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <div class="col-xs-3">
+                                                    <div class="col-xs-6">
                                                         <label for="">Usuario  *</label>
                                                         <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                     </div>
@@ -211,10 +194,7 @@ if (isset($usuario)) {
                                                         <label for="">Contraseña</label>
                                                         <input value=""  type="password"  class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
                                                     </div>
-                                                    <div class="col-xs-3">
-                                                        <label for="">Repetir Contraseña</label>
-                                                        <input value=""  type="password"  class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" required="true" placeholder="">
-                                                    </div>
+                                                   
                                                     <div class="col-xs-3">
                                             <br>
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
