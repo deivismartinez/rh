@@ -26,14 +26,16 @@ if (isset($usuario)) {
 
           if ($seguridadTxt != $seguridadRepTxt)  {
             $mensaje = "Las contraseñas no coinciden";
+            echo '<script type="text/javascript">alert("if seguridad")</script>';   
             
          }else {
          
 
-       echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';   
+       
        $existe= $p->existeUsuario($usuarioTxt);
     if (!$existe) { // Si no está marcado (false)
-        $programa->insertarEvaluador();
+        echo '<script type="text/javascript">alert("if existe")</script>';  
+        //$programa->insertarEvaluador();
     }else {
            $mensaje = "El nombre de la usuario no está disponible";
            }
