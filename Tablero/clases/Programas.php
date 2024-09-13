@@ -202,6 +202,20 @@ class Programas extends conectar {
          return false;
     }
 
+
+      public function existeUsuario($usuario) {
+        try {
+            $sql = "SELECT usuario FROM usuario WHERE usuario='" . $usuario . "';";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                 return true;
+            }
+        } catch (Exception $error) {
+        
+        }
+         return false;
+    }
+
     public function existeInscripcionPostgrado($id) {
         try {
             $sql = "SELECT docente_id programa_id FROM docente_programaposgrado WHERE docente_id=" . $id . ";";

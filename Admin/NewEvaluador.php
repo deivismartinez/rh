@@ -12,20 +12,20 @@ $_SESSION['id_usuario']=$usuario->getId();
 
 
 if (isset($usuario)) {
-
- $programa = new Programas();
-       
- $usuarioEvaluador= $programa->getEvaluador();
+ $programa = new Programas();       
+ $usuarioEvaluador= $programa->getEvaluador();  
    
-    if (isset($_POST["nombreCompletoTxt"])) {
-      echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';   
-     $programa->insertarEvaluador();
-     
-      //  $u->insertar($usuario->getId());
-               
+     if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {
+       echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';   
+       $existe= $p->existeUsuario($usuarioTxt);
+    if (!$existe) { // Si no está marcado (false)
+        $programa->insertarEvaluador();
+    }else {
+           $mensaje = "El nombre de la usuario no está disponible";
+           }
     }
 } else {
-    header("Location: ../Entrada.html");
+    header('Location: AccesoNoautorizado.html');
 }
 
 ?>
