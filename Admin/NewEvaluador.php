@@ -201,7 +201,15 @@ if (isset($usuario)) {
                                         </div>
                                                 </div>
                                             </div>
-                                            
+
+                                            <div class="row">
+                                             <!-- Mostrar mensaje de error si existe -->
+                                                <?php if ($mensaje): ?>
+                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
+                                                     <?php echo $mensaje; ?>
+                                                </div>
+                                               <?php endif; ?>
+                                            </div>
                                         
                                         
                                         </form>
