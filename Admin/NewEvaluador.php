@@ -15,6 +15,7 @@ if (isset($usuario)) {
  $programa = new Programas();       
  $usuarioEvaluador= $programa->getEvaluador();  
      $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
+
      if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {       
        $existe= $p->existeUsuario($usuarioTxt);
     if (!$existe) { // Si no está marcado (false)
@@ -24,8 +25,6 @@ if (isset($usuario)) {
            $mensaje = "El nombre de la usuario no está disponible";
            }
     }
-}
-
 
 } else {
     header('Location: AccesoNoautorizado.html');
