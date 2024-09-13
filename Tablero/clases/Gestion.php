@@ -33,7 +33,7 @@ class Gestion extends conectar {
         }
         
         
-        $sql = "SELECT * FROM facultad";
+        $sql = "SELECT * FROM usuario";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {

@@ -26,7 +26,7 @@ class Programas extends conectar {
     }
 
         public function getEvaluador() {
-        $sql = "SELECT  nombre, correo, facultad_id, tipo, estado, sede FROM usuario";
+        $sql = "SELECT  nombre, correo, facultad_id, tipo, estado, sede FROM usuario ORDER BY  DESC";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -293,7 +293,7 @@ class Programas extends conectar {
 
 
      public function insertarEvaluador() {
-        require_once './vo/UsuarioVO.php';
+        session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
             $id = $usuario->getId();
@@ -307,12 +307,13 @@ class Programas extends conectar {
         $sedeCmb = strtoupper(filter_input(INPUT_POST, 'sedeCmb', FILTER_SANITIZE_SPECIAL_CHARS));
         $usuarioTxt = strtoupper(filter_input(INPUT_POST, 'usuarioTxt', FILTER_SANITIZE_SPECIAL_CHARS));
         $seguridadTxt = strtoupper(filter_input(INPUT_POST, 'seguridadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
-
-        $sql = "INSERT INTO usuario(usuario ,clave, nombre, correo, habilitado, facultad_id, tipo, estado, sede) VALUES(" . $usuarioTxt . ", " . $seguridadTxt . ", " . $nombreCompletoTxt . ", " . $emailEml . ", "1", " . $facultadCmb . ", " . $rolCmb . ", "ACTIVO", " . $sedeCmb . ");";
+        
+        $sql = "INSERT INTO usuario(usuario, clave, nombre, correo, habilitado, facultad_id, tipo, estado, sede)" 
+        ." VALUES('" . $usuarioTxt . "', '" . $seguridadTxt . "', '" . $nombreCompletoTxt . "', '" . $emailEml . "', '1', '" . $facultadCmb . "', '" . $rolCmb . "', 'ACTIVO', '" . $sedeCmb . "')";
             pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         
-       header("Location: NewEvaluador.php");
-        exit;
+       header('Location: NewEvaluador.php');
+        
     }
 
     public function insertar() {

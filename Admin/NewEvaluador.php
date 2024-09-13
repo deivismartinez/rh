@@ -18,8 +18,9 @@ if (isset($usuario)) {
  $usuarioEvaluador= $programa->getEvaluador();
    
     if (isset($_POST["nombreCompletoTxt"])) {
-        
+      echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';   
      $programa->insertarEvaluador();
+     
       //  $u->insertar($usuario->getId());
                
     }
@@ -159,10 +160,10 @@ if (isset($usuario)) {
                                                         <label for="">Rol  *</label>
                                                         <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">    
                                                     <OPTION value="">[SELECCIONE]</OPTION>
-                                                    <OPTION value="false">DECANO</OPTION>
-                                                    <OPTION value="true">EVALUADOR</OPTION>
-                                                     <OPTION value="true">JEFE</OPTION>
-                                                      <OPTION value="true">RH</OPTION>
+                                                    <OPTION value="DECANO">DECANO</OPTION>
+                                                    <OPTION value="EVALUADOR">EVALUADOR</OPTION>
+                                                     <OPTION value="JEFE">JEFE</OPTION>
+                                                      <OPTION value="RH">RH</OPTION>
                                                 </select>
                                                     </div>
 
@@ -171,9 +172,9 @@ if (isset($usuario)) {
                                                         
                                                         <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">    
                                                     <OPTION value="">[SELECCIONE]</OPTION>
-                                                    <OPTION value="false">A DISTANCIA</OPTION>
-                                                    <OPTION value="false">AGUACHICA</OPTION>
-                                                    <OPTION value="true">VALLEDUPAR</OPTION>
+                                                    <OPTION value="A DISTANCIA">A DISTANCIA</OPTION>
+                                                    <OPTION value="AGUACHICA">AGUACHICA</OPTION>
+                                                    <OPTION value="VALLEDUPAR">VALLEDUPAR</OPTION>
                                                 </select>                                                     
                                                     </div>
                                             </div>
