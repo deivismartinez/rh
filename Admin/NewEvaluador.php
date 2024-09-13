@@ -26,7 +26,8 @@ if (isset($usuario)) {
 
           if ($seguridadTxt != $seguridadRepTxt)  {
             $mensaje = "Las contraseñas no coinciden";
-            echo '<script type="text/javascript">alert("if seguridad")</script>';   
+            exit;
+
             
          }else {
          
