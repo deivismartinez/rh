@@ -15,7 +15,21 @@ if (isset($usuario)) {
  $programa = new Programas();       
  $usuarioEvaluador= $programa->getEvaluador();  
      $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
+    
+     
+
+
+
      if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {
+         $seguridadRepTxt= strtoupper($_POST["seguridadRepTxt"]);
+         $seguridadTxt= strtoupper($_POST["seguridadTxt"]);
+
+          if ($seguridadTxt != $seguridadRepTxt)  {
+            $mensaje = "Las contraseñas no coinciden";
+            
+         }else {
+         
+
        echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';   
        $existe= $p->existeUsuario($usuarioTxt);
     if (!$existe) { // Si no está marcado (false)
@@ -24,6 +38,9 @@ if (isset($usuario)) {
            $mensaje = "El nombre de la usuario no está disponible";
            }
     }
+}
+
+
 } else {
     header('Location: AccesoNoautorizado.html');
 }
@@ -189,11 +206,11 @@ if (isset($usuario)) {
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label for="">Contraseña</label>
-                                                        <input value=""  type="password"  class="form-control" name="seguridadTxt" id="seguridadTxt" placeholder="">
+                                                        <input value=""  type="password"  class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label for="">Repetir Contraseña</label>
-                                                        <input value=""  type="password"  class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" placeholder="">
+                                                        <input value=""  type="password"  class="form-control" name="seguridadRepTxt" id="seguridadRepTxt" required="true" placeholder="">
                                                     </div>
                                                     <div class="col-xs-3">
                                             <br>
