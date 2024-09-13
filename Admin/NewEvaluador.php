@@ -14,7 +14,7 @@ $_SESSION['id_usuario']=$usuario->getId();
 if (isset($usuario)) {
  $programa = new Programas();       
  $usuarioEvaluador= $programa->getEvaluador();  
-   
+     $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
      if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {
        echo '<script type="text/javascript">alert("Programa ya existe registrado")</script>';   
        $existe= $p->existeUsuario($usuarioTxt);
