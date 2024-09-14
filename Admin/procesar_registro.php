@@ -11,13 +11,13 @@ $_SESSION['id_usuario']=$usuario->getId();
  $usuarioEvaluador= $programa->getEvaluador(); 
 
  $nombre_usuario = $_POST['usuarioTxt'];
-
+header('Content-Type: application/json');
 // Verificar que el usuario no existe nuevamente para mayor seguridad
-if (!$programa->existeUsuario($nombre_usuario)) {
+if ($programa->existeUsuario($nombre_usuario)) {
     // Lógica para insertar el nuevo usuario
-    echo "Usuario registrado con éxito.";
+   echo json_encode(['success' => false, 'message' => 'Error: El usuario ya existe.']);
 } else {
-    echo "Error: El usuario ya existe.";
+    echo json_encode(['success' => true, 'message' => 'Usuario registrado con éxito.']);
 }
 
  /*$usuarioTxt= strtoupper($_POST["usuarioTxt"]);

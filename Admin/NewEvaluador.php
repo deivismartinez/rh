@@ -120,7 +120,8 @@ if (isset($usuario)) {
                                     </div>
                                     <div class="panel-body">
                                        
-                                        <form id="formulario" onsubmit="return validarUsuario()" method="post" action="procesar_registro.php">
+                                       
+                                             <form id="formulario" onsubmit="return validarUsuario()" method="post">
                                             
                                             <div class="row">
                                                 <div class="col-xs-12">
@@ -302,22 +303,21 @@ if (isset($usuario)) {
                 return false;
             }
 
-            // Realizar la validación con AJAX
+             // Realizar la validación con AJAX
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "verificar_usuario.php", true);
+            xhr.open("POST", "procesar_registro.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     const respuesta = JSON.parse(xhr.responseText);
-                    if (respuesta.existe) {
-                        mensajeError.textContent = respuesta.mensaje;
+                    if (respuesta.success) {
+                        mensajeExito.textContent = respuesta.message;
                     } else {
-                        mensajeExito.textContent = respuesta.mensaje;
-                        document.getElementById('formulario').submit(); // Envía el formulario si el usuario no existe
+                        mensajeError.textContent = respuesta.message;
                     }
                 }
             };
-            xhr.send("nombre_usuario=" + nombreUsuario);
+            xhr.send("nombre_usuario=" + encodeURIComponent(nombreUsuario));
 
             return false; // Prevenir el envío del formulario hasta que se complete la validación
         }
