@@ -13,7 +13,7 @@ $_SESSION['id_usuario']=$usuario->getId();
  $nombre_usuario = $_POST['usuarioTxt'];
 header('Content-Type: application/json');
 // Verificar que el usuario no existe nuevamente para mayor seguridad
-if ($programa->existeUsuario($nombre_usuario)) {
+if (!$programa->existeUsuario($nombre_usuario)) {
     // Lógica para insertar el nuevo usuario
    echo json_encode(['success' => false, 'message' => 'Error: El usuario ya existe.']);
 } else {
