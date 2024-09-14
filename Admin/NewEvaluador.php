@@ -9,22 +9,11 @@ session_start();
 $usuario = $_SESSION['usuario'];
 $archivo = "hvd".$usuario->getId();
 $_SESSION['id_usuario']=$usuario->getId();
-
+ $programa = new Programas();       
+ $usuarioEvaluador= $programa->getEvaluador(); 
 
 if (isset($usuario)) {
- $programa = new Programas();       
- $usuarioEvaluador= $programa->getEvaluador();  
-     $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
-
-     if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {       
-       $existe= $programa->existeUsuario($usuarioTxt);
-    if (!$existe) { // Si no está marcado (false)
-        echo '<script type="text/javascript">alert("if existe")</script>';  
-        $programa->insertarEvaluador();
-    }else {
-           $mensaje = "El nombre de la usuario no está disponible";
-           }
-    }
+    
 
 } else {
     header('Location: AccesoNoautorizado.html');
@@ -130,7 +119,8 @@ if (isset($usuario)) {
                                         Información Básica del evaluador
                                     </div>
                                     <div class="panel-body">
-                                        <form name="form" action="" method="post" enctype="multipart/form-data">
+                                       
+                                        <form id="formulario" onsubmit="return validarUsuario()" method="post" action="procesar_registro.php">
                                             
                                             <div class="row">
                                                 <div class="col-xs-12">
@@ -208,6 +198,8 @@ if (isset($usuario)) {
                                                      <?php echo $mensaje; ?>
                                                 </div>
                                                <?php endif; ?>
+                                               <div id="mensaje-error" class="error"></div>
+                                               <div id="mensaje-exito" class="success"></div>
                                             </div>
                                         
                                         
@@ -291,29 +283,43 @@ if (isset($usuario)) {
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="assets/js/demo.js"></script>
 
-    <script type="text/javascript">
-                                                $(document).ready(function () {
+    <script>
+        function validarUsuario() {
+            const nombreUsuario = document.getElementById('nombre_usuario').value;
+            const mensajeError = document.getElementById('mensaje-error');
+            const mensajeExito = document.getElementById('mensaje-exito');
 
-                                                    demo.initChartist();
+            // Limpiar mensajes previos
+            mensajeError.textContent = "";
+            mensajeExito.textContent = "";
 
-                                                    $.notify({
-                                                        icon: 'pe-7s-notebook',
-                                                        message: "Por favor diligencie <b>Su información Básica</b>"
+            if (nombreUsuario === "") {
+                mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
+                return false;
+            }
 
-                                                    }, {
-                                                        type: 'info',
-                                                        timer: 4000
-                                                    });
+            // Realizar la validación con AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "verificar_usuario.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const respuesta = JSON.parse(xhr.responseText);
+                    if (respuesta.existe) {
+                        mensajeError.textContent = respuesta.mensaje;
+                    } else {
+                        mensajeExito.textContent = respuesta.mensaje;
+                        document.getElementById('formulario').submit(); // Envía el formulario si el usuario no existe
+                    }
+                }
+            };
+            xhr.send("nombre_usuario=" + nombreUsuario);
 
-                                                });
-                                                function cargar() {
-                                                    cargarDepartamentos(document.form.paisCmb.value);
-                                                    if (document.form.paisCmb.value === 'CO') {
-                                                        cargarMunicipios('11');
-                                                    } else {
-                                                        cargarMunicipios('0');
-                                                    }
-                                                }
+            return false; // Prevenir el envío del formulario hasta que se complete la validación
+        }
     </script>
+
+
+
 
 </html>
