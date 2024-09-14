@@ -10,7 +10,17 @@ $_SESSION['id_usuario']=$usuario->getId();
  $programa = new Programas();       
  $usuarioEvaluador= $programa->getEvaluador(); 
 
- $usuarioTxt= strtoupper($_POST["usuarioTxt"]);
+ $nombre_usuario = $_POST['usuarioTxt'];
+
+// Verificar que el usuario no existe nuevamente para mayor seguridad
+if (!$programa->existeUsuario($nombre_usuario)) {
+    // Lógica para insertar el nuevo usuario
+    echo "Usuario registrado con éxito.";
+} else {
+    echo "Error: El usuario ya existe.";
+}
+
+ /*$usuarioTxt= strtoupper($_POST["usuarioTxt"]);
 
      if (isset($usuarioTxt ) && !empty($usuarioTxt) ) {       
        $existe= $programa->existeUsuario($usuarioTxt);
@@ -21,6 +31,7 @@ $_SESSION['id_usuario']=$usuario->getId();
     }else {
            echo "El nombre de la usuario no está disponible";
            }
-    }
+    }*/
 ?>
+
 
