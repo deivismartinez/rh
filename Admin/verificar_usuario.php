@@ -20,7 +20,7 @@ $nombre_usuario = isset($_POST['usuarioTxt']) ? $_POST['usuarioTxt'] : '';
 
 //$existe= $programa->existeUsuario($usuarioTxt);
 
-if ($programa->existeUsuario($nombre_usuario)) {
+if (!$programa->existeUsuario($nombre_usuario)) {
     echo json_encode(['existe' => true, 'mensaje' => 'El usuario ya existe.']);
 } else {
     echo json_encode(['existe' => false, 'mensaje' => 'El usuario está disponible.']);
