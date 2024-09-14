@@ -22,5 +22,5 @@ $_SESSION['id_usuario']=$usuario->getId();
            echo "El nombre de la usuario no está disponible";
            }
     }
-
+?>
 
