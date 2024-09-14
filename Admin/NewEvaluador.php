@@ -198,8 +198,12 @@ if (isset($usuario)) {
                                                      <?php echo $mensaje; ?>
                                                 </div>
                                                <?php endif; ?>
+                                               <label for="nombre_usuario">Nombre de Usuario:</label>
+                                                <input type="text" id="nombre_usuario" name="nombre_usuario">
                                                <div id="mensaje-error" class="error"></div>
                                                <div id="mensaje-exito" class="success"></div>
+
+
                                             </div>
                                         
                                         
@@ -285,7 +289,7 @@ if (isset($usuario)) {
 
     <script>
         function validarUsuario() {
-            const nombreUsuario = document.getElementById('nombre_usuario').value;
+            const nombreUsuario = document.getElementById('usuarioTxt').value;
             const mensajeError = document.getElementById('mensaje-error');
             const mensajeExito = document.getElementById('mensaje-exito');
 
