@@ -17,6 +17,7 @@ if (!$programa->existeUsuario($nombre_usuario)) {
     // Lógica para insertar el nuevo usuario
    echo json_encode(['success' => false, 'message' => 'Error: El usuario ya existe.']);
 } else {
+    $programa->insertarEvaluador();
     echo json_encode(['success' => true, 'message' => 'Usuario registrado con éxito.']);
 }
 
