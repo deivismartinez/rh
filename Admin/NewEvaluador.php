@@ -199,8 +199,7 @@ if (isset($usuario)) {
                                                      <?php echo $mensaje; ?>
                                                 </div>
                                                <?php endif; ?>
-                                               <label for="nombre_usuario">Nombre de Usuario:</label>
-                                                <input type="text" id="nombre_usuario" name="nombre_usuario">
+                                              
                                                <div id="mensaje-error" class="error"></div>
                                                <div id="mensaje-exito" class="success"></div>
 
@@ -269,30 +268,38 @@ if (isset($usuario)) {
         </div>
 
     </body>
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/funciones.js"></script>
+    <script src="../General/js/jquery-1.10.2.js"></script>
+    <script src="../General/js/bootstrap.min.js"></script>
+    <script src="../General/js/funciones.js"></script>
     <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../General/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="../General/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
+    <script src="../General/assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+    <script src="../General/assets/js/bootstrap-notify.js"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="../General/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
+    <script src="../General/assets/js/demo.js"></script>
 
     <script>
         function validarUsuario() {
-            const nombreUsuario = document.getElementById('usuarioTxt').value;
+           
             const mensajeError = document.getElementById('mensaje-error');
             const mensajeExito = document.getElementById('mensaje-exito');
+            
+            const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
+            const nombreUsuario = document.getElementById('usuarioTxt').value;
+            const email = document.getElementById('emailEml').value;
+            const facultad = document.getElementById('facultadCmb').value;
+            const rol = document.getElementById('rolCmb').value;
+            const sede = document.getElementById('sedeCmb').value;
+            const password = document.getElementById('seguridadTxt').value;
 
             // Limpiar mensajes previos
             mensajeError.textContent = "";
@@ -311,18 +318,46 @@ if (isset($usuario)) {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     const respuesta = JSON.parse(xhr.responseText);
                     if (respuesta.success) {
-                        mensajeExito.textContent = respuesta.message;
+                        
+                        //mensajeExito.textContent = respuesta.message;
+                        
+                          demo.initChartist();
+                            $.notify({
+                                icon: 'pe-7s-notebook',
+                                message: "<b>Agregado correctamente</b>"
+                            }, {
+                                type: 'info',
+                                timer: 2000
+                            });
+                            
+                            setTimeout(function() {
+                            window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                             }, 500); // O un t
+                      //  window.location.reload();
                     } else {
+                       
                         mensajeError.textContent = respuesta.message;
+                        
                     }
                 }
             };
-            xhr.send("nombre_usuario=" + encodeURIComponent(nombreUsuario));
+           
+            
+             xhr.send(
+                "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+                "&emailEml=" + encodeURIComponent(email) +
+                "&facultadCmb=" + encodeURIComponent(facultad) +
+                "&rolCmb=" + encodeURIComponent(rol) +
+                "&sedeCmb=" + encodeURIComponent(sede) +
+                "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
+                "&seguridadTxt=" + encodeURIComponent(password)
+            );
 
             return false; // Prevenir el envío del formulario hasta que se complete la validación
         }
     </script>
-
+    
+    
 
 
 
