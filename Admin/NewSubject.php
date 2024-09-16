@@ -168,9 +168,18 @@ if (isset($_SESSION['usuario'])) {
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-xs-6">
+                                                    <label for="telefono">Área</label>
+                                                    <div id="comboProg">
+                                                        <select class="form-control" id="areaCmb" name="areaCmb"
+                                                                required="true">
+                                                            <option value="">SELECCIONE</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="col-xs-12">
-                                                    <label for="telefono">Área de Conocimiento</label>
-                                                    <input type="text" class="form-control" id="areaTxt" name="areaTxt">
+                                                    <label for="asignaturaTxt">Asignatura</label>
+                                                    <input type="text" class="form-control" id="asignaturaTxt" name="asignaturaTxt">
                                                 </div>
                                             </div>
                                             <hr />
