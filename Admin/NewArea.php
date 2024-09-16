@@ -1,19 +1,11 @@
 <?php
-require_once "clases/Programas.php";
+require_once "../Tablero/clases/Programas.php";
 require_once "../Tablero/vo/UsuarioVO.php";
 
 session_start();
 $usuario = $_SESSION['usuario'];
 $p = new Programas();
-$misesion = session_status();
 
-if ($p->existeTresAreas($usuario->getId())) {
-    header('Location: YaRegistrado.php');
-} else {
-    if (isset($_POST["areaTxt"])) {
-        $u = new Programas();
-        $u->insertArea();
-    }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -213,5 +205,4 @@ if ($p->existeTresAreas($usuario->getId())) {
         </script>
 
     </html>
-    <?php
-}
+    
