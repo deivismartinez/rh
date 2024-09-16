@@ -140,7 +140,7 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                   <h5 class="card-title">Perfil</h5>                                  
-                                                  <a href="../Tablero/NewArea.php" class="btn btn-primary">Ir</a> 
+                                                  <a href="NewArea.php" class="btn btn-primary">Ir</a> 
                                               </div>
                                           </div>  
                                       </div>    
