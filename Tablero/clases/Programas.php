@@ -478,9 +478,9 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         }else{
             $sql = "UPDATE perfil set asignatura = '".$asignatura."' where id=".$idEmpty.";";
         }
+        var_dump($sql);
             $oid = pg_query($this->db, $sql);
-            header("Location: NewSubject.php");
-            exit;
+            
         }
         
         public function getIdArea($area, $programa_id) {
