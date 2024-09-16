@@ -5,6 +5,19 @@ require_once "../Tablero/vo/UsuarioVO.php";
 session_start();
 $usuario = $_SESSION['usuario'];
 $p = new Programas();
+session_start();
+if (isset($_SESSION['usuario'])) {
+   
+    if (isset($_POST["areaTxt"])) {
+        if($p->existArea($_POST["areaTxt"])){
+            echo '<script type="text/javascript">alert("Área ya existe registrado")</script>';
+        }else{
+            $p->insertNewArea();
+        }
+    }
+} else {
+    header('Location: AccesoNoautorizado.html');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

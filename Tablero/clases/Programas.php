@@ -405,6 +405,36 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         return false;
     }
     
+    public function existArea($name) {
+        try {
+            $sql = "SELECT nombre FROM perfil WHERE nombre='" . $name . "';";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                return true;
+            }
+        } catch (Exception $error) {
+            
+        }
+        return false;
+    }
+    
+    public function insertNewArea() {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+        $area = strtoupper(filter_input(INPUT_POST, 'areaTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $programaId = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $sql = "INSERT INTO perfil(grupo, area1,programa_id, asignatura, perfil, fecharegistro, usuario, periodo_id) "
+        . " VALUES('GRUPO', '".$area."',".$programaId.",'','PERFIL',now(),1,2)";
+            $oid = pg_query($this->db, $sql);
+            header("Location: NewArea.php");
+            exit;
+        }
+    
     public function insertProgram() {
         session_start();
         if (isset($_SESSION['usuario'])) {
