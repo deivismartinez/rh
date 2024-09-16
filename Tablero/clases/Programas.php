@@ -428,6 +428,20 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         return false;
     }
     
+    public function existAsignatura($name, $area, $programa_id) {
+        try {
+            $areaName = $this->getNombreArea($area);
+            $sql = "SELECT area1 FROM perfil WHERE asignatura='" . $name . "' and programa_id = ".$programa_id." and area1 = '".$areaName."';";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                return true;
+            }
+        } catch (Exception $error) {
+            
+        }
+        return false;
+    }
+    
     public function insertNewArea() {
         session_start();
         if (isset($_SESSION['usuario'])) {
@@ -444,6 +458,43 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
             header("Location: NewArea.php");
             exit;
         }
+        
+    public function insertNewSubject() {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+        $area_id = strtoupper(filter_input(INPUT_POST, 'areaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $asignatura = strtoupper(filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $programa_id = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $area = $this->getNombreArea($area_id);
+        $idEmpty = $this->getIdArea($area, $programa_id);
+        if($idEmpty!=0){
+            $sql = "INSERT INTO perfil(grupo, area1,programa_id, asignatura, perfil, fecharegistro, usuario, periodo_id) "
+            . " VALUES('GRUPO', '".$area."',".$programa_id.",'".$asignatura."','PERFIL',now(),1,2)";
+        }else{
+            $sql = "UPDATE perfil set asignatura = '".$asignatura."' where id=".$idEmpty.";";
+        }
+            $oid = pg_query($this->db, $sql);
+            header("Location: NewArea.php");
+            exit;
+        }
+        
+        public function getIdArea($area, $programa_id) {
+        try {
+            $sql = "SELECT id FROM perfil where area1='" . $area . "' and facultad_id = ".$programa_id." and asignatura = '' limit 1;";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                return $row['id'];
+            }
+        } catch (Exception $error) {
+            
+        }
+        return 0;
+    }
     
     public function insertProgram() {
         session_start();

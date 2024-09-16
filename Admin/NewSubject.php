@@ -7,10 +7,11 @@ $usuario = $_SESSION['usuario'];
 $p = new Programas();
 session_start();
 if (isset($_SESSION['usuario'])) {
-   $area = filter_input(INPUT_POST, 'areaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
-    if (isset($area)) {
+   $asignatura = filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
+    if (isset($asignatura)) {
         $programaId = filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS);
-        if($p->existArea($area,$programaId)){
+        $area = filter_input(INPUT_POST, 'areaCmb', FILTER_SANITIZE_SPECIAL_CHARS);
+        if($p->existAsignatura($asignatura,$area,$programaId)){
             echo '<script type="text/javascript">alert("Área ya existe registrado")</script>';
         }else{
             $p->insertNewArea();
