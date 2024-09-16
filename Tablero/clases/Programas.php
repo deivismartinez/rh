@@ -161,6 +161,16 @@ class Programas extends conectar {
         }
         return $arreglo;
     }
+    
+    public function getAreasPrograma($programa_id) {
+        $sql = "SELECT SELECT DISTINCT ON (area1)area1, id FROM perfil where facultad_id=" . $programa_id . ";";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
 
     public function getNombreArea($id) {
         try {

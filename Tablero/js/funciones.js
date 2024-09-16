@@ -52,6 +52,17 @@ function cargarProgramas(fac) {
     xhttp.send();
 }
 
+function cargarAreas(prog) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById("comboArea").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "../Tablero/AreasList.php?dep=" + prog, true);
+    xhttp.send();
+}
+
 function cargarProgPost(fac) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {

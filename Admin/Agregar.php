@@ -139,8 +139,19 @@ if (isset($_SESSION['usuario'])) {
                                             <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                  <h5 class="card-title">Perfil</h5>                                  
+                                                  <h5 class="card-title">Área</h5>                                  
                                                   <a href="NewArea.php" class="btn btn-primary">Ir</a> 
+                                              </div>
+                                          </div>  
+                                      </div>    
+                                </div> 
+                                <div class="col-xs-3">
+                                          <div class="card" style="width:150px">
+                                            <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
+                                            <div class="card-body">
+                                                <div class="col-xs-12">
+                                                  <h5 class="card-title">Asignatura</h5>                                  
+                                                  <a href="NewSubject.php" class="btn btn-primary">Ir</a> 
                                               </div>
                                           </div>  
                                       </div>    
