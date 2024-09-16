@@ -184,6 +184,11 @@ if (isset($usuario)) {
                                                         <label for="">Contraseña</label>
                                                         <input value=""  type="password"  class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
                                                     </div>
+
+                                                    <div class="col-xs-3">
+                                                        <label for="">Contraseña</label>
+                                                        <input value=""  type="password"  class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
+                                                    </div>
                                                    
                                                     <div class="col-xs-3">
                                             <br>
