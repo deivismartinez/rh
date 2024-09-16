@@ -151,15 +151,11 @@ if (isset($_SESSION['usuario'])) {
                                                     <?php
                                                     ?>
                                                 </div>
-                                                
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-xs-6">
                                                     <label for="telefono">Departamento</label>
                                                     <div id="comboProg">
                                                         <select class="form-control" id="programaCmb" name="programaCmb"
-                                                                required="true" onchange= "cargarAreas(this.value)"                                                       
-                                                            >
+                                                                required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
                                                             $program = $p->getProgramasDocente(0);
@@ -170,29 +166,15 @@ if (isset($_SESSION['usuario'])) {
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-6">
-                                                    <label for="telefono">Área</label>
-                                                    <div id="comboArea">
-                                                        <select class="form-control" id="areaCmb" name="areaCmb"
-                                                                required="true">
-                                                            <option value="">SELECCIONE</option>
-                                                            <?php
-                                                            $areas = $p->getAsignaturasArea(0);
-                                                            foreach ($areas as $arregloArea) {
-                                                                echo '<OPTION value="' . $arregloArea[0] . '">' . $arregloArea[1] . '</OPTION>';
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <label for="telefono">Asignatura</label>
-                                                    <input type="text" class="form-control" id="asignaturaTxt" name="asignaturaTxt">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <label for="telefono">Área de Conocimiento</label>
+                                                    <input type="text" class="form-control" id="areaTxt" name="areaTxt">
                                                 </div>
                                             </div>
                                             <hr />
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
-                                            
                                         </form>
                                     </div>
                                     <div class="panel-footer">
