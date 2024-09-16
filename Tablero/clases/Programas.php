@@ -470,9 +470,11 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         $area_id = strtoupper(filter_input(INPUT_POST, 'areaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
         $asignatura = strtoupper(filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS));
         $programa_id = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        var_dump($area_id);
         $area = $this->getNombreArea($area_id);
+        var_dump($area);
         $idEmpty = $this->getIdArea($area, $programa_id);
-        if($idEmpty!=0){
+        if($idEmpty==0){
             $sql = "INSERT INTO perfil(grupo, area1,programa_id, asignatura, perfil, fecharegistro, usuario, periodo_id) "
             . " VALUES('GRUPO', '".$area."',".$programa_id.",'".$asignatura."','PERFIL',now(),1,2)";
         }else{
