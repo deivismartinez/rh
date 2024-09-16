@@ -405,9 +405,9 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         return false;
     }
     
-    public function existArea($name) {
+    public function existArea($name, $programa_id) {
         try {
-            $sql = "SELECT nombre FROM perfil WHERE nombre='" . $name . "';";
+            $sql = "SELECT area1 FROM perfil WHERE area1='" . $name . "' and programa_id = ".$programa_id.";";
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 return true;
