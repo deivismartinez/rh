@@ -198,6 +198,7 @@ $p = new Programas();
     <script src="../General/js/jquery-1.10.2.js"></script>
     <script src="../General/js/bootstrap.min.js"></script>
     <script src="../General/js/funciones.js"></script>
+    <script src="../Tablero/js/funciones.js"></script>
     <!--   Core JS Files   -->
     <script src="../General/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
     <script src="../General/assets/js/bootstrap.min.js" type="text/javascript"></script>
