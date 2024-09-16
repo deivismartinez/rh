@@ -155,7 +155,7 @@ if (isset($_SESSION['usuario'])) {
                                                     <label for="telefono">Departamento</label>
                                                     <div id="comboProg">
                                                         <select class="form-control" id="programaCmb" name="programaCmb"
-                                                                required="true" onchange="cargarAreas(this.value);">
+                                                                required="true" onchange="cargarAreas(this.value)">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
                                                             $program = $p->getProgramasDocente(0);
@@ -170,7 +170,7 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="row">
                                                 <div class="col-xs-6">
                                                     <label for="telefono">Área</label>
-                                                    <div id="comboArea">
+                                                    <div id="comboAreas">
                                                         <select class="form-control" id="areaCmb" name="areaCmb"
                                                                 required="true">
                                                             <option value="">SELECCIONE</option>
