@@ -467,7 +467,7 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         } else {
             header('Location: AccesoNoautorizado.html');
         }
-        $area_id = strtoupper(filter_input(INPUT_POST, 'areaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $area_id = strtoupper(filter_input(INPUT_POST, 'areasCmb', FILTER_SANITIZE_SPECIAL_CHARS));
         $asignatura = strtoupper(filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS));
         $programa_id = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS));
         var_dump($area_id);

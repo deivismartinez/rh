@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario'])) {
    $asignatura = filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
     if (isset($asignatura)) {
         $programaId = filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS);
-        $area = filter_input(INPUT_POST, 'areaCmb', FILTER_SANITIZE_SPECIAL_CHARS);
+        $area = filter_input(INPUT_POST, 'areasCmb', FILTER_SANITIZE_SPECIAL_CHARS);
         if($p->existAsignatura($asignatura,$area,$programaId)){
             echo '<script type="text/javascript">alert("Área ya existe registrado")</script>';
         }else{
@@ -172,7 +172,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <div class="col-xs-6">
                                                     <label for="telefono">Área</label>
                                                     <div id="comboAreas">
-                                                        <select class="form-control" id="areaCmb" name="areaCmb"
+                                                        <select class="form-control" id="areasCmb" name="areasCmb"
                                                                 required="true">
                                                             <option value="">SELECCIONE</option>
                                                         </select>
