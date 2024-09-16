@@ -48,7 +48,7 @@ function cargarProgramas(fac) {
             document.getElementById("comboProg").innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "ProgramasList.php?fac=" + fac, true);
+    xhttp.open("GET", "../Tablero/ProgramasList.php?fac=" + fac, true);
     xhttp.send();
 }
 
