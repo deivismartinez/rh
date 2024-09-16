@@ -59,7 +59,7 @@ function cargarProgPost(fac) {
             document.getElementById("comboProg").innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "ProgramasListPostgrados.php?fac=" + fac, true);
+    xhttp.open("GET", "../Tablero/ProgramasListPostgrados.php?fac=" + fac, true);
     xhttp.send();
 }
 
