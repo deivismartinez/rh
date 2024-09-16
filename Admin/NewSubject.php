@@ -14,7 +14,7 @@ if (isset($_SESSION['usuario'])) {
         if($p->existAsignatura($asignatura,$area,$programaId)){
             echo '<script type="text/javascript">alert("Área ya existe registrado")</script>';
         }else{
-            $p->insertNewArea();
+            $p->insertNewSubject();
         }
     }
 } else {
