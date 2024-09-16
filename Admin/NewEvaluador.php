@@ -21,7 +21,6 @@ if (isset($usuario)) {
 
 ?>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 
     <head>
