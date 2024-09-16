@@ -473,6 +473,7 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         var_dump($area_id);
         $area = $this->getNombreArea($area_id);
         var_dump($area);
+        var_dump($programa_id);
         $idEmpty = $this->getIdArea($area, $programa_id);
         if($idEmpty==0){
             $sql = "INSERT INTO perfil(grupo, area1,programa_id, asignatura, perfil, fecharegistro, usuario, periodo_id) "
@@ -488,6 +489,7 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
         public function getIdArea($area, $programa_id) {
         try {
             $sql = "SELECT id FROM perfil where area1='" . $area . "' and facultad_id = ".$programa_id." and asignatura = '' limit 1;";
+            var_dump($sql);
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 return $row['id'];
