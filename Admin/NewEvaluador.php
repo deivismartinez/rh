@@ -338,6 +338,7 @@ if (isset($usuario)) {
         const sede = document.getElementById('sedeCmb').value;
         const password = document.getElementById('seguridadTxt').value;
         const seguridadTxtRep = document.getElementById('seguridadTxtRep').value;
+        const respuesta = false;
 
         // Limpiar mensajes previos
         mensajeError.textContent = "";
@@ -345,17 +346,17 @@ if (isset($usuario)) {
 
         if (nombreUsuario === "") {
             mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
-            return false;
+            respuesta= false;
         }
         
         if (password.length < 7 || seguridadTxtRep.length < 7) {
-            alert("Ambos campos deben tener al menos 7 caracteres.");
-            return false;
+            alert("La contraseña debe tener al menos 7 caracteres.");
+            respuesta= false;
             }
 
         if (password !== seguridadTxtRep) {
-            alert("Los campos de seguridad no coinciden.");
-            return false;
+            alert("La contaseñas son diferente.");
+            respuesta= false;
             }
 
         // Realizar la validación con AJAX
@@ -364,7 +365,7 @@ if (isset($usuario)) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                const respuesta = JSON.parse(xhr.responseText);
+                respuesta = JSON.parse(xhr.responseText);
                 if (respuesta.success) {
 
                     //mensajeExito.textContent = respuesta.message;
@@ -379,7 +380,7 @@ if (isset($usuario)) {
                     });
 
                     setTimeout(function() {
-                       // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
