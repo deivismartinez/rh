@@ -333,7 +333,7 @@ if (isset($usuario)) {
 
         const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
         const nombreUsuario = document.getElementById('usuarioTxt').value;
-        const facultad = document.getElementById('programaCmb').value;
+        const programaCmb = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
         const password = document.getElementById('seguridadTxt').value;
@@ -382,7 +382,7 @@ if (isset($usuario)) {
 
         xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
-            "&programaCmb=" + encodeURIComponent(facultad) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
             "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
