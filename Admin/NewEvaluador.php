@@ -313,7 +313,6 @@ if (isset($usuario)) {
 
         const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
         const nombreUsuario = document.getElementById('usuarioTxt').value;
-        const email = document.getElementById('emailEml').value;
         const facultad = document.getElementById('facultadCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
