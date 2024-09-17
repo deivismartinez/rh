@@ -337,6 +337,7 @@ if (isset($usuario)) {
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
         const password = document.getElementById('seguridadTxt').value;
+        const seguridadTxtRep = document.getElementById('seguridadTxtRep').value;
 
         // Limpiar mensajes previos
         mensajeError.textContent = "";
@@ -374,6 +375,14 @@ if (isset($usuario)) {
                 } else {
 
                     mensajeError.textContent = respuesta.message;
+                    if (password.length < 7 || seguridadTxtRep.length < 7) {
+                alert("Ambos campos deben tener al menos 7 caracteres.");
+                return false;
+            }
+
+            if (seguridadTxt !== seguridadRepTxt) {
+                alert("Los campos de seguridad no coinciden.");
+                return false;
 
                 }
             }
