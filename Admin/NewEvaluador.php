@@ -363,7 +363,6 @@ if (isset($usuario)) {
 
         xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
-            "&emailEml=" + encodeURIComponent(email) +
             "&facultadCmb=" + encodeURIComponent(facultad) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
