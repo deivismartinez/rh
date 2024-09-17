@@ -26,7 +26,7 @@ class Programas extends conectar {
     }
 
     public function getEvaluador() {
-        $sql = "SELECT  nombre, correo, facultad_id, tipo, estado, sede FROM usuario";
+        $sql = "SELECT   u.nombre, u.correo, p.nombre, u.tipo, u.estado, u.sede FROM usuario as u inner join programa as p on p.id =u.facultad_id";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
