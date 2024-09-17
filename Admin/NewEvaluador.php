@@ -364,9 +364,11 @@ if (isset($usuario)) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
+                
             const respuesta = JSON.parse(xhr.responseText);
+            alert(respuesta.success);
                 if (respuesta.success) {
-                    alert  ("entro en exito");
+                    alert("entro en exito");
                     //mensajeExito.textContent = respuesta.message;
 
                     demo.initChartist();
@@ -398,8 +400,9 @@ if (isset($usuario)) {
             "&seguridadTxt=" + encodeURIComponent(password)
         );
 
-        return false; // Prevenir el envío del formulario hasta que se complete la validación
+        
     }
+    return false; // Prevenir el envío del formulario hasta que se complete la validación
 }
 </script>
 
