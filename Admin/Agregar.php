@@ -110,7 +110,7 @@ if (isset($_SESSION['usuario'])) {
                                 Gestionar  depertamentos, programas, perfiles y evaluadores
                             </div>
                             <div class="panel-body">
-                             
+                             <div class="row">
                             <div class="col-xs-12">
                                 <div class="col-xs-3">
                                               <div class="card" style="width:130px">
@@ -156,6 +156,13 @@ if (isset($_SESSION['usuario'])) {
                                           </div>  
                                       </div>    
                                 </div> 
+                                
+
+
+                            </div> 
+
+                            <div class="row">  
+                            <div class="col-xs-12"> 
                                 <div class="col-xs-3"> 
                                   <div class="card" style="width:150px">
                                     <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:100%">
@@ -167,9 +174,8 @@ if (isset($_SESSION['usuario'])) {
                                       </div>  
                                   </div>    
                                 </div> 
-
-
-                            </div>                                   
+                                      </div> 
+                               </div>                               
                             </div>
                         </div>
                     </div>
