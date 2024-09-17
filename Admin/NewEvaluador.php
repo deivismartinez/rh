@@ -326,7 +326,7 @@ if (isset($usuario)) {
 <script src="../General/assets/js/demo.js"></script>
 
 <script>
-    function validarUsuario() {
+    function validarUsuario(){
 
         const mensajeError = document.getElementById('mensaje-error');
         const mensajeExito = document.getElementById('mensaje-exito');
@@ -347,8 +347,16 @@ if (isset($usuario)) {
             mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
             return false;
         }
+        
+        if (password.length < 7 || seguridadTxtRep.length < 7) {
+            alert("Ambos campos deben tener al menos 7 caracteres.");
+            return false;
+            }
 
-       
+        if (password !== seguridadTxtRep) {
+            alert("Los campos de seguridad no coinciden.");
+            return false;
+            }
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
@@ -371,7 +379,7 @@ if (isset($usuario)) {
                     });
 
                     setTimeout(function() {
-                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                       // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
@@ -392,6 +400,7 @@ if (isset($usuario)) {
 
         return false; // Prevenir el envío del formulario hasta que se complete la validación
     }
+}
 </script>
 
 
