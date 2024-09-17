@@ -20,7 +20,7 @@ $usuarioTxt = strtoupper(filter_input(INPUT_POST, 'usuarioTxt', FILTER_SANITIZE_
 $seguridadTxt = strtoupper(filter_input(INPUT_POST, 'seguridadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
 $seguridadTxt= sha1($seguridadTxt);
 
-header('Content-Type: application/json');
+header('Content-Type: application/json');zz
 // Verificar que el usuario no existe nuevamente para mayor seguridad
 
 

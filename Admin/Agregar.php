@@ -74,7 +74,7 @@ if (isset($_SESSION['usuario'])) {
                         Consulta de Inscritos a el Departamento
                     </a>
                 </div>
-                <?php include("includes/menu.html"); ?>
+                 <?php include("includes/menu.html");?>   
             </div>
         </div>
 
@@ -94,7 +94,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
             </nav>
-            
+
             <div class="content">
                 <div class="container-fluid">
                 </div>
@@ -107,76 +107,84 @@ if (isset($_SESSION['usuario'])) {
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Gestionar depertamentos, programas, perfiles y evaluadores
+                                Gestionar  depertamentos, programas, perfiles y evaluadores
                             </div>
                             <div class="panel-body">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
-                                            <img class="card-img-top" src="../images/programa.png" alt="" style="width:90%">
-                                            <div class="card-body">
-                                                <div class="col-xs-12">
-                                                    <h5 class="card-title">Programas</h5>
-                                                    <a href="NuevoPrograma.php" class="btn btn-primary">Ir</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                          
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                              <div class="card" style="width:130px">
+                                                <img class="card-img-top" src="../images/programa.png" alt="" style="width:90%">
+                                                <div class="card-body">
+                                                    <div class="col-xs-12">
+                                                      <h5 class="card-title">Programas</h5>                                  
+                                                      <a href="NuevoPrograma.php" class="btn btn-primary">Ir</a>
+                                                  </div>
+                                              </div>  
+                                          </div>    
+                                </div>                          
+                                <div class="col-xs-2">
+                                          <div class="card" style="width:130px">
                                             <img class="card-img-top" src="../images/departamento.png" alt="" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                    <h5 class="card-title">Facultad</h5>
-                                                    <a href="NewFacultad.php" class="btn btn-primary">Ir</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                                  <h5 class="card-title">Facultad</h5>                                  
+                                                  <a href="NewFacultad.php" class="btn btn-primary">Ir</a>    
+                                              </div>
+                                          </div>  
+                                      </div>    
+                                </div>
+                                <div class="col-xs-2">
+                                          <div class="card" style="width:130px">
                                             <img class="card-img-top" src="../images/area.png" alt="" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                    <h5 class="card-title">Área</h5>
-                                                    <a href="NewArea.php" class="btn btn-primary">Ir</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                                  <h5 class="card-title">Área</h5>                                  
+                                                  <a href="NewArea.php" class="btn btn-primary">Ir</a> 
+                                              </div>
+                                          </div>  
+                                      </div>    
+                                </div> 
+                                <div class="col-xs-2">
+                                          <div class="card" style="width:130px">
                                             <img class="card-img-top" src="../images/perfil.png" alt="" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
-                                                    <h5 class="card-title">Asignatura</h5>
-                                                    <a href="NewSubject.php" class="btn btn-primary">Ir</a>
-                                                </div>
-                                            </div>
+                                                  <h5 class="card-title">Asignatura</h5>                                  
+                                                  <a href="NewSubject.php" class="btn btn-primary">Ir</a> 
+                                              </div>
+                                          </div>  
+                                      </div>    
+                                </div> 
+                                 <div class="col-xs-2"> 
+                                  <div class="card" style="width:130px">
+                                    <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:90%">
+                                    <div class="card-body">
+                                        <div class="col-xs-12">
+                                          <h5 class="card-title">Evaluadores</h5>                                  
+                                          <a href="NewEvaluador.php" class="btn btn-primary">Ir</a> 
                                         </div>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
-                                            <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:90%">
-                                            <div class="card-body">
-                                                <div class="col-xs-12">
-                                                    <h5 class="card-title">Evaluadores</h5>
-                                                    <a href="NewEvaluador.php" class="btn btn-primary">Ir</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                      </div>  
+                                  </div>    
+                                </div> 
+
+
+                            </div> 
+
+                                                          
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 <script src="../Tablero/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src='../Tablero/assets/js/jquery2.1.3sorter.js'></script>
 <script>
+   
+
     function imprimir() {
         consulta = $("#busqueda").val();
         area = $("#areasCmb").val();
@@ -187,11 +195,13 @@ if (isset($_SESSION['usuario'])) {
         $('#mi-tabla').tablesorter();
     });
 </script>
+
 <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Tablero/assets/js/chartist.min.js"></script>
 <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         demo.initChartist();
