@@ -364,7 +364,7 @@ if (isset($usuario)) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                respuesta = JSON.parse(xhr.responseText);
+            const respuesta = JSON.parse(xhr.responseText);
                 if (respuesta.success) {
                     alert  ("entro en exito");
                     //mensajeExito.textContent = respuesta.message;
