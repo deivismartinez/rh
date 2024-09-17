@@ -348,6 +348,17 @@ if (isset($usuario)) {
             return false;
         }
 
+        if (password.length < 7 || seguridadTxtRep.length < 7) {
+                alert("Ambos campos deben tener al menos 7 caracteres.");
+                return false;
+            }
+
+            if (password !== seguridadTxtRep) {
+                alert("Los campos de seguridad no coinciden.");
+                return false;
+
+                }
+
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesar_registro.php", true);
@@ -375,16 +386,6 @@ if (isset($usuario)) {
                 } else {
 
                     mensajeError.textContent = respuesta.message;
-                    if (password.length < 7 || seguridadTxtRep.length < 7) {
-                alert("Ambos campos deben tener al menos 7 caracteres.");
-                return false;
-            }
-
-            if (seguridadTxt !== seguridadRepTxt) {
-                alert("Los campos de seguridad no coinciden.");
-                return false;
-
-                }
             }
         };
 
