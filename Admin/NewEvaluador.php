@@ -134,25 +134,48 @@ if (isset($usuario)) {
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <div class="col-xs-6">
-                                                    <label for="">Facultad *</label>
-                                                    <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">
+                                            <div class="col-xs-6">
+                                                    <label for="telefono">Facultad</label>
+                                                    <select class="form-control" id="facultadCmb" name="facultadCmb"
+                                                            required="true" onchange=
+                                                            <?php
+                                                            if ($programa->esPostgrados($usuario->getId())) {
+                                                                echo '"cargarProgPost(this.value)"';
+                                                            } else {
+                                                                echo '"cargarProgramas(this.value)"';
+                                                            }
+                                                            ?>
+                                                            >
                                                         <option value="">SELECCIONE</option>
                                                         <?php
-                                                        $facultades = $programa->getFacultades();
+                                                        if ($programa->esPostgrados($usuario->getId())) {
+                                                            $facultades = $programa->getFacultadesDocentePostgrado();
+                                                        } else {
+                                                            $facultades = $programa->getFacultadesDocente();
+                                                        }
+
                                                         foreach ($facultades as $arregloFac) {
                                                             echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
                                                         }
                                                         ?>
                                                     </select>
+                                                    <?php
+                                                    ?>
                                                 </div>
-
                                                 <div class="col-xs-6">
-                                                    <label for="">Programa *</label>
-                                                    <select class="form-control" id="programaCmb" name="programaCmb" required="true" onchange="">
-                                                        <option value="">SELECCIONE</option>
-                                                       
-                                                    </select>
+                                                    <label for="departamento">Departamento</label>
+                                                    <div id="comboProg">
+                                                        <select class="form-control" id="programaCmb" name="programaCmb"
+                                                                required="true">
+                                                            <option value="">SELECCIONE</option>
+                                                            <?php
+                                                            $program = $programa->getProgramasDocente(0);
+                                                            foreach ($program as $arregloPro) {
+                                                                echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
 
 
@@ -308,7 +331,7 @@ if (isset($usuario)) {
 
         const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
         const nombreUsuario = document.getElementById('usuarioTxt').value;
-        const facultad = document.getElementById('facultadCmb').value;
+        const facultad = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
         const password = document.getElementById('seguridadTxt').value;
@@ -357,7 +380,7 @@ if (isset($usuario)) {
 
         xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
-            "&facultadCmb=" + encodeURIComponent(facultad) +
+            "&programaCmb=" + encodeURIComponent(facultad) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
             "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
