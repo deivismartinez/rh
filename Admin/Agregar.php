@@ -110,11 +110,11 @@ if (isset($_SESSION['usuario'])) {
                                 Gestionar  depertamentos, programas, perfiles y evaluadores
                             </div>
                             <div class="panel-body">
-                             <div class="row">
+                          
                             <div class="col-xs-12">
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                               <div class="card" style="width:130px">
-                                                <img class="card-img-top" src="../images/programa.png" alt="" style="width:100%">
+                                                <img class="card-img-top" src="../images/programa.png" alt="" style="width:90%">
                                                 <div class="card-body">
                                                     <div class="col-xs-12">
                                                       <h5 class="card-title">Programas</h5>                                  
@@ -123,9 +123,9 @@ if (isset($_SESSION['usuario'])) {
                                               </div>  
                                           </div>    
                                 </div>                          
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                           <div class="card" style="width:130px">
-                                            <img class="card-img-top" src="../images/departamento.png" alt="" style="width:100%">
+                                            <img class="card-img-top" src="../images/departamento.png" alt="" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                   <h5 class="card-title">Facultad</h5>                                  
@@ -134,9 +134,9 @@ if (isset($_SESSION['usuario'])) {
                                           </div>  
                                       </div>    
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                           <div class="card" style="width:130px">
-                                            <img class="card-img-top" src="../images/area.png" alt="" style="width:100%">
+                                            <img class="card-img-top" src="../images/area.png" alt="" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                   <h5 class="card-title">Área</h5>                                  
@@ -145,9 +145,9 @@ if (isset($_SESSION['usuario'])) {
                                           </div>  
                                       </div>    
                                 </div> 
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                           <div class="card" style="width:130px">
-                                            <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
+                                            <img class="card-img-top" src="../images/perfil.png" alt="" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                   <h5 class="card-title">Asignatura</h5>                                  
@@ -156,16 +156,9 @@ if (isset($_SESSION['usuario'])) {
                                           </div>  
                                       </div>    
                                 </div> 
-                                
-
-
-                            </div> 
-
-                            <div class="row">  
-                            <div class="col-xs-12"> 
-                                <div class="col-xs-3"> 
+                                 <div class="col-xs-2S"> 
                                   <div class="card" style="width:150px">
-                                    <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:100%">
+                                    <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:90%">
                                     <div class="card-body">
                                         <div class="col-xs-12">
                                           <h5 class="card-title">Evaluadores</h5>                                  
@@ -174,9 +167,12 @@ if (isset($_SESSION['usuario'])) {
                                       </div>  
                                   </div>    
                                 </div> 
-                                      </div> 
-                               </div>                               
-                            </div>
+
+
+                            </div> 
+
+                                                          
+                           
                         </div>
                     </div>
                 </div>
