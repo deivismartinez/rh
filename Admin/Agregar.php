@@ -166,12 +166,7 @@ if (isset($_SESSION['usuario'])) {
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -192,13 +187,11 @@ if (isset($_SESSION['usuario'])) {
         $('#mi-tabla').tablesorter();
     });
 </script>
-
 <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Tablero/assets/js/chartist.min.js"></script>
 <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         demo.initChartist();
