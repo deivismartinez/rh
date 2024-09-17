@@ -113,7 +113,7 @@ if (isset($_SESSION['usuario'])) {
                              
                             <div class="col-xs-12">
                                 <div class="col-xs-3">
-                                              <div class="card" style="width:150px">
+                                              <div class="card" style="width:130px">
                                                 <img class="card-img-top" src="../images/programa.png" alt="" style="width:100%">
                                                 <div class="card-body">
                                                     <div class="col-xs-12">
@@ -124,7 +124,7 @@ if (isset($_SESSION['usuario'])) {
                                           </div>    
                                 </div>                          
                                 <div class="col-xs-3">
-                                          <div class="card" style="width:150px">
+                                          <div class="card" style="width:130px">
                                             <img class="card-img-top" src="../images/departamento.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
@@ -135,8 +135,8 @@ if (isset($_SESSION['usuario'])) {
                                       </div>    
                                 </div>
                                 <div class="col-xs-3">
-                                          <div class="card" style="width:150px">
-                                            <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
+                                          <div class="card" style="width:130px">
+                                            <img class="card-img-top" src="../images/area.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                   <h5 class="card-title">Área</h5>                                  
@@ -146,7 +146,7 @@ if (isset($_SESSION['usuario'])) {
                                       </div>    
                                 </div> 
                                 <div class="col-xs-3">
-                                          <div class="card" style="width:150px">
+                                          <div class="card" style="width:130px">
                                             <img class="card-img-top" src="../images/perfil.png" alt="" style="width:100%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
