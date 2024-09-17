@@ -338,7 +338,6 @@ if (isset($usuario)) {
         const sede = document.getElementById('sedeCmb').value;
         const password = document.getElementById('seguridadTxt').value;
         const seguridadTxtRep = document.getElementById('seguridadTxtRep').value;
-        const respuesta = false;
 
         // Limpiar mensajes previos
         mensajeError.textContent = "";
@@ -346,17 +345,17 @@ if (isset($usuario)) {
 
         if (nombreUsuario === "") {
             mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
-            respuesta= false;
+            return false;
         }
         
         if (password.length < 7 || seguridadTxtRep.length < 7) {
             alert("La contraseña debe tener al menos 7 caracteres.");
-            respuesta= false;
+            return false;
             }
 
         if (password !== seguridadTxtRep) {
             alert("La contaseñas son diferente.");
-            respuesta= false;
+            return false;
             }
 
         // Realizar la validación con AJAX
@@ -367,7 +366,7 @@ if (isset($usuario)) {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 respuesta = JSON.parse(xhr.responseText);
                 if (respuesta.success) {
-
+                    alert  ("entro en exito");
                     //mensajeExito.textContent = respuesta.message;
 
                     demo.initChartist();
@@ -380,11 +379,11 @@ if (isset($usuario)) {
                     });
 
                     setTimeout(function() {
-                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                       // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
-
+                    alert  ("entro en error");
                     mensajeError.textContent = respuesta.message;
             }
         };
