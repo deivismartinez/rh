@@ -214,7 +214,7 @@ if (isset($usuario)) {
                                                 </div>
 
                                                 <div class="col-xs-3">
-                                                    <label for="">Contraseña</label>
+                                                    <label for="">Confirmar contraseña</label>
                                                     <input value="" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
                                                 </div>
                                                 
@@ -348,16 +348,7 @@ if (isset($usuario)) {
             return false;
         }
 
-        if (password.length < 7 || seguridadTxtRep.length < 7) {
-                alert("Ambos campos deben tener al menos 7 caracteres.");
-                return false;
-            }
-
-            if (password !== seguridadTxtRep) {
-                alert("Los campos de seguridad no coinciden.");
-                return false;
-
-                }
+       
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
