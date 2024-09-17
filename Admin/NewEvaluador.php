@@ -151,12 +151,7 @@ if (isset($usuario)) {
                                                     <label for="">Programa *</label>
                                                     <select class="form-control" id="programaCmb" name="programaCmb" required="true" onchange="">
                                                         <option value="">SELECCIONE</option>
-                                                        <?php
-                                                        $facultades = $programa->getFacultades();
-                                                        foreach ($facultades as $arregloFac) {
-                                                            echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                        }
-                                                        ?>
+                                                       
                                                     </select>
                                                 </div>
 
