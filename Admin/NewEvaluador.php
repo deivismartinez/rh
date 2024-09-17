@@ -7,7 +7,7 @@ require_once("../Tablero/clases/Gestion.php");
 //require_once("../Tablero/vo/PeridoVO.php");
 session_start();
 $usuario = $_SESSION['usuario'];
-$archivo = "hvd" . $usuario->getId();
+//$archivo = "hvd" . $usuario->getId();
 $_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
 $usuarioEvaluador = $programa->getEvaluador();
