@@ -94,7 +94,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </div>
             </nav>
-
+            
             <div class="content">
                 <div class="container-fluid">
                 </div>
