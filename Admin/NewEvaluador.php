@@ -274,7 +274,7 @@ if (isset($usuario)) {
                                                             <td><?php echo $arreglo[5] ?></td>
 
                                                             <?php
-                                                            $urlVer = "EditEvaluadores.php?id=" . $arreglo[6];
+                                                            $urlVer = "EditEvaluador.php?id=" . $arreglo[6];
                                                             ?>
                                                             <td>
                                                                 <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>

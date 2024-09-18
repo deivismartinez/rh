@@ -8,12 +8,16 @@ $usuario = $_SESSION['usuario'];
 $archivo = "hvd".$usuario->getId();
 $_SESSION['id_usuario']=$usuario->getId();
 
-
+$gestion=new Gestion();
+$programa = new Programas();
 if (isset($usuario)) {
 
- 
+    $evaluadorId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
    
-    if (isset($_POST["nombreCompletoTxt"])) {
+    if (isset($evaluadorId)) {
+        $evaluador=$programas->getUnEvaluador($evaluadorId);
+        var_dump($evaluadorId);
+        //$gestion->updateEvaluador($_POST["programTxt"]);
         
      
       //  $u->insertar($usuario->getId());

@@ -21,6 +21,25 @@ class Gestion extends conectar {
          ///////////////////
     }
     
+    public function updateEvaluador($id) {
+        $usuarioTxt = strtoupper(filter_input(INPUT_POST, 'usuarioTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $nombreCompletoTxt = strtoupper(filter_input(INPUT_POST, 'nombreCompletoTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $seguridadTxt = strtoupper(filter_input(INPUT_POST, 'seguridadTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+        $rolCmb = strtoupper(filter_input(INPUT_POST, 'rolCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $sedeCmb = strtoupper(filter_input(INPUT_POST, 'sedeCmb', FILTER_SANITIZE_SPECIAL_CHARS));
+        $estado = strtoupper(filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_SPECIAL_CHARS));
+        $programaCmb = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS));      
+        
+        $sql = "UPDATE calificacion SET estado='MODIFICAR' WHERE docente_id =" . $id . ";";
+        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        "UPDATE usuario SET usuario ='" . $usuarioTxt . "', clave= '" . $seguridadTxt . 
+        "', nombre='" . $nombreCompletoTxt . "', correo='" . $usuarioTxt .
+        "',facultad_id='" . $programaCmb . "', tipo='" . $rolCmb . 
+        "', estado='" . $estado . "', sede='" . $sedeCmb . "' WHERE id=". $id .";";
+        $oid = pg_query($this->db, $sql);
+        header("Location: NewEvaluador.php");
+        exit;
+    }
 
     public function consultarSql() {
 
@@ -105,7 +124,7 @@ class Gestion extends conectar {
         try {
             $sql = "UPDATE programa SET nombre=".$nombrePrograma.", facultad_id=".$facultadId.", postgrado= ".$posgrado."  WHERE id =" . $id . ";";
             pg_query($this->db, $sql);
-        } catch (SintaxError $e) {
+        } catch (Error $e) {
             
         }
         ///////////////////
