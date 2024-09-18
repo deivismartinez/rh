@@ -317,7 +317,7 @@ public function existeInscripcionMismoDepPost($id, $departamento) {
 }
 
 
-public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt) {
+public function insertarEvaluador($nombreCompletoTxt, $emailEml, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt) {
     session_start();
     if (isset($_SESSION['usuario'])) {
         $usuario = $_SESSION['usuario'];
@@ -327,7 +327,7 @@ public function insertarEvaluador($nombreCompletoTxt, $emailEml, $facultadCmb, $
     }
     
     $sql = "INSERT INTO usuario(usuario, clave, nombre, correo, habilitado, facultad_id, tipo, estado, sede)" 
-    ." VALUES('" . $usuarioTxt . "', '" . $seguridadTxt . "', '" . $nombreCompletoTxt . "', '" . $emailEml . "', '1', '" . $facultadCmb . "', '" . $rolCmb . "', 'ACTIVO', '" . $sedeCmb . "')";
+    ." VALUES('" . $usuarioTxt . "', '" . $seguridadTxt . "', '" . $nombreCompletoTxt . "', '" . $usuarioTxt . "', '1', '" . $programaCmb . "', '" . $rolCmb . "', 'ACTIVO', '" . $sedeCmb . "')";
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         
        //header('Location: NewEvaluador.php');
