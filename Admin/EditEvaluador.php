@@ -1,281 +1,261 @@
 <?php
 require_once("../Tablero/vo/UsuarioVO.php");
-require_once("../Tablero/vo/DocenteVO.php");
+require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Gestion.php");
+//require_once("../Tablero/vo/DocenteVO.php");
 //require_once("../Tablero/clases/Docente.php");
 //require_once("../Tablero/vo/PeridoVO.php");
 session_start();
 $usuario = $_SESSION['usuario'];
-$archivo = "hvd".$usuario->getId();
-$_SESSION['id_usuario']=$usuario->getId();
-
-$gestion=new Gestion();
+$archivo = "hvd" . $usuario->getId();
+$_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
-if (isset($usuario)) {
+$usuarioEvaluador = $programa->getEvaluador();
 
-    $evaluadorId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
-   
-    if (isset($evaluadorId)) {
-        $evaluador=$programas->getUnEvaluador($evaluadorId);
-        var_dump($evaluadorId);
-        //$gestion->updateEvaluador($_POST["programTxt"]);
-        
-     
-      //  $u->insertar($usuario->getId());
-               
-    }
+if (isset($usuario)) {
 } else {
-    header("Location: ../Entrada.html");
+    header('Location: AccesoNoautorizado.html');
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Inscripción Docente Unicesar</title>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Administración Inscripción Docente Unicesar</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Tablero/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
+    <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
+    <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <meta name="viewport" content="width=device-width" />
+    <style>
+        body {
+            padding-top: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13px;
+        }
+
+        .tabla {
+            margin: 6px auto;
+        }
+
+        .tabla thead {
+            cursor: pointer;
+            background: #337ab7;
+            color: rgba(255, 255, 255, 1);
 
 
-        <!-- Bootstrap core CSS     -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+        }
 
-        <!-- Animation library for notifications   -->
-        <link href="assets/css/animate.min.css" rel="stylesheet"/>
+        .tabla thead tr th {
+            font-weight: bold;
+            padding: 5px 5px;
+        }
 
-        <!--  Light Bootstrap Table core CSS    -->
-        <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+        .tabla thead tr th span {
+            padding-right: 5px;
+            background-repeat: no-repeat;
+            background-position: 100% 55%;
+        }
 
+        .tabla tbody tr td {
+            text-align: center;
+            padding: 5px 5px;
+        }
 
-        <!--  CSS for Demo Purpose, don't include it in your project     -->
-        <link href="assets/css/demo.css" rel="stylesheet" />
+        .tabla tbody tr td.align-left {
+            text-align: left;
+        }
+    </style>
 
+</head>
 
-        <!--     Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-        <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+<body>
 
-    </head>
-    <body>
-
-        <div class="wrapper">
-            <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
-                <div class="sidebar-wrapper">
-                    <div class="logo">
-                        <a href="#" class="simple-text">
-                            Inscripción Docentes Unicesar
-                        </a>
-                    </div>
-
-                    <ul class="nav">
-                        <li>
-                            <a href="inicio.php">
-                                <i class="pe-7s-home"></i>
-                                <p>Inicio</p>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="Basica.php">
-                                <i class="pe-7s-user"></i>
-                                <p>Información Básica</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Academica.php">
-                                <i class="pe-7s-study"></i>
-                                <p>Información Académica</p>
-                            </a>
-                        </li>
-                        <?php ///abre condicion sede A DISTANCIA
-                            if ($docente->getSede()!='A DISTANCIA') {
-                            ?>
-                        <li>
-                            <a href="Programa.php">
-                                <i class="pe-7s-note2"></i>
-                                <p>Área a inscribirse</p>
-                            </a>
-                        </li>
-                        <?php ///CIERRA condicion sede A DISTANCIA
-                                }
-                            ?>
-                        <li>
-                            <a href="ProgramaPostgrado.php">
-                                <i class="pe-7s-global"></i>
-                                <p>Docente de Postgrados o a Distancia</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Experiencia.php">
-                                <i class="pe-7s-display1"></i>
-                                <p>Experiencia Calificada</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Produccion.php">
-                                <i class="pe-7s-science"></i>
-                                <p>Producción Académica</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Resumen.php">
-                                <i class="pe-7s-bookmarks"></i>
-                                <p>Resumen del Puntaje</p>
-                            </a>
-                        </li>
-                        <li>
-                    <a href="ModificarMiClave.php">
-                        <i class="pe-7s-key"></i>
-                        <p>Cambio de Contraseña</p>
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text">
+                        Inscripción Docentes Unicesar
                     </a>
-                </li>
-                        <li>
-                            <a href="../index.php">
-                                <i class="pe-7s-power"></i>
-                                <p>Salir</p>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
+                <?php include("includes/menu.html"); ?>
+
             </div>
+        </div>
 
-            <div class="main-panel">
-                <nav class="navbar navbar-default navbar-fixed">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                                <span class="sr-only"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <img class="img-responsive" alt="UPC" src="../images/titulo.png">
-                        </div>
-                        <div class="collapse navbar-collapse">
-                        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <img class="img-responsive" alt="UPC" src="../images/titulo.png">
                     </div>
-                </nav>
-                <div class="content">
-                    <div class="row">
+                    <div class="collapse navbar-collapse">
+                    </div>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-12">
                         <div class="col-xs-12">
-                            <div class="col-xs-11">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Información Básica del docente
-                                    </div>
-                                    <h4>En esta ventana encontrará la Categoria Docente Universitario, seleccione la correcta para usted, al usted iniciar como docente universitario será AUXILIAR.</h4>
-                                    <div class="panel-body">
-                                        <form name="form" action="" method="post" enctype="multipart/form-data">
-                                            
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-6">
-                                                        <label for="">Nombre  *</label>
-                                                        <input value="<?php echo $docente->getNombres() ?>" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
-                                                    </div>
-                                                     <div class="col-xs-6">
-                                                        <label for="">Email  *</label>
-                                                        <input value="<?php echo $docente->getEmail() ?>" required="true" type="email" class="form-control" name="emailEml" id="emailEml" placeholder="">
-                                                    </div>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    Información Básica del evaluador
+                                </div>
+                                <div class="panel-body">
+
+
+                                    <form id="formulario" onsubmit="return validarUsuario()" method="post">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <label for="">Nombre *</label>
+                                                    <input value="" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <label for="">Usuario *</label>
+                                                    <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-6">
-                                                        <label for="">Facultad  *</label>
-                                                         <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                                    </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <label for="telefono">Facultad</label>
+                                                    <select class="form-control" id="facultadCmb" name="facultadCmb"
+                                                        required="true" onchange=<?php
+                                                                                    if ($programa->esPostgrados($usuario->getId())) {
+                                                                                        echo '"cargarProgPost(this.value)"';
+                                                                                    } else {
+                                                                                        echo '"cargarProgramas(this.value)"';
+                                                                                    }
+                                                                                    ?>>
+                                                        <option value="">SELECCIONE</option>
+                                                        <?php
+                                                        if ($programa->esPostgrados($usuario->getId())) {
+                                                            $facultades = $programa->getFacultadesDocentePostgrado();
+                                                        } else {
+                                                            $facultades = $programa->getFacultadesDocente();
+                                                        }
 
-                                                    <div class="col-xs-3">
-                                                        <label for="">Rol  *</label>
-                                                         <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
+                                                        foreach ($facultades as $arregloFac) {
+                                                            echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                        }
+                                                        ?>
+                                                    </select>
                                                     <?php
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
                                                     ?>
-                                                </select>
-                                                    </div>
-
-                                                     <div class="col-xs-3">
-                                                        <label for="">Sede  *</label>
-                                                         <select class="form-control" id="sedeCmb" name="sede<Cmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                                    </div>
-                                            </div>
-                                            </div>
-                                            
-                                            
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-6">
-                                                        <label for="">Usuario  *</label>
-                                                        <input value="<?php echo $docente->getDireccion() ?>" required="true" type="text" class="form-control" name="direccionTxt" id="usuarioiTxt" placeholder="">
-                                                    </div>
-                                                    <div class="col-xs-3">
-                                                        <label for="">Contraseña</label>
-                                                        <input value="<?php echo $docente->getTelefono() ?>" type="text" class="form-control" name="telefonoTxt" id="telefonoTxt" placeholder="">
-                                                    </div>
-                                                    <div class="col-xs-3">
-                                                        <label for="">Repetir Contraseña</label>
-                                                        <input value="<?php echo $docente->getCelular() ?>" type="text" class="form-control" name="celularTxt" id="celularTxt" placeholder="">
-                                                    </div>
                                                 </div>
-                                            </div>
-                                            
-                                            <br>
-                                          
-                                           
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="col-xs-12">
-                                                        <div class="col-xs-6">
-                                                        </div>
-                                                        <div class="col-xs-3">
-                                                        </div>
-                                                        <div class="col-xs-3">
-                                                            <center>
+
+
+                                                <div class="col-xs-6">
+                                                    <label for="departamento">Departamento</label>
+                                                    <div id="comboProg">
+                                                        <select class="form-control" id="programaCmb" name="programaCmb"
+                                                            required="true">
+                                                            <option value="">SELECCIONE</option>
                                                             <?php
-                                                            ///////////////////////////////////////////////
-                                                            //var_dump($p->PeridoSede("'".$docente->getSede()."'"));
-                                                            if ($p->PeridoSede("'".$docente->getSede()."'")){
-                                                            //if ($p->PeridoSede("'".$docente->getSede()."'")){
-                                                            ?> 
-                                                              <button type="submit" class="btn btn-primary">
-                                                                    <i class="pe-7s-diskette"></i> Guardar
-                                                                </button>
-                                                            <?php
+                                                            $program = $programa->getProgramasDocente(0);
+                                                            foreach ($program as $arregloPro) {
+                                                                echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
                                                             }
-                                                            ///////////////////////////////////////
-                                                            ?>   
-                                                            </center>
-                                                        </div>
+                                                            ?>
+                                                        </select>
                                                     </div>
                                                 </div>
+
+
                                             </div>
-                                        </form>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+
+                                                <div class="col-xs-3">
+                                                    <label for="">Rol *</label>
+                                                    <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">
+                                                        <OPTION value="">[SELECCIONE]</OPTION>
+                                                        <OPTION value="DECANO">DECANO</OPTION>
+                                                        <OPTION value="EVALUADOR">EVALUADOR</OPTION>
+                                                        <OPTION value="JEFE">JEFE</OPTION>
+                                                        <OPTION value="RH">RH</OPTION>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xs-3">
+                                                    <label for="">Sede *</label>
+
+                                                    <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">
+                                                        <OPTION value="">[SELECCIONE]</OPTION>
+                                                        <OPTION value="A DISTANCIA">A DISTANCIA</OPTION>
+                                                        <OPTION value="AGUACHICA">AGUACHICA</OPTION>
+                                                        <OPTION value="VALLEDUPAR">VALLEDUPAR</OPTION>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xs-3">
+                                                    <label for="">Contraseña</label>
+                                                    <input value="" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
+                                                </div>
+
+                                                <div class="col-xs-3">
+                                                    <label for="">Confirmar contraseña</label>
+                                                    <input value="" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
+                                                </div>
+
+
+                                                <div class="col-xs-3">
+                                                    <br>
+                                                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- Mostrar mensaje de error si existe -->
+                                            <?php if ($mensaje): ?>
+                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
+                                                    <?php echo $mensaje; ?>
+                                                </div>
+                                            <?php endif; ?>
+
+                                            <div id="mensaje-error" class="error"></div>
+                                            <div id="mensaje-exito" class="success"></div>
+
+                                        </div>
+
+
+                                    </form>
+
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            
+                                        </div>
+
                                     </div>
-                                    <div class="panel-footer">
-                                        &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica 
-                                    </div>
+
+
+                                </div>
+                                <div class="panel-footer">
+                                    &copy; <script>
+                                        document.write(new Date().getFullYear())
+                                    </script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica
                                 </div>
                             </div>
                         </div>
@@ -283,50 +263,108 @@ if (isset($usuario)) {
                 </div>
             </div>
         </div>
+    </div>
 
-    </body>
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/funciones.js"></script>
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+</body>
+<script src="../General/js/jquery-1.10.2.js"></script>
+<script src="../General/js/bootstrap.min.js"></script>
 
-    <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
+<script src="../Tablero/js/validaciones-evaluadores.js"></script>
 
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+<!--   Core JS Files   -->
+<script src="../General/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="../General/assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<!--  Charts Plugin -->
+<script src="../General/assets/js/chartist.min.js"></script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../General/assets/js/bootstrap-notify.js"></script>
 
-    <script type="text/javascript">
-                                                $(document).ready(function () {
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="../General/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-                                                    demo.initChartist();
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="../General/assets/js/demo.js"></script>
 
-                                                    $.notify({
-                                                        icon: 'pe-7s-notebook',
-                                                        message: "Por favor diligencie <b>Su información Básica</b>"
+<script>
+    function validarUsuario() {
 
-                                                    }, {
-                                                        type: 'info',
-                                                        timer: 4000
-                                                    });
+        const mensajeError = document.getElementById('mensaje-error');
+        const mensajeExito = document.getElementById('mensaje-exito');
 
-                                                });
-                                                function cargar() {
-                                                    cargarDepartamentos(document.form.paisCmb.value);
-                                                    if (document.form.paisCmb.value === 'CO') {
-                                                        cargarMunicipios('11');
-                                                    } else {
-                                                        cargarMunicipios('0');
-                                                    }
-                                                }
-    </script>
+        const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
+        const nombreUsuario = document.getElementById('usuarioTxt').value;
+        const programaCmb = document.getElementById('programaCmb').value;
+        const rol = document.getElementById('rolCmb').value;
+        const sede = document.getElementById('sedeCmb').value;
+        const password = document.getElementById('seguridadTxt').value;
+        const seguridadTxtRep = document.getElementById('seguridadTxtRep').value;
+
+        // Limpiar mensajes previos
+        mensajeError.textContent = "";
+        mensajeExito.textContent = "";
+
+        if (nombreUsuario === "") {
+            mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
+            return false;
+        }
+
+        if (password.length < 7 || seguridadTxtRep.length < 7) {
+            alert("La contraseña debe tener al menos 7 caracteres.");
+            return false;
+        }
+
+        if (password !== seguridadTxtRep) {
+            alert("La contaseñas son diferente.");
+            return false;
+        }
+
+        // Realizar la validación con AJAX
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "procesar_registro.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+
+                const respuesta = JSON.parse(xhr.responseText);
+                alert(respuesta.success);
+                if (respuesta.success) {
+                    //mensajeExito.textContent = respuesta.message;
+
+                    demo.initChartist();
+                    $.notify({
+                        icon: 'pe-7s-notebook',
+                        message: "<b>Agregado correctamente</b>"
+                    }, {
+                        type: 'info',
+                        timer: 2000
+                    });
+
+                    setTimeout(function() {
+                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                    }, 500); // O un t
+                    //  window.location.reload();
+                } else {
+                    mensajeError.textContent = respuesta.message;
+                }
+            }
+        };
+
+
+        xhr.send(
+            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&rolCmb=" + encodeURIComponent(rol) +
+            "&sedeCmb=" + encodeURIComponent(sede) +
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
+            "&seguridadTxt=" + encodeURIComponent(password)
+        );
+
+
+
+        return false; // Prevenir el envío del formulario hasta que se complete la validación
+    }
+</script>
 
 </html>
