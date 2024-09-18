@@ -163,15 +163,7 @@ if (isset($usuario)) {
                                                     ?>
                                                 </div>
 
-                                                <div class="col-xs-6">
-                                                    <label for="telefono">Área</label>
-                                                    <div id="comboAreas">
-                                                        <select class="form-control" id="areasCmb" name="areasCmb"
-                                                                required="true">
-                                                            <option value="">SELECCIONE</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="col-xs-6">
                                                     <label for="departamento">Departamento</label>
                                                     <div id="comboProg">
