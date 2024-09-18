@@ -398,6 +398,7 @@ if (isset($usuario)) {
                     alert  ("entro en error");
                     mensajeError.textContent = respuesta.message;
             }
+        }
         };
 
 
@@ -413,7 +414,7 @@ if (isset($usuario)) {
         
     }
     return false; // Prevenir el envío del formulario hasta que se complete la validación
-}
+
 </script>
 
 
