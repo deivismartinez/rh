@@ -134,18 +134,16 @@ if (isset($usuario)) {
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12">
-                                            <div class="col-xs-6">
+                                                <div class="col-xs-6">
                                                     <label for="telefono">Facultad</label>
                                                     <select class="form-control" id="facultadCmb" name="facultadCmb"
-                                                            required="true" onchange=
-                                                            <?php
-                                                            if ($programa->esPostgrados($usuario->getId())) {
-                                                                echo '"cargarProgPost(this.value)"';
-                                                            } else {
-                                                                echo '"cargarProgramas(this.value)"';
-                                                            }
-                                                            ?>
-                                                            >
+                                                        required="true" onchange=<?php
+                                                                                    if ($programa->esPostgrados($usuario->getId())) {
+                                                                                        echo '"cargarProgPost(this.value)"';
+                                                                                    } else {
+                                                                                        echo '"cargarProgramas(this.value)"';
+                                                                                    }
+                                                                                    ?>>
                                                         <option value="">SELECCIONE</option>
                                                         <?php
                                                         if ($programa->esPostgrados($usuario->getId())) {
@@ -163,12 +161,12 @@ if (isset($usuario)) {
                                                     ?>
                                                 </div>
 
-                                                
+
                                                 <div class="col-xs-6">
                                                     <label for="departamento">Departamento</label>
                                                     <div id="comboProg">
                                                         <select class="form-control" id="programaCmb" name="programaCmb"
-                                                                required="true">
+                                                            required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
                                                             $program = $programa->getProgramasDocente(0);
@@ -209,7 +207,7 @@ if (isset($usuario)) {
                                                         <OPTION value="VALLEDUPAR">VALLEDUPAR</OPTION>
                                                     </select>
                                                 </div>
-                                                
+
                                                 <div class="col-xs-3">
                                                     <label for="">Contraseña</label>
                                                     <input value="" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
@@ -219,7 +217,7 @@ if (isset($usuario)) {
                                                     <label for="">Confirmar contraseña</label>
                                                     <input value="" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
                                                 </div>
-                                                
+
 
                                                 <div class="col-xs-3">
                                                     <br>
@@ -238,7 +236,6 @@ if (isset($usuario)) {
 
                                             <div id="mensaje-error" class="error"></div>
                                             <div id="mensaje-exito" class="success"></div>
-
 
                                         </div>
 
@@ -277,7 +274,7 @@ if (isset($usuario)) {
                                                             <td><?php echo $arreglo[5] ?></td>
 
                                                             <?php
-                                                            $urlVer = "EditEvaluadores.php?id=" . $arreglo[3];
+                                                            $urlVer = "EditEvaluadores.php?id=" . $arreglo[6];
                                                             ?>
                                                             <td>
                                                                 <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
@@ -328,7 +325,7 @@ if (isset($usuario)) {
 <script src="../General/assets/js/demo.js"></script>
 
 <script>
-    function validarUsuario(){
+    function validarUsuario() {
 
         const mensajeError = document.getElementById('mensaje-error');
         const mensajeExito = document.getElementById('mensaje-exito');
@@ -349,16 +346,16 @@ if (isset($usuario)) {
             mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
             return false;
         }
-        
+
         if (password.length < 7 || seguridadTxtRep.length < 7) {
             alert("La contraseña debe tener al menos 7 caracteres.");
             return false;
-            }
+        }
 
         if (password !== seguridadTxtRep) {
             alert("La contaseñas son diferente.");
             return false;
-            }
+        }
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
@@ -366,11 +363,10 @@ if (isset($usuario)) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                
-            const respuesta = JSON.parse(xhr.responseText);
-            alert(respuesta.success);
+
+                const respuesta = JSON.parse(xhr.responseText);
+                alert(respuesta.success);
                 if (respuesta.success) {
-                    alert("entro en exito");
                     //mensajeExito.textContent = respuesta.message;
 
                     demo.initChartist();
@@ -383,14 +379,13 @@ if (isset($usuario)) {
                     });
 
                     setTimeout(function() {
-                       // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
-                    alert  ("entro en error");
                     mensajeError.textContent = respuesta.message;
+                }
             }
-        }
         };
 
 
@@ -403,14 +398,10 @@ if (isset($usuario)) {
             "&seguridadTxt=" + encodeURIComponent(password)
         );
 
-        
-    
-    return false; // Prevenir el envío del formulario hasta que se complete la validación
-}
+
+
+        return false; // Prevenir el envío del formulario hasta que se complete la validación
+    }
 </script>
-
-
-
-
 
 </html>
