@@ -97,7 +97,7 @@ public function __construct() {
 
 public function getUnEvaluador($id)
     {
-        $sql = "SELECT   u.nombre as nonmbrec, u.correo as correo, p.nombre as nombreb, u.tipo as tipo, u.estado as estado, u.sede as sede, u.id as id FROM usuario as u inner join programa as p on p.id =u.facultad_id where u.id=". $id ."";
+        $sql = "SELECT nombre, correo, nombre, tipo, estado, sede, id FROM usuario  where id=". $id ."";
         $datos = pg_query($this->db, $sql);
         //$arreglo = array();
         //while ($row = pg_fetch_array($datos)) {
