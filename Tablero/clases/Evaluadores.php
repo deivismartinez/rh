@@ -97,7 +97,7 @@ public function __construct() {
 
 public function getUnEvaluador($id)
     {
-        $sql = "SELECT nombre, correo, nombre, tipo, estado, sede, id FROM usuario  where id=". $id ."";
+        $sql = "SELECT nombre, usuario, correo, tipo, estado, sede, id FROM usuario  where id=". $id ."";
         $datos = pg_query($this->db, $sql);
         //$arreglo = array();
         //while ($row = pg_fetch_array($datos)) {
@@ -109,9 +109,9 @@ public function getUnEvaluador($id)
 
         if ($datos) {
             $this->id = $datosr['id'];        // Heredado de UsuarioGetters
-            $this->user = $datosr['nonmbrec'];  // Heredado de UsuarioGetters
+            $this->user = $datosr['usuario'];  // Heredado de UsuarioGetters
             $this->pass = $datosr['correo'];    // Heredado de UsuarioGetters
-            $this->name = $datosr['nombreb'];  // Heredado de UsuarioGetters
+            $this->name = $datosr['nombre'];  // Heredado de UsuarioGetters
             $this->email = $datosr['tipo'];  // Heredado de UsuarioGetters
             $this->programa = $datosr['estado'];  // Heredado de UsuarioGetters
             $this->tipo = $datosr['sede'];  // Heredado de UsuarioGetters
