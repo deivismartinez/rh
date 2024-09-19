@@ -42,6 +42,13 @@ $opcionSede = [
     'VALLEDUPAR' => 'VALLEDUPAR'
 ];
 
+$opcionTipo = [
+    'SELECCIONE' => 'SELECCIONE',
+    'DECANO' => 'DECANO',
+    'EVALUADOR' => 'EVALUADOR',
+    'JEFE' => 'JEFE',
+    'RH' => 'RH'
+];
 
 ?>
 <!DOCTYPE html>
@@ -215,11 +222,12 @@ $opcionSede = [
                                                 <div class="col-xs-3">
                                                     <label for="">Rol *</label>
                                                     <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">
-                                                        <OPTION value="">[SELECCIONE]</OPTION>
-                                                        <OPTION value="DECANO">DECANO</OPTION>
-                                                        <OPTION value="EVALUADOR">EVALUADOR</OPTION>
-                                                        <OPTION value="JEFE">JEFE</OPTION>
-                                                        <OPTION value="RH">RH</OPTION>
+                                                    <?php foreach ($opcionTipo as $valor => $etiqueta): ?>
+                                                        <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                                <?php echo $valor === $eval->getTipo() ? 'selected' : ''; ?>>
+                                                            <?php echo htmlspecialchars($etiqueta); ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
