@@ -108,14 +108,14 @@ public function getUnEvaluador($id)
         $datosr = pg_fetch_assoc($datos);
 
         if ($datos) {
-            $this->id = $datosr['id'];        // Heredado de UsuarioGetters
-            $this->user = $datosr['usuario'];  // Heredado de UsuarioGetters
-            $this->pass = $datosr['clave'];    // Heredado de UsuarioGetters
             $this->name = $datosr['nombre'];  // Heredado de UsuarioGetters
+            $this->user = $datosr['usuario'];  // Heredado de UsuarioGetters
             $this->email = $datosr['correo'];  // Heredado de UsuarioGetters
-            $this->programa = $datosr['facultad_id'];  // Heredado de UsuarioGetters
-            $this->tipo = $datosr['tipo'];  // Heredado de UsuarioGetters
+            $this->tipo = $datosr['tipo'];  // Heredado de UsuarioGetters            
             $this->sede = $datosr['sede'];  // Heredado de UsuarioGetters
+            $this->id = $datosr['id'];        // Heredado de UsuarioGetters           
+            $this->pass = $datosr['clave'];    // Heredado de UsuarioGetters          
+            $this->programa = $datosr['facultad_id'];  // Heredado de UsuarioGetters      
     }
 }
 }
