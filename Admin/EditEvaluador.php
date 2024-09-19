@@ -35,13 +35,13 @@ if (isset($usuario)) {
     header("Location: ../Entrada.html");
 }
 
-
-$opcionTipo = [
+$opcionSede = [
     'SELECCIONE' => 'SELECCIONE',
     'A DISTANCIA' => 'A DISTANCIA',
     'AGUACHICA' => 'AGUACHICA',
     'VALLEDUPAR' => 'VALLEDUPAR'
 ];
+
 
 ?>
 <!DOCTYPE html>
@@ -227,8 +227,7 @@ $opcionTipo = [
                                                     <label for="">Sede *</label>
 
                                                     <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">
-                                                        
-                                                        <?php foreach ($opcionSede as $valor => $etiqueta): ?>
+                                                    <?php foreach ($opcionSede as $valor => $etiqueta): ?>
                                                         <option value="<?php echo htmlspecialchars($valor); ?>" 
                                                                 <?php echo $valor === $eval->getSede() ? 'selected' : ''; ?>>
                                                             <?php echo htmlspecialchars($etiqueta); ?>
@@ -236,13 +235,7 @@ $opcionTipo = [
                                                     <?php endforeach; ?>
                                                     </select>
                                                 </div>
-
-                                                ///////
-
-                                                <select name="tipo">
-    
-</select>
-                                                //////
+                                                
 
                                                 <div class="col-xs-3">
                                                     <label for="">Contraseña</label>
