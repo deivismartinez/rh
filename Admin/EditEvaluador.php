@@ -2,6 +2,7 @@
 require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Gestion.php");
+require_once("../Tablero/clases/Evaluadores.php");
 //require_once("../Tablero/vo/DocenteVO.php");
 //require_once("../Tablero/clases/Docente.php");
 //require_once("../Tablero/vo/PeridoVO.php");
@@ -10,6 +11,7 @@ $usuario = $_SESSION['usuario'];
 $archivo = "hvd" . $usuario->getId();
 $_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
+$eval= new Evaluadores();
 $usuarioEvaluador = $programa->getEvaluador();
 
 if (isset($usuario)) {
@@ -19,11 +21,11 @@ if (isset($usuario)) {
    
        //echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
-       $evaluador=$programa->getUnEvaluador($evaluadorId);
+       $eval->getUnEvaluador($evaluadorId);
       echo $usuario->getNombre();
        //echo "ID: " . $evaluador['nombre'] . "<br>";
       // echo ($evaluador);
-       var_dump($evaluador);
+       var_dump($eval->getUsuario());
        // $gestion->updateEvaluador($evaluadorId);
         
      
