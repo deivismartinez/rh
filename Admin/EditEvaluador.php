@@ -171,12 +171,12 @@ $opcionTipo = [
                                                     <label for="telefono">Facultad</label>
                                                     <select class="form-control" id="facultadCmb" name="facultadCmb"
                                                         required="true" onchange=<?php
-                                                                                    if ($programa->esPostgrados($usuario->getId())) {
-                                                                                        echo '"cargarProgPost(this.value)"';
-                                                                                    } else {
-                                                                                        echo '"cargarProgramas(this.value)"';
-                                                                                    }
-                                                                                    ?>>
+                                                        if ($programa->esPostgrados($usuario->getId())) {
+                                                        echo '"cargarProgPost(this.value)"';
+                                                        } else {
+                                                        echo '"cargarProgramas(this.value)"';
+                                                        }
+                                                        ?>>
                                                         <option value="">SELECCIONE</option>
                                                         <?php
                                                         if ($programa->esPostgrados($usuario->getId())) {
