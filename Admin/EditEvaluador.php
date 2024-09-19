@@ -146,11 +146,11 @@ if (isset($usuario)) {
                                             <div class="col-xs-12">
                                                 <div class="col-xs-6">
                                                     <label for="">Nombre *</label>
-                                                    <input value="" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
+                                                    <input value=" <?php echo $eval->getNombre(); ?>" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label for="">Usuario *</label>
-                                                    <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
+                                                    <input value=" <?php echo $eval->getUsuario(); ?>" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
