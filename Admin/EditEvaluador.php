@@ -36,7 +36,12 @@ if (isset($usuario)) {
 }
 
 
-
+$opcionTipo = [
+    'SELECCIONE' => 'SELECCIONE',
+    'A DISTANCIA' => 'A DISTANCIA',
+    'AGUACHICA' => 'AGUACHICA',
+    'VALLEDUPAR' => 'VALLEDUPAR'
+];
 
 ?>
 <!DOCTYPE html>
@@ -222,21 +227,31 @@ if (isset($usuario)) {
                                                     <label for="">Sede *</label>
 
                                                     <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">
-                                                        <OPTION value="">[SELECCIONE]</OPTION>
-                                                        <OPTION value="A DISTANCIA">A DISTANCIA</OPTION>
-                                                        <OPTION value="AGUACHICA">AGUACHICA</OPTION>
-                                                        <OPTION value="VALLEDUPAR">VALLEDUPAR</OPTION>
+                                                        
+                                                        <?php foreach ($opcionSede as $valor => $etiqueta): ?>
+                                                        <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                                <?php echo $valor === $eval->getSede() ? 'selected' : ''; ?>>
+                                                            <?php echo htmlspecialchars($etiqueta); ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
+                                                ///////
+
+                                                <select name="tipo">
+    
+</select>
+                                                //////
+
                                                 <div class="col-xs-3">
                                                     <label for="">Contraseña</label>
-                                                    <input value="" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
+                                                    <input value="<?php echo $eval->getPass(); ?>" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
                                                 </div>
 
                                                 <div class="col-xs-3">
                                                     <label for="">Confirmar contraseña</label>
-                                                    <input value="" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
+                                                    <input value="<?php echo $eval->getPass(); ?>" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
                                                 </div>
 
 
