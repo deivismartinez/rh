@@ -21,7 +21,7 @@ if (isset($usuario)) {
    
        //echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
-     //  $eval->getUnEvaluador($evaluadorId);
+       $eval->getUnEvaluador($evaluadorId);
       //echo $usuario->getNombre();
        //echo "ID: " . $evaluador['nombre'] . "<br>";
       // echo ($evaluador);
