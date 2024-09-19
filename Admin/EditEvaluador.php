@@ -13,9 +13,29 @@ $programa = new Programas();
 $usuarioEvaluador = $programa->getEvaluador();
 
 if (isset($usuario)) {
+
+   
+      $evaluadorId = $_GET['id'];
+   
+       //echo "<script>alert('$nombre');</script>";
+    if (isset($evaluadorId)) {
+       $evaluador=$programa->getUnEvaluador($evaluadorId);
+      echo $usuario->getNombre();
+       //echo "ID: " . $evaluador['nombre'] . "<br>";
+      // echo ($evaluador);
+       var_dump($evaluador);
+       // $gestion->updateEvaluador($evaluadorId);
+        
+     
+      //  $u->insertar($usuario->getId());
+               
+    }
 } else {
-    header('Location: AccesoNoautorizado.html');
+    header("Location: ../Entrada.html");
 }
+
+
+
 
 ?>
 <!DOCTYPE html>
