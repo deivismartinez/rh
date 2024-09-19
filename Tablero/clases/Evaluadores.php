@@ -107,7 +107,7 @@ public function getUnEvaluador($id)
 
         $datosr = pg_fetch_assoc($datos);
 
-        if ($datos) {
+        if ($datosr) {
             $this->name = $datosr['nombre'];  // Heredado de UsuarioGetters
             $this->user = $datosr['usuario'];  // Heredado de UsuarioGetters
             $this->email = $datosr['correo'];  // Heredado de UsuarioGetters
