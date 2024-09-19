@@ -184,13 +184,14 @@ $opcionTipo = [
                                                         } else {
                                                             $facultades = $programa->getFacultadesDocente();
                                                         }
-
+                                                        ?>
                                                         <?php foreach ($facultades as $valor => $etiqueta): ?>
                                                             <option value="<?php echo htmlspecialchars($valor); ?>" 
-                                                                    <?php echo $valor === $eval->getTipo() ? 'selected' : ''; ?>>
+                                                                    <?php echo $valor === $eval->getSede() ? 'selected' : ''; ?>>
                                                                 <?php echo htmlspecialchars($etiqueta); ?>
                                                             </option>
                                                         <?php endforeach; ?>
+                                                        
                                                     </select>
                                                     <?php
                                                     ?>
