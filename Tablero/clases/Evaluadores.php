@@ -2,7 +2,6 @@
 
 require_once("conectar.php");
 require_once("helpers.php");
-require_once("../vo/EvaluadorVO.php");
 
 
 class Evaluadores extends conectar {
