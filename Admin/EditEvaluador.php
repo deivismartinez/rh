@@ -16,21 +16,20 @@ $usuarioEvaluador = $programa->getEvaluador();
 
 if (isset($usuario)) {
 
-   
-      $evaluadorId = $_GET['id'];
-   
+
+    $evaluadorId = $_GET['id'];
+
        //echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
-       $eval->getUnEvaluador($evaluadorId);
+    $eval->getUnEvaluador($evaluadorId);
       //echo $usuario->getNombre();
        //echo "ID: " . $evaluador['nombre'] . "<br>";
       // echo ($evaluador);
      //  var_dump($eval->getUsuario());
        // $gestion->updateEvaluador($evaluadorId);
         
-     
       //  $u->insertar($usuario->getId());
-               
+
     }
 } else {
     header("Location: ../Entrada.html");
