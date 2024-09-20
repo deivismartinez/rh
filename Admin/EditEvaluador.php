@@ -205,7 +205,7 @@ $opcionTipo = [
                                                     <label for="departamento">Departamento</label>
                                                     <div id="comboProg">
                                                         <select class="form-control" id="programaCmb" name="programaCmb"
-                                                            required="true">
+                                                            required="true" onchange="cargarProgPost(this.value)">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
                                                             $program = $programa->getProgramasDocente(0);
