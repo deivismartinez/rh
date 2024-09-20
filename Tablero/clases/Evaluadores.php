@@ -141,7 +141,7 @@ public function getNameFacultadDepartatamento($idEvaluador)
 {
     $sql = "SELECT f.nombre as facultad, p.nombre as programa  FROM programa AS p
         INNER JOIN facultad AS f ON f.id = p.facultad_id
-        INNER JOIN usuario AS u ON u.facultad_id = p.id WHERE u.id='" . $idEvaluador . "';";
+        INNER JOIN usuario AS u ON u.facultad_id = p.id WHERE u.id=" . $idEvaluador . "";
     $datos = pg_query($this->db, $sql);
     $datosr = pg_fetch_assoc($datos);
 
