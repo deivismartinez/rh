@@ -198,7 +198,7 @@ $opcionTipo = [
                                             
                                             
                                                     <?php
-                                                    echo '"cargarProgramas(this.value)"';
+                                                    
                                                     ?>
                                                 </div>
 
@@ -334,6 +334,11 @@ $opcionTipo = [
 <script src="../General/assets/js/demo.js"></script>
 
 <script>
+
+window.onload = function() {
+            // Llamamos a la función pasando el valor PHP
+            cargarProgramas(<?php echo $eval->getIdFacultad(); ?>);
+        };
     function validarUsuario() {
 
         const mensajeError = document.getElementById('mensaje-error');
