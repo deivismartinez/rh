@@ -186,11 +186,7 @@ $opcionTipo = [
                                                             $facultades = $programa->getFacultadesDocente();
                                                         }
 
-                                                        foreach ($facultades as $arregloFac) {
-                                                            echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                        }
                                                         ?>
-                                                       
                                                         <?php foreach ($facultades as $valor): ?>
                                                             <option value="<?= htmlspecialchars($valor[0]) ?>" 
                                                                 <?= ($valor[1] === $eval->getNameFaculad()) ? 'selected' : '' ?>>
