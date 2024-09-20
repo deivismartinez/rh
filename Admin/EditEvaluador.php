@@ -210,6 +210,7 @@ $opcionTipo = [
                                                             <?php
                                                             $program = $programa->getProgramasDocente(0);
                                                             foreach ($program as $arregloPro) {
+                                                                //asi
                                                                 echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
                                                             }
                                                             ?>
