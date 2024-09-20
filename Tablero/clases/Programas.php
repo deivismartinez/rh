@@ -29,6 +29,19 @@ class Programas extends conectar
         return $arreglo;
     }
 
+    public function getNameFacultadDepartatamento($idEvaluador)
+    {
+        $sql = "SELECT f.nombre, p.nombre  FROM programa AS p
+            INNER JOIN facultad AS f ON f.id = p.facultad_id
+            INNER JOIN usuario AS u ON u.facultad_id = p.id WHERE u.id=" . $idEvaluador . ";";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
+
     public function getEvaluador()
     {
         $sql = "SELECT   u.nombre, u.correo, p.nombre, u.tipo, u.estado, u.sede, u.id FROM usuario as u inner join programa as p on p.id =u.facultad_id";

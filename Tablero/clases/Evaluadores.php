@@ -15,6 +15,8 @@ class Evaluadores extends conectar {
     private $programa;
     private $tipo;
     private $sede;
+    private $nameFacultad;
+    private $namePrograma;
 
 public function __construct() {
         $this->db = parent::conectar();
@@ -92,7 +94,22 @@ public function __construct() {
     {
         $this->sede = $sede;
     }
-
+    public function getNameFaculad()
+    {
+        return $this->nameFacultad;
+    }
+    public function setNameFacultad($nameFacultad)
+    {
+        $this->nameFacultad = $nameFacultad;
+    }
+    public function getNamePrograma()
+    {
+        return $this->nameFacultad;
+    }
+    public function setNamePrograma($namePrograma)
+    {
+        $this->namePrograma = $namePrograma;
+    }
 
 
 public function getUnEvaluador($id)
@@ -118,5 +135,20 @@ public function getUnEvaluador($id)
             $this->programa = $datosr['facultad_id'];  // Heredado de UsuarioGetters      
     }
 }
-}
 
+
+public function getNameFacultadDepartatamento($idEvaluador)
+{
+    $sql = "SELECT f.nombre as facultad, p.nombre as programa  FROM programa AS p
+        INNER JOIN facultad AS f ON f.id = p.facultad_id
+        INNER JOIN usuario AS u ON u.facultad_id = p.id WHERE u.id=" . $idEvaluador . ";";
+    $datos = pg_query($this->db, $sql);
+    $datosr = pg_fetch_assoc($datos);
+
+        if ($datosr) {
+            $this->nameFacultad = $datosr['nombre'];  // Heredado de UsuarioGetters
+            $this->namePrograma = $datosr['programa'];  // Heredado de UsuarioGetters
+                
+}
+}
+}

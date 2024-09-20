@@ -22,6 +22,7 @@ if (isset($usuario)) {
        //echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
     $eval->getUnEvaluador($evaluadorId);
+    $facultadDepatamento=$eval->getNameFacultadDepartatamento($evaluadorId);
       //echo $usuario->getNombre();
        //echo "ID: " . $evaluador['nombre'] . "<br>";
       // echo ($evaluador);
@@ -185,10 +186,15 @@ $opcionTipo = [
                                                             $facultades = $programa->getFacultadesDocente();
                                                         }
 
-                                                        foreach ($facultades as $arregloFac) {
-                                                            echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                        }
+                                                        
                                                         ?>
+                                                        <?php foreach ($facultades as $valor): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                                    <?php echo $valor === $eval->getNameFaculad() ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($eval->getNameFaculad()); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                        
                                                     </select>
                                                     <?php
                                                     ?>
