@@ -192,11 +192,13 @@ $opcionTipo = [
                                                                 <?= ($valor[1] === $eval->getNameFaculad()) ? 'selected' : '' ?>>
                                                                 <?= htmlspecialchars($valor[1]) ?>
                                                             </option>
+                                                            
                                                         <?php endforeach; ?>
                                                     </select>
                                             
                                             
                                                     <?php
+                                                    echo '"cargarProgramas(this.value)"';
                                                     ?>
                                                 </div>
 
@@ -208,7 +210,7 @@ $opcionTipo = [
                                                             required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
-                                                            $program = $programa->getProgramasDocente();
+                                                            $program = $programa->getProgramasDocente(0);
                                                             foreach ($program as $arregloPro) {
                                                                 //asi
                                                                 echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
