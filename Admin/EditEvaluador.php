@@ -210,7 +210,7 @@ $opcionTipo = [
                                                             required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
-                                                            $program = $programa->getProgramasDocente(0);?>
+                                                            $program = $programa->getProgramasDocente($eval->getIdFacultad());?>
                                                             <?php foreach ($program as $valor): ?>
                                                                 <option value="<?= htmlspecialchars($valor[0]) ?>" 
                                                                     <?= ($valor[1] === $eval->getNamePrograma()) ? 'selected' : '' ?>>
