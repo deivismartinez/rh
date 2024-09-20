@@ -148,8 +148,6 @@ public function getNameFacultadDepartatamento($idEvaluador)
         if ($datosr) {
             $this->nameFacultad = $datosr['facultad'];  // Heredado de UsuarioGetters
             $this->namePrograma = $datosr['programa'];  // Heredado de UsuarioGetters
-            var_dump($datosr['facultad']);
-            var_dump($datosr['programa']);
                 
 }
 }

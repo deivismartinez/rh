@@ -208,7 +208,7 @@ $opcionTipo = [
                                                             required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
-                                                            $program = $programa->getProgramasDocente(0);
+                                                            $program = $programa->getProgramasDocente();
                                                             foreach ($program as $arregloPro) {
                                                                 //asi
                                                                 echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
