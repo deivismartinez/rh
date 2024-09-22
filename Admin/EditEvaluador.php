@@ -341,7 +341,7 @@ window.onload = function() {
             // Llamamos a la función pasando el valor PHP
             cargarProgramas(<?php echo $eval->getIdFacultad(); ?>);
             // Obtener el valor preseleccionado desde PHP
-    var valorPreseleccionado = "<?php echo $valorPreseleccionado; ?>";
+    var valorPreseleccionado = "<?php echo $eval->getNamePrograma(); ?>";
 
 // Una vez que se carguen los programas, seleccionamos el valor correspondiente
 var selectElement = document.getElementById("idDelSelect"); // Asegúrate de que el select tenga este id
