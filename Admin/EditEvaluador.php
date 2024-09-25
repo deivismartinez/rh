@@ -67,7 +67,6 @@ $opcionTipo = [
     <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
     <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
     <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
         body {
@@ -260,21 +259,26 @@ $opcionTipo = [
                                                     <div class="col-xs-3">
                                                     <br>
                                                     <input type="submit" value="Guardar" class="btn btn-primary" />
-
-                                                    <!-- Botón para abrir el modal -->
-                                                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#recuperarModal">
-                                                    Reasignar contraseña
-                                                    </button>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="recuperarModal" tabindex="-1" aria-labelledby="recuperarModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
+                                                    <div class="modal" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="recuperarModalLabel">Recuperar Contraseña</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                                            <h5 class="modal-title">Modal title</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
                                                         </div>
                                                         <div class="modal-body">
+                                                            <p>Modal body text goes here.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
