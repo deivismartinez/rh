@@ -256,20 +256,24 @@ $opcionTipo = [
                                                 </div>
                                                 
 
-                                                <div class="col-xs-3">
-                                                    <label for="">Contraseña</label>
-                                                    <input value="<?php echo $eval->getPass(); ?>" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
-                                                </div>
-
-                                                <div class="col-xs-3">
-                                                    <label for="">Confirmar contraseña</label>
-                                                    <input value="<?php echo $eval->getPass(); ?>" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
-                                                </div>
-
-
-                                                <div class="col-xs-3">
+                                                    <div class="col-xs-3">
                                                     <br>
                                                     <input type="submit" value="Guardar" class="btn btn-primary" />
+
+                                                    <!-- Botón para abrir el modal -->
+                                                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#recuperarModal">
+                                                    Reasignar contraseña
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="recuperarModal" tabindex="-1" aria-labelledby="recuperarModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="recuperarModalLabel">Recuperar Contraseña</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                                        </div>
+                                                        <div class="modal-body">
                                                 </div>
                                             </div>
                                         </div>
@@ -365,9 +369,6 @@ window.onload = function() {
         const programaCmb = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
-        const password = document.getElementById('seguridadTxt').value;
-        const seguridadTxtRep = document.getElementById('seguridadTxtRep').value;
-
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
@@ -424,8 +425,7 @@ window.onload = function() {
             "&programaCmb=" + encodeURIComponent(programaCmb) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
-            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&seguridadTxt=" + encodeURIComponent(password)
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario)
         );
 
 
