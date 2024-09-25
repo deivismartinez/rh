@@ -360,6 +360,35 @@ class Programas extends conectar
 
     }
 
+
+
+    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt)
+    {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $id = $usuario->getId();
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+
+        $sql = "UPDATE usuario 
+                SET nombre = '" . $nombreCompletoTxt . "', 
+                    correo = '" . $usuarioTxt . "', 
+                    habilitado = '1', 
+                    facultad_id = '" . $programaCmb . "', 
+                    tipo = '" . $rolCmb . "', 
+                    estado = 'ACTIVO', 
+                    sede = '" . $sedeCmb . "' 
+                WHERE usuario = '" . $usuarioTxt . "'";
+        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+
+        //header('Location: NewEvaluador.php');
+
+    }
+
+    
+
     public function insertar()
     {
         require_once './vo/UsuarioVO.php';

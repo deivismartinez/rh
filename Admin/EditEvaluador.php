@@ -259,25 +259,7 @@ $opcionTipo = [
                                                     <div class="col-xs-3">
                                                     <br>
                                                     <input type="submit" value="Guardar" class="btn btn-primary" />
-                                                    <div class="modal" tabindex="-1" role="dialog">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Modal title</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Modal body text goes here.</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
+                                                        
                                                     
                                                 </div>
                                             </div>
@@ -378,24 +360,10 @@ window.onload = function() {
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 
-        if (nombreUsuario === "") {
-            mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
-            return false;
-        }
-
-        if (password.length < 7 || seguridadTxtRep.length < 7) {
-            alert("La contraseña debe tener al menos 7 caracteres.");
-            return false;
-        }
-
-        if (password !== seguridadTxtRep) {
-            alert("La contaseñas son diferente.");
-            return false;
-        }
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "procesar_registro.php", true);
+        xhr.open("POST", "procesarEditEvaluador.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -415,7 +383,8 @@ window.onload = function() {
                     });
 
                     setTimeout(function() {
-                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        alert("Guardado con exito!");
+                        //window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
