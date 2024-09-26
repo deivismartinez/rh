@@ -373,15 +373,16 @@ class Programas extends conectar
             header('Location: AccesoNoautorizado.html');
         }
 
-        $sql = "UPDATE usuario 
-                SET nombre = '" . $nombreCompletoTxt . "', 
-                    correo = '" . $usuarioTxt . "',                    
-                    facultad_id = " . $programaCmb . ", 
+       // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', correo = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "', 
+           //         tipo = '" . $rolCmb . "', 
+             //       sede = '" . $sedeCmb . "' 
+             //   WHERE id = " . $id . ";";
+                $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', correo = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "', 
                     tipo = '" . $rolCmb . "', 
                     sede = '" . $sedeCmb . "' 
                 WHERE id = " . $id . ";";
                
-        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        //pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
        
 
         //header('Location: NewEvaluador.php');
