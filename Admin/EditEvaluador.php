@@ -367,10 +367,10 @@ $opcionTipo = [
             if (xhr.readyState === 4 && xhr.status === 200) {
 
                 const respuesta = JSON.parse(xhr.responseText);
-                alert(respuesta.success);
+                
                 if (respuesta.success) {
                     //mensajeExito.textContent = respuesta.message;
-
+                    alert("todo bien");
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -385,6 +385,7 @@ $opcionTipo = [
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
+                    alert("error");
                     mensajeError.textContent = respuesta.message;
                 }
             }
