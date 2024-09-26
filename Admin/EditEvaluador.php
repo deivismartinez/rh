@@ -327,25 +327,6 @@ $opcionTipo = [
 <script src="../General/assets/js/demo.js"></script>
 
 <script>
-
-window.onload = function() {
-    // Llamamos a la función pasando el valor PHP
-    cargarProgramas(<?php echo $eval->getIdFacultad(); ?>);
-
-    // Obtener el valor preseleccionado desde PHP
-    var valorPreseleccionado = "<?php echo $eval->getNamePrograma(); ?>";
-
-    // Esperamos que la carga de programas haya terminado antes de preseleccionar
-    setTimeout(function() {
-        var selectElement = document.getElementById("programaCmb");
-        for (var i = 0; i < selectElement.options.length; i++) {
-            if (selectElement.options[i].text === valorPreseleccionado) {
-                selectElement.selectedIndex = i;
-                break;
-            }
-        }
-    }, 500); // Ajusta el tiempo si es necesario para la carga completa
-};
     function validarUsuario() {
 
         const mensajeError = document.getElementById('mensaje-error');
@@ -356,13 +337,27 @@ window.onload = function() {
         const programaCmb = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
-        const id = "<?php echo $evaluadorId; ?>";
-        // Limpiar mensajes previos
+        
+        const id = "<?php echo $usuarioEvaluador; ?>";
 
-        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede );
+        // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 
+        if (nombreUsuario === "") {
+            mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
+            return false;
+        }
+
+        if (password.length < 7 || seguridadTxtRep.length < 7) {
+            alert("La contraseña debe tener al menos 7 caracteres.");
+            return false;
+        }
+
+        if (password !== seguridadTxtRep) {
+            alert("La contaseñas son diferente.");
+            return false;
+        }
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
@@ -384,9 +379,9 @@ window.onload = function() {
                         type: 'info',
                         timer: 2000
                     });
+
                     setTimeout(function() {
-                        alert("Guardado con exito!");
-                        //window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
@@ -394,12 +389,14 @@ window.onload = function() {
                 }
             }
         };
+
+
         xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
             "&programaCmb=" + encodeURIComponent(programaCmb) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
-            "&usuarioTxt=" + encodeURIComponent(nombreUsuario)+
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
             "&id=" + encodeURIComponent(id)
         );
 
