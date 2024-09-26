@@ -382,7 +382,7 @@ class Programas extends conectar
                     sede = '" . $sedeCmb . "' 
                 WHERE id = " . $id . ";";
                
-        //pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
        
 
         //header('Location: NewEvaluador.php');
