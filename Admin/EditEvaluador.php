@@ -341,6 +341,7 @@ $opcionTipo = [
         const id = "<?php echo $evaluadorId; ?>";
        
         console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id);
+        
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
@@ -357,7 +358,7 @@ $opcionTipo = [
                 const respuesta = JSON.parse(xhr.responseText);
                 
                 if (respuesta.success) {
-                    //mensajeExito.textContent = respuesta.message;
+                    mensajeExito.textContent = respuesta.message;
                   
                     demo.initChartist();
                     $.notify({
