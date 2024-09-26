@@ -357,6 +357,8 @@ window.onload = function() {
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
         // Limpiar mensajes previos
+
+        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede );
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 

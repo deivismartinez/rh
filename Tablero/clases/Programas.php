@@ -362,7 +362,7 @@ class Programas extends conectar
 
 
 
-    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt)
+    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt)
     {
         session_start();
         if (isset($_SESSION['usuario'])) {
@@ -376,7 +376,7 @@ class Programas extends conectar
                 SET nombre = '" . $nombreCompletoTxt . "', 
                     correo = '" . $usuarioTxt . "', 
                     habilitado = '1', 
-                    facultad_id = '" . $programaCmb . "', 
+                    facultad_id = " . $programaCmb . ", 
                     tipo = '" . $rolCmb . "', 
                     estado = 'ACTIVO', 
                     sede = '" . $sedeCmb . "' 
