@@ -381,7 +381,6 @@ window.onload = function() {
                         type: 'info',
                         timer: 2000
                     });
-
                     setTimeout(function() {
                         alert("Guardado con exito!");
                         //window.location.reload(); // Recarga la página para mostrar los nuevos datos.
@@ -392,8 +391,6 @@ window.onload = function() {
                 }
             }
         };
-
-
         xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
             "&programaCmb=" + encodeURIComponent(programaCmb) +
