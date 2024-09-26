@@ -364,7 +364,7 @@ class Programas extends conectar
 
     public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt,$id)
     {
-        var_dump($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt);
+        
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
