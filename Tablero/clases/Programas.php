@@ -375,14 +375,12 @@ class Programas extends conectar
 
         $sql = "UPDATE usuario 
                 SET nombre = '" . $nombreCompletoTxt . "', 
-                    correo = '" . $usuarioTxt . "', 
-                    habilitado = '1', 
+                    correo = '" . $usuarioTxt . "',                    
                     facultad_id = " . $programaCmb . ", 
                     tipo = '" . $rolCmb . "', 
-                    estado = 'ACTIVO', 
                     sede = '" . $sedeCmb . "' 
-                WHERE id = '" . $id . "';";
-                var_dump($sql);
+                WHERE id = " . $id . ";";
+               
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
        
 
