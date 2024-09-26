@@ -24,15 +24,15 @@ header('Content-Type: application/json');
 
 if ($programa->existeUsuario($usuarioTxt)) {
    
- //echo json_encode(['success' => false, 'message' => 'El nombre de usuario no está disponible.']);  
- var_dump("entro a no disponible usuario");
+ echo json_encode(['success' => false, 'message' => 'El nombre de usuario no está disponible.']);  
+ //var_dump("entro a no disponible usuario");
 } else {
     // Lógica para insertar el nuevo usuario
    
   //$programa->updateEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb,$id);
-  var_dump("entro a actualizar");
+  //var_dump("entro a actualizar");
   //var_dump($programa);
-  //echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
+  echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
 
 }
 

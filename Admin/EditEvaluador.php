@@ -339,25 +339,13 @@ $opcionTipo = [
         const sede = document.getElementById('sedeCmb').value;
         
         const id = "<?php echo $usuarioEvaluador; ?>";
+        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id);
 
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 
-        if (nombreUsuario === "") {
-            mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
-            return false;
-        }
-
-        if (password.length < 7 || seguridadTxtRep.length < 7) {
-            alert("La contraseña debe tener al menos 7 caracteres.");
-            return false;
-        }
-
-        if (password !== seguridadTxtRep) {
-            alert("La contaseñas son diferente.");
-            return false;
-        }
+        
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
@@ -370,7 +358,7 @@ $opcionTipo = [
                 
                 if (respuesta.success) {
                     //mensajeExito.textContent = respuesta.message;
-                    alert("todo bien");
+                  
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
