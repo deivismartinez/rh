@@ -356,6 +356,7 @@ window.onload = function() {
         const programaCmb = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
+        const id = "<?php echo $evaluadorId; ?>";
         // Limpiar mensajes previos
 
         console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede );
@@ -398,7 +399,8 @@ window.onload = function() {
             "&programaCmb=" + encodeURIComponent(programaCmb) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
-            "&usuarioTxt=" + encodeURIComponent(nombreUsuario)
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario)+
+            "&id=" + encodeURIComponent(id)
         );
 
 

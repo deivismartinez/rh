@@ -16,6 +16,7 @@ $programaCmb = strtoupper(filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZ
 $rolCmb = strtoupper(filter_input(INPUT_POST, 'rolCmb', FILTER_SANITIZE_SPECIAL_CHARS));
 $sedeCmb = strtoupper(filter_input(INPUT_POST, 'sedeCmb', FILTER_SANITIZE_SPECIAL_CHARS));
 $usuarioTxt = strtoupper(filter_input(INPUT_POST, 'usuarioTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+$id = strtoupper(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
 
 header('Content-Type: application/json');
 // Verificar que el usuario no existe nuevamente para mayor seguridad
@@ -28,7 +29,7 @@ if ($programa->existeUsuario($usuarioTxt)) {
 } else {
     // Lógica para insertar el nuevo usuario
    
-  $programa->updateEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb);
+  $programa->updateEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb,$id);
   echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
 
 }

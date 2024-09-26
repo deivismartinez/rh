@@ -362,8 +362,9 @@ class Programas extends conectar
 
 
 
-    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt)
+    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt,$id)
     {
+        var_dump($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt);
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
@@ -380,7 +381,7 @@ class Programas extends conectar
                     tipo = '" . $rolCmb . "', 
                     estado = 'ACTIVO', 
                     sede = '" . $sedeCmb . "' 
-                WHERE usuario = '" . $usuarioTxt . "'";
+                WHERE id = '" . $id . "'";
                 var_dump($sql);
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
 
