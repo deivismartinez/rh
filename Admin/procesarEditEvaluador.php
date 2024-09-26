@@ -23,8 +23,7 @@ header('Content-Type: application/json');
 
 
 if ($programa->existeUsuario($usuarioTxt)) {
-    var_dump($programa);
-    var_dump("entro no esta disponible el usuario");
+   
  echo json_encode(['success' => false, 'message' => 'El nombre de usuario no está disponible.']);  
 } else {
     // Lógica para insertar el nuevo usuario

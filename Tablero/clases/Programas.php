@@ -377,15 +377,18 @@ class Programas extends conectar
                 SET nombre = '" . $nombreCompletoTxt . "', 
                     correo = '" . $usuarioTxt . "', 
                     habilitado = '1', 
-                    facultad_id = ' . $programaCmb . ', 
+                    facultad_id = " . $programaCmb . ", 
                     tipo = '" . $rolCmb . "', 
                     estado = 'ACTIVO', 
                     sede = '" . $sedeCmb . "' 
-                WHERE id = '" . $id . "'";
+                WHERE id = '" . $id . "';";
                 var_dump($sql);
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+       
 
         //header('Location: NewEvaluador.php');
+
+     
 
     }
 
