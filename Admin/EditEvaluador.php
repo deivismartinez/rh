@@ -338,7 +338,7 @@ $opcionTipo = [
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
         
-        const id = "<?php echo $usuarioEvaluador; ?>";
+        const id = "<?php echo $$evaluadorId; ?>";
        
 
         // Limpiar mensajes previos
