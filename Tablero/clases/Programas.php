@@ -381,6 +381,7 @@ class Programas extends conectar
                     estado = 'ACTIVO', 
                     sede = '" . $sedeCmb . "' 
                 WHERE usuario = '" . $usuarioTxt . "'";
+                var_dump($sql);
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
 
         //header('Location: NewEvaluador.php');
