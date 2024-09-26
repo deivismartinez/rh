@@ -362,7 +362,7 @@ class Programas extends conectar
 
 
 
-    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt,$id)
+    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $id)
     {
         
         session_start();
