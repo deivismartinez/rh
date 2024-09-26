@@ -339,7 +339,7 @@ $opcionTipo = [
         const sede = document.getElementById('sedeCmb').value;
         
         const id = "<?php echo $usuarioEvaluador; ?>";
-        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id);
+       
 
         // Limpiar mensajes previos
         mensajeError.textContent = "";
