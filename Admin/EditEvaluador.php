@@ -381,7 +381,7 @@ $opcionTipo = [
                     });
 
                     setTimeout(function() {
-                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                       // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                     }, 500); // O un t
                     //  window.location.reload();
                 } else {
