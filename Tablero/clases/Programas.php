@@ -380,7 +380,7 @@ class Programas extends conectar
                 $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', correo = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "', 
                     tipo = '" . $rolCmb . "', 
                     sede = '" . $sedeCmb . "' 
-                WHERE id = " . $id . ";";
+                WHERE id = " . $id . "";
                
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
        
