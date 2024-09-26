@@ -340,7 +340,7 @@ $opcionTipo = [
         
         const id = "<?php echo $$evaluadorId; ?>";
        
-
+        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id);
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
