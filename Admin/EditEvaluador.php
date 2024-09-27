@@ -158,11 +158,11 @@ $opcionTipo = [
                                             <div class="col-xs-12">
                                                 <div class="col-xs-6">
                                                     <label for="">Nombre *</label>
-                                                    <input value=" <?php echo $eval->getNombre(); ?>" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
+                                                    <input value="<?php echo $eval->getNombre(); ?>" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label for="">Usuario *</label>
-                                                    <input value=" <?php echo $eval->getUsuario(); ?>" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
+                                                    <input value="<?php echo $eval->getUsuario(); ?>" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +363,7 @@ $opcionTipo = [
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
-                        message: "<b>Agregado correctamente</b>"
+                        message: "<b>Actualizado correctamente</b>"
                     }, {
                         type: 'info',
                         timer: 2000
@@ -371,8 +371,10 @@ $opcionTipo = [
 
                     setTimeout(function() {
                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
-                    }, 500); // O un t
+                        window.location.href = 'NewEvaluador.php';
+                    }, 2000); // O un t
                     //  window.location.reload();
+                   
                 } else {
                     alert("error");
                     mensajeError.textContent = respuesta.message;

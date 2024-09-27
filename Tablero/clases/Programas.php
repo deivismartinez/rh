@@ -249,6 +249,20 @@ class Programas extends conectar
         }
         return false;
     }
+    
+      public function existeUsuarioExcluirPropio($usuario, $idusuario)
+    {
+        try {
+            $sql = "SELECT usuario FROM usuario WHERE usuario='" . $usuario . "' and id != " . $idusuario . "  ;";
+            $datos = pg_query($this->db, $sql);
+            while ($row = pg_fetch_array($datos)) {
+                return true;
+            }
+        } catch (Exception $error) {
+            return $error;
+        }
+        return false;
+    }
 
     public function existeInscripcionPostgrado($id)
     {
@@ -362,7 +376,7 @@ class Programas extends conectar
 
 
 
-    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $id)
+    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador)
     {
         
         session_start();
@@ -373,33 +387,16 @@ class Programas extends conectar
             header('Location: AccesoNoautorizado.html');
         }
 
-        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "'  WHERE id = " . $id . " ";
-        
-              //  $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', correo = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "', 
-                //    tipo = '" . $rolCmb . "', 
-                  //  sede = '" . $sedeCmb . "' 
-                //WHERE id = " . $id . "";
+        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' WHERE id = " . $idEvaluador . " ";
+          // $sql = "UPDATE usuario SET nombre = 'hola8'  WHERE id =291";
+              // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,
+                 //   tipo = '" . $rolCmb . "', 
+                 //  sede = '" . $sedeCmb . "' 
+             //   WHERE id = " . $idEvaluador . " ";
                
-       // pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
        
-        try {
-            $result = pg_query($this->db, $sql);
-            if (!$result) {
-                throw new Exception('Error en la ejecución de la consulta.');
-            }
-    
-            // Si la actualización fue exitosa
-            echo json_encode([
-                "status" => "success",
-                "message" => "Usuario actualizado correctamente"
-            ]);
-        } catch (Exception $e) {
-            // Si ocurre algún error
-            echo json_encode([
-                "status" => "error",
-                "message" => $e->getMessage()
-            ]);
-        }
+      
 
     }
 
@@ -647,7 +644,7 @@ class Programas extends conectar
         try {
             $sql = "UPDATE calificacion SET estado='MODIFICAR' WHERE docente_id =" . $id . ";";
             pg_query($this->db, $sql);
-        } catch (SintaxError $e) {
+        } catch (Error $e) {
             echo "9";
         }
         ///////////////////
