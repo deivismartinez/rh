@@ -29,7 +29,8 @@ if ($programa->existeUsuario($usuarioTxt)) {
 } else {
     // Lógica para insertar el nuevo usuario
    
-  $programa->updateEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb,$id);
+  //$programa->insertEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb,$id);
+  $programa->insertarEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt);
  
   echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
 
