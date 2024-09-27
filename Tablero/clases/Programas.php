@@ -373,8 +373,11 @@ class Programas extends conectar
             header('Location: AccesoNoautorizado.html');
         }
 
-        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "'
-                WHERE id = " . $id . ";";
+        $sql = "INSERT INTO usuario(usuario, clave, nombre, correo, habilitado, facultad_id, tipo, estado, sede)"
+            . " VALUES('" . $usuarioTxt . "', '" . $usuarioTxt . "', '" . $nombreCompletoTxt . "', '" . $usuarioTxt . "', '1', '" . $programaCmb . "', '" . $rolCmb . "', 'ACTIVO', '" . $sedeCmb . "')";
+
+       // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "'
+         //       WHERE id = " . $id . ";";
               //  $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', correo = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "', 
                 //    tipo = '" . $rolCmb . "', 
                   //  sede = '" . $sedeCmb . "' 
