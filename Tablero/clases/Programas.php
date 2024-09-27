@@ -382,12 +382,26 @@ class Programas extends conectar
                     sede = '" . $sedeCmb . "' 
                 WHERE id = " . $id . "";
                
-        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+       // pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
        
-
-        //header('Location: NewEvaluador.php');
-
-     
+        try {
+            $result = pg_query($this->db, $sql);
+            if (!$result) {
+                throw new Exception('Error en la ejecución de la consulta.');
+            }
+    
+            // Si la actualización fue exitosa
+            echo json_encode([
+                "status" => "success",
+                "message" => "Usuario actualizado correctamente"
+            ]);
+        } catch (Exception $e) {
+            // Si ocurre algún error
+            echo json_encode([
+                "status" => "error",
+                "message" => $e->getMessage()
+            ]);
+        }
 
     }
 
