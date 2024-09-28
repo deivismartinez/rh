@@ -176,6 +176,52 @@ if (isset($_SESSION['usuario'])) {
                                             <hr />
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
                                         </form>
+
+
+                                        <div class="row">
+                                        <div class="col-xs-12">
+                                            <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th><span>No.</span></th>
+                                                        <th><span>Nombre</span></th>
+                                                        <th><span>Correo</span></th>
+                                                        <th><span>Programa</span></th>
+                                                        <th><span>Tipo</span></th>
+                                                        <th><span>Estado</span></th>
+                                                        <th><span>Sede</span></th>
+                                                        <th><span></span></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $i = 0;
+                                                    foreach ($usuarioEvaluador as $arreglo) {
+                                                        $i = $i + 1;
+                                                    ?>
+                                                        <tr>
+                                                            <td><?php echo $i ?></td>
+                                                            <td><?php echo $arreglo[0] ?></td>
+                                                            <td><?php echo $arreglo[1] ?></td>
+                                                            <td><?php echo $arreglo[2] ?></td>
+                                                            <td><?php echo $arreglo[3] ?></td>
+                                                            <td><?php echo $arreglo[4] ?></td>
+                                                            <td><?php echo $arreglo[5] ?></td>
+
+                                                            <?php
+                                                            $urlVer = "EditEvaluador.php?id=" . $arreglo[6];
+                                                            ?>
+                                                            <td>
+                                                                <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
                                     </div>
                                     <div class="panel-footer">
                                         &copy; <script>
