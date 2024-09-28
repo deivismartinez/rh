@@ -302,9 +302,10 @@ if (isset($_SESSION['usuario'])) {
 
 
 <script>
-    document.getElementById("programaCmb").addEventListener("change", function () {
-        
-        var facultadId = this.value;
+    document.getElementById("comboProg").addEventListener("change", function () {
+        var seleccionado = document.getElementById("programaCmb");
+    var facultadId = seleccionado.value;  // Obtiene el valor seleccionado
+    
 console.log(facultadId);
 
         if (facultadId !== "") {
