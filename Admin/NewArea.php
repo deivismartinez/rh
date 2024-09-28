@@ -129,7 +129,11 @@ if (isset($_SESSION['usuario'])) {
                                                     <select class="form-control" id="facultadCmb" name="facultadCmb"
                                                             required="true" onchange=
                                                             <?php
-                                                            
+                                                            if ($p->esPostgrados($usuario->getId())) {
+                                                                echo '"cargarProgPostSinAreas(this.value)"';
+                                                            } else {
+                                                                echo '"cargarProgramasSinAreas(this.value)"';
+                                                            }
                                                             ?>
                                                             >
                                                         <option value="">SELECCIONE</option>
