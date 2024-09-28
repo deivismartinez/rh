@@ -182,10 +182,10 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="row">
                                         <div class="col-xs-12">
 
-                                        <table  cellspacing="5" cellpadding="3" id="mi-tabla" border="1" class="table-bordered table-sm tabla">
+                                        <table  cellspacing="5" cellpadding="3" id="mi-tabla"  class="table-bordered table-sm tabla">
                                             <thead>
                                                 <tr>
-                                                    <th>Nombre Facultad</th>
+                                                    <th>Nombre Departamento</th>
                                                     <th>Área</th>
                                                 </tr>
                                             </thead>
