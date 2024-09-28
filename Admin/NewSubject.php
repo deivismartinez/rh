@@ -277,9 +277,10 @@ if (isset($_SESSION['usuario'])) {
 <script>
     document.getElementById("comboAreas").addEventListener("change", function () {
         var seleccionadoprograma = document.getElementById("programaCmb");
+        
         var seleccionadoarea = document.getElementById("areasCmb");
     var facultadId = seleccionadoprograma.value;  // Obtiene el valor seleccionado
-    var selarea = seleccionadoarea.value;  // Obtiene el valor seleccionado
+    var selarea = select.options[select.selectedIndex].text;;  // Obtiene el valor seleccionado
     
 console.log(facultadId);
 console.log(selarea);
