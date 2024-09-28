@@ -130,9 +130,9 @@ if (isset($_SESSION['usuario'])) {
                                                             required="true" onchange=
                                                             <?php
                                                             if ($p->esPostgrados($usuario->getId())) {
-                                                                echo '"cargarProgPost(this.value)"';
+                                                                echo '"cargarProgPostSinAreas(this.value)"';
                                                             } else {
-                                                                echo '"cargarProgramas(this.value)"';
+                                                                echo '"cargarProgramasSinAreas(this.value)"';
                                                             }
                                                             ?>
                                                             >
