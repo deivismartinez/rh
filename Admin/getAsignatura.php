@@ -23,7 +23,7 @@ if (isset($_POST['facultad_id'])) {
     $facultadId = $_POST['facultad_id'];
     
 
-    $areas = $programa->getArea($facultadId);
+    $areas = $programa->getAsignatura($facultadId);
 
     // Devuelve los datos en formato JSON
     echo json_encode($areas);
