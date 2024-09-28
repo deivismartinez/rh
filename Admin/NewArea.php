@@ -310,7 +310,7 @@ if (isset($_SESSION['usuario'])) {
         if (facultadId !== "") {
             // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "get_area.php", true);
+            xhr.open("POST", "getArea.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
             xhr.onreadystatechange = function () {
