@@ -8,6 +8,7 @@ $p = new Programas();
 session_start();
 if (isset($_SESSION['usuario'])) {
    $area = filter_input(INPUT_POST, 'areaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
+   
     if (isset($area)) {
         $programaId = filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS);
         if($p->existArea($area,$programaId)){
@@ -180,6 +181,18 @@ if (isset($_SESSION['usuario'])) {
 
                                         <div class="row">
                                         <div class="col-xs-12">
+
+                                        <table id="facultadesTable" border="1">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre Facultad</th>
+                                                    <th>Área</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Aquí se llenarán las filas dinámicamente -->
+                                            </tbody>
+                                        </table>
                                             <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
                                                 <thead>
                                                     <tr>
@@ -283,6 +296,61 @@ if (isset($_SESSION['usuario'])) {
     });
 
     });
+
+    
 </script>
+
+
+<script>
+    document.getElementById("facultadesSelect").addEventListener("change", function () {
+        var facultadId = this.value;
+
+        if (facultadId !== "") {
+            // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "get_area.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Convierte la respuesta JSON a un array
+                    var areas = JSON.parse(xhr.responseText);
+                    llenarTabla(areas);
+                }
+            };
+
+            xhr.send("facultad_id=" + facultadId);
+        } else {
+            limpiarTabla(); // Si no se selecciona una facultad, limpia la tabla
+        }
+    });
+
+    function llenarTabla(areas) {
+        var table = document.getElementById("facultadesTable");
+
+        // Limpia las filas existentes
+        limpiarTabla();
+
+        // Rellena la tabla con los datos recibidos
+        areas.forEach(function(area) {
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            // Rellena las celdas con el nombre de la facultad y el área
+            cell1.innerHTML = area["nombre"];
+            cell2.innerHTML = area["area"];
+        });
+    }
+
+    function limpiarTabla() {
+        var table = document.getElementById("facultadesTable");
+        var rowCount = table.rows.length;
+        for (var i = rowCount - 1; i > 0; i--) {
+            table.deleteRow(i);
+        }
+    }
+</script>
+
 
 </html>
