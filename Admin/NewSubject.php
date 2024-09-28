@@ -249,4 +249,62 @@ if (isset($_SESSION['usuario'])) {
     });
 </script>
 
+
+
+<script>
+    document.getElementById("comboProg").addEventListener("change", function () {
+        var seleccionado = document.getElementById("programaCmb");
+    var facultadId = seleccionado.value;  // Obtiene el valor seleccionado
+    
+console.log(facultadId);
+
+        if (facultadId !== "") {
+            // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "getArea.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Convierte la respuesta JSON a un array
+                    var areas = JSON.parse(xhr.responseText);
+                    llenarTabla(areas);
+                }
+            };
+
+            xhr.send("facultad_id=" + facultadId);
+        } else {
+            limpiarTabla(); // Si no se selecciona una facultad, limpia la tabla
+        }
+    });
+
+    function llenarTabla(areas) {
+        var table = document.getElementById("mi-tabla").getElementsByTagName('tbody')[0]; // Obtiene el tbody
+
+        // Limpia las filas existentes
+        limpiarTabla();
+
+        // Rellena la tabla con los datos recibidos
+        areas.forEach(function(area) {
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            // Rellena las celdas con el nombre de la facultad y el área
+            cell1.innerHTML = area["nombre"];
+            cell2.innerHTML = area["area"];
+        });
+
+
+    }
+
+    function limpiarTabla() {
+        var table = document.getElementById("mi-tabla");
+        var rowCount = table.rows.length;
+        for (var i = rowCount - 1; i > 0; i--) {
+            table.deleteRow(i);
+        }
+    }
+</script>
+
 </html>
