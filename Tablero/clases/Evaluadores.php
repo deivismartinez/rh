@@ -133,8 +133,8 @@ public function __construct() {
 public function getUnEvaluador($id)
     {
         $sql = "SELECT nombre, usuario, correo, tipo, estado, sede, id, clave, facultad_id, CASE 
-        WHEN habilitado = 1 THEN 'Activo' 
-        ELSE 'Inactivo'  END AS estado  FROM usuario  where id=". $id ."";
+        WHEN habilitado = 1 THEN 'ACTIVO' 
+        ELSE 'INACTIVO'  END AS estado  FROM usuario  where id=". $id ."";
         $datos = pg_query($this->db, $sql);
         //$arreglo = array();
         //while ($row = pg_fetch_array($datos)) {
