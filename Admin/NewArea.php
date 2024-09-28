@@ -292,7 +292,7 @@ console.log(facultadId);
     });
 
     function llenarTabla(areas) {
-        var table = document.getElementById("mi-tabla");
+        var table = document.getElementById("mi-tabla").getElementsByTagName('tbody')[0]; // Obtiene el tbody
 
         // Limpia las filas existentes
         limpiarTabla();
@@ -307,6 +307,8 @@ console.log(facultadId);
             cell1.innerHTML = area["nombre"];
             cell2.innerHTML = area["area"];
         });
+
+
     }
 
     function limpiarTabla() {
