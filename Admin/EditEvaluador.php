@@ -25,7 +25,7 @@ if (isset($usuario)) {
     $facultadDepatamento=$eval->getNameFacultadDepartatamento($evaluadorId);
       //echo $usuario->getNombre();
        //echo "ID: " . $evaluador['nombre'] . "<br>";
-      // echo ($evaluador);
+       echo ($eval->getHabilitado());
      //  var_dump($eval->getUsuario());
        // $gestion->updateEvaluador($evaluadorId);
         
