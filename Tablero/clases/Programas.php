@@ -387,7 +387,7 @@ class Programas extends conectar
             header('Location: AccesoNoautorizado.html');
         }
 
-        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  sede = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
+        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  habilitado = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
           // $sql = "UPDATE usuario SET nombre = 'hola8'  WHERE id =291";
               // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,
                  //   tipo = '" . $rolCmb . "', 
