@@ -280,7 +280,7 @@ if (isset($_SESSION['usuario'])) {
         
         var seleccionadoarea = document.getElementById("areasCmb");
     var facultadId = seleccionadoprograma.value;  // Obtiene el valor seleccionado
-    var selarea = select.options[select.selectedIndex].text;;  // Obtiene el valor seleccionado
+    var selarea = seleccionadoarea.options[select.selectedIndex].text;;  // Obtiene el valor seleccionado
     
 console.log(facultadId);
 console.log(selarea);
