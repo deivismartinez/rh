@@ -303,9 +303,9 @@ if (isset($_SESSION['usuario'])) {
 
 <script>
     document.getElementById("comboProg").addEventListener("change", function () {
-        console.log("ingrese");
+        
         var facultadId = this.value;
-
+console.log(facultadId);
 
         if (facultadId !== "") {
             // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
