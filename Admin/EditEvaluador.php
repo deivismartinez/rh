@@ -11,7 +11,7 @@ $usuario = $_SESSION['usuario'];
 $archivo = "hvd" . $usuario->getId();
 $_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
-$eval= new Evaluadores();
+$eval = new Evaluadores();
 $usuarioEvaluador = $programa->getEvaluador();
 
 if (isset($usuario)) {
@@ -19,17 +19,17 @@ if (isset($usuario)) {
 
     $evaluadorId = $_GET['id'];
 
-       //echo "<script>alert('$nombre');</script>";
+    //echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
-    $eval->getUnEvaluador($evaluadorId);
-    $facultadDepatamento=$eval->getNameFacultadDepartatamento($evaluadorId);
-      //echo $usuario->getNombre();
-       //echo "ID: " . $evaluador['nombre'] . "<br>";
-       echo ($eval->getHabilitado());
-     //  var_dump($eval->getUsuario());
-       // $gestion->updateEvaluador($evaluadorId);
-        
-      //  $u->insertar($usuario->getId());
+        $eval->getUnEvaluador($evaluadorId);
+        $facultadDepatamento = $eval->getNameFacultadDepartatamento($evaluadorId);
+        //echo $usuario->getNombre();
+        //echo "ID: " . $evaluador['nombre'] . "<br>";
+        // echo ($eval->getHabilitado());
+        //  var_dump($eval->getUsuario());
+        // $gestion->updateEvaluador($evaluadorId);
+
+        //  $u->insertar($usuario->getId());
 
     }
 } else {
@@ -176,12 +176,12 @@ $opcionHabilitado = [
                                                     <label for="telefono">Facultad</label>
                                                     <select class="form-control" id="facultadCmb" name="facultadCmb"
                                                         required="true" onchange=<?php
-                                                        if ($programa->esPostgrados($usuario->getId())) {
-                                                        echo '"cargarProgPost(this.value)"';
-                                                        } else {
-                                                        echo '"cargarProgramas(this.value)"';
-                                                        }
-                                                        ?>>
+                                                                                    if ($programa->esPostgrados($usuario->getId())) {
+                                                                                        echo '"cargarProgPost(this.value)"';
+                                                                                    } else {
+                                                                                        echo '"cargarProgramas(this.value)"';
+                                                                                    }
+                                                                                    ?>>
                                                         <option value="">SELECCIONE</option>
                                                         <?php
                                                         if ($programa->esPostgrados($usuario->getId())) {
@@ -192,17 +192,17 @@ $opcionHabilitado = [
 
                                                         ?>
                                                         <?php foreach ($facultades as $valor): ?>
-                                                            <option value="<?= htmlspecialchars($valor[0]) ?>" 
+                                                            <option value="<?= htmlspecialchars($valor[0]) ?>"
                                                                 <?= ($valor[1] === $eval->getNameFaculad()) ? 'selected' : '' ?>>
                                                                 <?= htmlspecialchars($valor[1]) ?>
                                                             </option>
-                                                            
+
                                                         <?php endforeach; ?>
                                                     </select>
-                                            
-                                            
+
+
                                                     <?php
-                                                    
+
                                                     ?>
                                                 </div>
 
@@ -214,13 +214,13 @@ $opcionHabilitado = [
                                                             required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
-                                                            $program = $programa->getProgramasDocente($eval->getIdFacultad());?>
+                                                            $program = $programa->getProgramasDocente($eval->getIdFacultad()); ?>
                                                             <?php foreach ($program as $valor): ?>
-                                                                <option value="<?= htmlspecialchars($valor[0]) ?>" 
+                                                                <option value="<?= htmlspecialchars($valor[0]) ?>"
                                                                     <?= ($valor[1] === $eval->getNamePrograma()) ? 'selected' : '' ?>>
                                                                     <?= htmlspecialchars($valor[1]) ?>
                                                                 </option>
-                                                                
+
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -237,12 +237,12 @@ $opcionHabilitado = [
                                                 <div class="col-xs-3">
                                                     <label for="">Rol *</label>
                                                     <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">
-                                                    <?php foreach ($opcionTipo as $valor => $etiqueta): ?>
-                                                        <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                        <?php foreach ($opcionTipo as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
                                                                 <?php echo $valor === $eval->getTipo() ? 'selected' : ''; ?>>
-                                                            <?php echo htmlspecialchars($etiqueta); ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
@@ -250,34 +250,34 @@ $opcionHabilitado = [
                                                     <label for="">Sede *</label>
 
                                                     <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">
-                                                    <?php foreach ($opcionSede as $valor => $etiqueta): ?>
-                                                        <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                        <?php foreach ($opcionSede as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
                                                                 <?php echo $valor === $eval->getSede() ? 'selected' : ''; ?>>
-                                                            <?php echo htmlspecialchars($etiqueta); ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
                                                 <div class="col-xs-3">
                                                     <label for="">Estado *</label>
                                                     <select class="form-control" id="estadoCmb" name="estadoCmb" required="true" onchange="">
-                                                    <?php foreach ($opcionHabilitado as $valor => $etiqueta): ?>
-                                                        <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                        <?php foreach ($opcionHabilitado as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
                                                                 <?php echo $etiqueta === $eval->getHabilitado() ? 'selected' : ''; ?>>
-                                                            <?php echo htmlspecialchars($etiqueta); ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
-                                                
 
-                                                    <div class="col-xs-3">
+
+                                                <div class="col-xs-3">
                                                     <br>
                                                     <input type="submit" value="Guardar" class="btn btn-primary" />
-                                                        
-                                                    
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -301,7 +301,7 @@ $opcionHabilitado = [
 
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            
+
                                         </div>
 
                                     </div>
@@ -355,15 +355,15 @@ $opcionHabilitado = [
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
         const estado = document.getElementById('estadoCmb').value;
-        
-        const id = "<?php echo $evaluadorId; ?>";       
-        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id, estado);
-        
+
+        const id = "<?php echo $evaluadorId; ?>";
+        //console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id, estado);
+
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 
-        
+
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
@@ -373,9 +373,9 @@ $opcionHabilitado = [
             if (xhr.readyState === 4 && xhr.status === 200) {
 
                 const respuesta = JSON.parse(xhr.responseText);
-                
+
                 if (respuesta.success) {
-                    mensajeExito.textContent = respuesta.message;                  
+                    mensajeExito.textContent = respuesta.message;
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -386,8 +386,8 @@ $opcionHabilitado = [
                     });
 
                     setTimeout(function() {
-                       // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
-                      //  window.location.href = 'NewEvaluador.php';
+                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        window.location.href = 'NewEvaluador.php';
                     }, 2000); // O un t
                     //  window.location.reload();                   
                 } else {
@@ -404,7 +404,7 @@ $opcionHabilitado = [
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
             "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&id=" + encodeURIComponent(id)+
+            "&id=" + encodeURIComponent(id) +
             "&estadoCmb=" + encodeURIComponent(estado)
         );
 
