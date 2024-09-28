@@ -78,6 +78,7 @@ function cargarProgPostSinAreas(fac) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
+            
             document.getElementById("comboProg").innerHTML = this.responseText;
         }
     };
@@ -89,8 +90,9 @@ function cargarAreas(dep) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-           // document.getElementById("comboAreas").innerHTML = this.responseText;
-        }
+            if (document.getElementById("comboAreas")){
+            document.getElementById("comboAreas").innerHTML = this.responseText;
+        }}
     };
     xhttp.open("GET", "AreasList.php?dep=" + dep, true);
     xhttp.send();
