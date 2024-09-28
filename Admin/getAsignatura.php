@@ -21,9 +21,10 @@ header('Content-Type: application/json');
 
 if (isset($_POST['facultad_id'])) {
     $facultadId = $_POST['facultad_id'];
+    $area = $_POST['sel_area'];
     
 
-    $areas = $programa->getAsignatura($facultadId);
+    $areas = $programa->getAsignatura($facultadId, $area);
 
     // Devuelve los datos en formato JSON
     echo json_encode($areas);

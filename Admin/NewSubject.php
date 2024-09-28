@@ -276,10 +276,13 @@ if (isset($_SESSION['usuario'])) {
 
 <script>
     document.getElementById("comboAreas").addEventListener("change", function () {
-        var seleccionado = document.getElementById("programaCmb");
-    var facultadId = seleccionado.value;  // Obtiene el valor seleccionado
+        var seleccionadoprograma = document.getElementById("programaCmb");
+        var seleccionadoarea = document.getElementById("areasCmb");
+    var facultadId = seleccionadoprograma.value;  // Obtiene el valor seleccionado
+    var selarea = seleccionadoarea.value;  // Obtiene el valor seleccionado
     
 console.log(facultadId);
+console.log(selarea);
 
         if (facultadId !== "") {
             // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
@@ -295,7 +298,11 @@ console.log(facultadId);
                 }
             };
 
-            xhr.send("facultad_id=" + facultadId);
+            xhr.send(
+                "facultad_id=" + facultadId +
+                "sel_area=" + selarea
+
+            );
         } else {
             limpiarTabla(); // Si no se selecciona una facultad, limpia la tabla
         }
