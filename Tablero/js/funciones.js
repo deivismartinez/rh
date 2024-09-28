@@ -102,8 +102,10 @@ function cargarAsignaturas(dep) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
+
+            if (document.getElementById("comboAsig")){
             document.getElementById("comboAsig").innerHTML = this.responseText;
-        }
+        }}
     };
     xhttp.open("GET", "AsignaturasList.php?dep=" + dep, true);
     xhttp.send();

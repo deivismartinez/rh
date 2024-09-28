@@ -303,7 +303,9 @@ if (isset($_SESSION['usuario'])) {
 
 <script>
     document.getElementById("programaCmb").addEventListener("change", function () {
+        console.log("ingrese");
         var facultadId = this.value;
+
 
         if (facultadId !== "") {
             // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
