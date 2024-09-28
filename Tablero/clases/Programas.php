@@ -198,6 +198,18 @@ class Programas extends conectar
         return $arreglo;
     }
 
+    public function getAsignatura($facultad)
+    {
+        //$sql = "SELECT  DISTINCT f.nombre as nombre, p.area1 as area  FROM perfil as p inner join facultad as f on f.id=p.programa_id where facultad_id=" . $facultad . ";";
+        $sql = "SELECT  DISTINCT  p.area1 as area, p.asignatura as asignatura  FROM perfil as p inner join programa as f on f.id=p.programa_id where p.programa_id=" . $facultad . ";";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
+
     public function getAreasPrograma($programa_id)
     {
         $sql = "SELECT SELECT DISTINCT ON (area1)area1, id FROM perfil where facultad_id=" . $programa_id . ";";

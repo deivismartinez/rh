@@ -275,8 +275,8 @@ if (isset($_SESSION['usuario'])) {
 
 
 <script>
-    document.getElementById("comboProg").addEventListener("change", function () {
-        var seleccionado = document.getElementById("programaCmb");
+    document.getElementById("comboAreas").addEventListener("change", function () {
+        var seleccionado = document.getElementById("areasCmb");
     var facultadId = seleccionado.value;  // Obtiene el valor seleccionado
     
 console.log(facultadId);
@@ -284,7 +284,7 @@ console.log(facultadId);
         if (facultadId !== "") {
             // Realiza una llamada AJAX para obtener los datos de la facultad seleccionada
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "getArea.php", true);
+            xhr.open("POST", "getAsignatura.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
             xhr.onreadystatechange = function () {
