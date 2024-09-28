@@ -357,7 +357,7 @@ $opcionHabilitado = [
         const estado = document.getElementById('estadoCmb').value;
         
         const id = "<?php echo $evaluadorId; ?>";       
-        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id);
+        console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id, estado);
         
         // Limpiar mensajes previos
         mensajeError.textContent = "";
