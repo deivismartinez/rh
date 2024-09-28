@@ -387,7 +387,7 @@ $opcionHabilitado = [
 
                     setTimeout(function() {
                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
-                        window.location.href = 'NewEvaluador.php';
+                      //  window.location.href = 'NewEvaluador.php';
                     }, 2000); // O un t
                     //  window.location.reload();                   
                 } else {
