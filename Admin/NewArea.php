@@ -182,7 +182,7 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="row">
                                         <div class="col-xs-12">
 
-                                        <table id="facultadesTable" border="1">
+                                        <table  cellspacing="5" cellpadding="3" id="mi-tabla" border="1" class="table-bordered table-sm tabla">
                                             <thead>
                                                 <tr>
                                                     <th>Nombre Facultad</th>
@@ -193,44 +193,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <!-- Aquí se llenarán las filas dinámicamente -->
                                             </tbody>
                                         </table>
-                                            <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
-                                                <thead>
-                                                    <tr>
-                                                        <th><span>No.</span></th>
-                                                        <th><span>Nombre</span></th>
-                                                        <th><span>Correo</span></th>
-                                                        <th><span>Programa</span></th>
-                                                        <th><span>Tipo</span></th>
-                                                        <th><span>Estado</span></th>
-                                                        <th><span>Sede</span></th>
-                                                        <th><span></span></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $i = 0;
-                                                    foreach ($usuarioEvaluador as $arreglo) {
-                                                        $i = $i + 1;
-                                                    ?>
-                                                        <tr>
-                                                            <td><?php echo $i ?></td>
-                                                            <td><?php echo $arreglo[0] ?></td>
-                                                            <td><?php echo $arreglo[1] ?></td>
-                                                            <td><?php echo $arreglo[2] ?></td>
-                                                            <td><?php echo $arreglo[3] ?></td>
-                                                            <td><?php echo $arreglo[4] ?></td>
-                                                            <td><?php echo $arreglo[5] ?></td>
-
-                                                            <?php
-                                                            $urlVer = "EditEvaluador.php?id=" . $arreglo[6];
-                                                            ?>
-                                                            <td>
-                                                                <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
+                                                    
                                         </div>
 
                                     </div>
@@ -329,7 +292,7 @@ console.log(facultadId);
     });
 
     function llenarTabla(areas) {
-        var table = document.getElementById("facultadesTable");
+        var table = document.getElementById("mi-tabla");
 
         // Limpia las filas existentes
         limpiarTabla();
@@ -347,7 +310,7 @@ console.log(facultadId);
     }
 
     function limpiarTabla() {
-        var table = document.getElementById("facultadesTable");
+        var table = document.getElementById("mi-tabla");
         var rowCount = table.rows.length;
         for (var i = rowCount - 1; i > 0; i--) {
             table.deleteRow(i);
