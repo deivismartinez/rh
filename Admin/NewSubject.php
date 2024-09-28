@@ -186,6 +186,29 @@ if (isset($_SESSION['usuario'])) {
                                             <hr />
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
                                         </form>
+
+                                        <div class="row">
+                                        <div class="col-xs-12">
+
+                                        <table  cellspacing="5" cellpadding="3" id="mi-tabla"  class="table-bordered table-sm tabla">
+                                            <thead>
+                                                <tr>
+                                                    <th>Área</th>
+                                                    <th>Asignaturas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Aquí se llenarán las filas dinámicamente -->
+                                            </tbody>
+                                        </table>
+                                                    
+                                        </div>
+
+                                    </div>
+
+
+
+
                                     </div>
                                     <div class="panel-footer">
                                         &copy; <script>
