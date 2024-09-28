@@ -356,8 +356,7 @@ $opcionHabilitado = [
         const sede = document.getElementById('sedeCmb').value;
         const estado = document.getElementById('estadoCmb').value;
         
-        const id = "<?php echo $evaluadorId; ?>";
-       
+        const id = "<?php echo $evaluadorId; ?>";       
         console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id);
         
         // Limpiar mensajes previos
@@ -376,8 +375,7 @@ $opcionHabilitado = [
                 const respuesta = JSON.parse(xhr.responseText);
                 
                 if (respuesta.success) {
-                    mensajeExito.textContent = respuesta.message;
-                  
+                    mensajeExito.textContent = respuesta.message;                  
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -391,8 +389,7 @@ $opcionHabilitado = [
                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                         window.location.href = 'NewEvaluador.php';
                     }, 2000); // O un t
-                    //  window.location.reload();
-                   
+                    //  window.location.reload();                   
                 } else {
                     alert("error");
                     mensajeError.textContent = respuesta.message;
