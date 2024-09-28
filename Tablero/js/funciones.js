@@ -70,7 +70,7 @@ function cargarProgramasSinAreas(fac) {
             document.getElementById("comboProg").innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "../Tablero/ProgramasList.php?fac=" + fac, true);
+    xhttp.open("GET", "../Tablero/NewProgramasListSinAreas.php?fac=" + fac, true);
     xhttp.send();
 }
 
@@ -81,7 +81,7 @@ function cargarProgPostSinAreas(fac) {
             document.getElementById("comboProg").innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "../Tablero/ProgramasListPostgrados.php?fac=" + fac, true);
+    xhttp.open("GET", "../Tablero/NewProgramasListPostgradosSinAreas.php?fac=" + fac, true);
     xhttp.send();
 }
 
