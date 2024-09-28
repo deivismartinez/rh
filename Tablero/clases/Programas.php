@@ -376,7 +376,7 @@ class Programas extends conectar
 
 
 
-    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador)
+    public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
     {
         
         session_start();
@@ -387,7 +387,7 @@ class Programas extends conectar
             header('Location: AccesoNoautorizado.html');
         }
 
-        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' WHERE id = " . $idEvaluador . " ";
+        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  sede = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
           // $sql = "UPDATE usuario SET nombre = 'hola8'  WHERE id =291";
               // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,
                  //   tipo = '" . $rolCmb . "', 

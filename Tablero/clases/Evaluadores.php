@@ -18,6 +18,7 @@ class Evaluadores extends conectar {
     private $nameFacultad;
     private $namePrograma;
     private $idFacultad;
+    private $habilitado;
 
 public function __construct() {
         $this->db = parent::conectar();
@@ -120,9 +121,20 @@ public function __construct() {
         $this->idFacultad = $idFacultad;
     }
 
+    public function getHabilitado()
+    {
+        return $this->habilitado;
+    }
+    public function setHabilitado($habilitado)
+    {
+        $this->habilitado = $habilitado;
+    }
+
 public function getUnEvaluador($id)
     {
-        $sql = "SELECT nombre, usuario, correo, tipo, estado, sede, id, clave, facultad_id FROM usuario  where id=". $id ."";
+        $sql = "SELECT nombre, usuario, correo, tipo, estado, sede, id, clave, facultad_id, CASE 
+        WHEN habilitado = 1 THEN 'Activo' 
+        ELSE 'Inactivo'  END AS estado  FROM usuario  where id=". $id ."";
         $datos = pg_query($this->db, $sql);
         //$arreglo = array();
         //while ($row = pg_fetch_array($datos)) {
@@ -140,7 +152,8 @@ public function getUnEvaluador($id)
             $this->sede = $datosr['sede'];  // Heredado de UsuarioGetters
             $this->id = $datosr['id'];        // Heredado de UsuarioGetters           
             $this->pass = $datosr['clave'];    // Heredado de UsuarioGetters          
-            $this->programa = $datosr['facultad_id'];  // Heredado de UsuarioGetters      
+            $this->programa = $datosr['facultad_id'];  // Heredado de UsuarioGetters
+            $this->habilitado = $datosr['estado'];  // Heredado de UsuarioGetters       
     }
 }
 

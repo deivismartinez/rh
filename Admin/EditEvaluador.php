@@ -51,6 +51,10 @@ $opcionTipo = [
     'RH' => 'RH'
 ];
 
+$opcionHabilitado = [
+    '1' => 'ACTIVO',
+    '0' => 'INACTIVO'
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -254,6 +258,19 @@ $opcionTipo = [
                                                     <?php endforeach; ?>
                                                     </select>
                                                 </div>
+
+                                                <div class="col-xs-3">
+                                                    <label for="">Estado *</label>
+
+                                                    <select class="form-control" id="estadoCmb" name="estadoCmb" required="true" onchange="">
+                                                    <?php foreach ($opcionHabilitado as $valor => $etiqueta): ?>
+                                                        <option value="<?php echo htmlspecialchars($valor); ?>" 
+                                                                <?php echo $valor === $eval->getHabilitado() ? 'selected' : ''; ?>>
+                                                            <?php echo htmlspecialchars($etiqueta); ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                    </select>
+                                                </div>
                                                 
 
                                                     <div class="col-xs-3">
@@ -337,6 +354,7 @@ $opcionTipo = [
         const programaCmb = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
+        const estado = document.getElementById('estadoCmb').value;
         
         const id = "<?php echo $evaluadorId; ?>";
        
@@ -389,7 +407,8 @@ $opcionTipo = [
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
             "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&id=" + encodeURIComponent(id)
+            "&id=" + encodeURIComponent(id)+
+            "&estadoCmb=" + encodeURIComponent(estado)
         );
 
 
