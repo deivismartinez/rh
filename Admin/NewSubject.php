@@ -276,7 +276,7 @@ if (isset($_SESSION['usuario'])) {
 
 <script>
     document.getElementById("comboAreas").addEventListener("change", function () {
-        var seleccionado = document.getElementById("areasCmb");
+        var seleccionado = document.getElementById("programaCmb");
     var facultadId = seleccionado.value;  // Obtiene el valor seleccionado
     
 console.log(facultadId);
