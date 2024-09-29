@@ -322,8 +322,8 @@ console.log(selarea);
             var cell2 = row.insertCell(1);
 
             // Rellena las celdas con el nombre de la facultad y el área
-            cell1.innerHTML = area["nombre"];
-            cell2.innerHTML = area["area"];
+            cell1.innerHTML = area["area"];
+            cell2.innerHTML = area["asignatura"];
         });
 
 
