@@ -299,13 +299,14 @@ console.log(selarea);
                 }
             };
 
-            xhr.send(
-                "enviarfacultadid=" + encodeURIComponent(facultadId) +
-                "enviarselarea=" + encodeURIComponent(selarea)
-
-            );
+          
+            xhr.send(       
+            "&enviarfacultadid=" + encodeURIComponent(facultadId) +
+            "&enviarselarea=" + encodeURIComponent(selarea)
+        );
         } else {
             limpiarTabla(); // Si no se selecciona una facultad, limpia la tabla
+            console.log("Si no se selecciona una facultad, limpia la tabla");
         }
     });
 
