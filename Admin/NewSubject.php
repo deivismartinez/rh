@@ -300,8 +300,8 @@ console.log(selarea);
             };
 
             xhr.send(
-                "facultad_id=" + encodeURIComponent(facultadId) +
-                "sel_area=" + encodeURIComponent(selarea)
+                "enviarfacultadid=" + encodeURIComponent(facultadId) +
+                "enviarselarea=" + encodeURIComponent(selarea)
 
             );
         } else {
