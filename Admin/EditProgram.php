@@ -156,9 +156,9 @@ $opcionAlcance = [
                                                         <option value="">SELECCIONE</option>
                                                         <?php
                                                         if ($p->esPostgrados($usuario->getId())) {
-                                                           // $facultades = $p->getFacultadesDocentePostgrado();
+                                                            $facultades = $p->getFacultadesDocentePostgrado();
                                                         } else {
-                                                           // $facultades = $p->getFacultadesDocente();
+                                                            $facultades = $p->getFacultadesDocente();
                                                         }
 
                                                         ?>
