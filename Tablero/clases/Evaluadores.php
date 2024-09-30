@@ -4,7 +4,8 @@ require_once("conectar.php");
 require_once("helpers.php");
 
 
-class Evaluadores extends conectar {
+class Evaluadores extends conectar
+{
     private $db;
 
     private $id;
@@ -20,7 +21,8 @@ class Evaluadores extends conectar {
     private $idFacultad;
     private $habilitado;
 
-public function __construct() {
+    public function __construct()
+    {
         $this->db = parent::conectar();
         parent::setNames();
     }
@@ -130,16 +132,16 @@ public function __construct() {
         $this->habilitado = $habilitado;
     }
 
-public function getUnEvaluador($id)
+    public function getUnEvaluador($id)
     {
         $sql = "SELECT nombre, usuario, correo, tipo, estado, sede, id, clave, facultad_id, CASE 
         WHEN habilitado = 1 THEN 'ACTIVO' 
-        ELSE 'INACTIVO'  END AS estado  FROM usuario  where id=". $id ."";
+        ELSE 'INACTIVO'  END AS estado  FROM usuario  where id=" . $id . "";
         $datos = pg_query($this->db, $sql);
         //$arreglo = array();
         //while ($row = pg_fetch_array($datos)) {
-          //  $arreglo[] = $row;
-       // }
+        //  $arreglo[] = $row;
+        // }
         //return $arreglo;
 
         $datosr = pg_fetch_assoc($datos);
@@ -154,23 +156,23 @@ public function getUnEvaluador($id)
             $this->pass = $datosr['clave'];    // Heredado de UsuarioGetters          
             $this->programa = $datosr['facultad_id'];  // Heredado de UsuarioGetters
             $this->habilitado = $datosr['estado'];  // Heredado de UsuarioGetters       
+        }
     }
-}
 
 
-public function getNameFacultadDepartatamento($idEvaluador)
-{
-    $sql = "SELECT f.nombre as facultad, p.nombre as programa, f.id as idfacultad  FROM programa AS p
+    public function getNameFacultadDepartatamento($idEvaluador)
+    {
+        $sql = "SELECT f.nombre as facultad, p.nombre as programa, f.id as idfacultad  FROM programa AS p
         INNER JOIN facultad AS f ON f.id = p.facultad_id
         INNER JOIN usuario AS u ON u.facultad_id = p.id WHERE u.id=" . $idEvaluador . "";
-    $datos = pg_query($this->db, $sql);
-    $datosr = pg_fetch_assoc($datos);
+        $datos = pg_query($this->db, $sql);
+        $datosr = pg_fetch_assoc($datos);
 
         if ($datosr) {
             $this->nameFacultad = $datosr['facultad'];  // Heredado de UsuarioGetters
             $this->namePrograma = $datosr['programa'];  // Heredado de UsuarioGetters
             $this->idFacultad = $datosr['idfacultad'];  // Heredado de UsuarioGetters
-                
-}
-}
+
+        }
+    }
 }

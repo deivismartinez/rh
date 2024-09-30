@@ -1,14 +1,21 @@
 <?php
 require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Programa.php");
 require_once("../Tablero/clases/Gestion.php");
 
 $p = new Programas();
+$programaNew = new Programa();
+
 session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
+    $progamaId = $_GET['id'];
+    //$verPrograma = $programa->getProgramasVer($progamaId);
+    $verProgram = $programaNew->getProgramasVer($progamaId);
+
     
     $gestion = new Gestion();
     $programId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -17,10 +24,15 @@ if (isset($_SESSION['usuario'])) {
    // $editable = $gestion->EditProgram($programId);
     if (isset($_POST["programTxt"])) {
       //  $gestion->insertarPrograma();
+
     }
 } else {
     header('Location: AccesoNoautorizado.html');
 }
+$opcionAlcance = [
+    'PREGRADO' => 'PREGRADO',
+    'POSGRADO' => 'POSGRADO'
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +123,7 @@ if (isset($_SESSION['usuario'])) {
                     <div class="container-fluid">
                     </div>
                     <div class="col-xs-4">
-                    <a href="AgregarPrograma.php">
+                    <a href="Agregar.php">
                     <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>                                       
                         <h5>
@@ -130,30 +142,48 @@ if (isset($_SESSION['usuario'])) {
                                             <div class="col-xs-3">
                                                 <label for="telefono">Facultad</label>
                                                 <?php ?>
-                                                <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">                                                      <option value="">SELECCIONE</option>
-                                                    <?php
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                    $facId = $editable[0][1];
-                                                    foreach ($facultades as $arregloFac) {
-                                                        if ($facId == $arregloFac[0]){$facId='selected';}else{$facId='';}
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . ' '. $facId . ' </OPTION>';
-                                                    }
-                                                    ?>
-                                                </select>
+                                                <select class="form-control" id="facultadCmb" name="facultadCmb"
+                                                        required="true" onchange=<?php
+                                                                                    if ($p->esPostgrados($usuario->getId())) {
+                                                                                        echo '"cargarProgPost(this.value)"';
+                                                                                    } else {
+                                                                                        echo '"cargarProgramas(this.value)"';
+                                                                                    }
+                                                                                    ?>>
+                                                        <option value="">SELECCIONE</option>
+                                                        <?php
+                                                        if ($p->esPostgrados($usuario->getId())) {
+                                                            $facultades = $p->getFacultadesDocentePostgrado();
+                                                        } else {
+                                                            $facultades = $p->getFacultadesDocente();
+                                                        }
+
+                                                        ?>
+                                                        <?php foreach ($facultades as $valor): ?>
+                                                            <option value="<?= htmlspecialchars($valor[0]) ?>"
+                                                                <?= ($valor[1] === $verProgram->getFacultad()) ? 'selected' : '' ?>>
+                                                                <?= htmlspecialchars($valor[1]) ?>
+                                                            </option>
+
+                                                        <?php endforeach; ?>
+                                                    </select>
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="telefono">Nombre del nuevo Programa</label>
                                                 <div id="comboProg">
-                                                    <input class="form-control" type="text" id="programTxt" value = "<?php echo $editable[0][0];?>" name="programTxt" required="true">
+                                                    <input class="form-control" type="text" id="programTxt" value = "<?php echo $verProgram->getName();?>" name="programTxt" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="telefono">Alcance</label>
-                                                <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">    
-                                                    <OPTION value="">[SELECCIONE]</OPTION>
-                                                    <OPTION value="false">PREGRADO</OPTION>
-                                                    <OPTION value="true">POSGRADO</OPTION>
-                                                </select>
+                                                    <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
+                                                        <?php foreach ($opcionAlcance as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
+                                                                <?php echo $valor === $eval->getAlcance() ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                             </div>
                                         
                                         <div class="col-xs-3">

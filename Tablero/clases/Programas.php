@@ -29,7 +29,18 @@ class Programas extends conectar
         return $arreglo;
     }
 
-   
+    public function getPrograma($id)
+    {
+        $sql = "SELECT programa.nombre as nombre, facultad.nombre as facultad, alcance, programa.posgrado FROM programa, facultad where id=" . $id . ";";
+        $datos = pg_query($this->db, $sql);
+        $arreglo = array();
+        while ($row = pg_fetch_array($datos)) {
+            $arreglo[] = $row;
+        }
+        return $arreglo;
+    }
+
+
 
     public function getEvaluador()
     {
@@ -40,11 +51,9 @@ class Programas extends conectar
             $arreglo[] = $row;
         }
         return $arreglo;
-
-        
     }
 
-   
+
 
     public function getProgramaUsuarioPerfil($usuario)
     {
@@ -185,7 +194,7 @@ class Programas extends conectar
     }
 
 
-    
+
     public function getArea($facultad)
     {
         //$sql = "SELECT  DISTINCT f.nombre as nombre, p.area1 as area  FROM perfil as p inner join facultad as f on f.id=p.programa_id where facultad_id=" . $facultad . ";";
@@ -275,8 +284,8 @@ class Programas extends conectar
         }
         return false;
     }
-    
-      public function existeUsuarioExcluirPropio($usuario, $idusuario)
+
+    public function existeUsuarioExcluirPropio($usuario, $idusuario)
     {
         try {
             $sql = "SELECT usuario FROM usuario WHERE usuario='" . $usuario . "' and id != " . $idusuario . "  ;";
@@ -404,7 +413,7 @@ class Programas extends conectar
 
     public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
     {
-        
+
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
@@ -414,19 +423,16 @@ class Programas extends conectar
         }
 
         $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  habilitado = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
-          // $sql = "UPDATE usuario SET nombre = 'hola8'  WHERE id =291";
-              // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,
-                 //   tipo = '" . $rolCmb . "', 
-                 //  sede = '" . $sedeCmb . "' 
-             //   WHERE id = " . $idEvaluador . " ";
-               
-        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
-       
-      
+        // $sql = "UPDATE usuario SET nombre = 'hola8'  WHERE id =291";
+        // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,
+        //   tipo = '" . $rolCmb . "', 
+        //  sede = '" . $sedeCmb . "' 
+        //   WHERE id = " . $idEvaluador . " ";
 
+        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
     }
 
-    
+
 
     public function insertar()
     {

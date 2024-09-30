@@ -146,6 +146,12 @@ $opcionHabilitado = [
                 </div>
             </nav>
             <div class="content">
+            <div class="col-xs-4">
+                    <a href="NewEvaluador.php">
+                        <h4><i class="pe-7s-back"></i>Volver</h4>
+                    </a>
+                    <h5><?php echo $nombre; ?></h5>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="col-xs-12">
