@@ -2,7 +2,8 @@
 
 require_once("conectar.php");
 require_once("helpers.php");
-require_once("../vo/ProgramasVO.php");
+//require_once("../vo/ProgramasVO.php");
+require_once '../Tablero/vo/ProgramasVO.php';
 
 
 class Programa extends conectar
