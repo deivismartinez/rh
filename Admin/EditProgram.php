@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Programa.php");
@@ -153,19 +156,19 @@ $opcionAlcance = [
                                                         <option value="">SELECCIONE</option>
                                                         <?php
                                                         if ($p->esPostgrados($usuario->getId())) {
-                                                            $facultades = $p->getFacultadesDocentePostgrado();
+                                                           // $facultades = $p->getFacultadesDocentePostgrado();
                                                         } else {
-                                                            $facultades = $p->getFacultadesDocente();
+                                                           // $facultades = $p->getFacultadesDocente();
                                                         }
 
                                                         ?>
-                                                        <?php foreach ($facultades as $valor): ?>
+                                                        <?php /* foreach ($facultades as $valor): ?>
                                                             <option value="<?= htmlspecialchars($valor[0]) ?>"
                                                                 <?= ($valor[1] === $verProgram->getFacultad()) ? 'selected' : '' ?>>
                                                                 <?= htmlspecialchars($valor[1]) ?>
                                                             </option>
 
-                                                        <?php endforeach; ?>
+                                                        <?php endforeach; */ ?>
                                                     </select>
                                             </div>
                                             <div class="col-xs-3">
