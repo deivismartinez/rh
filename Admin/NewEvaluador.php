@@ -234,12 +234,6 @@ if (isset($usuario)) {
                                         </div>
 
                                         <div class="row">
-                                            <!-- Mostrar mensaje de error si existe -->
-                                            <?php if ($mensaje): ?>
-                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
-                                                    <?php echo $mensaje; ?>
-                                                </div>
-                                            <?php endif; ?>
 
                                             <div id="mensaje-error" class="error"></div>
                                             <div id="mensaje-exito" class="success"></div>
