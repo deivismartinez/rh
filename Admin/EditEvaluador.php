@@ -2,6 +2,7 @@
 require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Gestion.php");
+require_once("../Tablero/clases/Evaluadores.php");
 //require_once("../Tablero/vo/DocenteVO.php");
 //require_once("../Tablero/clases/Docente.php");
 //require_once("../Tablero/vo/PeridoVO.php");
@@ -10,13 +11,50 @@ $usuario = $_SESSION['usuario'];
 $archivo = "hvd" . $usuario->getId();
 $_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
+$eval = new Evaluadores();
 $usuarioEvaluador = $programa->getEvaluador();
 
 if (isset($usuario)) {
+
+
+    $evaluadorId = $_GET['id'];
+
+    //echo "<script>alert('$nombre');</script>";
+    if (isset($evaluadorId)) {
+        $eval->getUnEvaluador($evaluadorId);
+        $facultadDepatamento = $eval->getNameFacultadDepartatamento($evaluadorId);
+        //echo $usuario->getNombre();
+        //echo "ID: " . $evaluador['nombre'] . "<br>";
+        // echo ($eval->getHabilitado());
+        //  var_dump($eval->getUsuario());
+        // $gestion->updateEvaluador($evaluadorId);
+
+        //  $u->insertar($usuario->getId());
+
+    }
 } else {
-    header('Location: AccesoNoautorizado.html');
+    header("Location: ../Entrada.html");
 }
 
+$opcionSede = [
+    'SELECCIONE' => 'SELECCIONE',
+    'A DISTANCIA' => 'A DISTANCIA',
+    'AGUACHICA' => 'AGUACHICA',
+    'VALLEDUPAR' => 'VALLEDUPAR'
+];
+
+$opcionTipo = [
+    'SELECCIONE' => 'SELECCIONE',
+    'DECANO' => 'DECANO',
+    'EVALUADOR' => 'EVALUADOR',
+    'JEFE' => 'JEFE',
+    'RH' => 'RH'
+];
+
+$opcionHabilitado = [
+    '1' => 'ACTIVO',
+    '0' => 'INACTIVO'
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,10 +145,9 @@ if (isset($usuario)) {
                     </div>
                 </div>
             </nav>
-            
             <div class="content">
             <div class="col-xs-4">
-                    <a href="Agregar.php">
+                    <a href="NewEvaluador.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
                     <h5><?php echo $nombre; ?></h5>
@@ -131,11 +168,11 @@ if (isset($usuario)) {
                                             <div class="col-xs-12">
                                                 <div class="col-xs-6">
                                                     <label for="">Nombre *</label>
-                                                    <input value="" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
+                                                    <input value="<?php echo $eval->getNombre(); ?>" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label for="">Usuario *</label>
-                                                    <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
+                                                    <input value="<?php echo $eval->getUsuario(); ?>" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -159,12 +196,19 @@ if (isset($usuario)) {
                                                             $facultades = $programa->getFacultadesDocente();
                                                         }
 
-                                                        foreach ($facultades as $arregloFac) {
-                                                            echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                        }
                                                         ?>
+                                                        <?php foreach ($facultades as $valor): ?>
+                                                            <option value="<?= htmlspecialchars($valor[0]) ?>"
+                                                                <?= ($valor[1] === $eval->getNameFaculad()) ? 'selected' : '' ?>>
+                                                                <?= htmlspecialchars($valor[1]) ?>
+                                                            </option>
+
+                                                        <?php endforeach; ?>
                                                     </select>
+
+
                                                     <?php
+
                                                     ?>
                                                 </div>
 
@@ -176,11 +220,14 @@ if (isset($usuario)) {
                                                             required="true">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
-                                                            $program = $programa->getProgramasDocente(0);
-                                                            foreach ($program as $arregloPro) {
-                                                                echo '<OPTION value="' . $arregloPro[0] . '">' . $arregloPro[1] . '</OPTION>';
-                                                            }
-                                                            ?>
+                                                            $program = $programa->getProgramasDocente($eval->getIdFacultad()); ?>
+                                                            <?php foreach ($program as $valor): ?>
+                                                                <option value="<?= htmlspecialchars($valor[0]) ?>"
+                                                                    <?= ($valor[1] === $eval->getNamePrograma()) ? 'selected' : '' ?>>
+                                                                    <?= htmlspecialchars($valor[1]) ?>
+                                                                </option>
+
+                                                            <?php endforeach; ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -196,11 +243,12 @@ if (isset($usuario)) {
                                                 <div class="col-xs-3">
                                                     <label for="">Rol *</label>
                                                     <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">
-                                                        <OPTION value="">[SELECCIONE]</OPTION>
-                                                        <OPTION value="DECANO">DECANO</OPTION>
-                                                        <OPTION value="EVALUADOR">EVALUADOR</OPTION>
-                                                        <OPTION value="JEFE">JEFE</OPTION>
-                                                        <OPTION value="RH">RH</OPTION>
+                                                        <?php foreach ($opcionTipo as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
+                                                                <?php echo $valor === $eval->getTipo() ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
@@ -208,27 +256,34 @@ if (isset($usuario)) {
                                                     <label for="">Sede *</label>
 
                                                     <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">
-                                                        <OPTION value="">[SELECCIONE]</OPTION>
-                                                        <OPTION value="A DISTANCIA">A DISTANCIA</OPTION>
-                                                        <OPTION value="AGUACHICA">AGUACHICA</OPTION>
-                                                        <OPTION value="VALLEDUPAR">VALLEDUPAR</OPTION>
+                                                        <?php foreach ($opcionSede as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
+                                                                <?php echo $valor === $eval->getSede() ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
                                                 <div class="col-xs-3">
-                                                    <label for="">Contraseña</label>
-                                                    <input value="" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
+                                                    <label for="">Estado *</label>
+                                                    <select class="form-control" id="estadoCmb" name="estadoCmb" required="true" onchange="">
+                                                        <?php foreach ($opcionHabilitado as $valor => $etiqueta): ?>
+                                                            <option value="<?php echo htmlspecialchars($valor); ?>"
+                                                                <?php echo $etiqueta === $eval->getHabilitado() ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($etiqueta); ?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
 
-                                                <div class="col-xs-3">
-                                                    <label for="">Confirmar contraseña</label>
-                                                    <input value="" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
-                                                </div>
 
 
                                                 <div class="col-xs-3">
                                                     <br>
                                                     <input type="submit" value="Guardar" class="btn btn-primary" />
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -252,44 +307,7 @@ if (isset($usuario)) {
 
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
-                                                <thead>
-                                                    <tr>
-                                                        <th><span>No.</span></th>
-                                                        <th><span>Nombre</span></th>
-                                                        <th><span>Correo</span></th>
-                                                        <th><span>Programa</span></th>
-                                                        <th><span>Tipo</span></th>
-                                                        <th><span>Estado</span></th>
-                                                        <th><span>Sede</span></th>
-                                                        <th><span></span></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $i = 0;
-                                                    foreach ($usuarioEvaluador as $arreglo) {
-                                                        $i = $i + 1;
-                                                    ?>
-                                                        <tr>
-                                                            <td><?php echo $i ?></td>
-                                                            <td><?php echo $arreglo[0] ?></td>
-                                                            <td><?php echo $arreglo[1] ?></td>
-                                                            <td><?php echo $arreglo[2] ?></td>
-                                                            <td><?php echo $arreglo[3] ?></td>
-                                                            <td><?php echo $arreglo[4] ?></td>
-                                                            <td><?php echo $arreglo[5] ?></td>
 
-                                                            <?php
-                                                            $urlVer = "EditEvaluador.php?id=" . $arreglo[6];
-                                                            ?>
-                                                            <td>
-                                                                <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
                                         </div>
 
                                     </div>
@@ -342,54 +360,44 @@ if (isset($usuario)) {
         const programaCmb = document.getElementById('programaCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
-        const password = document.getElementById('seguridadTxt').value;
-        const seguridadTxtRep = document.getElementById('seguridadTxtRep').value;
+        const estado = document.getElementById('estadoCmb').value;
+
+        const id = "<?php echo $evaluadorId; ?>";
+        //console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id, estado);
 
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 
-        if (nombreUsuario === "") {
-            mensajeError.textContent = "El nombre de usuario no puede estar vacío.";
-            return false;
-        }
 
-        if (password.length < 7 || seguridadTxtRep.length < 7) {
-            alert("La contraseña debe tener al menos 7 caracteres.");
-            return false;
-        }
-
-        if (password !== seguridadTxtRep) {
-            alert("La contaseñas son diferente.");
-            return false;
-        }
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "procesar_registro.php", true);
+        xhr.open("POST", "procesarEditEvaluador.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
 
                 const respuesta = JSON.parse(xhr.responseText);
-                alert(respuesta.success);
-                if (respuesta.success) {
-                    //mensajeExito.textContent = respuesta.message;
 
+                if (respuesta.success) {
+                    mensajeExito.textContent = respuesta.message;
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
-                        message: "<b>Agregado correctamente</b>"
+                        message: "<b>Actualizado correctamente</b>"
                     }, {
                         type: 'info',
                         timer: 2000
                     });
 
                     setTimeout(function() {
-                        window.location.reload(); // Recarga la página para mostrar los nuevos datos.
-                    }, 500); // O un t
-                    //  window.location.reload();
+                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        window.location.href = 'NewEvaluador.php';
+                    }, 2000); // O un t
+                    //  window.location.reload();                   
                 } else {
+                    alert("error");
                     mensajeError.textContent = respuesta.message;
                 }
             }
@@ -402,7 +410,8 @@ if (isset($usuario)) {
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
             "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&seguridadTxt=" + encodeURIComponent(password)
+            "&id=" + encodeURIComponent(id) +
+            "&estadoCmb=" + encodeURIComponent(estado)
         );
 
 

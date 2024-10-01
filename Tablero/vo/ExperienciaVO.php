@@ -70,9 +70,9 @@ class ExperienciaVO{
         $this->numeroPeriodo = $numeroPeriodo;
     }
     public function getEsUpc(){
-        return $this->esUpc;
+        return $this->esupc;
     }
     public function setEsUpc($esupc){
-        $this->esUpc = $esupc;
+        $this->esupc = $esupc;
     }
 }

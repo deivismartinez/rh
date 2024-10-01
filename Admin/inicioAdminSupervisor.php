@@ -60,7 +60,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['supervisor'])) {
     </head>
     <body>
         <div class="wrapper">
-            <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+            <div class="sidebar" data-color="green" data-image="../images/sidebar-5.jpg">
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="#" class="simple-text">

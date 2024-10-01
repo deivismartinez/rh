@@ -63,36 +63,12 @@ function cargarProgPost(fac) {
     xhttp.send();
 }
 
-function cargarProgramasSinAreas(fac) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            document.getElementById("comboProg").innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("GET", "../Tablero/NewProgramasListSinAreas.php?fac=" + fac, true);
-    xhttp.send();
-}
-
-function cargarProgPostSinAreas(fac) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            
-            document.getElementById("comboProg").innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("GET", "../Tablero/NewProgramasListPostgradosSinAreas.php?fac=" + fac, true);
-    xhttp.send();
-}
-
 function cargarAreas(dep) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            if (document.getElementById("comboAreas")){
             document.getElementById("comboAreas").innerHTML = this.responseText;
-        }}
+        }
     };
     xhttp.open("GET", "AreasList.php?dep=" + dep, true);
     xhttp.send();
@@ -102,10 +78,8 @@ function cargarAsignaturas(dep) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-
-            if (document.getElementById("comboAsig")){
             document.getElementById("comboAsig").innerHTML = this.responseText;
-        }}
+        }
     };
     xhttp.open("GET", "AsignaturasList.php?dep=" + dep, true);
     xhttp.send();
