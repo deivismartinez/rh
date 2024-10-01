@@ -2,6 +2,7 @@
 
 require_once("conectar.php");
 require_once("helpers.php");
+require_once("./Usuario.php.php");
 
 
 class Programas extends conectar
@@ -430,6 +431,19 @@ class Programas extends conectar
         //   WHERE id = " . $idEvaluador . " ";
 
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+    }
+    
+     public function updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
+    {
+
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $user = new Usuario();
+            $user->sendEmailEvaluador($usuarioTxt);
+        } else {
+            header('Location: AccesoNoautorizado.html');
+        }
+
     }
 
 

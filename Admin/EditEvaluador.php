@@ -287,7 +287,7 @@ $opcionHabilitado = [
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <br>
-                                                    <input type="" value="Restaurar contraseña" class="btn btn-secondary" />
+                                                    <input type="button" onclick="resetPassword()" value="Restaurar contraseña" class="btn btn-secondary" />
 
 
                                                 </div>
@@ -380,6 +380,75 @@ $opcionHabilitado = [
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesarEditEvaluador.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+
+                const respuesta = JSON.parse(xhr.responseText);
+
+                if (respuesta.success) {
+                    mensajeExito.textContent = respuesta.message;
+                    demo.initChartist();
+                    $.notify({
+                        icon: 'pe-7s-notebook',
+                        message: "<b>Actualizado correctamente</b>"
+                    }, {
+                        type: 'info',
+                        timer: 2000
+                    });
+
+                    setTimeout(function() {
+                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
+                        window.location.href = 'NewEvaluador.php';
+                    }, 2000); // O un t
+                    //  window.location.reload();                   
+                } else {
+                    alert("error");
+                    mensajeError.textContent = respuesta.message;
+                }
+            }
+        };
+
+
+        xhr.send(
+            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&rolCmb=" + encodeURIComponent(rol) +
+            "&sedeCmb=" + encodeURIComponent(sede) +
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
+            "&id=" + encodeURIComponent(id) +
+            "&estadoCmb=" + encodeURIComponent(estado)
+        );
+
+
+
+        return false; // Prevenir el envío del formulario hasta que se complete la validación
+    }
+    
+    function resetPassword() {
+
+        const mensajeError = document.getElementById('mensaje-error');
+        const mensajeExito = document.getElementById('mensaje-exito');
+
+        const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
+        const nombreUsuario = document.getElementById('usuarioTxt').value;
+        const programaCmb = document.getElementById('programaCmb').value;
+        const rol = document.getElementById('rolCmb').value;
+        const sede = document.getElementById('sedeCmb').value;
+        const estado = document.getElementById('estadoCmb').value;
+
+        const id = "<?php echo $evaluadorId; ?>";
+        //console.log(nombreCompleto,nombreUsuario,programaCmb,rol,sede,id, estado);
+
+        // Limpiar mensajes previos
+        mensajeError.textContent = "";
+        mensajeExito.textContent = "";
+
+
+
+        // Realizar la validación con AJAX
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "procesarEditPassword.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {

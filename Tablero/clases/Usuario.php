@@ -280,6 +280,80 @@ class Usuario extends conectar {
              ("Location: NoEnviaCorreo.php");
         }
     }
+    
+    public function sendEmailEvaluador($mail) {
+            try {
+                ///////////////otro sistema de correos
+                include("phpMail/envioCorreo.php");
+                $email = new email("Aplicacionhv","saumar2003@gmail.com","gzswzduuqhdnwrej");
+                $email->agregar($mail, '12333');
+                ///////////////////////////////
+                $token = $this->getToken($mail);
+                $ruta = $_SERVER['DOCUMENT_ROOT'];
+                $host = $_SERVER["HTTP_HOST"];
+                $url = $_SERVER["REQUEST_URI"];
+                
+                $trama = "http://hojasdevida.unicesar.edu.co/rh/Tablero/restaurarclave.php?email=" . $mail . "&identidad=" . $identidad . "&token=" . $token;
+                $para = $mail;
+                $titulo = 'Recuperación de su clave de acceso inscripción docente';
+                $mensaje = '<!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Document</title>
+                </head>
+                <body style="font-family: Arial, Helvetica, sans-serif;">
+                    <table align="center" border="2" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                        <tr>
+                           
+                            <td width="100%" style="text-align:center" >
+                                <img alt="texto" src="https://hojasdevida.unicesar.edu.co/rh/images/titulo.png" width="446"
+                                    height="77" style="display: block;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                        <tr>
+                            <td colspan="2" style="text-align:center" valign="top">
+                                <br><br><br><br>
+                                Señor aspirante a docente:
+                                <b> <a href="'.$trama.'"> Para cambiar su contraseña haga clic aqui</a></b><br>
+                                <br><br>
+                                Si surge algún inconveniente, puede dirigirse por correo a <a
+                                    href="mailto:sistemas@unicesar.edu.co?Subject=Banco%20de%20Hojas%20de%20Vida">sistemas@unicesar.edu.co</a>
+                                <br><br><br><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 30px 20px 0px 20px; text-align:center; font-size: 11px;" bgcolor="#B9E85C ">
+                                <b>UNIVERSIDAD POPULAR DEL CESAR<br> Oficina de Informatica y Sistemas - DM</b>
+                            </td>
+                        </tr>
+                    </table>
+                </body>
+                </html>';
+               $cabeceras = 'From: aplicacioneshv@unicesar.edu.co' . "\r\n" .
+                        'Reply-To: aplicacioneshv@unicesar.edu.co' . "\r\n" .
+                        'Content-type:text/html;charset=UTF-8' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+                     
+                       ///////
+                $respuesta = $email->enviar($titulo,$mensaje);///este es el metodo smtp por gmail
+                /////////////////////////////////
+                //$respuesta = mail($para, $titulo, $mensaje, $cabeceras);////ESTE ES EL METODO 
+                var_dump($respuesta);
+            } catch (Exception $error) {
+                $respuesta = false;
+                //echo "error: ". $error->getMessage(); exit();
+            }
+            if ($respuesta) {
+                 ?>
+                 <script type="text/javascript">
+                window.location="EnvioCorreo.php";
+                </script>
+                <?php
+            }
+    }
 
     public function insertar() {
         try {
