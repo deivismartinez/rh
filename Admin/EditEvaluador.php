@@ -281,7 +281,13 @@ $opcionHabilitado = [
 
                                                 <div class="col-xs-3">
                                                     <br>
-                                                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                                                    <input type="submit" value="Actualizar" class="btn btn-primary" />
+
+
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <br>
+                                                    <input type="" value="Restaurar contraseña" class="btn btn-secondary" />
 
 
                                                 </div>
