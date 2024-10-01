@@ -2,7 +2,7 @@
 
 require_once("conectar.php");
 require_once("helpers.php");
-require_once("./Usuario.php");
+require_once("Usuario.php");
 
 
 class Programas extends conectar
