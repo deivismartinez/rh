@@ -113,7 +113,7 @@ if (isset($usuario)) {
                     <a href="Agregar.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
-                    <h5><?php //echo $nombre; ?></h5>
+                    <h5><?php echo $nombre; ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -131,7 +131,7 @@ if (isset($usuario)) {
                                             <div class="col-xs-12">
                                                 <div class="col-xs-6">
                                                     <label for="">Nombre *</label>
-                                                    <input value="" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt" placeholder="">
+                                                    <input value="" required="true" type="text" class="form-control" name="nombreCompletoTxt" id="nombreCompletoTxt"  onkeyup="filtrarUsuarios();">
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label for="">Usuario *</label>
@@ -234,6 +234,12 @@ if (isset($usuario)) {
                                         </div>
 
                                         <div class="row">
+                                            <!-- Mostrar mensaje de error si existe -->
+                                            <?php if ($mensaje): ?>
+                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
+                                                    <?php echo $mensaje; ?>
+                                                </div>
+                                            <?php endif; ?>
 
                                             <div id="mensaje-error" class="error"></div>
                                             <div id="mensaje-exito" class="success"></div>
@@ -403,6 +409,24 @@ if (isset($usuario)) {
 
         return false; // Prevenir el envío del formulario hasta que se complete la validación
     }
+
+    function filtrarUsuarios() {
+    const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
+    
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "procesar_filtro.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Actualizar la tabla con los datos filtrados
+            document.getElementById('mi-tabla').innerHTML = xhr.responseText;
+        }
+    };
+
+    // Enviar el valor del filtro al servidor
+    xhr.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
+}
+
 </script>
 
 </html>
