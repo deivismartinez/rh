@@ -113,7 +113,7 @@ if (isset($usuario)) {
                     <a href="Agregar.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
-                    <h5><?php echo $nombre; ?></h5>
+                    <h5><?php //echo $nombre; ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -234,12 +234,6 @@ if (isset($usuario)) {
                                         </div>
 
                                         <div class="row">
-                                            <!-- Mostrar mensaje de error si existe -->
-                                            <?php if ($mensaje): ?>
-                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
-                                                    <?php echo $mensaje; ?>
-                                                </div>
-                                            <?php endif; ?>
 
                                             <div id="mensaje-error" class="error"></div>
                                             <div id="mensaje-exito" class="success"></div>

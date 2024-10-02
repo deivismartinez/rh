@@ -23,20 +23,12 @@ header('Content-Type: application/json');
 // Verificar que el usuario no existe nuevamente para mayor seguridad
 
 
-if ($programa->existeUsuarioExcluirPropio($usuarioTxt,$idEvaluador)) {
-   
- echo json_encode(['success' => false, 'message' => 'El nombre de usuario no está disponible.']);  
-
-} else {
-    // Lógica para insertar el nuevo usuario
    
   $programa->updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estado);
 
-  //$programa->insertarEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt);
  
   echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
 
-}
 
  
 

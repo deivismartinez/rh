@@ -150,7 +150,6 @@ $opcionHabilitado = [
                     <a href="NewEvaluador.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
-                    <h5><?php echo $nombre; ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -295,12 +294,6 @@ $opcionHabilitado = [
                                         </div>
 
                                         <div class="row">
-                                            <!-- Mostrar mensaje de error si existe -->
-                                            <?php if ($mensaje): ?>
-                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
-                                                    <?php echo $mensaje; ?>
-                                                </div>
-                                            <?php endif; ?>
 
                                             <div id="mensaje-error" class="error"></div>
                                             <div id="mensaje-exito" class="success"></div>
@@ -448,11 +441,15 @@ $opcionHabilitado = [
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
+        alert('Uno');
         xhr.open("POST", "procesarEditPassword.php", true);
+        alert('Dos');
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-
+                alert(xhr.status);
+                console.log(xhr.status);
+                console.log(xhr.readyState);
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
