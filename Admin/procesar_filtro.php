@@ -1,6 +1,6 @@
 <?php
-require_once("conectar.php");
-require_once("clases/Programas.php");
+require_once("../Tablero/clases/conectar.php");
+require_once("../Tablero/clases/Programas.php");
 
 $nombreCompletoTxt = $_POST['nombreCompletoTxt'];
 
