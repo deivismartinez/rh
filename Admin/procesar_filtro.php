@@ -1,23 +1,26 @@
 <?php
 require_once("../Tablero/clases/conectar.php");
-require_once("../Tablero/clases/Programas.php");
+
+$conexion = new conectar(); // Instancia la conexión a la base de datos
+$db = $conexion->conectar(); // Obtener la conexión
 
 $nombreCompletoTxt = $_POST['nombreCompletoTxt'];
 
 // Modificar la consulta para agregar el filtro del nombre
-$sql = "SELECT u.nombre, u.correo, p.nombre, u.tipo, u.estado, u.sede, u.id 
+$sql = "SELECT ROW_NUMBER() OVER () AS row_number, u.nombre as nombre, u.correo as correo, p.nombre as nombre_programa, u.tipo as tipo, u.estado as estado, u.sede as sede, u.id 
         FROM usuario as u 
         INNER JOIN programa as p ON p.id = u.facultad_id 
         WHERE u.nombre ILIKE '%$nombreCompletoTxt%'";
 
-$datos = pg_query($this->db, $sql);
+$datos = pg_query($db, $sql);
 
 // Generar la tabla con los resultados
 echo "<table class='mi-tabla'>";
-echo "<thead><tr><th>Nombre</th><th>Correo</th><th>Programa</th><th>Tipo</th><th>Estado</th><th>Sede</th></tr></thead>";
+echo "<thead><tr><th>No.</th><th>Nombre</th><th>Correo</th><th>Programa</th><th>Tipo</th><th>Estado</th><th>Sede</th></tr></thead>";
 echo "<tbody>";
 while ($row = pg_fetch_assoc($datos)) {
     echo "<tr>";
+    echo "<td>" . htmlspecialchars($row['row_number']) . "</td>";
     echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
     echo "<td>" . htmlspecialchars($row['correo']) . "</td>";
     echo "<td>" . htmlspecialchars($row['nombre_programa']) . "</td>";
