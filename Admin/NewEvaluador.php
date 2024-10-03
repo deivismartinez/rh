@@ -252,13 +252,15 @@ if (isset($usuario)) {
                                                 <thead>
                                                     <tr>
                                                         <th><span>No.</span></th>
-                                                        <th><span>Nombre</span></th>
-                                                        <th><span>Correo</span></th>
-                                                        <th><span>Programa</span></th>
-                                                        <th><span>Tipo</span></th>
-                                                        <th><span>Estado</span></th>
-                                                        <th><span>Sede</span></th>
-                                                        <th><span></span></th>
+                                                        <th data-sort='nombre'>Nombre</th>
+                                                        <th data-sort='correo'>Correo</th>
+                                                        <th data-sort='nombre_programa'>Programa</th>
+                                                        <th data-sort='tipo'>Tipo</th>
+                                                        <th data-sort='estado'>Estado</th>
+                                                        <th data-sort='sede'>Sede</th>
+                                                        <th>Acciones</th>
+
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
