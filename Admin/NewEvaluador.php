@@ -280,7 +280,7 @@ if (isset($usuario)) {
                                                             $urlVer = "EditEvaluador.php?id=" . $arreglo[6];
                                                             ?>
                                                             <td>
-                                                                <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
+                                                                <a data-toggle="tooltip" title="Editar" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -421,6 +421,46 @@ if (isset($usuario)) {
 
     // Enviar el valor del filtro al servidor
     xhr.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const table = document.querySelector('.mi-tabla');
+    const headers = table.querySelectorAll('th[data-sort]');
+
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const sortBy = header.getAttribute('data-sort');
+            sortTable(table, sortBy);
+        });
+    });
+});
+
+function sortTable(table, sortBy) {
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    const isAscending = header.classList.toggle('asc');
+
+    rows.sort((a, b) => {
+        const aText = a.querySelector(`td:nth-child(${getColumnIndex(sortBy)})`).textContent;
+        const bText = b.querySelector(`td:nth-child(${getColumnIndex(sortBy)})`).textContent;
+
+        return isAscending 
+            ? aText.localeCompare(bText, undefined, { numeric: true }) 
+            : bText.localeCompare(aText, undefined, { numeric: true });
+    });
+
+    rows.forEach(row => table.querySelector('tbody').appendChild(row));
+}
+
+function getColumnIndex(sortBy) {
+    const columns = {
+        'nombre': 2, // Número de columna (1-based)
+        'correo': 3,
+        'nombre_programa': 4,
+        'tipo': 5,
+        'estado': 6,
+        'sede': 7
+    };
+    return columns[sortBy];
 }
 
 </script>

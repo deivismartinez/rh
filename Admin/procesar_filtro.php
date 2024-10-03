@@ -31,7 +31,7 @@ while ($row = pg_fetch_assoc($datos)) {
     $urlVer = "EditEvaluador.php?id=" . $row['id'];
         // Agregar la celda con el enlace
         echo "<td>
-        <a data-toggle='tooltip' title='Ver información' href='" . htmlspecialchars($urlVer) . "'>
+        <a data-toggle='tooltip' title='Editar' href='" . htmlspecialchars($urlVer) . "'>
             <i class='pe-7s-pen'></i>
         </a>
       </td>";
