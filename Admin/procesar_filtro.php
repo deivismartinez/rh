@@ -27,6 +27,15 @@ while ($row = pg_fetch_assoc($datos)) {
     echo "<td>" . htmlspecialchars($row['tipo']) . "</td>";
     echo "<td>" . htmlspecialchars($row['estado']) . "</td>";
     echo "<td>" . htmlspecialchars($row['sede']) . "</td>";
+
+    $urlVer = "EditEvaluador.php?id=" . $row['id'];
+        // Agregar la celda con el enlace
+        echo "<td>
+        <a data-toggle='tooltip' title='Ver información' href='" . htmlspecialchars($urlVer) . "'>
+            <i class='pe-7s-pen'></i>
+        </a>
+      </td>";
+
     echo "</tr>";
 }
 echo "</tbody>";
