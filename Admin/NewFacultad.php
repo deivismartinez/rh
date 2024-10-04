@@ -139,7 +139,7 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="col-xs-6">
                                             <label for="telefono">Nueva facultad</label>
 
-                                            <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true">
+                                            <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true" onkeyup="filtrarFacultad();">
 
                                         </div>
                                         <div class="col-xs-3">
@@ -231,7 +231,7 @@ if (isset($_SESSION['usuario'])) {
 <script src="../Tablero/assets/js/demo.js"></script>
 
 <script>
-function filtrarUsuarios() {
+function filtrarFacultad() {
     const nombreCompleto = document.getElementById('facultadTxt').value;
     
     var xhr = new XMLHttpRequest();
