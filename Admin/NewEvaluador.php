@@ -113,7 +113,7 @@ if (isset($usuario)) {
                     <a href="Agregar.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
-                    <h5></h5>
+                    <h5><?php echo $nombre; ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -369,10 +369,9 @@ if (isset($usuario)) {
             if (xhr.readyState === 4 && xhr.status === 200) {
 
                 var respuesta = JSON.parse(xhr.responseText);
-                alert(respuesta.success);
-                if (respuesta.success) {
-                    //mensajeExito.textContent = respuesta.message;
-
+               
+                if (respuesta.success) {                   
+                    alert("Evaluador guardado con exito.");
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
