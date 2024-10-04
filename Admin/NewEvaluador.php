@@ -407,7 +407,7 @@ if (isset($usuario)) {
         return false; // Prevenir el envío del formulario hasta que se complete la validación
     }
 
-    function filtrarUsuarios() {
+  function filtrarUsuarios() {
     const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
     
     var xhr = new XMLHttpRequest();
@@ -424,7 +424,7 @@ if (isset($usuario)) {
     xhr.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
 }
 
-/* document.addEventListener('DOMContentLoaded', function () {
+   /*document.addEventListener('DOMContentLoaded', function () {
     const table = document.querySelector('.mi-tabla');
     const headers = table.querySelectorAll('th[data-sort]');
 

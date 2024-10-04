@@ -32,7 +32,7 @@ if ($programa->existeUsuario($usuarioTxt)) {
     // Lógica para insertar el nuevo usuario
    
   $programa->insertarEvaluador($nombreCompletoTxt, $usuarioTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt);
-  echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
+   
 
 }
 
