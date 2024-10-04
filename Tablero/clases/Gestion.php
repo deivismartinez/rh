@@ -115,9 +115,8 @@ class Gestion extends conectar
 
         $sql = "INSERT INTO facultad(nombre, estado, posgrado) "
             . " VALUES('" . $facultadName . "', 'ACTIVO','" . $posgrado . "')";
-        $oid = pg_query($this->db, $sql);
-        header("Location: NewFacultad.php");
-        exit;
+        pg_query($this->db, $sql);
+       
     }
 
 

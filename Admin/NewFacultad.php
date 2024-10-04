@@ -18,6 +18,7 @@ if (isset($_SESSION['usuario'])) {
         if (!$existe) { // Si no está marcado (false)
             $gestion->insertarFacultad();
             echo "<script>alert('Facultad guardada con éxito');</script>";
+            header("Location: NewFacultad.php");
         } else {
             $mensaje = "El nombre de la Facultad no está disponible";
         }
