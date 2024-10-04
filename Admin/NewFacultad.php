@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario'])) {
     $programa = $usuario->getlastName();
     $facultadCreados = $p->getFacultadVer();
 
-    if (isset($_POST["facultadTxt"]) && !empty($_POST["facultadTxt"])) {
+    if (isset($_POST["facultadTxt"]) ) {
         $facultadtxt = strtoupper($_POST["facultadTxt"]);
         $gestion = new Gestion();
         $existe = $p->existeFacultad($facultadtxt);
@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario'])) {
             window.location.href = 'NewFacultad.php';
             </script>";
         } else {
-            $errorMessage = 'El nombre de la Facultad no está disponible.';            
+            $errorMessage = "El nombre de la Facultad no está disponible.";            
         }
     }
 } else {
