@@ -10,8 +10,9 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
     $facultadCreados = $p->getFacultadVer();
-    $facultadtxt= strtoupper($_POST["facultadTxt"]);
-    if (isset($facultadtxt ) && !empty($facultadtxt) ) {
+ 
+    if (isset($_POST["facultadTxt"] ) && !empty($_POST["facultadTxt"]) ) {
+        $facultadtxt= strtoupper($_POST["facultadTxt"]);
        $gestion = new Gestion();
        $existe= $p->existeFacultad($facultadtxt);
     if (!$existe) { // Si no está marcado (false)
@@ -133,9 +134,9 @@ if (isset($_SESSION['usuario'])) {
                                             
                                             <div class="col-xs-6">
                                                 <label for="telefono">Nueva facultad</label>
-                                                <div id="comboProg">
+                                                
                                                     <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true">
-                                                </div>
+                                              
                                                
                                             </div>
                                             <div class="col-xs-3">
