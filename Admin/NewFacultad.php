@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario'])) {
             window.location.href = 'NewFacultad.php';
             </script>";
         } else {
-            $mensaje = "El nombre de la Facultad no está disponible";
+            $errorMessage = 'El nombre de la Facultad no está disponible.';            
         }
     }
 } else {
@@ -155,6 +155,17 @@ if (isset($_SESSION['usuario'])) {
                                             <br>
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
                                         </div>
+                                    </div>
+
+                                    <div class="row">
+                                    <div class="error-message">
+                                    <?php
+                                    // Si hay un mensaje de error, lo muestra aquí
+                                    if (!empty($errorMessage)) {
+                                        echo $errorMessage;
+                                    }
+                                    ?>                               
+
                                     </div>
                                 </form>
                             </div>
