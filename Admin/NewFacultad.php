@@ -230,4 +230,22 @@ if (isset($_SESSION['usuario'])) {
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
 
+<script>
+function filtrarUsuarios() {
+    const nombreCompleto = document.getElementById('facultadTxt').value;
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "procesar_filtro_facultad.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Actualizar la tabla con los datos filtrados
+            document.getElementById('mi-tabla').innerHTML = xhr.responseText;
+        }
+    };
+
+    // Enviar el valor del filtro al servidor
+    xhr.send("facultadTxt=" + encodeURIComponent(nombreCompleto));
+}
+</script>
 </html>
