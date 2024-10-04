@@ -20,7 +20,7 @@ class Programa extends conectar
 
     public function getProgramasVer($id)
     {
-        $sql = "SELECT p.nombre as programa,f.nombre as facultad, CASE when postgrado = 'true' then 'POSGRADO' else 'PREGRADO' end, estado FROM programa p inner join facultad f on (p.facultad_id=f.id) where id=" . $id . ";";
+        $sql = "SELECT p.nombre as programa,f.nombre as facultad, CASE when postgrado = 'true' then 'POSGRADO' else 'PREGRADO' end as posgrado, estado as estado FROM programa p inner join facultad f on (p.facultad_id=f.id) where id=" . $id . ";";
        //$sql = "SELECT programa.nombre as programa, facultad.nombre as facultad, alcance, programa.posgrado FROM programa, facultad where id=" . $id . ";";
         $datoSql = pg_query($this->db, $sql);
         $datos = pg_fetch_assoc($datoSql);

@@ -232,7 +232,7 @@ if (isset($_SESSION['usuario'])) {
 
 <script>
 function filtrarFacultad() {
-    const nombreCompleto = document.getElementById('facultadTxt').value;
+    const facultadTxt = document.getElementById('facultadTxt').value;
     
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "procesar_filtro_facultad.php", true);
@@ -245,7 +245,7 @@ function filtrarFacultad() {
     };
 
     // Enviar el valor del filtro al servidor
-    xhr.send("facultadTxt=" + encodeURIComponent(nombreCompleto));
+    xhr.send("facultadTxt=" + encodeURIComponent(facultadTxt));
 }
 </script>
 </html>

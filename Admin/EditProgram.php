@@ -41,7 +41,7 @@ $opcionAlcance = [
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Administración Inscripción Docente Unicesar</title>
+    <title>Administraci贸n Inscripci贸n Docente Unicesar</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -134,7 +134,7 @@ $opcionAlcance = [
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Editar programa académico
+                                Editar programa acad茅mico
                             </div>
                             <div class="panel-body">
                                 <form name="form" action="" method="post" enctype="multipart/form-data">
@@ -142,33 +142,29 @@ $opcionAlcance = [
                                         <div class="col-xs-3">
                                             <label for="telefono">Facultad</label>
                                             <?php ?>
-                                            <select class="form-control" id="facultadCmb" name="facultadCmb"
-                                                required="true" onchange=<?php
-                                                                            if ($p->esPostgrados($usuario->getId())) {
-                                                                                echo '"cargarProgPost(this.value)"';
-                                                                            } else {
-                                                                                echo '"cargarProgramas(this.value)"';
-                                                                            }
-                                                                            ?>>
-                                                <option value="">SELECCIONE</option>
-                                                <?php
-                                                if ($p->esPostgrados($usuario->getId())) {
-                                                    $facultades = $p->getFacultadesDocentePostgrado();
-                                                } else {
-                                                    $facultades = $p->getFacultadesDocente();
-                                                }
+                                             <select class="form-control" id="facultadCmb" name="facultadCmb"
+                                                    required="true" onchange=<?php
+                                                                                if ($p->esPostgrados($usuario->getId())) {
+                                                                                    echo '"cargarProgPost(this.value)"';
+                                                                                } else {
+                                                                                    echo '"cargarProgramas(this.value)"';
+                                                                                }
+                                                                                ?>>
+                                                    <option value="">SELECCIONE</option>
+                                                    <?php
+                                                    if ($p->esPostgrados($usuario->getId())) {
+                                                        $facultades = $p->getFacultadesDocentePostgrado();
+                                                    } else {
+                                                        $facultades = $p->getFacultadesDocente();
+                                                    }
 
-                                                ?>
-                                                <?php foreach ($facultades as $valor): ?>
-                                                    <option value="<?= htmlspecialchars($valor[0]) ?>"
-                                                        <?= ($valor[1] === $verProgram->getFacultad()) ? 'selected' : '' ?>>
-                                                        <?= htmlspecialchars($valor[1]) ?>
-                                                    </option>
-
-                                                <?php endforeach; ?>
-                                            </select>
+                                                    foreach ($facultades as $arregloFac) {
+                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                    }
+                                                    ?>
+                                                </select>
                                         </div>
-                                        <div class="col-xs-3">
+                                         <div class="col-xs-3">
                                             <label for="telefono">Nombre del nuevo Programa</label>
                                             <div id="comboProg">
                                                 <input class="form-control" type="text" id="programTxt" value="<?php echo $verProgram->getName(); ?>" name="programTxt" required="true">
@@ -185,6 +181,7 @@ $opcionAlcance = [
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
+                                      
 
                                         <div class="col-xs-3">
                                             <br>
