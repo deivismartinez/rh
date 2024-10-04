@@ -136,12 +136,7 @@ if (isset($_SESSION['usuario'])) {
                                                 <div id="comboProg">
                                                     <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true">
                                                 </div>
-                                               <!-- Mostrar mensaje de error si existe -->
-                                                <?php if ($mensaje): ?>
-                                                <div aria-live="assertive" aria-atomic="true" style="color: #FF0000;">
-                                                     <?php echo $mensaje; ?>
-                                                </div>
-                                               <?php endif; ?>
+                                               
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="telefono">Alcance</label>

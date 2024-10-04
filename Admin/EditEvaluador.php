@@ -9,6 +9,7 @@ require_once("../Tablero/clases/Evaluadores.php");
 session_start();
 $usuario = $_SESSION['usuario'];
 $archivo = "hvd" . $usuario->getId();
+$nombre = $usuario->getName();
 $_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
 $eval = new Evaluadores();
@@ -150,6 +151,9 @@ $opcionHabilitado = [
                     <a href="NewEvaluador.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
+                    <h5>
+                        <?php echo $nombre; ?>
+                    </h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">

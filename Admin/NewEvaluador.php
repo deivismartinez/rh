@@ -8,6 +8,7 @@ require_once("../Tablero/clases/Gestion.php");
 session_start();
 $usuario = $_SESSION['usuario'];
 $archivo = "hvd" . $usuario->getId();
+$nombre = $usuario->getName();
 $_SESSION['id_usuario'] = $usuario->getId();
 $programa = new Programas();
 $usuarioEvaluador = $programa->getEvaluador();
