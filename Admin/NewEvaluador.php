@@ -252,13 +252,13 @@ if (isset($usuario)) {
                                                 <thead>
                                                     <tr>
                                                         <th><span>No.</span></th>
-                                                        <th data-sort='nombre'>Nombre</th>
-                                                        <th data-sort='correo'>Correo</th>
-                                                        <th data-sort='nombre_programa'>Programa</th>
-                                                        <th data-sort='tipo'>Tipo</th>
-                                                        <th data-sort='estado'>Estado</th>
-                                                        <th data-sort='sede'>Sede</th>
-                                                        <th>Acciones</th>
+                                                        <th><span>Nombre</span></th>
+                                                        <th><span>Correo</span></th>
+                                                        <th><span>Programa</span></th>
+                                                        <th><span>Tipo</span></th>
+                                                        <th><span>Estado</span></th>
+                                                        <th><span>Sede</span></th>
+                                                        <th><span></span></th>
 
                                                         
                                                     </tr>
@@ -334,7 +334,6 @@ if (isset($usuario)) {
 
         const mensajeError = document.getElementById('mensaje-error');
         const mensajeExito = document.getElementById('mensaje-exito');
-
         const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
         const nombreUsuario = document.getElementById('usuarioTxt').value;
         const programaCmb = document.getElementById('programaCmb').value;
@@ -363,13 +362,13 @@ if (isset($usuario)) {
         }
 
         // Realizar la validación con AJAX
-        const xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest();
         xhr.open("POST", "procesar_registro.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
 
-                const respuesta = JSON.parse(xhr.responseText);
+                var respuesta = JSON.parse(xhr.responseText);
                 alert(respuesta.success);
                 if (respuesta.success) {
                     //mensajeExito.textContent = respuesta.message;
@@ -411,7 +410,7 @@ if (isset($usuario)) {
     function filtrarUsuarios() {
     const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
     
-    const xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("POST", "procesar_filtro.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function() {
@@ -425,7 +424,7 @@ if (isset($usuario)) {
     xhr.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+/* document.addEventListener('DOMContentLoaded', function () {
     const table = document.querySelector('.mi-tabla');
     const headers = table.querySelectorAll('th[data-sort]');
 
@@ -463,7 +462,7 @@ function getColumnIndex(sortBy) {
         'sede': 7
     };
     return columns[sortBy];
-}
+} */
 
 </script>
 
