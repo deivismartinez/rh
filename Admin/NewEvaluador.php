@@ -410,18 +410,18 @@ if (isset($usuario)) {
     function filtrarUsuarios() {
     const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
     
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "procesar_filtro.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open("POST", "procesar_filtro.php", true);
+    xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xh2r.onreadystatechange = function() {
+        if (xhr2.readyState === 4 && xhr2.status === 200) {
             // Actualizar la tabla con los datos filtrados
-            document.getElementById('mi-tabla').innerHTML = xhr.responseText;
+            document.getElementById('mi-tabla').innerHTML = xhr2.responseText;
         }
     };
 
     // Enviar el valor del filtro al servidor
-    xhr.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
+    xhr2.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
 }
 
 /* document.addEventListener('DOMContentLoaded', function () {
