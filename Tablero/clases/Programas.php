@@ -394,20 +394,15 @@ class Programas extends conectar
 
     public function insertarEvaluador($nombreCompletoTxt, $emailEml, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $seguridadTxt)
     {
-        session_start();
-        if (isset($_SESSION['usuario'])) {
-            $usuario = $_SESSION['usuario'];
-            $id = $usuario->getId();
-        } else {
-            header('Location: AccesoNoautorizado.html');
-        }
-
+        try {
         $sql = "INSERT INTO usuario(usuario, clave, nombre, correo, habilitado, facultad_id, tipo, estado, sede)"
             . " VALUES('" . $usuarioTxt . "', '" . $seguridadTxt . "', '" . $nombreCompletoTxt . "', '" . $usuarioTxt . "', '1', '" . $programaCmb . "', '" . $rolCmb . "', 'ACTIVO', '" . $sedeCmb . "')";
-        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        pg_query($this->db, $sql);
+        echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);   
 
-        //header('Location: NewEvaluador.php');
-
+        } catch (Exception $error) {
+          echo json_encode(['success' => true, 'message' => 'La consulta fallo: ' . pg_last_error()]);           
+        }
     }
 
 
