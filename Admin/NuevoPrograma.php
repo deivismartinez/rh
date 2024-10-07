@@ -49,9 +49,9 @@ if (isset($_SESSION['usuario'])) {
             margin: 10px auto;
         }
 
-        .tabla thead {
+        .tabla thead {          
             cursor: pointer;
-            background: rgba(0, 0, 255, 1);
+            background: #337ab7;
             color: rgba(255, 255, 255, 1);
         }
 
