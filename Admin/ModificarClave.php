@@ -71,7 +71,7 @@ if (isset($_SESSION['usuario'])) {
 
         #centered {
             position: fixed;
-            top: 50%;
+            top: 55%;
             left: 50%;
             /* bring your own prefixes */
             transform: translate(-30%, -50%);
