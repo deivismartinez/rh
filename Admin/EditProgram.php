@@ -123,7 +123,7 @@ $opcionAlcance = [
                 <div class="container-fluid">
                 </div>
                 <div class="col-xs-4">
-                    <a href="Agregar.php">
+                    <a href="NuevoPrograma.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
                     <h5>
@@ -158,12 +158,9 @@ $opcionAlcance = [
                                                         $facultades = $p->getFacultadesDocente();
                                                     }
 
-                                                   // foreach ($facultades as $arregloFac) {
-                                                     //   echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    //}
+                                                
                                                     ?>
-
-                                                            <?php foreach ($facultades as $valor): ?>
+                                                      <?php foreach ($facultades as $valor): ?>
                                                             <option value="<?= htmlspecialchars($valor[0]) ?>"
                                                                 <?= ($valor[1] === $verProgram->getFacultad()) ? 'selected' : '' ?>>
                                                                 <?= htmlspecialchars($valor[1]) ?>
@@ -172,13 +169,13 @@ $opcionAlcance = [
                                                         <?php endforeach; ?>
                                                 </select>
                                         </div>
-                                         <div class="col-xs-3">
+                                         <div class="col-xs-4">
                                             <label for="telefono">Nombre del nuevo Programa</label>
                                             <div id="comboProg">
                                                 <input class="form-control" type="text" id="programTxt" value="<?php echo $verProgram->getName(); ?>" name="programTxt" required="true">
                                             </div>
                                         </div>
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-2">
                                             <label for="telefono">Alcance</label>
                                             <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
                                                 <?php foreach ($opcionAlcance as $valor => $etiqueta): ?>
@@ -191,7 +188,7 @@ $opcionAlcance = [
                                         </div>
                                       
 
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-2">
                                             <br>
                                             <input type="submit" value="Editar" class="btn btn-primary" />
                                         </div>
