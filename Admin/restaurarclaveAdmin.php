@@ -16,7 +16,8 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
 }
 ?>
 <!DOCTYPE html>
-<html> 
+<html lang="es">
+
     <head> 
         
 

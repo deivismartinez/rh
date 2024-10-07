@@ -94,7 +94,7 @@ if (isset($_SESSION['usuario'])) {
                         Gestionar Facultad.
                     </a>
                 </div>
-                <?php include("includes/menu.html"); ?>
+                <?php include("includes/menuAdmin.html"); ?>
             </div>
         </div>
 
