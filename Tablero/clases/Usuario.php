@@ -540,23 +540,6 @@ class Usuario extends conectar {
         }
     }
     
-    public function actualizarDatos() {
-        //sentencia sql para actualizar y/0 editar datos
-        $sql = "update usuarios
-             set
-            nombre='" . $_POST["nombre"] . "',
-            correo='" . $_POST["correo"] . "',
-            telefono='" . $_POST["telefono"] . "',
-            fecha='" . $_POST["fecha"] . "'
-            where
-            id='" . $_POST["id"] . "'";
-        $this->db->query($sql);
-    }
-
-    public function eliminarDatos() {
-        $sql = "delete from usuarios
-            where id='" . $_GET["id"] . "'";
-        $this->db->query($sql);
-    }
+   
 
 }
