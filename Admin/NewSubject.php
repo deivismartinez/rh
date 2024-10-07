@@ -5,6 +5,7 @@ require_once "../Tablero/vo/UsuarioVO.php";
 session_start();
 $p = new Programas();
 if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $asignatura = filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
     if (isset($asignatura)) {
