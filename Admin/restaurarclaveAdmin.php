@@ -1,6 +1,7 @@
 <?php
-require_once 'vo/UsuarioVO.php';
-require_once("clases/Usuario.php");
+require_once("../Tablero/vo/UsuarioVO.php");
+require_once("../Tablero/clases/Usuario.php");
+
 session_start();
 if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
     $usuario = $_SESSION['usuario'];
@@ -132,7 +133,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
                                             </p>
                                         </div>
                                         <div class="col-md-12">
-                                            <a href="../Admin/Agregar.php">
+                                            <a href="Agregar.php">
                                             <span class="glyphicon glyphicon-user"></span> Inicio
                                         </a>
                                     </div>
