@@ -97,7 +97,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
                     </div>
                 </nav>
 
-        <div class="panel">
+        <div class="content">
 
             <div class="col-xs-12">
                 <div class="row" id="centered">
@@ -152,8 +152,26 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
         </div>
         </div>
         </div>
+        </body> 
         <script src="http://code.jquery.com/jquery.js"></script> 
-        <script src="../Boot/js/bootstrap.min.js"></script> 
 
-    </body> 
+        <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Tablero/assets/js/chartist.min.js"></script>
+    <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
+    <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="../Tablero/assets/js/demo.js"></script>
+
+    <script type="text/javascript">
+                                                $(document).ready(function () {
+                                                    demo.initChartist();
+                                                    $.notify({
+                                                        icon: 'pe-7s-notebook',
+                                                        message: "Bienvenido(a) <b>Ahora puede consultar el banco de hojas de vida</b>"
+                                                    }, {
+                                                        type: 'info',
+                                                        timer: 4000
+                                                    });
+                                                });
+    </script> 
 </html>
