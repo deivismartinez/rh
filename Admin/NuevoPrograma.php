@@ -83,10 +83,10 @@ if (isset($_SESSION['usuario'])) {
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Consulta de Inscritos a el Departamento.
+                    Módulo de Administración.
                     </a>
                 </div>
-                <?php include("includes/menu.html"); ?>
+                <?php include("includes/menuAdmin.html"); ?>
             </div>
         </div>
 

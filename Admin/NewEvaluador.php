@@ -84,7 +84,7 @@ if (isset($usuario)) {
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Inscripción Docentes Unicesar
+                    Módulo de Administración.
                     </a>
                 </div>
                 <?php include("includes/menuAdmin.html"); ?>

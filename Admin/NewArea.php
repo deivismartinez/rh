@@ -6,7 +6,7 @@ session_start();
 $usuario = $_SESSION['usuario'];
 $p = new Programas();
 $nombre = $usuario->getName();
-session_start();
+
 if (isset($_SESSION['usuario'])) {
     $area = filter_input(INPUT_POST, 'areaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -90,7 +90,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Inscripción Docentes Unicesar
+                    Módulo de Administración.
                     </a>
                 </div>
                 <?php include("includes/menuAdmin.html"); ?>

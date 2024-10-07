@@ -3,11 +3,9 @@ require_once "../Tablero/clases/Programas.php";
 require_once "../Tablero/vo/UsuarioVO.php";
 
 session_start();
-$usuario = $_SESSION['usuario'];
 $p = new Programas();
-$nombre = $usuario->getName();
-session_start();
 if (isset($_SESSION['usuario'])) {
+    $nombre = $usuario->getName();
     $asignatura = filter_input(INPUT_POST, 'asignaturaTxt', FILTER_SANITIZE_SPECIAL_CHARS);
     if (isset($asignatura)) {
         $programaId = filter_input(INPUT_POST, 'programaCmb', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -90,7 +88,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Inscripción Docentes Unicesar
+                    Módulo de Administración.
                     </a>
                 </div>
                 <?php include("includes/menuAdmin.html"); ?>

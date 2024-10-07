@@ -91,7 +91,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Gestionar Facultad.
+                    Módulo de Administración.
                     </a>
                 </div>
                 <?php include("includes/menuAdmin.html"); ?>
