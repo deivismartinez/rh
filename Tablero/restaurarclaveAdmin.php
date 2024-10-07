@@ -30,7 +30,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
         <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
         <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <style>
-        <style>
+        
             #centered {
                 position: fixed;
                 top: 50%;
@@ -38,9 +38,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
                 /* bring your own prefixes */
                 transform: translate(-30%, -50%);
             }
-            body {
-                background-image: url(../images/fondo.jpg);
-            }
+            
         </style>
         <script type="text/javascript">
             function validacion(frm) {
@@ -75,7 +73,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
                             Consulta de Inscritos a el Departamento
                         </a>
                     </div>
-                    <?php include("includes/menuAdmin.html");?>
+                    <?php include("../Admin/includes/menuAdmin.html");?>
                 </div>
             </div>
 
@@ -100,7 +98,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
 
             <div class="col-xs-12">
                 <div class="row" id="centered">
-                    <div class="col-xs-7">
+                    <div class="col-xs-8">
                         <div class="panel panel-primary">
                             <div class = "panel-heading">
                                 <h2 class = "panel-title"><h2><p align=center><b>RESTAURACIÓN DE LA CLAVE DE LOS DOCENTES</b></p></h2></h2>
@@ -134,7 +132,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
                                             </p>
                                         </div>
                                         <div class="col-md-12">
-                                            <a href="../Admin/CalificadosAdmin.php">
+                                            <a href="../Admin/Agregar.php">
                                             <span class="glyphicon glyphicon-user"></span> Inicio
                                         </a>
                                     </div>
