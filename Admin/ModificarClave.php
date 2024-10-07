@@ -61,6 +61,15 @@ if (isset($_SESSION['usuario'])) {
             .tabla tbody tr td.align-left {
                 text-align: left;
             }
+
+            
+            #centered {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                /* bring your own prefixes */
+                transform: translate(-30%, -50%);
+            }
         </style>
         <script type="text/javascript">
             function validacion(frm) {
@@ -117,7 +126,7 @@ if (isset($_SESSION['usuario'])) {
                             <?php echo $nombre; ?>
                         </h5>
                     </div>
-                    <div class="row">
+                    <div class="row" id="centered">
                         <div class="col-xs-12">
                             <div class="col-xs-7">
                         <div class="panel panel-primary">
