@@ -139,7 +139,7 @@ $opcionAlcance = [
                             <div class="panel-body">
                                 <form name="form" action="" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-4">
                                             <label for="telefono">Facultad</label>
                                             <?php ?>
                                              <select class="form-control" id="facultadCmb" name="facultadCmb"
@@ -158,10 +158,18 @@ $opcionAlcance = [
                                                         $facultades = $p->getFacultadesDocente();
                                                     }
 
-                                                    foreach ($facultades as $arregloFac) {
-                                                        echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
-                                                    }
+                                                   // foreach ($facultades as $arregloFac) {
+                                                     //   echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
+                                                    //}
                                                     ?>
+
+                                                            <?php foreach ($facultades as $valor): ?>
+                                                            <option value="<?= htmlspecialchars($valor[0]) ?>"
+                                                                <?= ($valor[1] === $verProgram->getFacultad()) ? 'selected' : '' ?>>
+                                                                <?= htmlspecialchars($valor[1]) ?>
+                                                            </option>
+
+                                                        <?php endforeach; ?>
                                                 </select>
                                         </div>
                                          <div class="col-xs-3">
@@ -175,7 +183,7 @@ $opcionAlcance = [
                                             <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
                                                 <?php foreach ($opcionAlcance as $valor => $etiqueta): ?>
                                                     <option value="<?php echo htmlspecialchars($valor); ?>"
-                                                        <?php echo $valor === $eval->getAlcance() ? 'selected' : ''; ?>>
+                                                        <?php echo $valor === $verProgram->getPosgrado() ? 'selected' : ''; ?>>
                                                         <?php echo htmlspecialchars($etiqueta); ?>
                                                     </option>
                                                 <?php endforeach; ?>
