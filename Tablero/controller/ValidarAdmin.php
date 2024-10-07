@@ -29,7 +29,7 @@ var_dump($resultadoTraido);
                 }else{ 
                     if ($resultadoTraido->getTipo()=='ADMIN') {
                         $_SESSION['admin'] = 'SI';
-                        header('Location: ../../Admin/CalificadosAdmin.php');
+                        header('Location: ../../Admin/Agregar.php');
                     }else {
                         header('Location: ../../Admin/inicioAdmin.php');
                     }
