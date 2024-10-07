@@ -17,11 +17,19 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
 <!DOCTYPE html>
 <html> 
     <head> 
-        <title>Inscripción Docente Unicesar</title> 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link href="../Tablero/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
-        <link rel="icon" type="image/jpg" href="../images/icono.png" />
+        
+
+        <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Administración Inscripción Docente Unicesar</title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
+        <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/animate.min.css" rel="stylesheet"/>
+        <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+        <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        <style>
         <style>
             #centered {
                 position: fixed;
