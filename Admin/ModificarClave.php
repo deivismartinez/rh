@@ -111,8 +111,7 @@ if (isset($_SESSION['usuario'])) {
                 </nav>
 
                 <div class="content">
-                    <div class="container-fluid">
-                    </div>
+                    
                     <div class="col-xs-12">
                         <h5>
                             <?php echo $nombre; ?>

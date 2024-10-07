@@ -66,33 +66,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
     <body> 
 
     <div class="wrapper">
-            <div class="sidebar" data-color="green" data-image="../images/sidebar-5.jpg">
-                <div class="sidebar-wrapper">
-                    <div class="logo">
-                        <a href="#" class="simple-text">
-                            Consulta de Inscritos a el Departamento
-                        </a>
-                    </div>
-                    <?php include("../Admin/includes/menuAdmin.html");?>
-                </div>
-            </div>
-
-            <div class="main-panel">
-                <nav class="navbar navbar-default navbar-fixed">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                                <span class="sr-only"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <img class="img-responsive" alt="UPC" src="../images/titulo.png">
-                        </div>
-                        <div class="collapse navbar-collapse">
-                        </div>
-                    </div>
-                </nav>
+            
 
         <div class="panel">
 
