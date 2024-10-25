@@ -1,43 +1,52 @@
 <?php
-require_once '../Tablero/vo/UsuarioVO.php';
+require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Programa.php");
 require_once("../Tablero/clases/Gestion.php");
 
 $p = new Programas();
+$programaNew = new Programa();
+
 session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
-    $facultadCreados = $p->getFacultadVer();
+    $progamaId = $_GET['id'];
+    //$verPrograma = $programa->getProgramasVer($progamaId);
+    $verProgram = $programaNew->getFacultadVer($progamaId);
 
-    if (isset($_POST["facultadTxt"]) ) {
-        $facultadtxt = strtoupper($_POST["facultadTxt"]);
-        $gestion = new Gestion();
-        $existe = $p->existeFacultad($facultadtxt);
-        if (!$existe) { // Si no está marcado (false)
-            $gestion->insertarFacultad();
-            echo "<script>
-            alert('Registro guardado con éxito');
-            window.location.href = 'NewFacultad.php';
-            </script>";
-        } else {
-            $errorMessage = "El nombre de la Facultad no está disponible.";            
-        }
+
+    $gestion = new Gestion();
+    $programId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
+
+    echo '<script language="javascript">alert(hola)</script>';
+    // $editable = $gestion->EditProgram($programId);
+    if (isset($_POST["programTxt"])) {
+        //  $gestion->insertarPrograma();
+
     }
 } else {
-
     header('Location: AccesoNoautorizado.html');
 }
+$opcionAlcance = [
+    'PREGRADO' => 'PREGRADO',
+    'POSGRADO' => 'POSGRADO'
+];
+
+$opcionEstado = [
+    'ACTIVO' => 'ACTIVO',
+    'INACTIVO' => 'INACTIVO'
+];
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Administración Inscripción Docente Unicesar</title>
+    <title>Administraci贸n Inscripci贸n Docente Unicesar</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -59,7 +68,7 @@ if (isset($_SESSION['usuario'])) {
 
         .tabla thead {
             cursor: pointer;
-            background: #337ab7;
+            background: rgba(0, 0, 255, 1);
             color: rgba(255, 255, 255, 1);
         }
 
@@ -119,7 +128,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="container-fluid">
                 </div>
                 <div class="col-xs-4">
-                    <a href="Agregar.php">
+                    <a href="NuevoPrograma.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
                     <h5>
@@ -130,82 +139,56 @@ if (isset($_SESSION['usuario'])) {
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Gestionar facultad
+                                Editar programa acad茅mico
                             </div>
                             <div class="panel-body">
                                 <form name="form" action="" method="post" enctype="multipart/form-data">
                                     <div class="row">
-
-                                        <div class="col-xs-6">
-                                            <label for="telefono">Nueva facultad</label>
-
-                                            <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true" onkeyup="filtrarFacultad();">
-
+                                        <div class="col-xs-4">
+                                            <label for="telefono">Facultad</label>
+                                            <input class="form-control" type="text" id="facultadTxt" name="facultadTxt" required="true" >
+                                        
                                         </div>
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-4">
+                                            <label for="telefono">Nombre del nuevo Programa</label>
+                                            <div id="comboProg">
+                                                <input class="form-control" type="text" id="programTxt" value="<?php echo $verProgram->getName(); ?>" name="programTxt" required="true">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2">
                                             <label for="telefono">Alcance</label>
                                             <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
-                                                <OPTION value="">[SELECCIONE]</OPTION>
-                                                <OPTION value="false">PREGRADO</OPTION>
-                                                <OPTION value="true">POSGRADO</OPTION>
+                                                <?php foreach ($opcionAlcance as $valor => $etiqueta): ?>
+                                                    <option value="<?php echo htmlspecialchars($valor); ?>"
+                                                        <?php echo $valor === $verProgram->getPosgrado() ? 'selected' : ''; ?>>
+                                                        <?php echo htmlspecialchars($etiqueta); ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
 
-                                        <div class="col-xs-3">
-                                            <br>
-                                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                                        <div class="col-xs-2">
+                                            <label for="telefono">Estado</label>
+                                            <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
+                                                <?php foreach ($opcionEstado as $valor => $etiqueta): ?>
+                                                    <option value="<?php echo htmlspecialchars($valor); ?>"
+                                                        <?php echo $valor === $verProgram->getEstado() ? 'selected' : ''; ?>>
+                                                        <?php echo htmlspecialchars($etiqueta); ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
-                                    </div>
+                                      
 
-                                    <div class="row">
-                                    <div class="error-message">
-                                    <?php
-                                    // Si hay un mensaje de error, lo muestra aquí
-                                    if (!empty($errorMessage)) {
-                                        echo $errorMessage;
-                                    }
-                                    ?>                               
-
+                                        <div class="col-xs-2">
+                                            <br>
+                                            <input type="submit" value="Editar" class="btn btn-primary" />
+                                        </div>
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
-                                        <thead>
-                                            <tr>
-                                                <th><span>No.</span></th>
-                                                <th><span>Facultad</span></th>
-                                                <th><span>Estado</span></th>
-                                                <th><span>Alcance</span></th>
-                                                <th><span>Edit</span></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $i = 0;
-                                            foreach ($facultadCreados as $arreglo) {
-                                                $i = $i + 1;
-                                            ?>
-                                                <tr>
-                                                    <td><?php echo $i ?></td>
-                                                    <td><?php echo $arreglo[0] ?></td>
-                                                    <td><?php echo $arreglo[1] ?></td>
-                                                    <td><?php echo $arreglo[2] ?></td>
 
-                                                    <?php
-                                                    $urlVer = "EditFacultad.php?id=" . $arreglo[3];
-                                                    ?>
-                                                    <td>
-                                                        <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-pen"></i></a>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                         <br>
                         <div class="row">
@@ -224,28 +207,11 @@ if (isset($_SESSION['usuario'])) {
     </div>
 </body>
 <script src="../Tablero/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src='../Tablero/assets/js/jquery2.1.3sorter.js'></script>
 <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../Tablero/assets/js/chartist.min.js"></script>
 <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
 
-<script>
-function filtrarFacultad() {
-    const facultadTxt = document.getElementById('facultadTxt').value;
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "procesar_filtro_facultad.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Actualizar la tabla con los datos filtrados
-            document.getElementById('mi-tabla').innerHTML = xhr.responseText;
-        }
-    };
-
-    // Enviar el valor del filtro al servidor
-    xhr.send("facultadTxt=" + encodeURIComponent(facultadTxt));
-}
-</script>
 </html>
