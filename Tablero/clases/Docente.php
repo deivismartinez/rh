@@ -559,7 +559,7 @@ class Docente extends conectar
                 $docente->setDisponibilidad($row['disponibilidad']);
                 $docente->setSituacion($row['situacion']);
                 $docente->setDescripcion($row['descripcion']);
-                $docente->setcualitativa($row['cualitativa']);
+                $docente->setCualitativa($row['cualitativa']);
                 return $docente;
             }
         } catch (Exception $error) { }

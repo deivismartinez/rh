@@ -27,6 +27,7 @@ if (isset($_SESSION['usuario'])) {
     $cursos = $estudios->getCursos($docente);
     $numeroEspecializacion = 0;
     $categoria = $datos->getCategoria();
+    $cualitativa = $datos->getCualitativa();
     require_once("../clases/Programas.php");
     $programas = new Programas();
     $programaLista = $programas->getProgramaUsuarioPerfil($usuario);
@@ -44,6 +45,7 @@ if (isset($_SESSION['usuario'])) {
     $software = $produccion->getSoftware($usuario);
     //$obra = $produccion->getObras($usuario);
     //var_dump($obra);
+    
     $nombre = $datos->getApellidos() . ' ' . $datos->getNombres();
     if (isset($_POST["puntoscategoria"])) {
         $u = new Docente();
