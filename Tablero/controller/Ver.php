@@ -207,8 +207,8 @@ if (isset($_SESSION['usuario'])) {
                                                     <thead>	
                                                         <tr class="info">
                                                             <th>Categoria Docente</th>
-                                                            <th>Sugerido</th>
-                                                        <th>Confirmado</th>
+                                                            <th>Cal. Actual</th>
+                                                        <th>Cal. Nueva</th>
                                                         <th>Comentario</th>
                                                             <th>Acciones</th>
                                                         </tr>
@@ -236,30 +236,20 @@ if (isset($_SESSION['usuario'])) {
     }
     echo '<td><select class="form-control" id="puntoscategoria" name="puntoscategoria" required="true">'
     . '<option value="" selected="true">SELECCIONE</option>';
-    if($puntosDigitados->getcategoria()=='0'){
-        echo '<option value="0" selected="true">0</option>';
+    if($puntosDigitados->getcategoria()=='CUMPLE'){
+        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
     }else{
-        echo '<option value="0">0</option>';
+        echo '<option value="CUMPLE">CUMPLE</option>';
     }
-    if($puntosDigitados->getcategoria()=='27'){
-        echo '<option value="27" selected="true">27</option>';
+    if($puntosDigitados->getcategoria()=='NO CUMPLE'){
+        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
     }else{
-        echo '<option value="27">27</option>';
+        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
     }
-    if($puntosDigitados->getcategoria()=='58'){
-        echo '<option value="58" selected="true">58</option>';
+    if($puntosDigitados->getcategoria()=='NO APLICA'){
+        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
     }else{
-        echo '<option value="58">58</option>';
-    }
-    if($puntosDigitados->getcategoria()=='74'){
-        echo '<option value="74" selected="true">74</option>';
-    }else{
-        echo '<option value="74">74</option>';
-    }
-    if($puntosDigitados->getcategoria()=='96'){
-        echo '<option value="96" selected="true">96</option>';
-    }else{
-        echo '<option value="96">96</option>';
+        echo '<option value="NO APLICA">NO APLICA</option>';
     }
     echo '</select></td>';
     echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">'.$puntosDigitados->getcomentariocategoria().'</textarea></td>';
