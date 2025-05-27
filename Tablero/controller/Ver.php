@@ -216,24 +216,8 @@ if (isset($_SESSION['usuario'])) {
                                                     <tbody>
                                                             <tr>
                                                                 <td><?php echo $categoria ?></td>
-                                                                <?php
-    if ($categoria == 'AUXILIAR') {
-        echo '<td>27</td>';
-    } else {
-        if ($categoria == 'ASISTENTE') {
-            echo '<td>58</td>';
-        } else {
-            if ($categoria == 'ASOCIADO') {
-            echo '<td>74</td>';
-        } else {
-            if ($categoria == 'TITULAR') {
-            echo '<td>96</td>';
-        } else {
-            echo '<td>0</td>';
-        }
-        }
-        }
-    }
+                                                                <td><?php echo $datos->getCualitativa() ?></td>
+    <?php
     echo '<td><select class="form-control" id="puntoscategoria" name="puntoscategoria" required="true">'
     . '<option value="" selected="true">SELECCIONE</option>';
     if($puntosDigitados->getcategoria()=='CUMPLE'){
