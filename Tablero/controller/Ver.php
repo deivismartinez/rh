@@ -216,21 +216,21 @@ if (isset($_SESSION['usuario'])) {
                                                     <tbody>
                                                             <tr>
                                                                 <td><?php echo $categoria ?></td>
-                                                                <td><?php echo $datos->getCualitativa() ?></td>
+                                                                <td><?php echo $doc->getCualitativa() ?></td>
     <?php
     echo '<td><select class="form-control" id="puntoscategoria" name="puntoscategoria" required="true">'
     . '<option value="" selected="true">SELECCIONE</option>';
-    if($puntosDigitados->getcategoria()=='CUMPLE'){
+    if($doc->getCualitativa()=='cumple'){
         echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
     }else{
         echo '<option value="CUMPLE">CUMPLE</option>';
     }
-    if($puntosDigitados->getcategoria()=='NO CUMPLE'){
+    if($doc->getCualitativa()=='no cumple'){
         echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
     }else{
         echo '<option value="NO CUMPLE">NO CUMPLE</option>';
     }
-    if($puntosDigitados->getcategoria()=='NO APLICA'){
+    if($doc->getCualitativa()=='no aplica'){
         echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
     }else{
         echo '<option value="NO APLICA">NO APLICA</option>';
