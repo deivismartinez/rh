@@ -560,8 +560,9 @@ class Docente extends conectar
                 $docente->setSituacion($row['situacion']);
                 $docente->setDescripcion($row['descripcion']);
                 $docente->setCualitativa($row['cualitativa']);
-                return $docente;
                 var_dump($docente);
+                return $docente;
+                
             }
         } catch (Exception $error) { }
         return null;
