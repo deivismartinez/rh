@@ -709,7 +709,7 @@ class Docente extends conectar
                 header($mensaje);
                 exit;
             } else {
-                $sqlDocente = "UPDATE public.calificacion SET fechacambio=now(),cualificativa='".$puntoscategoria."' WHERE docente_id =" . $id . ";";
+                $sqlDocente = "UPDATE public.docente SET fechacambio=now(),cualificativa='".$puntoscategoria."' WHERE docente_id =" . $id . ";";
                 pg_query($this->db, $sqlDocente) or die('La consulta fallo: ' . pg_last_error());
                 $puntoscategoria = 1;
                 if ($this->esCalificado($id)) {
