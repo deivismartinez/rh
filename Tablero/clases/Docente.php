@@ -713,28 +713,28 @@ class Docente extends conectar
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacionEsp("pregrado", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("pregrado", $id, $numero, $cualitativa, $comentario);
             }
             $cantidadEsp = trim(filter_input(INPUT_POST, 'cantidadEsp', FILTER_SANITIZE_SPECIAL_CHARS));
             for($i=1;$i<=$cantidadEsp;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacionEsp("especializacion", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("especializacion", $id, $numero, $cualitativa, $comentario);
             }
             $cantidadMae = trim(filter_input(INPUT_POST, 'cantidadMae', FILTER_SANITIZE_SPECIAL_CHARS));
             for($i=1;$i<=$cantidadMae;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacionEsp("maestria", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("maestria", $id, $numero, $cualitativa, $comentario);
             }
             $cantidadDoc = trim(filter_input(INPUT_POST, 'cantidadDoc', FILTER_SANITIZE_SPECIAL_CHARS));
-            for($i=1;$i<=$cantidadMae;$i++){
+            for($i=1;$i<=$cantidadDoc;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacionEsp("doctorado", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("doctorado", $id, $numero, $cualitativa, $comentario);
             }
             /////////////////////////////////
             
