@@ -385,17 +385,25 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloEspecializacion[1] ?></td>
                                                                 <td><?php echo $arregloEspecializacion[2] ?></td>
                                                                 <?php
-                                                                if ($numeroEspecializacion == 1) {
-                                                                    $puntosAcademicos = $puntosAcademicos + 20;
-                                                                    echo '<td>20</td>';
+                                                                echo '<td><select class="form-control" id="especianlizacion" name="especianlizacion" required="true">'
+                                                                . '<option value="" selected="true">SELECCIONE</option>';
+                                                                if ($cualitativa == 'CUMPLE') {
+                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                 } else {
-                                                                    if ($numeroEspecializacion == 2) {
-                                                                        $puntosAcademicos = $puntosAcademicos + 10;
-                                                                        echo '<td>10</td>';
-                                                                    } else {
-                                                                        echo '<td></td>';
-                                                                    }
+                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
                                                                 }
+                                                                if ($cualitativa == 'NO CUMPLE') {
+                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                }
+                                                                if ($cualitativa == 'NO APLICA') {
+                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                } else {
+                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                }
+                                                                echo '</select></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacion[3] . "&tipo=2"; ?>
                                                                 <td>
