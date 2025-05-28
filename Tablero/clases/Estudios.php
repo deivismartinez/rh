@@ -70,7 +70,7 @@ class Estudios extends conectar {
     }
     
     public function getEspecializacionesNormales($usuario) {
-        $sql = "SELECT 'ESPECIALIZACIÓN' as tipo,titulo as nombre,institucion,id FROM especializacion where docente_id=" . $usuario->getId() . " and tipo = 0;";
+        $sql = "SELECT 'ESPECIALIZACIÓN' as tipo,titulo as nombre,institucion,id,cualitativa,comentario FROM especializacion where docente_id=" . $usuario->getId() . " and tipo = 0;";
         $datos = pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
