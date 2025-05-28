@@ -80,7 +80,7 @@ class Estudios extends conectar {
     }
     
     public function getEspecializacionesEspeciales($usuario) {
-        $sql = "SELECT 'ESPECIALIZACIÓN' as tipo,titulo as nombre,institucion,id FROM especializacion where docente_id=" . $usuario->getId() . " and tipo = 1;";
+        $sql = "SELECT 'ESPECIALIZACIÓN' as tipo,titulo as nombre,institucion,id, cualitativa, comentario FROM especializacion where docente_id=" . $usuario->getId() . " and tipo = 1;";
         $datos = pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -91,7 +91,7 @@ class Estudios extends conectar {
 
     public function getMaestrias($usuario) {
         $id = $usuario->getId();
-        $sql = "SELECT 'MAESTRIA' as tipo,titulo as nombre,institucion,id FROM maestria where docente_id=" . $id . ";";
+        $sql = "SELECT 'MAESTRIA' as tipo,titulo as nombre,institucion,id, cualitativa, comentario FROM maestria where docente_id=" . $id . ";";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -102,7 +102,7 @@ class Estudios extends conectar {
 
     public function getDoctorados($usuario) {
         $id = $usuario->getId();
-        $sql = "SELECT 'DOCTORADO' as tipo,titulo as nombre,institucion,id FROM doctorado where docente_id=" . $id . ";";
+        $sql = "SELECT 'DOCTORADO' as tipo,titulo as nombre,institucion,id, cualitativa, comentario FROM doctorado where docente_id=" . $id . ";";
         $datos = pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {

@@ -708,12 +708,33 @@ class Docente extends conectar
             $puntosexperiencia = str_replace(",", ".", $puntosexperiencia);
             
             /////////////////////////////////
+            $cantidadPre = trim(filter_input(INPUT_POST, 'cantidadPre', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadPre;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacionEsp("pregrado", $id, $numero, $cualitativa, $comentario);
+            }
             $cantidadEsp = trim(filter_input(INPUT_POST, 'cantidadEsp', FILTER_SANITIZE_SPECIAL_CHARS));
             for($i=1;$i<=$cantidadEsp;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacionEsp($id, $numero, $cualitativa, $comentario);
+                $this->setCalificacionEsp("especializacion", $id, $numero, $cualitativa, $comentario);
+            }
+            $cantidadMae = trim(filter_input(INPUT_POST, 'cantidadMae', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadMae;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacionEsp("maestria", $id, $numero, $cualitativa, $comentario);
+            }
+            $cantidadDoc = trim(filter_input(INPUT_POST, 'cantidadDoc', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadMae;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacionEsp("doctorado", $id, $numero, $cualitativa, $comentario);
             }
             /////////////////////////////////
             
@@ -760,10 +781,10 @@ class Docente extends conectar
         } catch (Exception $error) { }
     }
     
-    public function setCalificacionEsp($docente_id, $numero, $cualitativa, $comentario)
+    public function setCalificacion($estudio, $docente_id, $numero, $cualitativa, $comentario)
     {
         try {
-            $sql = "UPDATE especializacion SET fechacambio = now(), cualitativa = '".$cualitativa."', comentario = '"
+            $sql = "UPDATE ".$estudio." SET fechacambio = now(), cualitativa = '".$cualitativa."', comentario = '"
                     .$comentario."'  WHERE docente_id =" . $docente_id . " and id = ".$numero.";";
             $this->updateTable($sql);
         } catch (Exception $error) { }

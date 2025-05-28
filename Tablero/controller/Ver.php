@@ -279,14 +279,16 @@ if (isset($_SESSION['usuario'])) {
                                                     </thead>
                                                     <tbody>
                                                         <?php
+                                                        $numeroPregrado = 0;
                                                         foreach ($pregrado as $arregloPregrado) {
+                                                            $numeroPregrado = $numeroPregrado + 1;
                                                             ?>
                                                             <tr>
                                                                 <td><?php echo $arregloPregrado[0] ?></td>
                                                                 <td><?php echo $arregloPregrado[1] ?></td>
                                                                 <td><?php echo $arregloPregrado[2] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="pregrado" name="pregrado" required="true">'
+                                                                echo '<td><select class="form-control" id="cualitativaPre'.$numeroPregrado.'" name="cualitativaPre'.$numeroPregrado.'" required="true">'
                                                                 . '<option value="" selected="true">SELECCIONE</option>';
                                                                 if ($arregloPregrado[4] == 'CUMPLE') {
                                                                     echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
@@ -304,7 +306,8 @@ if (isset($_SESSION['usuario'])) {
                                                                     echo '<option value="NO APLICA">NO APLICA</option>';
                                                                 }
                                                                 echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioPre" name="comentarioPre">' . $arregloPregrado[5] . '</textarea></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioPre'.$numeroPregrado.'" name="comentarioPre'.$numeroPregrado.'">' . $arregloPregrado[5] . '</textarea></td>';
+                                                                echo '<input id="numeroPre'.$numeroPregrado.'" name="numeroPre'.$numeroPregrado.'" type="hidden" value="'.$arregloPregrado[3].'">';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloPregrado[3] . "&tipo=1"; ?>
                                                                 <td>
@@ -324,6 +327,7 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                         }
                                                         ?>
+                                                            <input id="cantidadPre" name="cantidadPre" type="hidden" value="<?php echo $numeroEspecializacion ?>">
                                                         <?php
                                                         foreach ($especializacionEsp as $arregloEspecializacionEsp) {
                                                             $numeroEspecializacion = $numeroEspecializacion + 1;
@@ -333,25 +337,26 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloEspecializacionEsp[1] ?></td>
                                                                 <td><?php echo $arregloEspecializacionEsp[2] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativa'.$numeroEspecializacion.'" name="cualitativa'.$numeroEspecializacion.'" required="true">'
+                                                                echo '<td><select class="form-control" id="cualitativaEspM'.$numeroEspecializacion.'" name="cualitativaEspM'.$numeroEspecializacion.'" required="true">'
                                                                 . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($cualitativa == 'CUMPLE') {
+                                                                if ($arregloEspecializacionEsp[4] == 'CUMPLE') {
                                                                     echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                 } else {
                                                                     echo '<option value="CUMPLE">CUMPLE</option>';
                                                                 }
-                                                                if ($cualitativa == 'NO CUMPLE') {
+                                                                if ($arregloEspecializacionEsp[4] == 'NO CUMPLE') {
                                                                     echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
                                                                 } else {
                                                                     echo '<option value="NO CUMPLE">NO CUMPLE</option>';
                                                                 }
-                                                                if ($cualitativa == 'NO APLICA') {
+                                                                if ($arregloEspecializacionEsp[4] == 'NO APLICA') {
                                                                     echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
                                                                 } else {
                                                                     echo '<option value="NO APLICA">NO APLICA</option>';
                                                                 }
                                                                 echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioEspM'.$numeroEspecializacion.'" name="comentarioEspM'.$numeroEspecializacion.'">' . $arregloEspecializacionEsp[5] . '</textarea></td>';
+                                                                echo '<input id="numeroEspM'.$numeroEspecializacion.'" name="numeroEspM'.$numeroEspecializacion.'" type="hidden" value="'.$arregloEspecializacionEsp[3].'">';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacionEsp[3] . "&tipo=2"; ?>
                                                                 <td>
@@ -372,7 +377,9 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                         }
                                                         ?>
+                                                            <input id="cantidadEspM" name="cantidadEspM" type="hidden" value="<?php echo $numeroEspecializacion ?>">
                                                         <?php
+                                                        $numeroEspecializacion=0;
                                                         foreach ($especializacion as $arregloEspecializacion) {
                                                             $numeroEspecializacion = $numeroEspecializacion + 1;
                                                             ?>
@@ -400,7 +407,7 @@ if (isset($_SESSION['usuario'])) {
                                                                 }
                                                                 echo '</select></td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioEsp'.$numeroEspecializacion.'" name="comentarioEsp'.$numeroEspecializacion.'">' . $arregloEspecializacion[5] . '</textarea></td>';
-                                                                
+                                                                echo '<input id="numeroEsp'.$numeroEspecializacion.'" name="numeroEsp'.$numeroEspecializacion.'" type="hidden" value="'.$arregloEspecializacion[3].'">';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacion[3] . "&tipo=2"; ?>
                                                                 <td>
@@ -416,9 +423,7 @@ if (isset($_SESSION['usuario'])) {
                                                                     }
                                                                     ?>
                                                                 </td>
-                                                                <?php
-                                                                echo '<input id="numeroEsp'.$numeroEspecializacion.'" name="numeroEsp'.$numeroEspecializacion.'" type="hidden" value="'.$arregloEspecializacion[3].'">';
-                                                            ?>
+                                                                
                                                                 </tr>
                                                             <?php
                                                         }
@@ -434,17 +439,26 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloMaestria[1] ?></td>
                                                                 <td><?php echo $arregloMaestria[2] ?></td>
                                                                 <?php
-                                                                if ($numeroMaestrias == 1) {
-                                                                    $puntosAcademicos = $puntosAcademicos + 40;
-                                                                    echo '<td>40</td>';
+                                                                echo '<td><select class="form-control" id="cualitativaMae'.$numeroMaestrias.'" name="cualitativaMae'.$numeroMaestrias.'" required="true">'
+                                                                . '<option value="" selected="true">SELECCIONE</option>';
+                                                                if ($arregloMaestria[4] == 'CUMPLE') {
+                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                 } else {
-                                                                    if ($numeroMaestrias == 2) {
-                                                                        $puntosAcademicos = $puntosAcademicos + 20;
-                                                                        echo '<td>20</td>';
-                                                                    } else {
-                                                                        echo '<td></td>';
-                                                                    }
+                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
                                                                 }
+                                                                if ($arregloMaestria[4] == 'NO CUMPLE') {
+                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                }
+                                                                if ($arregloMaestria[4] == 'NO APLICA') {
+                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                } else {
+                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                }
+                                                                echo '</select></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioMae'.$numeroMaestrias.'" name="comentarioMae'.$numeroMaestrias.'">' . $arregloMaestria[5] . '</textarea></td>';
+                                                                echo '<input id="numeroMae'.$numeroMaestrias.'" name="numeroMae'.$numeroMaestrias.'" type="hidden" value="'.$arregloMaestria[3].'">';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloMaestria[3] . "&tipo=3"; ?>
                                                                 <td>
@@ -474,17 +488,26 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloDoctorado[1] ?></td>
                                                                 <td><?php echo $arregloDoctorado[2] ?></td>
                                                                 <?php
-                                                                if ($numeroDoctorados == 1) {
-                                                                    $puntosAcademicos = $puntosAcademicos + 80;
-                                                                    echo '<td>80</td>';
+                                                                echo '<td><select class="form-control" id="cualitativaDoc'.$numeroDoctorados.'" name="cualitativaDoc'.$numeroDoctorados.'" required="true">'
+                                                                . '<option value="" selected="true">SELECCIONE</option>';
+                                                                if ($arregloDoctorado[4] == 'CUMPLE') {
+                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                 } else {
-                                                                    if ($numeroDoctorados == 2) {
-                                                                        $puntosAcademicos = $puntosAcademicos + 40;
-                                                                        echo '<td>40</td>';
-                                                                    } else {
-                                                                        echo '<td></td>';
-                                                                    }
+                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
                                                                 }
+                                                                if ($arregloDoctorado[4] == 'NO CUMPLE') {
+                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                }
+                                                                if ($arregloDoctorado[4] == 'NO APLICA') {
+                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                } else {
+                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                }
+                                                                echo '</select></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioDoc'.$numeroDoctorados.'" name="comentarioDoc'.$numeroDoctorados.'">' . $arregloDoctorado[5] . '</textarea></td>';
+                                                                echo '<input id="numeroDoc'.$numeroDoctorados.'" name="numeroDoc'.$numeroDoctorados.'" type="hidden" value="'.$arregloDoctorado[3].'">';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloDoctorado[3] . "&tipo=4"; ?>
                                                                 <td>
@@ -508,138 +531,6 @@ if (isset($_SESSION['usuario'])) {
                                                 </table>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <label for="">Puntos Sugeridos por estudios</label>
-                                                <input type="text" size="4" disabled="true" value="<?php echo $puntosAcademicos ?>"  id="estSugerido" name="estSugerido" class="form-control"/>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label for="">Total Puntos Confirmados por estudios</label>
-                                                <select class="form-control" id="puntosestudios" name="puntosestudios" required="true">
-                                                    <option value="" selected="true">SELECCIONE</option>
-                                                    <?php if ($puntosDigitados->getestudios() == '0') { ?>
-                                                        <option value="0" selected="true">0</option>
-                                                    <?php } else { ?>
-                                                        <option value="0">0</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '20') { ?>
-                                                        <option value="20" selected="true">20</option>
-                                                    <?php } else { ?>
-                                                        <option value="20">20</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '30') { ?>
-                                                        <option value="30" selected="true">30</option>
-                                                    <?php } else { ?>
-                                                        <option value="30">30</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '40') { ?>
-                                                        <option value="40" selected="true">40</option>
-                                                    <?php } else { ?>
-                                                        <option value="40">40</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '60') { ?>
-                                                        <option value="60" selected="true">60</option>
-                                                    <?php } else { ?>
-                                                        <option value="60">60</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '70') { ?>
-                                                        <option value="70" selected="true">70</option>
-                                                    <?php } else { ?>
-                                                        <option value="70">70</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '80') { ?>
-                                                        <option value="80" selected="true">80</option>
-                                                    <?php } else { ?>
-                                                        <option value="80">80</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '90') { ?>
-                                                        <option value="90" selected="true">90</option>
-                                                    <?php } else { ?>
-                                                        <option value="90">90</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '100') { ?>
-                                                        <option value="100" selected="true">100</option>
-                                                    <?php } else { ?>
-                                                        <option value="100">100</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '110') { ?>
-                                                        <option value="110" selected="true">110</option>
-                                                    <?php } else { ?>
-                                                        <option value="110">110</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '120') { ?>
-                                                        <option value="120" selected="true">120</option>
-                                                    <?php } else { ?>
-                                                        <option value="120">120</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '130') { ?>
-                                                        <option value="130" selected="true">130</option>
-                                                    <?php } else { ?>
-                                                        <option value="130">130</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '140') { ?>
-                                                        <option value="140" selected="true">140</option>
-                                                    <?php } else { ?>
-                                                        <option value="140">140</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '150') { ?>
-                                                        <option value="150" selected="true">150</option>
-                                                    <?php } else { ?>
-                                                        <option value="150">150</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '160') { ?>
-                                                        <option value="160" selected="true">160</option>
-                                                    <?php } else { ?>
-                                                        <option value="160">160</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '170') { ?>
-                                                        <option value="170" selected="true">170</option>
-                                                    <?php } else { ?>
-                                                        <option value="170">170</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '180') { ?>
-                                                        <option value="180" selected="true">180</option>
-                                                    <?php } else { ?>
-                                                        <option value="180">180</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '190') { ?>
-                                                        <option value="190" selected="true">190</option>
-                                                    <?php } else { ?>
-                                                        <option value="190">190</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '200') { ?>
-                                                        <option value="200" selected="true">200</option>
-                                                    <?php } else { ?>
-                                                        <option value="200">200</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '210') { ?>
-                                                        <option value="210" selected="true">210</option>
-                                                    <?php } else { ?>
-                                                        <option value="210">210</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '220') { ?>
-                                                        <option value="220" selected="true">220</option>
-                                                    <?php } else { ?>
-                                                        <option value="220">220</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '230') { ?>
-                                                        <option value="230" selected="true">230</option>
-                                                    <?php } else { ?>
-                                                        <option value="230">230</option>
-                                                    <?php } ?>
-                                                    <?php if ($puntosDigitados->getestudios() == '240') { ?>
-                                                        <option value="240" selected="true">240</option>
-                                                    <?php } else { ?>
-                                                        <option value="240">240</option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-5">
-                                                <label for="">Comentario</label>
-                                                <textarea id="comentarioEstudios" name="comentarioEstudios" class="form-control"><?php echo $puntosDigitados->getcomentarioestudio() ?></textarea>
-                                            </div>
-                                        </div>
-                                        <br>
                                     </div>
                                 </div>
                                 <div class="panel panel-primary">
