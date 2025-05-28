@@ -537,7 +537,7 @@ class Docente extends conectar
             $sql = "SELECT nombre, apellidos, tipodocumento, documentoidentidad,"
                 . " email, estado_civil, genero, paisorigen, departamento, "
                 . "municipio, direccion, telefono, celular, fechanacimiento, "
-                . "escalafondocente, sede, disponibilidad, situacion, descripcion, cualitativa FROM docente WHERE id =" . $id;
+                . "escalafondocente, sede, disponibilidad, situacion, descripcion, cualitativa, comentario FROM docente WHERE id =" . $id;
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 $docente->setNombres($row['nombre']);
@@ -560,6 +560,7 @@ class Docente extends conectar
                 $docente->setSituacion($row['situacion']);
                 $docente->setDescripcion($row['descripcion']);
                 $docente->setCualitativa($row['cualitativa']);
+                $docente->setComentario($row['comentario']);
                 return $docente;
                 
             }
