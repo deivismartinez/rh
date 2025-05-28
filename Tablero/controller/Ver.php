@@ -371,7 +371,7 @@ if (isset($_SESSION['usuario'])) {
                                                                         <?php
                                                                     }
                                                                     ?>
-                                                                        <input id="cantidaEsp" name="cantidaEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
+                                                                        
                                                                 </td>
                                                             </tr>
                                                             <?php
@@ -420,6 +420,7 @@ if (isset($_SESSION['usuario'])) {
                                                                     }
                                                                     ?>
                                                                 </td>
+                                                                <input id="cantidaEsp" name="cantidaEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
                                                             </tr>
                                                             <?php
                                                         }
