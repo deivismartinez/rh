@@ -309,7 +309,7 @@ if (isset($_SESSION['usuario'])) {
                                                                     echo '<option value="NO APLICA">NO APLICA</option>';
                                                                 }
                                                                 echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioPre" name="comentarioPre">' . $comentario . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloPregrado[3] . "&tipo=1"; ?>
                                                                 <td>
@@ -420,7 +420,7 @@ if (isset($_SESSION['usuario'])) {
                                                                     }
                                                                     ?>
                                                                 </td>
-                                                                <input id="cantidaEsp" name="cantidaEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
+                                                                <input id="cantidadEsp" name="cantidadEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
                                                             </tr>
                                                             <?php
                                                         }
