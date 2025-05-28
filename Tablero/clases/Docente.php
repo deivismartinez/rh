@@ -694,6 +694,7 @@ class Docente extends conectar
     public function insertarCalificacion($id, $nombre, $programa, $usuario, $idUsuario)
     {
         try {
+            $puntoscategoria  = trim(filter_input(INPUT_POST, 'puntoscategoria', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioCategoria = trim(filter_input(INPUT_POST, 'comentarioCategoria', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioEstudios = trim(filter_input(INPUT_POST, 'comentarioEstudios', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioExperiencia = trim(filter_input(INPUT_POST, 'comentarioExperiencia', FILTER_SANITIZE_SPECIAL_CHARS));
