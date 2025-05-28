@@ -694,18 +694,11 @@ class Docente extends conectar
     public function insertarCalificacion($id, $nombre, $programa, $usuario, $idUsuario)
     {
         try {
-            $puntosestudios = trim(filter_input(INPUT_POST, 'puntosestudios', FILTER_SANITIZE_SPECIAL_CHARS));
-            
-            $puntosexperiencia = strtoupper(trim(filter_input(INPUT_POST, 'puntosexperiencia', FILTER_SANITIZE_SPECIAL_CHARS)));
-            $puntosinvestigaciones = strtoupper(trim(filter_input(INPUT_POST, 'puntosinvestigaciones', FILTER_SANITIZE_SPECIAL_CHARS)));
-            $puntosproduccion = trim(filter_input(INPUT_POST, 'puntosproduccion', FILTER_SANITIZE_SPECIAL_CHARS));
-            $puntoscategoria = strtolower(trim(filter_input(INPUT_POST, 'puntoscategoria', FILTER_SANITIZE_SPECIAL_CHARS)));
             $comentarioCategoria = trim(filter_input(INPUT_POST, 'comentarioCategoria', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioEstudios = trim(filter_input(INPUT_POST, 'comentarioEstudios', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioExperiencia = trim(filter_input(INPUT_POST, 'comentarioExperiencia', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioInvestigaciones = trim(filter_input(INPUT_POST, 'comentarioInvestigaciones', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioProduccion = trim(filter_input(INPUT_POST, 'comentarioProduccion', FILTER_SANITIZE_SPECIAL_CHARS));
-            $puntosexperiencia = str_replace(",", ".", $puntosexperiencia);
             
             /////////////////////////////////
             $cantidadPre = trim(filter_input(INPUT_POST, 'cantidadPre', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -743,20 +736,63 @@ class Docente extends conectar
                 $numero = trim(filter_input(INPUT_POST, 'numeroExp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $this->setCalificacion("expcalificada", $id, $numero, $cualitativa, $comentario,"docenteid");
             }
+            $cantidadGru = trim(filter_input(INPUT_POST, 'cantidadGru', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadGru;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaGru'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioGru'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroGru'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("grupoinvestigacion", $id, $numero, $cualitativa, $comentario,"docenteid");
+            }
+            $cantidadInv = trim(filter_input(INPUT_POST, 'cantidadInv', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadInv;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaInv'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioInv'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroInv'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("grupoinvestigacion", $id, $numero, $cualitativa, $comentario,"docenteid");
+            }
+            $cantidadArt = trim(filter_input(INPUT_POST, 'cantidadArt', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadArt;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaArt'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioArt'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroArt'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("articulo", $id, $numero, $cualitativa, $comentario,"docente_id");
+            }
+            $cantidadLib = trim(filter_input(INPUT_POST, 'cantidadLib', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadLib;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaLib'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioLib'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroLib'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("libro", $id, $numero, $cualitativa, $comentario,"docente_id");
+            }
+            $cantidadMon = trim(filter_input(INPUT_POST, 'cantidadMon', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadMon;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaMon'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioMon'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroMon'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("monografia", $id, $numero, $cualitativa, $comentario,"docente_id");
+            }
+            $cantidadPat = trim(filter_input(INPUT_POST, 'cantidadPat', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadPat;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaPat'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioPat'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroPat'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("patente", $id, $numero, $cualitativa, $comentario,"docente_id");
+            }
+            $cantidadSof = trim(filter_input(INPUT_POST, 'cantidadSof', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadSof;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaSof'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioSof'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroSof'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("software", $id, $numero, $cualitativa, $comentario,"docente_id");
+            }
             /////////////////////////////////
             
-            
-            if ($puntosinvestigaciones == '' || $puntosproduccion == '' || $puntoscategoria == '') {
-                $mensajeMostrar = "Hay campos vacios, recuerde los campos son obligatorios";
-                $mensaje = "Location: ../clases/Incorrectos/Usuario.php?mensaje=" . $mensajeMostrar;
-                header($mensaje);
-                exit;
-            } else {
                 $sqlDocente = "UPDATE public.docente SET fechacambio=now(),cualitativa='".strtoupper($puntoscategoria)."', comentario = '".$comentarioCategoria."' WHERE id =" . $id . ";";
                 pg_query($this->db, $sqlDocente) or die('La consulta fallo: ' . pg_last_error());
                 $puntoscategoria = 1;
                 $puntosestudios = 2;
                 $puntosexperiencia = 3;
+                $puntosinvestigaciones = 4;$puntosproduccion=5;
                 if ($this->esCalificado($id)) {
                     $sql = "UPDATE public.calificacion SET fecharegistro=now(), "
                         . "usuario_id=" . $idUsuario . ", programa_id=" . $programa . ", categoria=" . $puntoscategoria . ", "
@@ -778,7 +814,6 @@ class Docente extends conectar
                 pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
                 header("Location: ../clases/Correctos/Calificacion.php");
                 exit;
-            }
         } catch (Exception $error) { }
     }
 

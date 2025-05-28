@@ -426,7 +426,7 @@ class Producciones extends conectar {
     }
     
     public function getArticulosAdm($usuario) {
-        $sql = "SELECT 'ARTICULO',titulo,fechapublicacion,id,tipo FROM articulo where docente_id=" . $usuario->getId() . ";";
+        $sql = "SELECT 'ARTICULO',titulo,fechapublicacion,id,tipo,cualitativa, comentario FROM articulo where docente_id=" . $usuario->getId() . ";";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -456,7 +456,7 @@ class Producciones extends conectar {
     }
     
     public function getLibrosAdm($usuario) {
-        $sql = "SELECT 'LIBRO',titulo,fechapublicacion,id,tipo FROM libro where docente_id=" . $usuario->getId() . ";";
+        $sql = "SELECT 'LIBRO',titulo,fechapublicacion,id,tipo,cualitativa, comentario FROM libro where docente_id=" . $usuario->getId() . ";";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -476,7 +476,7 @@ class Producciones extends conectar {
     }
     
     public function getMonografiasAdm($usuario) {
-        $sql = "SELECT 'MONOGRAFIA',titulo,fechapublicacion,id,tipo FROM monografia where docente_id=" . $usuario->getId() . ";";
+        $sql = "SELECT 'MONOGRAFIA',titulo,fechapublicacion,id,tipo,cualitativa, comentario FROM monografia where docente_id=" . $usuario->getId() . ";";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -496,7 +496,7 @@ class Producciones extends conectar {
     }
 
     public function getPatentes($usuario) {
-        $sql = "SELECT 'PATENTE',nombre,fecharegpatente,id FROM patente where docente_id=" . $usuario->getId() . ";";
+        $sql = "SELECT 'PATENTE',nombre,fecharegpatente,id,cualitativa, comentario FROM patente where docente_id=" . $usuario->getId() . ";";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -516,7 +516,7 @@ class Producciones extends conectar {
     }
     
     public function getSoftware($usuario) {
-        $sql = "SELECT 'SOFTWARE',nombre,fechapublicacion,id FROM software where docente_id=" . $usuario->getId() . ";";
+        $sql = "SELECT 'SOFTWARE',nombre,fechapublicacion,id,cualitativa, comentario FROM software where docente_id=" . $usuario->getId() . ";";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
@@ -546,7 +546,7 @@ class Producciones extends conectar {
     }
     
     public function getGrupoAdm($usuario) {
-        $sql = "SELECT CASE WHEN clasificacion = 'A2' THEN 'A' WHEN clasificacion = 'RC' THEN 'RECONOCIDO POR COLCIENCIAS' ELSE clasificacion END as clasificacion,nombregrupo,fechavinculacion,id FROM grupoinvestigacion where docenteid=" . $usuario->getId() . "  order by clasificacion limit 1;";
+        $sql = "SELECT CASE WHEN clasificacion = 'A2' THEN 'A' WHEN clasificacion = 'RC' THEN 'RECONOCIDO POR COLCIENCIAS' ELSE clasificacion END as clasificacion,nombregrupo,fechavinculacion,id, cualitativa, comentario FROM grupoinvestigacion where docenteid=" . $usuario->getId() . "  order by clasificacion limit 1;";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {

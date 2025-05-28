@@ -131,7 +131,7 @@ if (isset($_SESSION['usuario'])) {
                                 <p>Inscritos Calificados</p>
                             </a>
                         </li>
-                        
+
                         <li class="active-pro">
                             <a href="../../Admin/index.php">
                                 <i class="pe-7s-power"></i>
@@ -288,7 +288,7 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloPregrado[1] ?></td>
                                                                 <td><?php echo $arregloPregrado[2] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaPre'.$numeroPregrado.'" name="cualitativaPre'.$numeroPregrado.'" required="true">'
+                                                                echo '<td><select class="form-control" id="cualitativaPre' . $numeroPregrado . '" name="cualitativaPre' . $numeroPregrado . '" required="true">'
                                                                 . '<option value="" selected="true">SELECCIONE</option>';
                                                                 if ($arregloPregrado[4] == 'CUMPLE') {
                                                                     echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
@@ -306,8 +306,8 @@ if (isset($_SESSION['usuario'])) {
                                                                     echo '<option value="NO APLICA">NO APLICA</option>';
                                                                 }
                                                                 echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioPre'.$numeroPregrado.'" name="comentarioPre'.$numeroPregrado.'">' . $arregloPregrado[5] . '</textarea></td>';
-                                                                echo '<input id="numeroPre'.$numeroPregrado.'" name="numeroPre'.$numeroPregrado.'" type="hidden" value="'.$arregloPregrado[3].'">';
+                                                                echo '<td><textarea class="form-control" id="comentarioPre' . $numeroPregrado . '" name="comentarioPre' . $numeroPregrado . '">' . $arregloPregrado[5] . '</textarea></td>';
+                                                                echo '<input id="numeroPre' . $numeroPregrado . '" name="numeroPre' . $numeroPregrado . '" type="hidden" value="' . $arregloPregrado[3] . '">';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloPregrado[3] . "&tipo=1"; ?>
                                                                 <td>
@@ -327,208 +327,208 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                         }
                                                         ?>
-                                                            <input id="cantidadPre" name="cantidadPre" type="hidden" value="<?php echo $numeroPregrado ?>">
-                                                        <?php
-                                                        foreach ($especializacionEsp as $arregloEspecializacionEsp) {
-                                                            $numeroEspecializacion = $numeroEspecializacion + 1;
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php echo $arregloEspecializacionEsp[0] ?></td>
-                                                                <td><?php echo $arregloEspecializacionEsp[1] ?></td>
-                                                                <td><?php echo $arregloEspecializacionEsp[2] ?></td>
-                                                                <?php
-                                                                echo '<td><select class="form-control" id="cualitativaEspM'.$numeroEspecializacion.'" name="cualitativaEspM'.$numeroEspecializacion.'" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloEspecializacionEsp[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloEspecializacionEsp[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloEspecializacionEsp[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioEspM'.$numeroEspecializacion.'" name="comentarioEspM'.$numeroEspecializacion.'">' . $arregloEspecializacionEsp[5] . '</textarea></td>';
-                                                                echo '<input id="numeroEspM'.$numeroEspecializacion.'" name="numeroEspM'.$numeroEspecializacion.'" type="hidden" value="'.$arregloEspecializacionEsp[3].'">';
-                                                                ?>
-                                                                <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacionEsp[3] . "&tipo=2"; ?>
-                                                                <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/ee" . $arregloEspecializacionEsp[3] . ".pdf")) {
-                                                                        ?>
-                                                                        <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        No tiene Adjunto
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                        
-                                                                </td>
-                                                            </tr>
-                                                            <?php
-                                                        }
+                                                    <input id="cantidadPre" name="cantidadPre" type="hidden" value="<?php echo $numeroPregrado ?>">
+                                                    <?php
+                                                    foreach ($especializacionEsp as $arregloEspecializacionEsp) {
+                                                        $numeroEspecializacion = $numeroEspecializacion + 1;
                                                         ?>
-                                                            <input id="cantidadEspM" name="cantidadEspM" type="hidden" value="<?php echo $numeroEspecializacion ?>">
-                                                        <?php
-                                                        $numeroEspecializacion=0;
-                                                        foreach ($especializacion as $arregloEspecializacion) {
-                                                            $numeroEspecializacion = $numeroEspecializacion + 1;
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php echo $arregloEspecializacion[0] ?></td>
-                                                                <td><?php echo $arregloEspecializacion[1] ?></td>
-                                                                <td><?php echo $arregloEspecializacion[2] ?></td>
-                                                                <?php
-                                                                echo '<td><select class="form-control" id="cualitativaEsp'.$numeroEspecializacion.'" name="cualitativaEsp'.$numeroEspecializacion.'" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloEspecializacion[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloEspecializacion[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloEspecializacion[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioEsp'.$numeroEspecializacion.'" name="comentarioEsp'.$numeroEspecializacion.'">' . $arregloEspecializacion[5] . '</textarea></td>';
-                                                                echo '<input id="numeroEsp'.$numeroEspecializacion.'" name="numeroEsp'.$numeroEspecializacion.'" type="hidden" value="'.$arregloEspecializacion[3].'">';
-                                                                ?>
-                                                                <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacion[3] . "&tipo=2"; ?>
-                                                                <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/ee" . $arregloEspecializacion[3] . ".pdf")) {
-                                                                        ?>
-                                                                        <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        No tiene Adjunto
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </td>
-                                                                
-                                                                </tr>
+                                                        <tr>
+                                                            <td><?php echo $arregloEspecializacionEsp[0] ?></td>
+                                                            <td><?php echo $arregloEspecializacionEsp[1] ?></td>
+                                                            <td><?php echo $arregloEspecializacionEsp[2] ?></td>
                                                             <?php
-                                                        }
-                                                        ?>
-                                                            <input id="cantidadEsp" name="cantidadEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
-                                                        <?php
-                                                        $numeroMaestrias = 0;
-                                                        foreach ($maestrias as $arregloMaestria) {
-                                                            $numeroMaestrias = $numeroMaestrias + 1;
+                                                            echo '<td><select class="form-control" id="cualitativaEspM' . $numeroEspecializacion . '" name="cualitativaEspM' . $numeroEspecializacion . '" required="true">'
+                                                            . '<option value="" selected="true">SELECCIONE</option>';
+                                                            if ($arregloEspecializacionEsp[4] == 'CUMPLE') {
+                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="CUMPLE">CUMPLE</option>';
+                                                            }
+                                                            if ($arregloEspecializacionEsp[4] == 'NO CUMPLE') {
+                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                            }
+                                                            if ($arregloEspecializacionEsp[4] == 'NO APLICA') {
+                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                            } else {
+                                                                echo '<option value="NO APLICA">NO APLICA</option>';
+                                                            }
+                                                            echo '</select></td>';
+                                                            echo '<td><textarea class="form-control" id="comentarioEspM' . $numeroEspecializacion . '" name="comentarioEspM' . $numeroEspecializacion . '">' . $arregloEspecializacionEsp[5] . '</textarea></td>';
+                                                            echo '<input id="numeroEspM' . $numeroEspecializacion . '" name="numeroEspM' . $numeroEspecializacion . '" type="hidden" value="' . $arregloEspecializacionEsp[3] . '">';
                                                             ?>
-                                                            <tr>
-                                                                <td><?php echo $arregloMaestria[0] ?></td>
-                                                                <td><?php echo $arregloMaestria[1] ?></td>
-                                                                <td><?php echo $arregloMaestria[2] ?></td>
+                                                            <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacionEsp[3] . "&tipo=2"; ?>
+                                                            <td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaMae'.$numeroMaestrias.'" name="cualitativaMae'.$numeroMaestrias.'" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloMaestria[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloMaestria[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloMaestria[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioMae'.$numeroMaestrias.'" name="comentarioMae'.$numeroMaestrias.'">' . $arregloMaestria[5] . '</textarea></td>';
-                                                                echo '<input id="numeroMae'.$numeroMaestrias.'" name="numeroMae'.$numeroMaestrias.'" type="hidden" value="'.$arregloMaestria[3].'">';
-                                                                ?>
-                                                                <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloMaestria[3] . "&tipo=3"; ?>
-                                                                <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/em" . $arregloMaestria[3] . ".pdf")) {
-                                                                        ?>
-                                                                        <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        No tiene Adjunto
-                                                                        <?php
-                                                                    }
+                                                                if (file_exists("../Soportes/ee" . $arregloEspecializacionEsp[3] . ".pdf")) {
                                                                     ?>
-                                                                </td>
-                                                            </tr>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                            <input id="cantidadMae" name="cantidadMae" type="hidden" value="<?php echo $numeroMaestrias ?>">
+                                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    No tiene Adjunto
+                                                                    <?php
+                                                                }
+                                                                ?>
+
+                                                            </td>
+                                                        </tr>
                                                         <?php
-                                                        $numeroDoctorados = 0;
-                                                        foreach ($doctorados as $arregloDoctorado) {
-                                                            $numeroDoctorados = $numeroDoctorados + 1;
-                                                            ?>
-                                                            <tr>
-                                                                <td><?php echo $arregloDoctorado[0] ?></td>
-                                                                <td><?php echo $arregloDoctorado[1] ?></td>
-                                                                <td><?php echo $arregloDoctorado[2] ?></td>
-                                                                <?php
-                                                                echo '<td><select class="form-control" id="cualitativaDoc'.$numeroDoctorados.'" name="cualitativaDoc'.$numeroDoctorados.'" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloDoctorado[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloDoctorado[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloDoctorado[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioDoc'.$numeroDoctorados.'" name="comentarioDoc'.$numeroDoctorados.'">' . $arregloDoctorado[5] . '</textarea></td>';
-                                                                echo '<input id="numeroDoc'.$numeroDoctorados.'" name="numeroDoc'.$numeroDoctorados.'" type="hidden" value="'.$arregloDoctorado[3].'">';
-                                                                ?>
-                                                                <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloDoctorado[3] . "&tipo=4"; ?>
-                                                                <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/ed" . $arregloDoctorado[3] . ".pdf")) {
-                                                                        ?>
-                                                                        <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        No tiene Adjunto
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </td>
-                                                            </tr>
-                                                            <?php
-                                                        }
+                                                    }
+                                                    ?>
+                                                    <input id="cantidadEspM" name="cantidadEspM" type="hidden" value="<?php echo $numeroEspecializacion ?>">
+                                                    <?php
+                                                    $numeroEspecializacion = 0;
+                                                    foreach ($especializacion as $arregloEspecializacion) {
+                                                        $numeroEspecializacion = $numeroEspecializacion + 1;
                                                         ?>
-                                                            <input id="cantidadDoc" name="cantidadDoc" type="hidden" value="<?php echo $numeroDoctorados ?>">
+                                                        <tr>
+                                                            <td><?php echo $arregloEspecializacion[0] ?></td>
+                                                            <td><?php echo $arregloEspecializacion[1] ?></td>
+                                                            <td><?php echo $arregloEspecializacion[2] ?></td>
+                                                            <?php
+                                                            echo '<td><select class="form-control" id="cualitativaEsp' . $numeroEspecializacion . '" name="cualitativaEsp' . $numeroEspecializacion . '" required="true">'
+                                                            . '<option value="" selected="true">SELECCIONE</option>';
+                                                            if ($arregloEspecializacion[4] == 'CUMPLE') {
+                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="CUMPLE">CUMPLE</option>';
+                                                            }
+                                                            if ($arregloEspecializacion[4] == 'NO CUMPLE') {
+                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                            }
+                                                            if ($arregloEspecializacion[4] == 'NO APLICA') {
+                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                            } else {
+                                                                echo '<option value="NO APLICA">NO APLICA</option>';
+                                                            }
+                                                            echo '</select></td>';
+                                                            echo '<td><textarea class="form-control" id="comentarioEsp' . $numeroEspecializacion . '" name="comentarioEsp' . $numeroEspecializacion . '">' . $arregloEspecializacion[5] . '</textarea></td>';
+                                                            echo '<input id="numeroEsp' . $numeroEspecializacion . '" name="numeroEsp' . $numeroEspecializacion . '" type="hidden" value="' . $arregloEspecializacion[3] . '">';
+                                                            ?>
+                                                            <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacion[3] . "&tipo=2"; ?>
+                                                            <td>
+                                                                <?php
+                                                                if (file_exists("../Soportes/ee" . $arregloEspecializacion[3] . ".pdf")) {
+                                                                    ?>
+                                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    No tiene Adjunto
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </td>
+
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <input id="cantidadEsp" name="cantidadEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
+                                                    <?php
+                                                    $numeroMaestrias = 0;
+                                                    foreach ($maestrias as $arregloMaestria) {
+                                                        $numeroMaestrias = $numeroMaestrias + 1;
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $arregloMaestria[0] ?></td>
+                                                            <td><?php echo $arregloMaestria[1] ?></td>
+                                                            <td><?php echo $arregloMaestria[2] ?></td>
+                                                            <?php
+                                                            echo '<td><select class="form-control" id="cualitativaMae' . $numeroMaestrias . '" name="cualitativaMae' . $numeroMaestrias . '" required="true">'
+                                                            . '<option value="" selected="true">SELECCIONE</option>';
+                                                            if ($arregloMaestria[4] == 'CUMPLE') {
+                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="CUMPLE">CUMPLE</option>';
+                                                            }
+                                                            if ($arregloMaestria[4] == 'NO CUMPLE') {
+                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                            }
+                                                            if ($arregloMaestria[4] == 'NO APLICA') {
+                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                            } else {
+                                                                echo '<option value="NO APLICA">NO APLICA</option>';
+                                                            }
+                                                            echo '</select></td>';
+                                                            echo '<td><textarea class="form-control" id="comentarioMae' . $numeroMaestrias . '" name="comentarioMae' . $numeroMaestrias . '">' . $arregloMaestria[5] . '</textarea></td>';
+                                                            echo '<input id="numeroMae' . $numeroMaestrias . '" name="numeroMae' . $numeroMaestrias . '" type="hidden" value="' . $arregloMaestria[3] . '">';
+                                                            ?>
+                                                            <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloMaestria[3] . "&tipo=3"; ?>
+                                                            <td>
+                                                                <?php
+                                                                if (file_exists("../Soportes/em" . $arregloMaestria[3] . ".pdf")) {
+                                                                    ?>
+                                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    No tiene Adjunto
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <input id="cantidadMae" name="cantidadMae" type="hidden" value="<?php echo $numeroMaestrias ?>">
+                                                    <?php
+                                                    $numeroDoctorados = 0;
+                                                    foreach ($doctorados as $arregloDoctorado) {
+                                                        $numeroDoctorados = $numeroDoctorados + 1;
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $arregloDoctorado[0] ?></td>
+                                                            <td><?php echo $arregloDoctorado[1] ?></td>
+                                                            <td><?php echo $arregloDoctorado[2] ?></td>
+                                                            <?php
+                                                            echo '<td><select class="form-control" id="cualitativaDoc' . $numeroDoctorados . '" name="cualitativaDoc' . $numeroDoctorados . '" required="true">'
+                                                            . '<option value="" selected="true">SELECCIONE</option>';
+                                                            if ($arregloDoctorado[4] == 'CUMPLE') {
+                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="CUMPLE">CUMPLE</option>';
+                                                            }
+                                                            if ($arregloDoctorado[4] == 'NO CUMPLE') {
+                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                            } else {
+                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                            }
+                                                            if ($arregloDoctorado[4] == 'NO APLICA') {
+                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                            } else {
+                                                                echo '<option value="NO APLICA">NO APLICA</option>';
+                                                            }
+                                                            echo '</select></td>';
+                                                            echo '<td><textarea class="form-control" id="comentarioDoc' . $numeroDoctorados . '" name="comentarioDoc' . $numeroDoctorados . '">' . $arregloDoctorado[5] . '</textarea></td>';
+                                                            echo '<input id="numeroDoc' . $numeroDoctorados . '" name="numeroDoc' . $numeroDoctorados . '" type="hidden" value="' . $arregloDoctorado[3] . '">';
+                                                            ?>
+                                                            <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloDoctorado[3] . "&tipo=4"; ?>
+                                                            <td>
+                                                                <?php
+                                                                if (file_exists("../Soportes/ed" . $arregloDoctorado[3] . ".pdf")) {
+                                                                    ?>
+                                                                    <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    No tiene Adjunto
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <input id="cantidadDoc" name="cantidadDoc" type="hidden" value="<?php echo $numeroDoctorados ?>">
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -562,35 +562,35 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                             $numeroExp = 0;
                                                             foreach ($experienciaAdm as $arregloExp) {
-                                                                $numeroExp = $numeroExp +1;
+                                                                $numeroExp = $numeroExp + 1;
                                                                 ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloExp[0] ?></td>
                                                                     <td><?php echo $arregloExp[1] ?></td>
                                                                     <td><?php echo $arregloExp[3] ?></td>
                                                                     <td><?php echo $arregloExp[4] ?></td>
-                                                                   <?php
-                                                                echo '<td><select class="form-control" id="cualitativaExp'.$numeroExp.'" name="cualitativaExp'.$numeroExp.'" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloExp[8] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloExp[8] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloExp[8] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioExp'.$numeroExp.'" name="comentarioExp'.$numeroExp.'">' . $arregloExp[9] . '</textarea></td>';
-                                                                echo '<input id="numeroExp'.$numeroExp.'" name="numeroExp'.$numeroExp.'" type="hidden" value="'.$arregloExp[5].'">';
-                                                                ?>
+                                                                    <?php
+                                                                    echo '<td><select class="form-control" id="cualitativaExp' . $numeroExp . '" name="cualitativaExp' . $numeroExp . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloExp[8] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloExp[8] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloExp[8] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioExp' . $numeroExp . '" name="comentarioExp' . $numeroExp . '">' . $arregloExp[9] . '</textarea></td>';
+                                                                    echo '<input id="numeroExp' . $numeroExp . '" name="numeroExp' . $numeroExp . '" type="hidden" value="' . $arregloExp[5] . '">';
+                                                                    ?>
                                                                     <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloExp[5] . "&tipo=6"; ?>
                                                                     <td><?php echo $arregloExp[7] ?></td>
                                                                     <td>
@@ -610,7 +610,7 @@ if (isset($_SESSION['usuario'])) {
                                                                 <?php
                                                             }
                                                             ?>
-                                                                <input id="cantidadExp" name="cantidadExp" type="hidden" value="<?php echo $numeroExp ?>">
+                                                        <input id="cantidadExp" name="cantidadExp" type="hidden" value="<?php echo $numeroExp ?>">
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -633,44 +633,41 @@ if (isset($_SESSION['usuario'])) {
                                                             <tr class="info">
                                                                 <th>Grupo</th>
                                                                 <th>Clasificación</th>
-                                                                <th>Puntaje Sugerido</th>
+                                                                <th>Calificación</th>
+                                                                <th>Comentario</th>
                                                                 <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php
+                                                            $numeroGru = 0;
                                                             foreach ($grupo as $arregloInv) {
+                                                                $numeroGru = $numeroGru + 1;
                                                                 ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloInv[1] ?></td>
                                                                     <td><?php echo $arregloInv[0] ?></td>
                                                                     <?php
-                                                                    if ($arregloInv[0] == 'A1') {
-                                                                        $puntosInvestigacion = $puntosInvestigacion + 20;
-                                                                        echo '<td>20</td>';
+                                                                    echo '<td><select class="form-control" id="cualitativaGru' . $numeroGru . '" name="cualitativaGru' . $numeroGru . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloInv[4] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                     } else {
-                                                                        if ($arregloInv[0] == 'A') {
-                                                                            $puntosInvestigacion = $puntosInvestigacion + 15;
-                                                                            echo '<td>15</td>';
-                                                                        } else {
-                                                                            if ($arregloInv[0] == 'B') {
-                                                                                $puntosInvestigacion = $puntosInvestigacion + 12;
-                                                                                echo '<td>12</td>';
-                                                                            } else {
-                                                                                if ($arregloInv[0] == 'C') {
-                                                                                    $puntosInvestigacion = $puntosInvestigacion + 10;
-                                                                                    echo '<td>10</td>';
-                                                                                } else {
-                                                                                    if ($arregloInv[0] == 'RC') {
-                                                                                        $puntosInvestigacion = $puntosInvestigacion + 6;
-                                                                                        echo '<td>6</td>';
-                                                                                    } else {
-                                                                                        echo '<td></td>';
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
                                                                     }
+                                                                    if ($arregloInv[4] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloInv[4] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioGru' . $numeroGru . '" name="comentarioGru' . $numeroGru . '">' . $arregloInv[5] . '</textarea></td>';
+                                                                    echo '<input id="numeroGru' . $numeroGru . '" name="numeroGru' . $numeroGru . '" type="hidden" value="' . $arregloInv[3] . '">';
                                                                     ?>
                                                                     <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloInv[3] . "&tipo=7"; ?>
                                                                     <td>
@@ -690,64 +687,58 @@ if (isset($_SESSION['usuario'])) {
                                                                 <?php
                                                             }
                                                             ?>
-                                                            <?php
-                                                            foreach ($invest as $arregloI) {
+                                                        <input id="cantidadGru" name="cantidadGru" type="hidden" value="<?php echo $numeroGru ?>">
+                                                        <?php
+                                                        $numeroInv = 0;
+                                                        foreach ($invest as $arregloI) {
+                                                            $numeroInv = $numeroInv + 1;
+                                                            ?>
+                                                            <tr>
+                                                                <td><?php echo $arregloI[1] ?></td>
+                                                                <td><?php echo $arregloI[0] ?></td>
+                                                                <?php
+                                                                echo '<td><select class="form-control" id="cualitativaInv' . $numeroInv . '" name="cualitativaInv' . $numeroInv . '" required="true">'
+                                                                . '<option value="" selected="true">SELECCIONE</option>';
+                                                                if ($arregloI[4] == 'CUMPLE') {
+                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
+                                                                }
+                                                                if ($arregloI[4] == 'NO CUMPLE') {
+                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                }
+                                                                if ($arregloI[4] == 'NO APLICA') {
+                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                } else {
+                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                }
+                                                                echo '</select></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioInv' . $numeroInv . '" name="comentarioInv' . $numeroInv . '">' . $arregloI[5] . '</textarea></td>';
+                                                                echo '<input id="numeroInv' . $numeroInv . '" name="numeroInv' . $numeroInv . '" type="hidden" value="' . $arregloI[3] . '">';
                                                                 ?>
-                                                                <tr>
-                                                                    <td><?php echo $arregloI[1] ?></td>
-                                                                    <td><?php echo $arregloI[0] ?></td>
-                                                                    <?php
-                                                                    if ($arregloI[0] == 'INVESTIGADOR ASOCIADO') {
-                                                                        $puntosInvestigacion = $puntosInvestigacion + 5;
-                                                                        echo '<td>5</td>';
-                                                                    } else {
-                                                                        if ($arregloI[0] == 'INVESTIGADOR SENIOR') {
-                                                                            $puntosInvestigacion = $puntosInvestigacion + 10;
-                                                                            echo '<td>10</td>';
-                                                                        } else {
-                                                                            if ($arregloI[0] == 'INVESTIGADOR JUNIOR') {
-                                                                                $puntosInvestigacion = $puntosInvestigacion + 3;
-                                                                                echo '<td>3</td>';
-                                                                            } else {
-                                                                                echo '<td></td>';
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    ?>
-                                                                    <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloI[3] . "&tipo=7"; ?>
-                                                                    <td>
+                                                                <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloI[3] . "&tipo=7"; ?>
+                                                                <td>
                                                                     <?php
                                                                     if (file_exists("../Soportes/gru" . $arregloI[3] . ".pdf")) {
                                                                         ?>
-                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
-                                                                            No tiene Adjunto
-                                                                            <?php
-                                                                        }
+                                                                        <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                        <?php
+                                                                    } else {
                                                                         ?>
-                                                                    </td>
-                                                                </tr>
-    <?php
-}
-?>
+                                                                        No tiene Adjunto
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                            </tr>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                        <input id="cantidadInv" name="cantidadInv" type="hidden" value="<?php echo $numeroInv ?>">
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <label for="">Puntos Sugeridos por invest.</label>
-                                                    <input type="text" size="4" id="categoria" disabled="true" value="<?php echo $puntosInvestigacion ?>" name="categoria" class="form-control"/>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <label for="">Total Puntos Confirmados por investigaciones</label>
-                                                    <input value="<?php echo $puntosDigitados->getinvestigacion() ?>" type="text" size="4" id="puntosinvestigaciones" name="puntosinvestigaciones" class="form-control" required="true"/>
-                                                </div>
-                                                <div class="col-xs-5">
-                                                    <label for="">Comentario</label>
-                                                    <textarea id="comentarioInvestigaciones" name="comentarioInvestigaciones" class="form-control"><?php echo $puntosDigitados->getcomentarioinvestigacion() ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -768,50 +759,47 @@ if (isset($_SESSION['usuario'])) {
                                                             <tr class="info">
                                                                 <th>Tipo</th>
                                                                 <th>Titulo</th>
-                                                                <th>Puntaje Sugerido</th>
+                                                                <th>Calificación</th>
+                                                                <th>Comentario</th>
                                                                 <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-<?php
-foreach ($articulos as $arregloArt) {
-    ?>
+                                                            <?php
+                                                            $numeroArt = 0;
+                                                            foreach ($articulos as $arregloArt) {
+                                                                $numeroArt = $numeroArt +1;
+                                                                ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloArt[0] ?></td>
                                                                     <td><?php echo $arregloArt[1] ?></td>
-    <?php
-    if ($arregloArt[4] == 'A1') {
-        $puntosPublicaciones = $puntosPublicaciones + 10;
-        echo '<td>10</td>';
-    } else {
-        if ($arregloArt[4] == 'A2') {
-            $puntosPublicaciones = $puntosPublicaciones + 10;
-            echo '<td>10</td>';
-        } else {
-            if ($arregloArt[4] == 'B1') {
-                $puntosPublicaciones = $puntosPublicaciones + 10;
-                echo '<td>10</td>';
-            } else {
-                if ($arregloArt[4] == 'C1') {
-                    $puntosPublicaciones = $puntosPublicaciones + 10;
-                    echo '<td>10</td>';
-                } else {
-                    if ($arregloArt[4] == 'D1') {
-                        $puntosPublicaciones = $puntosPublicaciones + 5;
-                        echo '<td>5</td>';
-                    } else {
-                        echo '<td></td>';
-                    }
-                }
-            }
-        }
-    }
-    ?>
+                                                                    <?php
+                                                                    echo '<td><select class="form-control" id="cualitativaArt' . $numeroArt . '" name="cualitativaArt' . $numeroArt . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloArt[5] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloArt[5] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloArt[5] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioArt' . $numeroArt . '" name="comentarioArt' . $numeroArt . '">' . $arregloArt[6] . '</textarea></td>';
+                                                                    echo '<input id="numeroArt' . $numeroArt . '" name="numeroArt' . $numeroArt . '" type="hidden" value="' . $arregloArt[3] . '">';
+                                                                    ?>
                                                                     <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloArt[3] . "&tipo=8"; ?>
                                                                     <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/art" . $arregloArt[3] . ".pdf")) {
-                                                                        ?>
+                                                                        <?php
+                                                                        if (file_exists("../Soportes/art" . $arregloArt[3] . ".pdf")) {
+                                                                            ?>
                                                                             <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
                                                                             <?php
                                                                         } else {
@@ -822,161 +810,208 @@ foreach ($articulos as $arregloArt) {
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                                <input id="cantidadArt" name="cantidadArt" type="hidden" value="<?php echo $numeroArt ?>">
                                                             <?php
+                                                            $numeroLib = 0;
                                                             foreach ($libros as $arregloLib) {
+                                                                $numeroLib = $numeroLib +1;
                                                                 ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloLib[0] ?></td>
                                                                     <td><?php echo $arregloLib[1] ?></td>
-                                                                <?php
-                                                                if ($arregloLib[4] == '1') {
-                                                                    $puntosPublicaciones = $puntosPublicaciones + 20;
-                                                                    echo '<td>20</td>';
-                                                                } else {
-                                                                    if ($arregloLib[4] == '2') {
-                                                                        $puntosPublicaciones = $puntosPublicaciones + 5;
-                                                                        echo '<td>5</td>';
+                                                                    <?php
+                                                                    echo '<td><select class="form-control" id="cualitativaLib' . $numeroLib . '" name="cualitativaLib' . $numeroLib . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloLib[5] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                     } else {
-                                                                        if ($arregloLib[4] == '3') {
-                                                                            $puntosPublicaciones = $puntosPublicaciones + 10;
-                                                                            echo '<td>10</td>';
-                                                                        } else {
-                                                                            echo '<td></td>';
-                                                                        }
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
                                                                     }
-                                                                }
-                                                                ?>
+                                                                    if ($arregloLib[5] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloLib[5] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioLib' . $numeroLib . '" name="comentarioLib' . $numeroLib . '">' . $arregloLib[6] . '</textarea></td>';
+                                                                    echo '<input id="numeroLib' . $numeroLib . '" name="numeroLib' . $numeroLib . '" type="hidden" value="' . $arregloLib[3] . '">';
+                                                                    ?>
                                                                     <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloLib[3] . "&tipo=9"; ?>
                                                                     <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/lib" . $arregloLib[3] . ".pdf")) {
-                                                                        ?>
-                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
                                                                         <?php
-                                                                    } else {
-                                                                        ?>
+                                                                        if (file_exists("../Soportes/lib" . $arregloLib[3] . ".pdf")) {
+                                                                            ?>
+                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
                                                                             No tiene Adjunto
                                                                             <?php
                                                                         }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                    <?php
-                                                                    foreach ($software as $arregloSof) {
-                                                                        ?>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                                <input id="cantidadLib" name="cantidadLib" type="hidden" value="<?php echo $numeroLib ?>">
+                                                            <?php
+                                                            $numeroSof = 0;
+                                                            foreach ($software as $arregloSof) {
+                                                                $numeroSof = $numeroSof +1;
+                                                                ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloSof[0] ?></td>
                                                                     <td><?php echo $arregloSof[1] ?></td>
-                                                                <?php
-                                                                $puntosPublicaciones = $puntosPublicaciones + 20;
-                                                                echo '<td>20</td>';
-                                                                ?>
-    <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloSof[3] . "&tipo=10"; ?>
-                                                                    <td>
                                                                     <?php
-                                                                    if (file_exists("../Soportes/sof" . $arregloSof[3] . ".pdf")) {
-                                                                        ?>
-                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                        <?php
+                                                                    echo '<td><select class="form-control" id="cualitativaSof' . $numeroSof . '" name="cualitativaSof' . $numeroSof . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloSof[4] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                     } else {
-                                                                        ?>
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloSof[4] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloSof[4] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioSof' . $numeroSof . '" name="comentarioSof' . $numeroSof . '">' . $arregloSof[5] . '</textarea></td>';
+                                                                    echo '<input id="numeroSof' . $numeroSof . '" name="numeroSof' . $numeroSof . '" type="hidden" value="' . $arregloSof[3] . '">';
+                                                                    ?>
+                                                                    <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloSof[3] . "&tipo=10"; ?>
+                                                                    <td>
+                                                                        <?php
+                                                                        if (file_exists("../Soportes/sof" . $arregloSof[3] . ".pdf")) {
+                                                                            ?>
+                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
                                                                             No tiene Adjunto
                                                                             <?php
                                                                         }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-
-                                                                    <?php
-                                                                    foreach ($patentes as $arregloPat) {
-                                                                        ?>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                            <input id="cantidadSof" name="cantidadSof" type="hidden" value="<?php echo $numeroSof ?>">
+                                                            <?php
+                                                            $numeroPat = 0;
+                                                            foreach ($patentes as $arregloPat) {
+                                                                $numeroPat = $numeroPat +1;
+                                                                ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloPat[0] ?></td>
                                                                     <td><?php echo $arregloPat[1] ?></td>
-                                                                <?php
-                                                                $puntosPublicaciones = $puntosPublicaciones + 10;
-                                                                echo '<td>60</td>';
-                                                                ?>
-    <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloPat[3] . "&tipo=11"; ?>
-                                                                    <td>
                                                                     <?php
-                                                                    if (file_exists("../Soportes/pat" . $arregloPat[3] . ".pdf")) {
-                                                                        ?>
-                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
-                                                                        <?php
+                                                                    echo '<td><select class="form-control" id="cualitativaPat' . $numeroPat . '" name="cualitativaPat' . $numeroPat . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloPat[4] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                     } else {
-                                                                        ?>
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloPat[4] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloPat[4] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioPat' . $numeroPat . '" name="comentarioPat' . $numeroPat . '">' . $arregloPat[5] . '</textarea></td>';
+                                                                    echo '<input id="numeroPat' . $numeroPat . '" name="numeroPat' . $numeroPat . '" type="hidden" value="' . $arregloPat[3] . '">';
+                                                                    ?>
+                                                                    <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloPat[3] . "&tipo=11"; ?>
+                                                                    <td>
+                                                                        <?php
+                                                                        if (file_exists("../Soportes/pat" . $arregloPat[3] . ".pdf")) {
+                                                                            ?>
+                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
                                                                             No tiene Adjunto
                                                                             <?php
                                                                         }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                    <?php
-                                                                    foreach ($monografias as $arregloMon) {
-                                                                        ?>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                                <input id="cantidadPat" name="cantidadPat" type="hidden" value="<?php echo $numeroPat ?>">
+                                                            <?php
+                                                            $numeroMon = 0;
+                                                            foreach ($monografias as $arregloMon) {
+                                                                $numeroMon = $numeroMon +1;
+                                                                ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloMon[0] ?></td>
                                                                     <td><?php echo $arregloMon[1] ?></td>
-                                                                <?php
-                                                                if ($arregloMon[4] == '4') {
-                                                                    $puntosPublicaciones = $puntosPublicaciones + 5;
-                                                                    echo '<td>5</td>';
-                                                                } else {
-                                                                    if ($arregloMon[4] == '5') {
-                                                                        $puntosPublicaciones = $puntosPublicaciones + 2;
-                                                                        echo '<td>2</td>';
+                                                                    <?php
+                                                                    echo '<td><select class="form-control" id="cualitativaMon' . $numeroMon . '" name="cualitativaMon' . $numeroMon . '" required="true">'
+                                                                    . '<option value="" selected="true">SELECCIONE</option>';
+                                                                    if ($arregloMon[5] == 'CUMPLE') {
+                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                     } else {
-                                                                        echo '<td></td>';
+                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
                                                                     }
-                                                                }
-                                                                ?>
+                                                                    if ($arregloMon[5] == 'NO CUMPLE') {
+                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                    }
+                                                                    if ($arregloMon[5] == 'NO APLICA') {
+                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                    } else {
+                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                    }
+                                                                    echo '</select></td>';
+                                                                    echo '<td><textarea class="form-control" id="comentarioMon' . $numeroMon . '" name="comentarioMon' . $numeroMon . '">' . $arregloMon[6] . '</textarea></td>';
+                                                                    echo '<input id="numeroMon' . $numeroMon . '" name="numeroMon' . $numeroMon . '" type="hidden" value="' . $arregloMon[3] . '">';
+                                                                    ?>
                                                                     <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloMon[3] . "&tipo=12"; ?>
                                                                     <td>
-                                                                    <?php
-                                                                    if (file_exists("../Soportes/mon" . $arregloMon[3] . ".pdf")) {
-                                                                        ?>
-                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
                                                                         <?php
-                                                                    } else {
-                                                                        ?>
+                                                                        if (file_exists("../Soportes/mon" . $arregloMon[3] . ".pdf")) {
+                                                                            ?>
+                                                                            <a data-toggle="tooltip" title="Adjunto" href="<?php echo $urlVer; ?>" target="_blank"><i class="pe-7s-credit"></i> Ver Adjunto</a>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
                                                                             No tiene Adjunto
                                                                             <?php
                                                                         }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                                <input id="cantidadMon" name="cantidadMon" type="hidden" value="<?php echo $numeroMon ?>">
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <label for="">Puntos Sugeridos por producción</label>
-                                                    <input type="text" size="4" id="produccion" disabled="true" value="<?php echo $puntosPublicaciones ?>" name="produccion" class="form-control"/>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <label for="">Total Puntos Confirmados por producción</label>
-                                                    <input value="<?php echo $puntosDigitados->getpublicaciones() ?>" type="text" size="4" id="puntosproduccion" name="puntosproduccion" class="form-control" required="true"/>
-                                                </div>
-                                                <div class="col-xs-5">
-                                                    <label for="">Comentario</label>
-                                                    <textarea id="comentarioProduccion" name="comentarioProduccion" class="form-control"><?php echo $puntosDigitados->getcomentariopublicaciones() ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
