@@ -739,7 +739,7 @@ class Docente extends conectar
             /////////////////////////////////
             
             
-            if ($puntosestudios == '' || $puntosexperiencia == '' || $puntosinvestigaciones == '' || $puntosproduccion == '' || $puntoscategoria == '') {
+            if ($puntosexperiencia == '' || $puntosinvestigaciones == '' || $puntosproduccion == '' || $puntoscategoria == '') {
                 $mensajeMostrar = "Hay campos vacios, recuerde los campos son obligatorios";
                 $mensaje = "Location: ../clases/Incorrectos/Usuario.php?mensaje=" . $mensajeMostrar;
                 header($mensaje);

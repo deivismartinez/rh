@@ -327,7 +327,7 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                         }
                                                         ?>
-                                                            <input id="cantidadPre" name="cantidadPre" type="hidden" value="<?php echo $numeroEspecializacion ?>">
+                                                            <input id="cantidadPre" name="cantidadPre" type="hidden" value="<?php echo $numeroPregrado ?>">
                                                         <?php
                                                         foreach ($especializacionEsp as $arregloEspecializacionEsp) {
                                                             $numeroEspecializacion = $numeroEspecializacion + 1;
@@ -478,6 +478,7 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                         }
                                                         ?>
+                                                            <input id="cantidadMae" name="cantidadMae" type="hidden" value="<?php echo $numeroMaestrias ?>">
                                                         <?php
                                                         $numeroDoctorados = 0;
                                                         foreach ($doctorados as $arregloDoctorado) {
@@ -527,6 +528,7 @@ if (isset($_SESSION['usuario'])) {
                                                             <?php
                                                         }
                                                         ?>
+                                                            <input id="cantidadDoc" name="cantidadDoc" type="hidden" value="<?php echo $numeroDoctorados ?>">
                                                     </tbody>
                                                 </table>
                                             </div>
