@@ -28,6 +28,7 @@ if (isset($_SESSION['usuario'])) {
     $numeroEspecializacion = 0;
     $categoria = $datos->getCategoria();
     $cualitativa = $datos->getCualitativa();
+    $comentario = $datos->getComentario();
     require_once("../clases/Programas.php");
     $programas = new Programas();
     $programaLista = $programas->getProgramaUsuarioPerfil($usuario);
@@ -222,23 +223,23 @@ if (isset($_SESSION['usuario'])) {
     <?php
     echo '<td><select class="form-control" id="puntoscategoria" name="puntoscategoria" required="true">'
     . '<option value="" selected="true">SELECCIONE</option>';
-    if($cualitativa=='cumple'){
+    if($cualitativa=='CUMPLE'){
         echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
     }else{
         echo '<option value="CUMPLE">CUMPLE</option>';
     }
-    if($cualitativa=='no cumple'){
+    if($cualitativa=='NO CUMPLE'){
         echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
     }else{
         echo '<option value="NO CUMPLE">NO CUMPLE</option>';
     }
-    if($cualitativa=='no aplica'){
+    if($cualitativa=='NO APLICA'){
         echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
     }else{
         echo '<option value="NO APLICA">NO APLICA</option>';
     }
     echo '</select></td>';
-    echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">'.$puntosDigitados->getcomentariocategoria().'</textarea></td>';
+    echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">'.$comentario.'</textarea></td>';
     ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $id . "&tipo=5"; ?>
                                                             <td>

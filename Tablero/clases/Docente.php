@@ -560,7 +560,6 @@ class Docente extends conectar
                 $docente->setSituacion($row['situacion']);
                 $docente->setDescripcion($row['descripcion']);
                 $docente->setCualitativa($row['cualitativa']);
-                var_dump($docente);
                 return $docente;
                 
             }
@@ -711,7 +710,7 @@ class Docente extends conectar
                 header($mensaje);
                 exit;
             } else {
-                $sqlDocente = "UPDATE public.docente SET fechacambio=now(),cualitativa='".$puntoscategoria."' WHERE id =" . $id . ";";
+                $sqlDocente = "UPDATE public.docente SET fechacambio=now(),cualitativa='".strtoupper($puntoscategoria)."', comentario = '".$comentarioCategoria."' WHERE id =" . $id . ";";
                 pg_query($this->db, $sqlDocente) or die('La consulta fallo: ' . pg_last_error());
                 $puntoscategoria = 1;
                 if ($this->esCalificado($id)) {
