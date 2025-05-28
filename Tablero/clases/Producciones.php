@@ -556,7 +556,7 @@ class Producciones extends conectar {
     }
     
     public function getGrupoAdmInv($usuario) {
-        $sql = "SELECT categoria,nombregrupo,fechavinculacion,id FROM grupoinvestigacion where docenteid=" . $usuario->getId() . "  order by clasificacion limit 1;";
+        $sql = "SELECT categoria,nombregrupo,fechavinculacion,id, cualitativa, comentario FROM grupoinvestigacion where docenteid=" . $usuario->getId() . "  order by clasificacion limit 1;";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
