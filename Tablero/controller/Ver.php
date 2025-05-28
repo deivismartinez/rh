@@ -338,7 +338,7 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloEspecializacionEsp[1] ?></td>
                                                                 <td><?php echo $arregloEspecializacionEsp[2] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="especianlizacion" name="especianlizacion" required="true">'
+                                                                echo '<td><select class="form-control" id="cualitativa'.$numeroEspecializacion.'" name="cualitativa'.$numeroEspecializacion.'" required="true">'
                                                                 . '<option value="" selected="true">SELECCIONE</option>';
                                                                 if ($cualitativa == 'CUMPLE') {
                                                                     echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
@@ -371,6 +371,7 @@ if (isset($_SESSION['usuario'])) {
                                                                         <?php
                                                                     }
                                                                     ?>
+                                                                        <input id="cantidaEsp" name="cantidaEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
                                                                 </td>
                                                             </tr>
                                                             <?php
@@ -385,7 +386,7 @@ if (isset($_SESSION['usuario'])) {
                                                                 <td><?php echo $arregloEspecializacion[1] ?></td>
                                                                 <td><?php echo $arregloEspecializacion[2] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="especianlizacion" name="especianlizacion" required="true">'
+                                                                echo '<td><select class="form-control" id="cualitativaEsp'.$numeroEspecializacion.'" name="cualitativaEsp'.$numeroEspecializacion.'" required="true">'
                                                                 . '<option value="" selected="true">SELECCIONE</option>';
                                                                 if ($cualitativa == 'CUMPLE') {
                                                                     echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
@@ -403,7 +404,7 @@ if (isset($_SESSION['usuario'])) {
                                                                     echo '<option value="NO APLICA">NO APLICA</option>';
                                                                 }
                                                                 echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioEsp'.$numeroEspecializacion.'" name="comentarioEsp'.$numeroEspecializacion.'">' . $comentario . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacion[3] . "&tipo=2"; ?>
                                                                 <td>

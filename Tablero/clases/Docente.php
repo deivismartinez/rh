@@ -695,6 +695,7 @@ class Docente extends conectar
     {
         try {
             $puntosestudios = trim(filter_input(INPUT_POST, 'puntosestudios', FILTER_SANITIZE_SPECIAL_CHARS));
+            
             $puntosexperiencia = strtoupper(trim(filter_input(INPUT_POST, 'puntosexperiencia', FILTER_SANITIZE_SPECIAL_CHARS)));
             $puntosinvestigaciones = strtoupper(trim(filter_input(INPUT_POST, 'puntosinvestigaciones', FILTER_SANITIZE_SPECIAL_CHARS)));
             $puntosproduccion = trim(filter_input(INPUT_POST, 'puntosproduccion', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -705,6 +706,17 @@ class Docente extends conectar
             $comentarioInvestigaciones = trim(filter_input(INPUT_POST, 'comentarioInvestigaciones', FILTER_SANITIZE_SPECIAL_CHARS));
             $comentarioProduccion = trim(filter_input(INPUT_POST, 'comentarioProduccion', FILTER_SANITIZE_SPECIAL_CHARS));
             $puntosexperiencia = str_replace(",", ".", $puntosexperiencia);
+            
+            /////////////////////////////////
+            $cantidadEsp = trim(filter_input(INPUT_POST, 'cantidadEsp', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadEsp;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacionEsp($id, $cualitativa, $comentario);
+            }
+            /////////////////////////////////
+            
+            
             if ($puntosestudios == '' || $puntosexperiencia == '' || $puntosinvestigaciones == '' || $puntosproduccion == '' || $puntoscategoria == '') {
                 $mensajeMostrar = "Hay campos vacios, recuerde los campos son obligatorios";
                 $mensaje = "Location: ../clases/Incorrectos/Usuario.php?mensaje=" . $mensajeMostrar;
@@ -743,6 +755,21 @@ class Docente extends conectar
     {
         try {
             $sql = "UPDATE docente SET fechacambio = now() WHERE id =" . $id . ";";
+            pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
+        } catch (Exception $error) { }
+    }
+    
+    public function setCalificacionEsp($docente_id, $cualitativa, $comentario)
+    {
+        try {
+            $sql = "UPDATE especializacion SET fechacambio = now(), cualitativa = '".$cualitativa."', comentario = '".$comentario."'  WHERE docente_id =" . $docente_id . ";";
+            $this->updateTable($sql);
+        } catch (Exception $error) { }
+    }
+    
+    public function updateTable($sql)
+    {
+        try {
             pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         } catch (Exception $error) { }
     }
