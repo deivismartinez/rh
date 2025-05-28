@@ -712,7 +712,8 @@ class Docente extends conectar
             for($i=1;$i<=$cantidadEsp;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacionEsp($id, $cualitativa, $comentario);
+                $numero = trim(filter_input(INPUT_POST, 'numeroEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacionEsp($id, $numero, $cualitativa, $comentario);
             }
             /////////////////////////////////
             
@@ -759,10 +760,11 @@ class Docente extends conectar
         } catch (Exception $error) { }
     }
     
-    public function setCalificacionEsp($docente_id, $cualitativa, $comentario)
+    public function setCalificacionEsp($docente_id, $numero, $cualitativa, $comentario)
     {
         try {
-            $sql = "UPDATE especializacion SET fechacambio = now(), cualitativa = '".$cualitativa."', comentario = '".$comentario."'  WHERE docente_id =" . $docente_id . ";";
+            $sql = "UPDATE especializacion SET fechacambio = now(), cualitativa = '".$cualitativa."', comentario = '"
+                    .$comentario."'  WHERE docente_id =" . $docente_id . " and id = ".$numero.";";
             $this->updateTable($sql);
         } catch (Exception $error) { }
     }

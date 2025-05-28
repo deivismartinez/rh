@@ -405,6 +405,7 @@ if (isset($_SESSION['usuario'])) {
                                                                 }
                                                                 echo '</select></td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioEsp'.$numeroEspecializacion.'" name="comentarioEsp'.$numeroEspecializacion.'">' . $comentario . '</textarea></td>';
+                                                                
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloEspecializacion[3] . "&tipo=2"; ?>
                                                                 <td>
@@ -420,11 +421,14 @@ if (isset($_SESSION['usuario'])) {
                                                                     }
                                                                     ?>
                                                                 </td>
-                                                                <input id="cantidadEsp" name="cantidadEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
-                                                            </tr>
+                                                                <?php
+                                                                echo '<input id="numeroEsp'.$numeroEspecializacion.'" name="numeroEsp'.$numeroEspecializacion.'" type="hidden" value="'.$arregloEspecializacion[3].'">';
+                                                            ?>
+                                                                </tr>
                                                             <?php
                                                         }
                                                         ?>
+                                                            <input id="cantidadEsp" name="cantidadEsp" type="hidden" value="<?php echo $numeroEspecializacion ?>">
                                                         <?php
                                                         $numeroMaestrias = 0;
                                                         foreach ($maestrias as $arregloMaestria) {
