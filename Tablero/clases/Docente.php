@@ -713,33 +713,40 @@ class Docente extends conectar
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroPre'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacion("pregrado", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("pregrado", $id, $numero, $cualitativa, $comentario,"docente_id");
             }
             $cantidadEsp = trim(filter_input(INPUT_POST, 'cantidadEsp', FILTER_SANITIZE_SPECIAL_CHARS));
             for($i=1;$i<=$cantidadEsp;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroEsp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacion("especializacion", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("especializacion", $id, $numero, $cualitativa, $comentario,"docente_id");
             }
             $cantidadMae = trim(filter_input(INPUT_POST, 'cantidadMae', FILTER_SANITIZE_SPECIAL_CHARS));
             for($i=1;$i<=$cantidadMae;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroMae'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacion("maestria", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("maestria", $id, $numero, $cualitativa, $comentario,"docente_id");
             }
             $cantidadDoc = trim(filter_input(INPUT_POST, 'cantidadDoc', FILTER_SANITIZE_SPECIAL_CHARS));
             for($i=1;$i<=$cantidadDoc;$i++){
                 $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $comentario = trim(filter_input(INPUT_POST, 'comentarioDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
                 $numero = trim(filter_input(INPUT_POST, 'numeroDoc'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
-                $this->setCalificacion("doctorado", $id, $numero, $cualitativa, $comentario);
+                $this->setCalificacion("doctorado", $id, $numero, $cualitativa, $comentario,"docente_id");
+            }
+            $cantidadExp = trim(filter_input(INPUT_POST, 'cantidadExp', FILTER_SANITIZE_SPECIAL_CHARS));
+            for($i=1;$i<=$cantidadExp;$i++){
+                $cualitativa = trim(filter_input(INPUT_POST, 'cualitativaExp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $comentario = trim(filter_input(INPUT_POST, 'comentarioExp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $numero = trim(filter_input(INPUT_POST, 'numeroExp'.$i, FILTER_SANITIZE_SPECIAL_CHARS));
+                $this->setCalificacion("expcalificada", $id, $numero, $cualitativa, $comentario,"docenteid");
             }
             /////////////////////////////////
             
             
-            if ($puntosexperiencia == '' || $puntosinvestigaciones == '' || $puntosproduccion == '' || $puntoscategoria == '') {
+            if ($puntosinvestigaciones == '' || $puntosproduccion == '' || $puntoscategoria == '') {
                 $mensajeMostrar = "Hay campos vacios, recuerde los campos son obligatorios";
                 $mensaje = "Location: ../clases/Incorrectos/Usuario.php?mensaje=" . $mensajeMostrar;
                 header($mensaje);
@@ -749,6 +756,7 @@ class Docente extends conectar
                 pg_query($this->db, $sqlDocente) or die('La consulta fallo: ' . pg_last_error());
                 $puntoscategoria = 1;
                 $puntosestudios = 2;
+                $puntosexperiencia = 3;
                 if ($this->esCalificado($id)) {
                     $sql = "UPDATE public.calificacion SET fecharegistro=now(), "
                         . "usuario_id=" . $idUsuario . ", programa_id=" . $programa . ", categoria=" . $puntoscategoria . ", "
@@ -782,11 +790,11 @@ class Docente extends conectar
         } catch (Exception $error) { }
     }
     
-    public function setCalificacion($estudio, $docente_id, $numero, $cualitativa, $comentario)
+    public function setCalificacion($estudio, $docente_id, $numero, $cualitativa, $comentario, $campoID)
     {
         try {
             $sql = "UPDATE ".$estudio." SET fechacambio = now(), cualitativa = '".$cualitativa."', comentario = '"
-                    .$comentario."'  WHERE docente_id =" . $docente_id . " and id = ".$numero.";";
+                    .$comentario."'  WHERE ".$campoID." = " . $docente_id . " and id = ".$numero.";";
             $this->updateTable($sql);
         } catch (Exception $error) { }
     }

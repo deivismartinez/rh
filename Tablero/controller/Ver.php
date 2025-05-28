@@ -552,50 +552,45 @@ if (isset($_SESSION['usuario'])) {
                                                                 <th>Entidad</th>
                                                                 <th>Fecha Inicio</th>
                                                                 <th>Fecha Fin</th>
-                                                                <th>Sugerido</th>
+                                                                <th>Calificación</th>
+                                                                <th>Comentario</th>
                                                                 <th>UPC</th>
                                                                 <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php
+                                                            $numeroExp = 0;
                                                             foreach ($experienciaAdm as $arregloExp) {
+                                                                $numeroExp = $numeroExp +1;
                                                                 ?>
                                                                 <tr>
                                                                     <td><?php echo $arregloExp[0] ?></td>
                                                                     <td><?php echo $arregloExp[1] ?></td>
                                                                     <td><?php echo $arregloExp[3] ?></td>
                                                                     <td><?php echo $arregloExp[4] ?></td>
-                                                                    <?php
-                                                                    $exp = $arregloExp[6];
-                                                                    $exp = $exp / 365;
-
-                                                                    if ($arregloExp[0] == 'EXPERIENCIA PROFESIONAL') {
-                                                                        $exp = round($exp * 2, 1);
-                                                                        $puntosExperiencia = $puntosExperiencia + $exp;
-                                                                        echo '<td>' . $exp . '</td>';
-                                                                    } else {
-                                                                        if ($arregloExp[0] == 'DOCENTE CATEDRATICO') {
-                                                                            $exp = round($exp * 1, 1);
-                                                                            $puntosExperiencia = $puntosExperiencia + $exp;
-                                                                            echo '<td>' . $exp . '</td>';
-                                                                        } else {
-                                                                            if ($arregloExp[0] == 'DOCENTE TIEMPO COMPLETO') {
-                                                                                $exp = round($exp * 4, 1);
-                                                                                $puntosExperiencia = $puntosExperiencia + $exp;
-                                                                                echo '<td>' . $exp . '</td>';
-                                                                            } else {
-                                                                                if ($arregloExp[0] == 'DOCENTE MEDIO TIEMPO') {
-                                                                                    $exp = round($exp * 2, 1);
-                                                                                    $puntosExperiencia = $puntosExperiencia + $exp;
-                                                                                    echo '<td>' . $exp . '</td>';
-                                                                                } else {
-                                                                                    echo '<td>/td>';
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                    ?>
+                                                                   <?php
+                                                                echo '<td><select class="form-control" id="cualitativaExp'.$numeroExp.'" name="cualitativaExp'.$numeroExp.'" required="true">'
+                                                                . '<option value="" selected="true">SELECCIONE</option>';
+                                                                if ($arregloExp[8] == 'CUMPLE') {
+                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
+                                                                }
+                                                                if ($arregloExp[8] == 'NO CUMPLE') {
+                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
+                                                                } else {
+                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
+                                                                }
+                                                                if ($arregloExp[8] == 'NO APLICA') {
+                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
+                                                                } else {
+                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
+                                                                }
+                                                                echo '</select></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioExp'.$numeroExp.'" name="comentarioExp'.$numeroExp.'">' . $arregloExp[9] . '</textarea></td>';
+                                                                echo '<input id="numeroExp'.$numeroExp.'" name="numeroExp'.$numeroExp.'" type="hidden" value="'.$arregloExp[5].'">';
+                                                                ?>
                                                                     <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloExp[5] . "&tipo=6"; ?>
                                                                     <td><?php echo $arregloExp[7] ?></td>
                                                                     <td>
@@ -615,22 +610,9 @@ if (isset($_SESSION['usuario'])) {
                                                                 <?php
                                                             }
                                                             ?>
+                                                                <input id="cantidadExp" name="cantidadExp" type="hidden" value="<?php echo $numeroExp ?>">
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <label for="">Puntos Sugeridos por experiencia</label>
-                                                    <input type="text" size="4" disabled="true" id="experiencia" value="<?php echo $puntosExperiencia ?>" name="experiencia" class="form-control"/>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <label for="">Total Puntos Confirmados por experiencia</label>
-                                                    <input value="<?php echo $puntosDigitados->getexperiencia() ?>" type="text" size="4" id="puntosexperiencia" name="puntosexperiencia" class="form-control" required="true"/>
-                                                </div>
-                                                <div class="col-xs-5">
-                                                    <label for="">Comentario</label>
-                                                    <textarea id="comentarioExperiencia" name="comentarioExperiencia" class="form-control"><?php echo $puntosDigitados->getcomentarioexperiencia() ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
