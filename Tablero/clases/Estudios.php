@@ -50,7 +50,7 @@ class Estudios extends conectar {
     }
     public function getPregrados($usuario) {
         $id = $usuario->getId();
-        $sql = "SELECT 'PREGRADO' as tipo,nombre,institucion,id FROM pregrado where docente_id=" . $id . ";";
+        $sql = "SELECT 'PREGRADO' as tipo,nombre,institucion,id, cualitativa, comentario FROM pregrado where docente_id=" . $id . ";";
         $datos = pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {

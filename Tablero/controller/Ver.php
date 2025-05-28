@@ -288,23 +288,23 @@ if (isset($_SESSION['usuario'])) {
                                                                 <?php
                                                                 echo '<td><select class="form-control" id="pregrado" name="pregrado" required="true">'
                                                                 . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($cualitativa == 'CUMPLE') {
+                                                                if ($arregloPregrado[4] == 'CUMPLE') {
                                                                     echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
                                                                 } else {
                                                                     echo '<option value="CUMPLE">CUMPLE</option>';
                                                                 }
-                                                                if ($cualitativa == 'NO CUMPLE') {
+                                                                if ($arregloPregrado[4] == 'NO CUMPLE') {
                                                                     echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
                                                                 } else {
                                                                     echo '<option value="NO CUMPLE">NO CUMPLE</option>';
                                                                 }
-                                                                if ($cualitativa == 'NO APLICA') {
+                                                                if ($arregloPregrado[4] == 'NO APLICA') {
                                                                     echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
                                                                 } else {
                                                                     echo '<option value="NO APLICA">NO APLICA</option>';
                                                                 }
                                                                 echo '</select></td>';
-                                                                echo '<td><textarea class="form-control" id="comentarioPre" name="comentarioPre">' . $comentario . '</textarea></td>';
+                                                                echo '<td><textarea class="form-control" id="comentarioPre" name="comentarioPre">' . $arregloPregrado[5] . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $arregloPregrado[3] . "&tipo=1"; ?>
                                                                 <td>
