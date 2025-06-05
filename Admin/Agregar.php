@@ -27,6 +27,7 @@ if (isset($_SESSION['usuario'])) {
     <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
     <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <style>
+
         body {
             padding-top: 15px;
             font-family: 'Open Sans', sans-serif;
@@ -61,6 +62,14 @@ if (isset($_SESSION['usuario'])) {
 
         .tabla tbody tr td.align-left {
             text-align: left;
+
+        .zoom-hover {
+        transition: transform 0.3s ease;
+        
+        }
+
+    .zoom-hover:hover {
+      transform: scale(1.2);
         }
     </style>
 </head>
@@ -124,7 +133,7 @@ if (isset($_SESSION['usuario'])) {
                                     </div>
                                     <div class="col-xs-2">
                                         <div class="card" style="width:130px">
-                                            <img class="card-img-top" src="../images/departamento.png" alt="" style="width:90%">
+                                            <img class="card-img-top" src="../images/departamento.png" alt="" class="zoom-hover" style="width:90%">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Facultad</h5>
