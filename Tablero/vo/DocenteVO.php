@@ -21,6 +21,7 @@ class DocenteVO{
     private $situacion;
     private $descripcion;
     private $cualitativa;
+    private $comentario;
     
     public function __construct(){}
     
@@ -36,6 +37,13 @@ class DocenteVO{
     }
     public function setCualitativa($cualitativa){
         $this->cualitativa = $cualitativa;
+    }
+    
+    public function getComentario(){
+        return $this->comentario;
+    }
+    public function setComentario($comentario){
+        $this->comentario = $comentario;
     }
     
     public function getDisponibilidad(){
