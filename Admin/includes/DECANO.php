@@ -12,12 +12,6 @@ echo '<ul class="nav">
                                 <p>Inscritos Calificados</p>
                             </a>
                         </li>
-<!--                        <li>
-                            <a href="#">
-                                <i class="pe-7s-display1"></i>
-                                <p>Estadisticas</p>
-                            </a>
-                        </li>-->
                         <li class="active-pro">
                             <a href="../../Admin/index.php">
                                 <i class="pe-7s-power"></i>

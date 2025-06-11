@@ -55,6 +55,7 @@ if (isset($_POST["puntoscategoria"])) {
     $docente = new Docente();
     $docente->insertarCalificacion($usuario->getId(), $nombre, $programa, $nombreUsuario, $idAdmin);
 }
+$url = "../Tablero/controller/includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +83,7 @@ if (isset($_POST["puntoscategoria"])) {
                         </a>
                     </div>
                     <?php 
-                    include("includes/".$usuario->getTipo().".php");
+                    include($url);
                     ?>
                 </div>
             </div>
