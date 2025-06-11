@@ -11,6 +11,7 @@ if (isset($_SESSION['usuario'])) {
     header('Location: AccesoNoautorizado.html');
 }
 $page = 0;
+$url = "includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@ $page = 0;
                         Consulta de Inscritos a el Departamento
                     </a>
                 </div>
-                <?php include("includes/menuAdmin.html");?>
+                <?php include($url); ?>
             </div>
         </div>
 
