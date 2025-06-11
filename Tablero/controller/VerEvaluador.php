@@ -114,7 +114,27 @@ if (isset($_SESSION['usuario'])) {
                             Consulta de Docentes Inscritos
                         </a>
                     </div>
-                    <?php include("includes/menuEvaluador.html");?>
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="../../Admin/inicioAdmin.php">
+                                <i class="pe-7s-photo-gallery"></i>
+                                <p>Inscritos por Áreas</p>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="../../Admin/Calificados.php">
+                                <i class="pe-7s-photo-gallery"></i>
+                                <p>Inscritos Calificados</p>
+                            </a>
+                        </li>
+
+                        <li class="active-pro">
+                            <a href="../../Admin/index.php">
+                                <i class="pe-7s-power"></i>
+                                <p>Salir</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <form name="form" action="" method="post">
