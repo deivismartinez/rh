@@ -61,21 +61,21 @@ $url = "includes/".$usuario->getTipo().".php";
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+        <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>Administración Inscripción Docente Unicesar</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="../assets/css/animate.min.css" rel="stylesheet"/>
-        <link href="../assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-        <link href="../assets/css/demo.css" rel="stylesheet" />
-        <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-        <link href="../assets/css/local.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/animate.min.css" rel="stylesheet"/>
+        <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+        <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        <link href="../Tablero/assets/css/local.css" rel="stylesheet" />
     </head>
     <body>
         <div class="wrapper">
-            <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
+            <div class="sidebar" data-color="green" data-image="../Tablero/assets/img/sidebar-5.jpg">
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="#" class="simple-text">
@@ -98,7 +98,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <img class="img-responsive" alt="UPC" src="../../images/titulo.png">
+                                <img class="img-responsive" alt="UPC" src="../images/titulo.png">
                             </div>
                             <div class="collapse navbar-collapse">
                             </div>
@@ -1026,8 +1026,14 @@ $url = "includes/".$usuario->getTipo().".php";
             </form>
         </div>
     </body>
-    <script src="../assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src='../assets/js/jquery2.1.3sorter.js'></script>
+    <script src="../Tablero/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src='../Tablero/assets/js/jquery2.1.3sorter.js'></script>
+    
+    <script src="../Tablero/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Tablero/assets/js/chartist.min.js"></script>
+    <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
+    <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="../Tablero/assets/js/demo.js"></script>
     <script>
         $(function () {
             $('#mi-tabla').tablesorter();
@@ -1035,22 +1041,15 @@ $url = "includes/".$usuario->getTipo().".php";
 
         $(document).ready(function () {
             var consulta;
-            //hacemos focus al campo de búsqueda
             $("#busqueda").focus();
-
-            //comprobamos si se pulsa una tecla
             $("#busqueda").keyup(function (e) {
-
-                //obtenemos el texto introducido en el campo de búsqueda
                 consulta = $("#busqueda").val();
-                //hace la búsqueda                                                                                  
                 $.ajax({
                     type: "POST",
                     url: "buscar.php",
                     data: "b=" + consulta,
                     dataType: "html",
                     beforeSend: function () {
-                        //imagen de carga
                         $("#resultado").html("<p align='center'><img src='../images/load.gif' /></p>");
                     },
                     error: function () {
@@ -1064,11 +1063,6 @@ $url = "includes/".$usuario->getTipo().".php";
             });
         });
     </script>
-    <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../assets/js/chartist.min.js"></script>
-    <script src="../assets/js/bootstrap-notify.js"></script>
-    <script src="../assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-    <script src="../assets/js/demo.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             demo.initChartist();
