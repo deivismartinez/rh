@@ -31,7 +31,11 @@ var_dump($resultadoTraido);
                         $_SESSION['admin'] = 'SI';
                         header('Location: ../../Admin/Agregar.php');
                     }else {
-                        header('Location: ../../Admin/inicioAdmin.php');
+                        if ($resultadoTraido->getTipo()=='EVALUADOR') {
+                            header('Location: ../../Admin/inicioEvaluador.php'); 
+                        }else{
+                            header('Location: ../../Admin/inicioAdmin.php');
+                        }
                     }
                     
             
