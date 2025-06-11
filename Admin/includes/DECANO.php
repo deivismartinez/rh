@@ -1,6 +1,5 @@
 <?php
 
-//$page = $_GET["page"];
 if ($page == '0') {
     $state = 'active';
     $state1 = '';
@@ -11,9 +10,15 @@ if ($page == '0') {
         $state1 = 'active';
         $state2 = '';
     } else {
-        $state = '';
-        $state1 = '';
-        $state2 = 'active';
+        if ($page == '2') {
+            $state = '';
+            $state1 = '';
+            $state2 = 'active';
+        } else {
+            $state = '';
+            $state1 = '';
+            $state2 = '';
+        }
     }
 }
 

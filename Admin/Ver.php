@@ -55,6 +55,7 @@ if (isset($_POST["puntoscategoria"])) {
     $docente = new Docente();
     $docente->insertarCalificacion($usuario->getId(), $nombre, $programa, $nombreUsuario, $idAdmin);
 }
+$page = 3;
 $url = "includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
@@ -144,11 +145,6 @@ $url = "includes/".$usuario->getTipo().".php";
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="panel panel-primary">
@@ -198,24 +194,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $categoria ?></td>
                                                                 <td><?php echo $cualitativa ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="puntoscategoria" name="puntoscategoria" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($cualitativa == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($cualitativa == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($cualitativa == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                echo $cualitativa;
                                                                 echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $id . "&tipo=5"; ?>
@@ -270,24 +249,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $arregloPregrado[1] ?></td>
                                                                 <td><?php echo $arregloPregrado[2] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaPre' . $numeroPregrado . '" name="cualitativaPre' . $numeroPregrado . '" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloPregrado[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloPregrado[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloPregrado[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                echo '<td>'.$arregloPregrado[4].'</td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioPre' . $numeroPregrado . '" name="comentarioPre' . $numeroPregrado . '">' . $arregloPregrado[5] . '</textarea></td>';
                                                                 echo '<input id="numeroPre' . $numeroPregrado . '" name="numeroPre' . $numeroPregrado . '" type="hidden" value="' . $arregloPregrado[3] . '">';
                                                                 ?>

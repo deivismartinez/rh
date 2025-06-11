@@ -13,10 +13,7 @@ if (isset($_SESSION['usuario'])) {
 $buscar = filter_input(INPUT_POST, 'b', FILTER_SANITIZE_SPECIAL_CHARS);
 $area = filter_input(INPUT_POST, 'area', FILTER_SANITIZE_SPECIAL_CHARS);
 $prog = filter_input(INPUT_POST, 'prog', FILTER_SANITIZE_SPECIAL_CHARS);
-//if (!empty($buscar)) {
     buscar($buscar,$programa, $usuario,$area,$prog);
-//}
-
 function buscar($criterio,$programa, $docente,$area,$prog) {
     cabeza();
     require_once("../Tablero/clases/Docente.php");
@@ -36,7 +33,6 @@ function buscar($criterio,$programa, $docente,$area,$prog) {
             <td><?php echo $arreglo[2] ?></td>
             <td><?php echo $arreglo[1] ?></td>
             <td><?php echo $arreglo[3] ?></td>
-            <td><?php echo $arreglo[7] ?></td>
             <td><?php echo $arreglo[8] ?></td>
             <?php
             $urlVer = "Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
@@ -60,7 +56,6 @@ function cabeza() {
                                                         <th><span>Apellidos</span></th>
                                                         <th><span>Nombre</span></th>
                                                         <th><span>Celular</span></th>
-                                                        <th><span>Puntaje</span></th>
                                                         <th><span>Evaluador</span></th>
                                                         <th><span></span></th>
                                                     </tr>
