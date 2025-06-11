@@ -194,7 +194,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $categoria ?></td>
                                                                 <td><?php echo $cualitativa ?></td>
                                                                 <?php
-                                                                echo $cualitativa;
+                                                                echo '<td>'.$cualitativa.'<td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $id . "&tipo=5"; ?>
@@ -282,24 +282,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                             <td><?php echo $arregloEspecializacionEsp[1] ?></td>
                                                             <td><?php echo $arregloEspecializacionEsp[2] ?></td>
                                                             <?php
-                                                            echo '<td><select class="form-control" id="cualitativaEspM' . $numeroEspecializacion . '" name="cualitativaEspM' . $numeroEspecializacion . '" required="true">'
-                                                            . '<option value="" selected="true">SELECCIONE</option>';
-                                                            if ($arregloEspecializacionEsp[4] == 'CUMPLE') {
-                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="CUMPLE">CUMPLE</option>';
-                                                            }
-                                                            if ($arregloEspecializacionEsp[4] == 'NO CUMPLE') {
-                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                            }
-                                                            if ($arregloEspecializacionEsp[4] == 'NO APLICA') {
-                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                            } else {
-                                                                echo '<option value="NO APLICA">NO APLICA</option>';
-                                                            }
-                                                            echo '</select></td>';
+                                                            echo '<td>'.$arregloEspecializacionEsp[4].'</td>';
                                                             echo '<td><textarea class="form-control" id="comentarioEspM' . $numeroEspecializacion . '" name="comentarioEspM' . $numeroEspecializacion . '">' . $arregloEspecializacionEsp[5] . '</textarea></td>';
                                                             echo '<input id="numeroEspM' . $numeroEspecializacion . '" name="numeroEspM' . $numeroEspecializacion . '" type="hidden" value="' . $arregloEspecializacionEsp[3] . '">';
                                                             ?>
@@ -333,24 +316,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                             <td><?php echo $arregloEspecializacion[1] ?></td>
                                                             <td><?php echo $arregloEspecializacion[2] ?></td>
                                                             <?php
-                                                            echo '<td><select class="form-control" id="cualitativaEsp' . $numeroEspecializacion . '" name="cualitativaEsp' . $numeroEspecializacion . '" required="true">'
-                                                            . '<option value="" selected="true">SELECCIONE</option>';
-                                                            if ($arregloEspecializacion[4] == 'CUMPLE') {
-                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="CUMPLE">CUMPLE</option>';
-                                                            }
-                                                            if ($arregloEspecializacion[4] == 'NO CUMPLE') {
-                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                            }
-                                                            if ($arregloEspecializacion[4] == 'NO APLICA') {
-                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                            } else {
-                                                                echo '<option value="NO APLICA">NO APLICA</option>';
-                                                            }
-                                                            echo '</select></td>';
+                                                            echo '<td>'.$arregloEspecializacion[4].'</td>';
                                                             echo '<td><textarea class="form-control" id="comentarioEsp' . $numeroEspecializacion . '" name="comentarioEsp' . $numeroEspecializacion . '">' . $arregloEspecializacion[5] . '</textarea></td>';
                                                             echo '<input id="numeroEsp' . $numeroEspecializacion . '" name="numeroEsp' . $numeroEspecializacion . '" type="hidden" value="' . $arregloEspecializacion[3] . '">';
                                                             ?>
@@ -384,24 +350,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                             <td><?php echo $arregloMaestria[1] ?></td>
                                                             <td><?php echo $arregloMaestria[2] ?></td>
                                                             <?php
-                                                            echo '<td><select class="form-control" id="cualitativaMae' . $numeroMaestrias . '" name="cualitativaMae' . $numeroMaestrias . '" required="true">'
-                                                            . '<option value="" selected="true">SELECCIONE</option>';
-                                                            if ($arregloMaestria[4] == 'CUMPLE') {
-                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="CUMPLE">CUMPLE</option>';
-                                                            }
-                                                            if ($arregloMaestria[4] == 'NO CUMPLE') {
-                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                            }
-                                                            if ($arregloMaestria[4] == 'NO APLICA') {
-                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                            } else {
-                                                                echo '<option value="NO APLICA">NO APLICA</option>';
-                                                            }
-                                                            echo '</select></td>';
+                                                            echo '<td>'.$arregloMaestria[4].'</td>';
                                                             echo '<td><textarea class="form-control" id="comentarioMae' . $numeroMaestrias . '" name="comentarioMae' . $numeroMaestrias . '">' . $arregloMaestria[5] . '</textarea></td>';
                                                             echo '<input id="numeroMae' . $numeroMaestrias . '" name="numeroMae' . $numeroMaestrias . '" type="hidden" value="' . $arregloMaestria[3] . '">';
                                                             ?>
@@ -434,24 +383,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                             <td><?php echo $arregloDoctorado[1] ?></td>
                                                             <td><?php echo $arregloDoctorado[2] ?></td>
                                                             <?php
-                                                            echo '<td><select class="form-control" id="cualitativaDoc' . $numeroDoctorados . '" name="cualitativaDoc' . $numeroDoctorados . '" required="true">'
-                                                            . '<option value="" selected="true">SELECCIONE</option>';
-                                                            if ($arregloDoctorado[4] == 'CUMPLE') {
-                                                                echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="CUMPLE">CUMPLE</option>';
-                                                            }
-                                                            if ($arregloDoctorado[4] == 'NO CUMPLE') {
-                                                                echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                            } else {
-                                                                echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                            }
-                                                            if ($arregloDoctorado[4] == 'NO APLICA') {
-                                                                echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                            } else {
-                                                                echo '<option value="NO APLICA">NO APLICA</option>';
-                                                            }
-                                                            echo '</select></td>';
+                                                            echo '<td>'.$arregloDoctorado[4].'</td>';
                                                             echo '<td><textarea class="form-control" id="comentarioDoc' . $numeroDoctorados . '" name="comentarioDoc' . $numeroDoctorados . '">' . $arregloDoctorado[5] . '</textarea></td>';
                                                             echo '<input id="numeroDoc' . $numeroDoctorados . '" name="numeroDoc' . $numeroDoctorados . '" type="hidden" value="' . $arregloDoctorado[3] . '">';
                                                             ?>
@@ -515,24 +447,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                     <td><?php echo $arregloExp[3] ?></td>
                                                                     <td><?php echo $arregloExp[4] ?></td>
                                                                     <?php
-                                                                    echo '<td><select class="form-control" id="cualitativaExp' . $numeroExp . '" name="cualitativaExp' . $numeroExp . '" required="true">'
-                                                                    . '<option value="" selected="true">SELECCIONE</option>';
-                                                                    if ($arregloExp[8] == 'CUMPLE') {
-                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                    } else {
-                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                    }
-                                                                    if ($arregloExp[8] == 'NO CUMPLE') {
-                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                    } else {
-                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                    }
-                                                                    if ($arregloExp[8] == 'NO APLICA') {
-                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                    } else {
-                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                    }
-                                                                    echo '</select></td>';
+                                                                    echo '<td>'.$arregloExp[8].'</td>';
                                                                     echo '<td><textarea class="form-control" id="comentarioExp' . $numeroExp . '" name="comentarioExp' . $numeroExp . '">' . $arregloExp[9] . '</textarea></td>';
                                                                     echo '<input id="numeroExp' . $numeroExp . '" name="numeroExp' . $numeroExp . '" type="hidden" value="' . $arregloExp[5] . '">';
                                                                     ?>
@@ -593,24 +508,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                     <td><?php echo $arregloInv[1] ?></td>
                                                                     <td><?php echo $arregloInv[0] ?></td>
                                                                     <?php
-                                                                    echo '<td><select class="form-control" id="cualitativaGru' . $numeroGru . '" name="cualitativaGru' . $numeroGru . '" required="true">'
-                                                                    . '<option value="" selected="true">SELECCIONE</option>';
-                                                                    if ($arregloInv[4] == 'CUMPLE') {
-                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                    } else {
-                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                    }
-                                                                    if ($arregloInv[4] == 'NO CUMPLE') {
-                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                    } else {
-                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                    }
-                                                                    if ($arregloInv[4] == 'NO APLICA') {
-                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                    } else {
-                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                    }
-                                                                    echo '</select></td>';
+                                                                    echo '<td>'.$arregloInv[4].'</td>';
                                                                     echo '<td><textarea class="form-control" id="comentarioGru' . $numeroGru . '" name="comentarioGru' . $numeroGru . '">' . $arregloInv[5] . '</textarea></td>';
                                                                     echo '<input id="numeroGru' . $numeroGru . '" name="numeroGru' . $numeroGru . '" type="hidden" value="' . $arregloInv[3] . '">';
                                                                     ?>
@@ -642,24 +540,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $arregloI[1] ?></td>
                                                                 <td><?php echo $arregloI[0] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaInv' . $numeroInv . '" name="cualitativaInv' . $numeroInv . '" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloI[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloI[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloI[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                echo '<td>'.$arregloI[4].'</td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioInv' . $numeroInv . '" name="comentarioInv' . $numeroInv . '">' . $arregloI[5] . '</textarea></td>';
                                                                 echo '<input id="numeroInv' . $numeroInv . '" name="numeroInv' . $numeroInv . '" type="hidden" value="' . $arregloI[3] . '">';
                                                                 ?>
@@ -719,24 +600,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                     <td><?php echo $arregloArt[0] ?></td>
                                                                     <td><?php echo $arregloArt[1] ?></td>
                                                                     <?php
-                                                                    echo '<td><select class="form-control" id="cualitativaArt' . $numeroArt . '" name="cualitativaArt' . $numeroArt . '" required="true">'
-                                                                    . '<option value="" selected="true">SELECCIONE</option>';
-                                                                    if ($arregloArt[5] == 'CUMPLE') {
-                                                                        echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                    } else {
-                                                                        echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                    }
-                                                                    if ($arregloArt[5] == 'NO CUMPLE') {
-                                                                        echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                    } else {
-                                                                        echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                    }
-                                                                    if ($arregloArt[5] == 'NO APLICA') {
-                                                                        echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                    } else {
-                                                                        echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                    }
-                                                                    echo '</select></td>';
+                                                                    echo '<td>'.$arregloArt[5].'</td>';
                                                                     echo '<td><textarea class="form-control" id="comentarioArt' . $numeroArt . '" name="comentarioArt' . $numeroArt . '">' . $arregloArt[6] . '</textarea></td>';
                                                                     echo '<input id="numeroArt' . $numeroArt . '" name="numeroArt' . $numeroArt . '" type="hidden" value="' . $arregloArt[3] . '">';
                                                                     ?>
@@ -768,24 +632,8 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $arregloLib[0] ?></td>
                                                                 <td><?php echo $arregloLib[1] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaLib' . $numeroLib . '" name="cualitativaLib' . $numeroLib . '" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloLib[5] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloLib[5] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloLib[5] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                
+                                                                echo '<td>'.$arregloLib[5].'</td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioLib' . $numeroLib . '" name="comentarioLib' . $numeroLib . '">' . $arregloLib[6] . '</textarea></td>';
                                                                 echo '<input id="numeroLib' . $numeroLib . '" name="numeroLib' . $numeroLib . '" type="hidden" value="' . $arregloLib[3] . '">';
                                                                 ?>
@@ -817,24 +665,8 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $arregloSof[0] ?></td>
                                                                 <td><?php echo $arregloSof[1] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaSof' . $numeroSof . '" name="cualitativaSof' . $numeroSof . '" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloSof[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloSof[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloSof[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                echo '<td>'.$arregloSof[4].'</td>';
+                                                                
                                                                 echo '<td><textarea class="form-control" id="comentarioSof' . $numeroSof . '" name="comentarioSof' . $numeroSof . '">' . $arregloSof[5] . '</textarea></td>';
                                                                 echo '<input id="numeroSof' . $numeroSof . '" name="numeroSof' . $numeroSof . '" type="hidden" value="' . $arregloSof[3] . '">';
                                                                 ?>
@@ -866,24 +698,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $arregloPat[0] ?></td>
                                                                 <td><?php echo $arregloPat[1] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaPat' . $numeroPat . '" name="cualitativaPat' . $numeroPat . '" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloPat[4] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloPat[4] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloPat[4] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                echo '<td>'.$arregloPat[4].'</td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioPat' . $numeroPat . '" name="comentarioPat' . $numeroPat . '">' . $arregloPat[5] . '</textarea></td>';
                                                                 echo '<input id="numeroPat' . $numeroPat . '" name="numeroPat' . $numeroPat . '" type="hidden" value="' . $arregloPat[3] . '">';
                                                                 ?>
@@ -915,24 +730,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $arregloMon[0] ?></td>
                                                                 <td><?php echo $arregloMon[1] ?></td>
                                                                 <?php
-                                                                echo '<td><select class="form-control" id="cualitativaMon' . $numeroMon . '" name="cualitativaMon' . $numeroMon . '" required="true">'
-                                                                . '<option value="" selected="true">SELECCIONE</option>';
-                                                                if ($arregloMon[5] == 'CUMPLE') {
-                                                                    echo '<option value="CUMPLE" selected="true">CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="CUMPLE">CUMPLE</option>';
-                                                                }
-                                                                if ($arregloMon[5] == 'NO CUMPLE') {
-                                                                    echo '<option value="NO CUMPLE" selected="true">NO CUMPLE</option>';
-                                                                } else {
-                                                                    echo '<option value="NO CUMPLE">NO CUMPLE</option>';
-                                                                }
-                                                                if ($arregloMon[5] == 'NO APLICA') {
-                                                                    echo '<option value="NO APLICA" selected="true">NO APLICA</option>';
-                                                                } else {
-                                                                    echo '<option value="NO APLICA">NO APLICA</option>';
-                                                                }
-                                                                echo '</select></td>';
+                                                                echo '<td>'.$arregloMon[5].'</td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioMon' . $numeroMon . '" name="comentarioMon' . $numeroMon . '">' . $arregloMon[6] . '</textarea></td>';
                                                                 echo '<input id="numeroMon' . $numeroMon . '" name="numeroMon' . $numeroMon . '" type="hidden" value="' . $arregloMon[3] . '">';
                                                                 ?>
@@ -964,23 +762,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                    </div>
-                                    <div class="col-xs-3">
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <center>
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="pe-7s-diskette"></i> Guardar Puntajes
-                                            </button>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </form>
