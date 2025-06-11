@@ -1,0 +1,30 @@
+body{
+                padding-top:15px;
+                font-family: 'Open Sans', sans-serif;
+                font-size:13px;
+            }
+
+            .tabla {
+                margin: 0 auto;
+            }
+            .tabla thead {
+                cursor: pointer;
+                background: rgba(0, 0, 255, 1);
+                color: rgba(255, 255, 255, 1);
+            }
+            .tabla thead tr th {
+                font-weight: bold;
+                padding: 10px 20px;
+            }
+            .tabla thead tr th span {
+                padding-right: 20px;
+                background-repeat: no-repeat;
+                background-position: 100% 55%;
+            }
+            .tabla tbody tr td {
+                text-align: center;
+                padding: 10px 20px;
+            }
+            .tabla tbody tr td.align-left {
+                text-align: left;
+            }

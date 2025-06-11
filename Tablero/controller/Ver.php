@@ -1,15 +1,16 @@
 <?php
 require_once '../vo/UsuarioVO.php';
 require_once '../vo/CalificacionVO.php';
+
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: AccesoNoautorizado.html');
+}
 require_once("../clases/Estudios.php");
 require_once("../clases/Docente.php");
 require_once("../clases/Programas.php");
 require_once("../clases/Experiencias.php");
 require_once("../clases/Producciones.php");
-session_start();
-if (!isset($_SESSION['usuario'])) {
-    header('Location: AccesoNoautorizado.html');
-}
 $usuario = $_SESSION['usuario'];
 $uAdmin = $_SESSION['administrar'];
 $nombreUsuario = $usuario->getName();
@@ -51,8 +52,8 @@ $software = $produccion->getSoftware($usuario);
 
 $nombre = $datos->getApellidos() . ' ' . $datos->getNombres();
 if (isset($_POST["puntoscategoria"])) {
-    $u = new Docente();
-    $u->insertarCalificacion($usuario->getId(), $nombre, $programa, $nombreUsuario, $idAdmin);
+    $docente = new Docente();
+    $docente->insertarCalificacion($usuario->getId(), $nombre, $programa, $nombreUsuario, $idAdmin);
 }
 ?>
 <!DOCTYPE html>
@@ -69,38 +70,7 @@ if (isset($_POST["puntoscategoria"])) {
         <link href="../assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
         <link href="../assets/css/demo.css" rel="stylesheet" />
         <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-        <style>
-            body{
-                padding-top:15px;
-                font-family: 'Open Sans', sans-serif;
-                font-size:13px;
-            }
-
-            .tabla {
-                margin: 0 auto;
-            }
-            .tabla thead {
-                cursor: pointer;
-                background: rgba(0, 0, 255, 1);
-                color: rgba(255, 255, 255, 1);
-            }
-            .tabla thead tr th {
-                font-weight: bold;
-                padding: 10px 20px;
-            }
-            .tabla thead tr th span {
-                padding-right: 20px;
-                background-repeat: no-repeat;
-                background-position: 100% 55%;
-            }
-            .tabla tbody tr td {
-                text-align: center;
-                padding: 10px 20px;
-            }
-            .tabla tbody tr td.align-left {
-                text-align: left;
-            }
-        </style>
+        <link href="../assets/css/local.css" rel="stylesheet" />
     </head>
     <body>
         <div class="wrapper">
@@ -111,27 +81,9 @@ if (isset($_POST["puntoscategoria"])) {
                             Consulta de Docentes Inscritos
                         </a>
                     </div>
-                    <ul class="nav">
-                        <li class="active">
-                            <a href="../../Admin/inicioAdmin.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>Inscritos por Áreas</p>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="../../Admin/Calificados.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>Inscritos Calificados</p>
-                            </a>
-                        </li>
-
-                        <li class="active-pro">
-                            <a href="../../Admin/index.php">
-                                <i class="pe-7s-power"></i>
-                                <p>Salir</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <?php 
+                    include("includes/".$usuario->getTipo().".php");
+                    ?>
                 </div>
             </div>
             <form name="form" action="" method="post">
@@ -179,8 +131,8 @@ if (isset($_POST["puntoscategoria"])) {
                                                             </tr>
                                                             <tr>
                                                                 <td><?php echo $datos->getApellidos() . ' ' . $datos->getNombres() ?></td>
-                                                                    <td><?php echo $datos->getCelular() ?></td>
-                                                                    <td><?php echo $datos->getEmail() ?></td>
+                                                                <td><?php echo $datos->getCelular() ?></td>
+                                                                <td><?php echo $datos->getEmail() ?></td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -189,15 +141,15 @@ if (isset($_POST["puntoscategoria"])) {
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="panel panel-primary">

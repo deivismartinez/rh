@@ -29,14 +29,6 @@ function buscar($criterio,$programa, $docente,$area,$prog) {
         $i=$i +1;
         $docente->setId($arreglo[6]);
     
-//    $puntajes = new Puntajes();
-//    $listaPuntajes = $puntajes->getPuntajeTotal($docente);
-//    $totalPuntosAca = $listaPuntajes->getDoctorado() + $listaPuntajes->getMaestria() + $listaPuntajes->getEspecializacion();
-//    $totalPuntosExp = $listaPuntajes->getExpCatedratico() + $listaPuntajes->getExpMedioTiempo() + $listaPuntajes->getExpProfesional() + $listaPuntajes->getExpTiempoCompleto();
-//    $totalInvestigacion = $listaPuntajes->getGrupo() + $listaPuntajes->getCategoriaInvestigador();
-//    $totalPublicaciones = $listaPuntajes->getArticulo() + $listaPuntajes->getLibro() + $listaPuntajes->getPatente() + $listaPuntajes->getSoftware();
-//    $totalPuntos = $listaPuntajes->getCategoria() + $totalPuntosAca + $totalPuntosExp + $totalInvestigacion + $totalPublicaciones;
-//        $totalPuntos = 100;
         ?>
         <tr>
             <td><?php echo $i ?></td>
@@ -46,7 +38,6 @@ function buscar($criterio,$programa, $docente,$area,$prog) {
             <td><?php echo $arreglo[3] ?></td>
             <td><?php echo $arreglo[7] ?></td>
             <td><?php echo $arreglo[8] ?></td>
-            <!--<td><?php // echo $totalPuntos ?></td>-->
             <?php
             $urlVer = "../Tablero/controller/Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
             ?>
