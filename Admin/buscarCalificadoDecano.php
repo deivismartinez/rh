@@ -39,7 +39,7 @@ function buscar($criterio,$programa, $docente,$area,$prog) {
             <td><?php echo $arreglo[7] ?></td>
             <td><?php echo $arreglo[8] ?></td>
             <?php
-            $urlVer = "../Tablero/controller/Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
+            $urlVer = "Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
             ?>
             <td>
                 <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>

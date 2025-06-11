@@ -6,11 +6,11 @@ session_start();
 if (!isset($_SESSION['usuario'])) {
     header('Location: AccesoNoautorizado.html');
 }
-require_once("../clases/Estudios.php");
-require_once("../clases/Docente.php");
-require_once("../clases/Programas.php");
-require_once("../clases/Experiencias.php");
-require_once("../clases/Producciones.php");
+require_once("../Tablero/clases/Estudios.php");
+require_once("../Tablero/clases/Docente.php");
+require_once("../Tablero/clases/Programas.php");
+require_once("../Tablero/clases/Experiencias.php");
+require_once("../Tablero/clases/Producciones.php");
 $usuario = $_SESSION['usuario'];
 $uAdmin = $_SESSION['administrar'];
 $nombreUsuario = $usuario->getName();
@@ -55,7 +55,7 @@ if (isset($_POST["puntoscategoria"])) {
     $docente = new Docente();
     $docente->insertarCalificacion($usuario->getId(), $nombre, $programa, $nombreUsuario, $idAdmin);
 }
-$url = "../../Admin/includes/".$usuario->getTipo().".php";
+$url = "includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
