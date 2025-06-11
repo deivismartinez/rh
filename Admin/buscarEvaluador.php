@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario'])) {
 $buscar = filter_input(INPUT_POST, 'b', FILTER_SANITIZE_SPECIAL_CHARS);
 $area = filter_input(INPUT_POST, 'area', FILTER_SANITIZE_SPECIAL_CHARS);
 buscar($buscar,$programa, $usuario,$area);
-function buscar($criterio,$programa, $docente,$area) {
+function buscar($criterio,$programa, $docente,$area,$usuario) {
     cabeza();
     require_once("../Tablero/clases/Docente.php");
     $docentes = new Docente();
@@ -22,7 +22,11 @@ function buscar($criterio,$programa, $docente,$area) {
     foreach ($lista as $arreglo) {
         $i=$i +1;
         $docente->setId($arreglo[6]);
-        $urlVer = "../Tablero/controller/VerEvaluador.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
+        if ($usuario->getTipo()=='EVALUADOR') {
+            $urlVer = "../Tablero/controller/VerEvaluador.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
+        }else{
+            $urlVer = "../Tablero/controller/Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
+        }
         echo '<tr><td>'.$i.'</td><td>'.$arreglo[0].'</td><td>'.$arreglo[2].'</td><td>'.$arreglo[1].'</td><td>'.$arreglo[3].'</td>'.
              '<td><a data-toggle="tooltip" title="Ver información" href="'.$urlVer.'"><i class="pe-7s-credit"></i></a></td></tr>';
     }
