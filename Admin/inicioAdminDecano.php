@@ -86,12 +86,6 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['decano'])) {
                                 <p>cambiar mi Clave</p>
                             </a>
                         </li>
-<!--                        <li>
-                            <a href="../Tablero/restaurarclaveAdmin.php">
-                                <i class="pe-7s-display1"></i>
-                                <p>Cambiar Clave</p>
-                            </a>
-                        </li>-->
                         <li class="active-pro">
                             <a href="index.php">
                                 <i class="pe-7s-power"></i>
