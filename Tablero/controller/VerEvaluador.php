@@ -127,7 +127,6 @@ if (isset($_SESSION['usuario'])) {
                                 <p>Inscritos Calificados</p>
                             </a>
                         </li>
-
                         <li class="active-pro">
                             <a href="../../Admin/index.php">
                                 <i class="pe-7s-power"></i>
@@ -154,7 +153,6 @@ if (isset($_SESSION['usuario'])) {
                             </div>
                         </div>
                     </nav>
-
                     <div class="content">
                         <div class="container-fluid">
                         </div>

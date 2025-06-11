@@ -813,7 +813,7 @@ class Docente extends conectar
                         . $comentarioCategoria . "','" . $comentarioEstudios . "','CALIFICADO');";
                 }
                 pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
-                header("Location: ../clases/Correctos/Calificacion.php");
+                header("Location: ../clases/Correctos/Guardado.php");
                 exit;
         } catch (Exception $error) { }
     }
