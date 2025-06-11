@@ -28,15 +28,6 @@ function buscar($criterio,$programa, $docente,$area) {
     foreach ($lista as $arreglo) {
         $i=$i +1;
         $docente->setId($arreglo[6]);
-    
-//    $puntajes = new Puntajes();
-//    $listaPuntajes = $puntajes->getPuntajeTotal($docente);
-//    $totalPuntosAca = $listaPuntajes->getDoctorado() + $listaPuntajes->getMaestria() + $listaPuntajes->getEspecializacion();
-//    $totalPuntosExp = $listaPuntajes->getExpCatedratico() + $listaPuntajes->getExpMedioTiempo() + $listaPuntajes->getExpProfesional() + $listaPuntajes->getExpTiempoCompleto();
-//    $totalInvestigacion = $listaPuntajes->getGrupo() + $listaPuntajes->getCategoriaInvestigador();
-//    $totalPublicaciones = $listaPuntajes->getArticulo() + $listaPuntajes->getLibro() + $listaPuntajes->getPatente() + $listaPuntajes->getSoftware();
-//    $totalPuntos = $listaPuntajes->getCategoria() + $totalPuntosAca + $totalPuntosExp + $totalInvestigacion + $totalPublicaciones;
-//        $totalPuntos = 100;
         ?>
         <tr>
             <td><?php echo $i ?></td>
@@ -44,9 +35,8 @@ function buscar($criterio,$programa, $docente,$area) {
             <td><?php echo $arreglo[2] ?></td>
             <td><?php echo $arreglo[1] ?></td>
             <td><?php echo $arreglo[3] ?></td>
-            <!--<td><?php // echo $totalPuntos ?></td>-->
             <?php
-            $urlVer = "../Tablero/controller/Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
+            $urlVer = "Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
             ?>
             <td>
                 <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>
