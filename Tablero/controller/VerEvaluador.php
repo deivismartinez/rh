@@ -116,13 +116,13 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                     <ul class="nav">
                         <li class="active">
-                            <a href="../../Admin/inicioAdmin.php">
+                            <a href="../../Admin/inicioEvaluador.php">
                                 <i class="pe-7s-photo-gallery"></i>
                                 <p>Inscritos por Áreas</p>
                             </a>
                         </li>
                         <li class="active">
-                            <a href="../../Admin/Calificados.php">
+                            <a href="../../Admin/CalificadosEvaluador.php">
                                 <i class="pe-7s-photo-gallery"></i>
                                 <p>Inscritos Calificados</p>
                             </a>
