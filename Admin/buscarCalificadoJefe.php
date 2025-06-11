@@ -9,13 +9,10 @@ if (isset($_SESSION['usuario'])) {
     header('Location: AccesoNoautorizado.html');
 }
 
-
 $buscar = filter_input(INPUT_POST, 'b', FILTER_SANITIZE_SPECIAL_CHARS);
 $area = filter_input(INPUT_POST, 'area', FILTER_SANITIZE_SPECIAL_CHARS);
 $prog = filter_input(INPUT_POST, 'prog', FILTER_SANITIZE_SPECIAL_CHARS);
-//if (!empty($buscar)) {
     buscar($buscar,$programa, $usuario,$area,$prog);
-//}
 
 function buscar($criterio,$programa, $docente,$area,$prog) {
     cabeza();
@@ -28,15 +25,6 @@ function buscar($criterio,$programa, $docente,$area,$prog) {
     foreach ($lista as $arreglo) {
         $i=$i +1;
         $docente->setId($arreglo[6]);
-    
-//    $puntajes = new Puntajes();
-//    $listaPuntajes = $puntajes->getPuntajeTotal($docente);
-//    $totalPuntosAca = $listaPuntajes->getDoctorado() + $listaPuntajes->getMaestria() + $listaPuntajes->getEspecializacion();
-//    $totalPuntosExp = $listaPuntajes->getExpCatedratico() + $listaPuntajes->getExpMedioTiempo() + $listaPuntajes->getExpProfesional() + $listaPuntajes->getExpTiempoCompleto();
-//    $totalInvestigacion = $listaPuntajes->getGrupo() + $listaPuntajes->getCategoriaInvestigador();
-//    $totalPublicaciones = $listaPuntajes->getArticulo() + $listaPuntajes->getLibro() + $listaPuntajes->getPatente() + $listaPuntajes->getSoftware();
-//    $totalPuntos = $listaPuntajes->getCategoria() + $totalPuntosAca + $totalPuntosExp + $totalInvestigacion + $totalPublicaciones;
-//        $totalPuntos = 100;
         ?>
         <tr>
             <td><?php echo $i ?></td>
@@ -46,9 +34,8 @@ function buscar($criterio,$programa, $docente,$area,$prog) {
             <td><?php echo $arreglo[3] ?></td>
             <td><?php echo $arreglo[7] ?></td>
             <td><?php echo $arreglo[8] ?></td>
-            <!--<td><?php // echo $totalPuntos ?></td>-->
             <?php
-            $urlVer = "../Tablero/controller/VerJefe.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
+            $urlVer = "Ver.php?id=".$arreglo[6]."&nombre=".$arreglo[1]."&tipo=1";
             ?>
             <td>
                 <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>
