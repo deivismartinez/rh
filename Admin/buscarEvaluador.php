@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario'])) {
 }
 $buscar = filter_input(INPUT_POST, 'b', FILTER_SANITIZE_SPECIAL_CHARS);
 $area = filter_input(INPUT_POST, 'area', FILTER_SANITIZE_SPECIAL_CHARS);
-buscar($buscar,$programa, $usuario,$area);
+buscar($buscar,$programa, $usuario,$area,$usuario);
 function buscar($criterio,$programa, $docente,$area,$usuario) {
     cabeza();
     require_once("../Tablero/clases/Docente.php");
