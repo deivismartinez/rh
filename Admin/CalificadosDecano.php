@@ -10,6 +10,7 @@ if (isset($_SESSION['usuario'])) {
 } else {
     header('Location: AccesoNoautorizado.html');
 }
+$url = "includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,38 +26,7 @@ if (isset($_SESSION['usuario'])) {
         <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
         <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
         <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-        <style>
-            body{
-                padding-top:15px;
-                font-family: 'Open Sans', sans-serif;
-                font-size:13px;
-            }
-
-            .tabla {
-                margin: 0 auto;
-            }
-            .tabla thead {
-                cursor: pointer;
-                background: rgba(0, 0, 255, 1);
-                color: rgba(255, 255, 255, 1);
-            }
-            .tabla thead tr th { 
-                font-weight: bold;
-                padding: 10px 20px;
-            }
-            .tabla thead tr th span { 
-                padding-right: 20px;
-                background-repeat: no-repeat;
-                background-position: 100% 55%;
-            }
-            .tabla tbody tr td {
-                text-align: center;
-                padding: 10px 20px;
-            }
-            .tabla tbody tr td.align-left {
-                text-align: left;
-            }
-        </style>
+        <link href="../Tablero/assets/css/local.css" rel="stylesheet" />
     </head>
     <body>
         <div class="wrapper">
@@ -67,32 +37,7 @@ if (isset($_SESSION['usuario'])) {
                             Consulta de Inscritos a el Departamento
                         </a>
                     </div>
-                    <ul class="nav">
-                        <li>
-                            <a href="inicioAdminDecano.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>Inscritos por Áreas</p>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="CalificadosDecano.php">
-                                <i class="pe-7s-photo-gallery"></i>
-                                <p>Inscritos Calificados</p>
-                            </a>
-                        </li>
-<!--                        <li>
-                            <a href="../Tablero/restaurarclaveAdmin.php">
-                                <i class="pe-7s-display1"></i>
-                                <p>Cambiar Clave</p>
-                            </a>
-                        </li>-->
-                        <li class="active-pro">
-                            <a href="index.php">
-                                <i class="pe-7s-power"></i>
-                                <p>Salir</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <?php include($url); ?>
                 </div>
             </div>
 

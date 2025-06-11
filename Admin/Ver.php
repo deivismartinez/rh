@@ -82,9 +82,7 @@ $url = "includes/".$usuario->getTipo().".php";
                             Consulta de Docentes Inscritos
                         </a>
                     </div>
-                    <?php 
-                    include($url);
-                    ?>
+                    <?php include($url); ?>
                 </div>
             </div>
             <form name="form" action="" method="post">
