@@ -159,7 +159,7 @@ if (isset($_SESSION['usuario'])) {
         //hace la búsqueda                                                                                  
         $.ajax({
             type: "POST",
-            url: "buscar.php",
+            url: "buscarEvaluador.php",
             data: {
                 'b': $("#busqueda").val(),
                 'area': area
