@@ -1,6 +1,6 @@
 <?php
-require_once '../vo/UsuarioVO.php';
-require_once '../vo/CalificacionVO.php';
+require_once '../Tablero/vo/UsuarioVO.php';
+require_once '../Tablero/vo/CalificacionVO.php';
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
