@@ -168,13 +168,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                         <tbody>
                                                             <?php
                                                             foreach ($programaLista as $arreglo) {
-                                                                ?>
-                                                                <tr>
-                                                                    <td><?php echo $arreglo[0] ?></td>
-                                                                    <td><?php echo $arreglo[1] ?></td>
-                                                                    <td><?php echo $arreglo[2] ?></td>
-                                                                </tr>
-                                                                <?php
+                                                                echo '<tr><td>'.$arreglo[0].'</td><td>'.$arreglo[1].'</td><td>'.$arreglo[2].'</td></tr>';
                                                             }
                                                             ?>
                                                         </tbody>
@@ -183,8 +177,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                                         <thead>	
                                                             <tr class="info">
                                                                 <th>Categoria Docente</th>
-                                                                <th>Cal. Actual</th>
-                                                                <th>Cal. Nueva</th>
+                                                                <th>Calificación</th>
                                                                 <th>Comentario</th>
                                                                 <th>Acciones</th>
                                                             </tr>
@@ -194,7 +187,6 @@ $url = "includes/".$usuario->getTipo().".php";
                                                                 <td><?php echo $categoria ?></td>
                                                                 <td><?php echo $cualitativa ?></td>
                                                                 <?php
-                                                                echo '<td>'.$cualitativa.'<td>';
                                                                 echo '<td><textarea class="form-control" id="comentarioCategoria" name="comentarioCategoria">' . $comentario . '</textarea></td>';
                                                                 ?>
                                                                 <?php $urlVer = "VerAdjuntoAdm.php?id=" . $id . "&tipo=5"; ?>
