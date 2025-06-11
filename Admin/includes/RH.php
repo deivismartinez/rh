@@ -1,20 +1,42 @@
 <?php
+
+if ($page == '0') {
+    $state = 'active';
+    $state1 = '';
+    $state2 = '';
+} else {
+    if ($page == '1') {
+        $state = '';
+        $state1 = 'active';
+        $state2 = '';
+    } else {
+        if ($page == '2') {
+            $state = '';
+            $state1 = '';
+            $state2 = 'active';
+        } else {
+            $state = '';
+            $state1 = '';
+            $state2 = '';
+        }
+    }
+}
 echo '<ul class="nav">
-                        <li class="active">
-                            <a href="../../Admin/inicioAdmin.php">
+                        <li class="' . $state . '">
+                            <a href="inicioAdmin.php">
                                 <i class="pe-7s-photo-gallery"></i>
                                 <p>Inscritos por Áreas</p>
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="../../Admin/Calificados.php">
+                        <li class="' . $state1 . '">
+                            <a href="Calificados.php">
                                 <i class="pe-7s-photo-gallery"></i>
                                 <p>Inscritos Calificados</p>
                             </a>
                         </li>
 
                         <li class="active-pro">
-                            <a href="../../Admin/index.php">
+                            <a href="index.php">
                                 <i class="pe-7s-power"></i>
                                 <p>Salir</p>
                             </a>

@@ -10,6 +10,7 @@ if (isset($_SESSION['usuario'])) {
 } else {
     header('Location: AccesoNoautorizado.html');
 }
+$page = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
