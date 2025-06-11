@@ -95,7 +95,7 @@
                                 <h4>Datos actualizados</h4>
                                 
                                 <div class="col-md-12">
-                                    <a href="../../../Admin/inicioAdmin.php">
+                                    <a href="../../../Admin/inicioEvaluador.php">
                                         <h4><i class="pe-7s-back"></i>Volver</h4>
                                     </a>
                                 </div>
