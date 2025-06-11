@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario'])) {
 } else {
     header('Location: AccesoNoautorizado.html');
 }
-$url = "includes/".$usuario->getTipo().".php";
+$url = "includes/".$usuario->getTipo().".php?page=1";
 ?>
 <!DOCTYPE html>
 <html lang="en">
