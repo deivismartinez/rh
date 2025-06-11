@@ -30,7 +30,6 @@ function buscar($criterio, $programa, $docente, $area) {
             <td><?php echo $arreglo[2] ?></td>
             <td><?php echo $arreglo[1] ?></td>
             <td><?php echo $arreglo[3] ?></td>
-            <td><?php echo $arreglo[7] ?></td>
             <td><?php echo $arreglo[8] ?></td>
             <?php
             $urlVer = "../Tablero/controller/VerEvaluador.php?id=" . $arreglo[6] . "&nombre=" . $arreglo[1] . "&tipo=1";
@@ -53,7 +52,6 @@ function cabeza() {
                                                         <th><span>Apellidos</span></th>
                                                         <th><span>Nombre</span></th>
                                                         <th><span>Celular</span></th>
-                                                        <th><span>Puntaje</span></th>
                                                         <th><span>Evaluador</span></th>
                                                         <th><span></span></th>
                                                     </tr>

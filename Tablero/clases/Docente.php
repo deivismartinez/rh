@@ -323,7 +323,7 @@ class Docente extends conectar
                 . " JOIN docente_programa ON (docente_programa.docente_id = docente.id) "
                 . " JOIN docenteperfil ON (docente.id = docenteperfil.docente_id) "
                 . " JOIN calificacion ON (docente.id = calificacion.docente_id) "
-                . " WHERE docente.nombre like '%" . $dto . "%' and docente_programa.programa_id=" . $idPrograma
+                . " WHERE (docente.nombre like '%" . $dto . "%' OR apellidos like '%" . $dto . "%' OR documentoidentidad like '%" . $dto . "%') and docente_programa.programa_id=" . $idPrograma
                 . " and docenteperfil.perfil_id " . $area . " and docente.sede like '" . $sede . "' order by puntaje desc, apellidos, docente.nombre;";
         }
         

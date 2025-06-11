@@ -34,7 +34,7 @@ function buscar($criterio,$programa, $docente,$area,$usuario) {
 }
 
 function cabeza() {
-    echo '<table cellspacing="0" cellpadding="0" id="mi-tabla" class="table-bordered tabla">
+                                                echo '<table cellspacing="0" cellpadding="0" id="mi-tabla" class="table-bordered tabla">
                                                 <thead>
                                                     <tr>
                                                     <th><span>No.</span></th>
