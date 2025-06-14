@@ -13,18 +13,13 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $usuario->getName();
     $programa = $usuario->getlastName();
     $progamaId = $_GET['id'];
-    //$verPrograma = $programa->getProgramasVer($progamaId);
-    $verProgram = $programaNew->getFacultadVer($progamaId);
-
-
+    //$verProgram = $programaNew->getFacultadVer($progamaId);
     $gestion = new Gestion();
     $programId = strtoupper(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
-
     echo '<script language="javascript">alert(hola)</script>';
     // $editable = $gestion->EditProgram($programId);
     if (isset($_POST["programTxt"])) {
         //  $gestion->insertarPrograma();
-
     }
 } else {
     header('Location: AccesoNoautorizado.html');
@@ -38,6 +33,8 @@ $opcionEstado = [
     'ACTIVO' => 'ACTIVO',
     'INACTIVO' => 'INACTIVO'
 ];
+$page = 3;
+$url = "includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +43,7 @@ $opcionEstado = [
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Administraci贸n Inscripci贸n Docente Unicesar</title>
+    <title>Administración Inscripción Docente Unicesar</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link href="../Tablero/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -54,46 +51,8 @@ $opcionEstado = [
     <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
     <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
     <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
-    <style>
-        body {
-            padding-top: 15px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 13px;
-        }
-
-        .tabla {
-            margin: 10px auto;
-        }
-
-        .tabla thead {
-            cursor: pointer;
-            background: rgba(0, 0, 255, 1);
-            color: rgba(255, 255, 255, 1);
-        }
-
-        .tabla thead tr th {
-            font-weight: bold;
-            padding: 10px 20px;
-        }
-
-        .tabla thead tr th span {
-            padding-right: 20px;
-            background-repeat: no-repeat;
-            background-position: 100% 55%;
-        }
-
-        .tabla tbody tr td {
-            text-align: center;
-            padding: 10px 20px;
-        }
-
-        .tabla tbody tr td.align-left {
-            text-align: left;
-        }
-    </style>
+    <link href="../Tablero/assets/css/local.css" rel="stylesheet" />
 </head>
-
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="green" data-image="../images/sidebar-5.jpg">
@@ -103,7 +62,7 @@ $opcionEstado = [
                     Módulo de Administración.
                     </a>
                 </div>
-                <?php include("includes/menuAdmin.html"); ?>
+                <?php include($url); ?>
             </div>
         </div>
 
@@ -139,7 +98,7 @@ $opcionEstado = [
                     <div class="col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Editar programa acad茅mico
+                                Editar programa académico
                             </div>
                             <div class="panel-body">
                                 <form name="form" action="" method="post" enctype="multipart/form-data">
@@ -152,7 +111,7 @@ $opcionEstado = [
                                         <div class="col-xs-4">
                                             <label for="telefono">Nombre del nuevo Programa</label>
                                             <div id="comboProg">
-                                                <input class="form-control" type="text" id="programTxt" value="<?php echo $verProgram->getName(); ?>" name="programTxt" required="true">
+                                                <input class="form-control" type="text" id="programTxt" value="<?php echo $programa; ?>" name="programTxt" required="true">
                                             </div>
                                         </div>
                                         <div class="col-xs-2">
@@ -160,7 +119,7 @@ $opcionEstado = [
                                             <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
                                                 <?php foreach ($opcionAlcance as $valor => $etiqueta): ?>
                                                     <option value="<?php echo htmlspecialchars($valor); ?>"
-                                                        <?php echo $valor === $verProgram->getPosgrado() ? 'selected' : ''; ?>>
+                                                        <?php echo $valor === $programa ? 'selected' : ''; ?>>
                                                         <?php echo htmlspecialchars($etiqueta); ?>
                                                     </option>
                                                 <?php endforeach; ?>
@@ -172,7 +131,7 @@ $opcionEstado = [
                                             <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
                                                 <?php foreach ($opcionEstado as $valor => $etiqueta): ?>
                                                     <option value="<?php echo htmlspecialchars($valor); ?>"
-                                                        <?php echo $valor === $verProgram->getEstado() ? 'selected' : ''; ?>>
+                                                        <?php echo $valor === $programa ? 'selected' : ''; ?>>
                                                         <?php echo htmlspecialchars($etiqueta); ?>
                                                     </option>
                                                 <?php endforeach; ?>
