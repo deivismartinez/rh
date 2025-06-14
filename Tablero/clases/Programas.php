@@ -101,7 +101,8 @@ class Programas extends conectar
     public function getFacultadesDocentePostgrado()
     {                      ///// FACULTAD 3 ES LA UNICA QUE TIENE POSTGRADOS POR AHORA
         //$sql = "SELECT id,nombre FROM facultad where estado='ACTIVA'and id = ANY (ARRAY[3]);";
-        $sql = "SELECT id,nombre FROM facultad where estado='ACTIVA'and posgrado=true";
+        //$sql = "SELECT id,nombre FROM facultad where estado='ACTIVA' and posgrado=true";
+        $sql = "SELECT id,nombre FROM facultad where estado='ACTIVA'";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {

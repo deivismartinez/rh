@@ -21,6 +21,8 @@ if (isset($_SESSION['usuario'])) {
 } else {
     header('Location: AccesoNoautorizado.html');
 }
+$page = 1;
+$url = "includes/".$usuario->getTipo().".php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,44 +39,7 @@ if (isset($_SESSION['usuario'])) {
     <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
     <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
     <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
-    <style>
-        body {
-            padding-top: 15px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 13px;
-        }
-
-        .tabla {
-            margin: 10px auto;
-        }
-
-        .tabla thead {          
-            cursor: pointer;
-            background: #337ab7;
-            color: rgba(255, 255, 255, 1);
-        }
-
-        .tabla thead tr th {
-            font-weight: bold;
-            padding: 10px 20px;
-        }
-
-        .tabla thead tr th span {
-            padding-right: 20px;
-            background-repeat: no-repeat;
-            background-position: 100% 55%;
-        }
-
-        .tabla tbody tr td {
-            text-align: center;
-            padding: 10px 20px;
-        }
-
-        .tabla tbody tr td.align-left {
-            text-align: left;
-        }
-    </style>
+    <link href="../Tablero/assets/css/local.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -86,7 +51,7 @@ if (isset($_SESSION['usuario'])) {
                     Módulo de Administración.
                     </a>
                 </div>
-                <?php include("includes/menuAdmin.html"); ?>
+                <?php include($url); ?>
             </div>
         </div>
 
