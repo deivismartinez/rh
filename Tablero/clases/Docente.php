@@ -257,7 +257,7 @@ class Docente extends conectar
             $clave = trim(filter_input(INPUT_POST, 'claveTxt', FILTER_SANITIZE_SPECIAL_CHARS));
             $confirmar = trim(filter_input(INPUT_POST, 'confirmarTxt', FILTER_SANITIZE_SPECIAL_CHARS));
             if (
-                $identidad == '' || $clave == '' ||
+                $claveAnteriorTxt == '' || $clave == '' ||
                 $confirmar == ''
             ) {
                 $mensajeMostrar = "Hay campos vacios, recuerde que todos los campos son obligatorios";
