@@ -513,7 +513,7 @@ class Usuario extends conectar {
                             $clave = sha1($confirmar);
                             $sql = "UPDATE docente set clave = '" . $clave . "', email='".$correo."' where documentoidentidad = '" . $identidad . "';";
                             pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
-                            header("Location: clases/Correctos/UsuarioAdmin.html");
+                            header("Location: ../Tablero/clases/Correctos/UsuarioAdmin.html");
                             exit;
                         } else {
                             $mensajeMostrar = "La confirmación de la clave es incorrecta";
