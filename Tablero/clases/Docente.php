@@ -48,15 +48,13 @@ class Docente extends conectar
 
     public function getDocentesSinArea($dto, $sede)
     {
-
-
         $sql = "SELECT documentoidentidad,docente.nombre,apellidos,celular,email, docente.id,
         case WHEN programa.nombre is null then 'No ha especificado'ELSE programa.nombre END as programa
         FROM docente left join docente_programa on(docente.id=docente_programa.docente_id)
                         left join programa on(programa_id=programa.id)
                         WHERE docente.nombre like '%" . $dto . "%' 
                          and docente.sede like '" . $sede . "'
-                        and docente.id not in (SELECT docente_id FROM docenteperfil)
+                        and docente.id not in (SELECT docente_id FROM docenteperfil) limit 15 
                          order by  docente.nombre, apellidos;";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
