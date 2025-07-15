@@ -134,7 +134,7 @@ $url = "includes/".$usuario->getTipo().".php";
                 
                 <div class="row" id="centered">
                     <div class="col-xs-12">
-                        <div class="col-xs-7">
+                        <div class="col-xs-11">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                             <p align=center><b>RESTAURACIÓN DE LA CLAVE ADMINISTRADOR</b> </p>
