@@ -133,20 +133,18 @@ $url = "includes/".$usuario->getTipo().".php";
                     <h4><i class="pe-7s-back"></i>Volver</h4>
                 </a>
                 <div class="col-xs-12">
+                    <div class="row" id="centered">
                     <h5>
                         <?php echo $nombre; ?>
                     </h5>
                 </div>
+                    </div>
                 <div class="row" id="centered">
                     <div class="col-xs-12">
                         <div class="col-xs-7">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h2 class="panel-title">
-                                        <h2>
                                             <p align=center><b>RESTAURACIÓN DE LA CLAVE ADMINISTRADOR</b></p>
-                                        </h2>
-                                    </h2>
                                 </div>
                                 <div class="panel-body">
                                     <form method="POST" action="" name="entradaFrm" id="entradaFrm">
