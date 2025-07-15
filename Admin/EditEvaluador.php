@@ -390,10 +390,11 @@ $opcionHabilitado = [
             "&id=" + encodeURIComponent(id) +
             "&estadoCmb=" + encodeURIComponent(estado)
         );
-console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
-                console.log(xhr.responseText);
+
 
 xhr.onreadystatechange = function() {
+    console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
+                console.log(xhr.responseText);
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
                 console.log(xhr.responseText);
