@@ -21,13 +21,10 @@ $estado = strtoupper(filter_input(INPUT_POST, 'estadoCmb', FILTER_SANITIZE_SPECI
 
 header('Content-Type: application/json');
 // Verificar que el usuario no existe nuevamente para mayor seguridad
-
-
-   
-  $programa->updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estado);
-
  
-  echo json_encode(['success' => true, 'message' => 'Guardado con exito.']);    
+$programa->updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estado);
+$respuesta = json_encode(['success' => true, 'message' => 'Guardado con exito.']);
+echo $respuesta;   
 
 
  
