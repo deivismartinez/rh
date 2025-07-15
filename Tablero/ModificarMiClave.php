@@ -145,12 +145,12 @@ $docente = $d->getDatos($usuario->getId());
                 <p>Producción Académica</p>
             </a>
         </li>
-        <li>
-            <a href="Resumen.php">
-                <i class="pe-7s-bookmarks"></i>
-                <p>Resumen del Puntaje</p>
-            </a>
-        </li>
+        <!--<li class="active">
+                            <a href="Resumen.php">
+                                <i class="pe-7s-bookmarks"></i>
+                                <p>Resumen del Puntaje</p>
+                            </a>
+                        </li>-->
         <li class="active">
             <a href="ModificarMiClave.php">
                 <i class="pe-7s-key"></i>

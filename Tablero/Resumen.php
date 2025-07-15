@@ -3,32 +3,9 @@ require_once "../Tablero/vo/UsuarioVO.php";
 session_start();
 $usuario = $_SESSION['usuario'];
 if (isset($usuario)) {
-    require_once "clases/Puntajes.php";
-    $puntajes = new Puntajes();
-    $listaMiPuntaje = $puntajes->getMiPuntaje($usuario);
-    $listaPuntajes = $puntajes->getPuntajeTotal($usuario);
-    $totalPuntosAca = $listaPuntajes->getDoctorado() + $listaPuntajes->getMaestria() + $listaPuntajes->getEspecializacion();
-    $totalPuntosExp = $listaPuntajes->getExpCatedratico() + $listaPuntajes->getExpMedioTiempo() + $listaPuntajes->getExpProfesional() + $listaPuntajes->getExpTiempoCompleto();
-    $totalInvestigacion = $listaPuntajes->getGrupo() + $listaPuntajes->getCategoriaInvestigador();
-    $totalPublicaciones = $listaPuntajes->getArticulo() + $listaPuntajes->getLibro() + $listaPuntajes->getPatente() + $listaPuntajes->getSoftware();
-    $totalPuntos = $listaPuntajes->getCategoria() + $totalPuntosAca + $totalPuntosExp + $totalInvestigacion + $totalPublicaciones;
-    require_once "clases/Programas.php";
-    $programas = new Programas();
-    $programa = $programas->getProgramaUsuarioPerfil($usuario);
-    $idPrograma = 0;
-    $areaUno = '';
-    $areaDos = '';
-    $areaTres = '';
-
-///se requiere para usar la validacion de sede
-//require_once "../Tablero/vo/UsuarioVO.php";
-//require_once("../Tablero/vo/DocenteVO.php");
-//session_start();
 require_once("clases/Docente.php");
 $d = new Docente();
 $docente = $d->getDatos($usuario->getId());
-////////////
-
 
 } else {
     header("Location: ../Entrada.html");
@@ -102,24 +79,14 @@ $docente = $d->getDatos($usuario->getId());
         </style>
     </head>
     <body>
-
         <div class="wrapper">
             <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
-
-                <!--
-
-                    Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-                    Tip 2: you can also add an image using data-image tag
-
-                -->
-
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="#" class="simple-text">
                             Inscripción Docentes Unicesar
                         </a>
                     </div>
-
                     <ul class="nav">
                         <li>
                             <a href="inicio.php">
@@ -169,12 +136,12 @@ $docente = $d->getDatos($usuario->getId());
                                 <p>Producción Académica</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <!--<li class="active">
                             <a href="Resumen.php">
                                 <i class="pe-7s-bookmarks"></i>
                                 <p>Resumen del Puntaje</p>
                             </a>
-                        </li>
+                        </li>-->
                         <li>
                     <a href="ModificarMiClave.php">
                         <i class="pe-7s-key"></i>
@@ -213,209 +180,16 @@ $docente = $d->getDatos($usuario->getId());
                     <div class="row">
                         <div class="col-xs-12">
                             <a href="HojaVida.php" target="_blank"><h3>Imprimir Hoja de Vida</h3></a>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr class="info">
-                                        <th>Facultad</th>
-                                        <th>Departamento</th>
-                                        <th>Área de Conocimiento</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-$k = 0;
-foreach ($programa as $arreglo) {
-    $idPrograma = $arreglo[3];
-    if ($k == 0) {
-        $areaUno = $arreglo[2];
-    } else {
-        if ($k == 1) {
-            $areaDos = $arreglo[2];
-        } else {
-            if ($k == 2) {
-                $areaTres = $arreglo[2];
-            } else {
-
-            }
-        }
-    }
-    ?>
-                                        <tr>
-                                            <td><?php echo $arreglo[0] ?></td>
-                                            <td><?php echo $arreglo[1] ?></td>
-                                            <td><?php echo $arreglo[2] ?></td>
-                                        </tr>
-    <?php
-$k++;
-}
-?>
-                                </tbody>
-                            </table>
+                          
                         </div>
-   <?php
-if (!empty($listaMiPuntaje)) {?>
-                        <div class="container">
-                            <div class="col-xs-12">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                    <h3>Su puntaje general es: <?php echo $listaMiPuntaje[0][5] ?>  </h3>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    </tr>
-
-                                    <tr>
-                                            <td>
-                                    <h5>Su Categoria: <?php echo $listaMiPuntaje[0][0] ?></h5>
-                                            <?php // echo $listaMiPuntaje[0][6] ?>
-                                    </td>
-                                    <td></td>
-                                    </tr>
-                                     <tr>
-                                            <td>
-                                    <h5>Sus Estudios: <?php echo $listaMiPuntaje[0][1] ?></h5>
-                                    <?php // echo $listaMiPuntaje[0][10] ?>
-                                    </td>
-                                    <td></td>
-                                    </tr>
-                                    <tr>
-                                            <td>
-                                    <h5>Su Experiencia: <?php echo $listaMiPuntaje[0][2] ?></h5>
-                                    <?php // echo $listaMiPuntaje[0][7] ?>
-                                    </td>
-                                    <td></td>
-                                    </tr>
-                                    <tr>
-                                            <td>
-                                    <h5>Su Categoria Ivestigador: <?php echo $listaMiPuntaje[0][3] ?></h5>
-                                    <?php // echo $listaMiPuntaje[0][8] ?>
-                                    </td>
-                                    <td></td>
-                                    </tr>
-                                    <tr>
-                                            <td>
-                                    <h5>Sus Publicaciones: <?php echo $listaMiPuntaje[0][4] ?></h5>
-                                    <?php // echo $listaMiPuntaje[0][9] ?>
-                                    </td>
-                                    <td></td>
-                                    </tr>
-                                    <tr>
-                                            <td>
-                                    <h3>Área de Conocimiento: <?php echo $areaUno ?></h3>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    </tr>
-                                    </table>
-                            </div>
-                        </div>
-                                <div class="col-xs-12">
-                                    <?php
-cabeza();
-    $i = 0;
-    $listaComp = $puntajes->getDocentesCalificacion('%', $idPrograma, $areaUno, $usuario->getSede());
-    foreach ($listaComp as $arregloComp) {
-        $i = $i + 1;
-        if ($arregloComp[6] == $usuario->getId()) {
-            echo '<tr class="tr">';
-        } else {
-            echo '<tr>';
-        }
-        ?>
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $arregloComp[2] ?></td>
-                                        <td><?php echo $arregloComp[1] ?></td>
-                                        <td><?php echo $arregloComp[7] ?></td>
-                                        </tr>
-    <?php
-}
-    echo '</tbody>
-        </table>';
-    ?>
-
-                                </div>
-                        <?php }?>
                             </div>
                         </div>
                         <div class="container">
                             <div class="col-xs-12">
-                                <div class="col-xs-6">
-                                    <?php if ($areaDos != '') {?>
-                                    <h3>Área de Conocimiento: <?php echo $areaDos ?></h3>
-                                    <?php }?>
-                                </div>
-                                <div class="col-xs-3">
-
-                                </div>
-<?php if ($areaDos != '') {?>
-                                <div class="col-xs-12">
-                                    <?php
-cabeza();
-    $i = 0;
-    $listaComp = $puntajes->getDocentesCalificacion('%', $idPrograma, $areaDos, $usuario->getSede());
-    foreach ($listaComp as $arregloComp) {
-        $i = $i + 1;
-        if ($arregloComp[6] == $usuario->getId()) {
-            echo '<tr class="tr">';
-        } else {
-            echo '<tr>';
-        }
-        ?>
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $arregloComp[2] ?></td>
-                                        <td><?php echo $arregloComp[1] ?></td>
-                                        <td><?php echo $arregloComp[7] ?></td>
-                                        </tr>
-    <?php
-}
-    echo '</tbody>
-        </table>';
-    ?>
-
-                                </div>
-                                <?php }?>
+                                
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="col-xs-12">
-                                <div class="col-xs-6">
-                                    <?php if ($areaDos != '') {?>
-                                    <h3>Área de Conocimiento: <?php echo $areaTres ?></h3>
-                                    <?php }?>
-                                </div>
-                                <div class="col-xs-3">
-
-                                </div>
-<?php if ($areaTres != '') {?>
-                                <div class="col-xs-12">
-                                    <?php
-cabeza();
-    $i = 0;
-    $listaComp = $puntajes->getDocentesCalificacion('%', $idPrograma, $areaTres, $usuario->getSede());
-    foreach ($listaComp as $arregloComp) {
-        $i = $i + 1;
-        if ($arregloComp[6] == $usuario->getId()) {
-            echo '<tr class="tr">';
-        } else {
-            echo '<tr>';
-        }
-        ?>
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $arregloComp[2] ?></td>
-                                        <td><?php echo $arregloComp[1] ?></td>
-                                        <td><?php echo $arregloComp[7] ?></td>
-                                        </tr>
-    <?php
-}
-    echo '</tbody>
-        </table>';
-    ?>
-
-                                </div>
-                                <?php }?>
-                            </div>
-                        </div>
+                 
                     </div>
                 </div>
             </div>
