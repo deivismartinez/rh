@@ -116,7 +116,7 @@ class Docente extends conectar
         try {
             $clave = sha1($clave);
             $sql = "SELECT id FROM usuario where id=" . $idUsuario . " and clave = '" . $clave . "';";
-            var_dump($sql);
+            //var_dump($sql);
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 return true;
