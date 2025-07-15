@@ -28,3 +28,6 @@ body{
             .tabla tbody tr td.align-left {
                 text-align: left;
             }
+            .scrollme {
+    overflow-x: auto;
+}
