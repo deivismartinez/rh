@@ -54,8 +54,8 @@ class Docente extends conectar
                         left join programa on(programa_id=programa.id)
                         WHERE docente.nombre like '%" . $dto . "%' 
                          and docente.sede like '" . $sede . "'
-                        and docente.id not in (SELECT docente_id FROM docenteperfil) limit 15 
-                         order by  docente.nombre, apellidos;";
+                        and docente.id not in (SELECT docente_id FROM docenteperfil) 
+                         order by  docente.nombre, apellidos limit 15;";
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
