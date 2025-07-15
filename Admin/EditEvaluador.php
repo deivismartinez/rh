@@ -378,11 +378,23 @@ $opcionHabilitado = [
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesarEditEvaluador.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
+        
+
+
+        xhr.send(
+            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&rolCmb=" + encodeURIComponent(rol) +
+            "&sedeCmb=" + encodeURIComponent(sede) +
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
+            "&id=" + encodeURIComponent(id) +
+            "&estadoCmb=" + encodeURIComponent(estado)
+        );
+
+xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log('__________________________________________');
+                console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
                 console.log(xhr.responseText);
-                console.log('__________________________________________');
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
@@ -407,18 +419,6 @@ $opcionHabilitado = [
                 }
             }
         };
-
-
-        xhr.send(
-            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
-            "&programaCmb=" + encodeURIComponent(programaCmb) +
-            "&rolCmb=" + encodeURIComponent(rol) +
-            "&sedeCmb=" + encodeURIComponent(sede) +
-            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&id=" + encodeURIComponent(id) +
-            "&estadoCmb=" + encodeURIComponent(estado)
-        );
-
 
 
         return false; // Prevenir el envío del formulario hasta que se complete la validación
@@ -449,20 +449,7 @@ $opcionHabilitado = [
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesarEditPassword.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-
-
-        xhr.send(
-            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
-            "&programaCmb=" + encodeURIComponent(programaCmb) +
-            "&rolCmb=" + encodeURIComponent(rol) +
-            "&sedeCmb=" + encodeURIComponent(sede) +
-            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&id=" + encodeURIComponent(id) +
-            "&estadoCmb=" + encodeURIComponent(estado)
-        );
-
-            xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(xhr.status);
                 console.log(xhr.readyState);
@@ -489,6 +476,17 @@ $opcionHabilitado = [
                 }
             }
         };
+
+
+        xhr.send(
+            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&rolCmb=" + encodeURIComponent(rol) +
+            "&sedeCmb=" + encodeURIComponent(sede) +
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
+            "&id=" + encodeURIComponent(id) +
+            "&estadoCmb=" + encodeURIComponent(estado)
+        );
 
 
 
