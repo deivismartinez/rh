@@ -410,7 +410,6 @@ class Programas extends conectar
 
     public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
     {
-
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
@@ -418,20 +417,12 @@ class Programas extends conectar
         } else {
             header('Location: AccesoNoautorizado.html');
         }
-
         $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  habilitado = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
-        // $sql = "UPDATE usuario SET nombre = 'hola8'  WHERE id =291";
-        // $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,
-        //   tipo = '" . $rolCmb . "', 
-        //  sede = '" . $sedeCmb . "' 
-        //   WHERE id = " . $idEvaluador . " ";
-
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
     }
     
      public function updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
     {
-
         session_start();
         if (isset($_SESSION['usuario'])) {
             $user = new Usuario();

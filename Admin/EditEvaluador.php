@@ -392,8 +392,8 @@ $opcionHabilitado = [
         );
 
 
-xhr.onreadystatechange = function() {
-    console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
+ xhr.onreadystatechange = function() {
+                console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
                 console.log(xhr.responseText);
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
