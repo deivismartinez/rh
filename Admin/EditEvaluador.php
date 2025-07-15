@@ -380,7 +380,9 @@ $opcionHabilitado = [
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log('__________________________________________');
                 console.log(xhr.responseText);
+                console.log('__________________________________________');
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
