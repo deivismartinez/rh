@@ -99,12 +99,11 @@ $url = "includes/".$usuario->getTipo().".php";
 </head>
 
 <body>
-    <div class="wrapper">
         <div class="sidebar" data-color="green" data-image="../images/sidebar-5.jpg">
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Módulo de Administración.
+                        Módulo de Administración
                     </a>
                 </div>
                 <?php include($url); ?>
@@ -132,19 +131,14 @@ $url = "includes/".$usuario->getTipo().".php";
                 <a href="Agregar.php">
                     <h4><i class="pe-7s-back"></i>Volver</h4>
                 </a>
-                <div class="col-xs-12">
-                    <div class="row" id="centered">
-                    <h5>
-                        <?php echo $nombre; ?>
-                    </h5>
-                </div>
-                    </div>
+                
                 <div class="row" id="centered">
                     <div class="col-xs-12">
                         <div class="col-xs-7">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                            <p align=center><b>RESTAURACIÓN DE LA CLAVE ADMINISTRADOR</b></p>
+                                            <p align=center><b>RESTAURACIÓN DE LA CLAVE ADMINISTRADOR</b> </p>
+                                            <p align=center><?php echo $nombre; ?></p>
                                 </div>
                                 <div class="panel-body">
                                     <form method="POST" action="" name="entradaFrm" id="entradaFrm">
