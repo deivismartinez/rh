@@ -20,7 +20,7 @@ if (isset($usuario)) {
 
     $evaluadorId = $_GET['id'];
 
-    //echo "<script>alert('$nombre');</script>";
+    echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
         $eval->getUnEvaluador($evaluadorId);
         $facultadDepatamento = $eval->getNameFacultadDepartatamento($evaluadorId);
@@ -445,13 +445,10 @@ $opcionHabilitado = [
 
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
-        alert('Uno');
         xhr.open("POST", "procesarEditPassword.php", true);
-        alert('Dos');
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                alert(xhr.status);
                 console.log(xhr.status);
                 console.log(xhr.readyState);
                 const respuesta = JSON.parse(xhr.responseText);
@@ -473,7 +470,6 @@ $opcionHabilitado = [
                     }, 2000); // O un t
                     //  window.location.reload();                   
                 } else {
-                    alert("error");
                     mensajeError.textContent = respuesta.message;
                 }
             }

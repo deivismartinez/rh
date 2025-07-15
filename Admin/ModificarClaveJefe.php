@@ -100,8 +100,8 @@ $url = "includes/".$usuario->getTipo().".php";
                                 <form method="POST" action="" name="entradaFrm" id="entradaFrm">
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="identificacionTxt" class="control-label">Clave Anterior *</label>
-                                            <input value="" type="password" required class="form-control" id="identificacionTxt" name="identificacionTxt" placeholder="No. CC, TI, CE, RC">
+                                            <label for="claveAnteriorTxt" class="control-label">Clave Anterior *</label>
+                                            <input value="" type="password" required class="form-control" id="claveAnteriorTxt" name="claveAnteriorTxt">
                                         </div>
                                         <div class="col-xs-12">
                                             <label for="claveTxt" class="control-label">Clave *</label>

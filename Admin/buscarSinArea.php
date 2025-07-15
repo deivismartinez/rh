@@ -53,7 +53,7 @@ $urlVer = "../Tablero/controller/VerJefe.php?id=" . $arreglo[5] . "&nombre=" . $
 
 function cabeza()
 {
-    echo '<table cellspacing="0" cellpadding="0" id="mi-tabla" class="table-bordered tabla">
+    echo '<table cellspacing="0" cellpadding="0" id="mi-tabla" class="table-bordered table">
                                                 <thead>
                                                     <tr>
                                                     <th><span>No.</span></th>

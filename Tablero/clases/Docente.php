@@ -116,6 +116,7 @@ class Docente extends conectar
         try {
             $clave = sha1($clave);
             $sql = "SELECT id FROM usuario where id=" . $idUsuario . " and clave = '" . $clave . "';";
+            var_dump($sql);
             $datos = pg_query($this->db, $sql);
             while ($row = pg_fetch_array($datos)) {
                 return true;
@@ -252,7 +253,7 @@ class Docente extends conectar
     public function actualizarClaveJefe($idUsuario)
     {
         try {
-            $identidad = trim(filter_input(INPUT_POST, 'identificacionTxt', FILTER_SANITIZE_SPECIAL_CHARS));
+            $claveAnteriorTxt = trim(filter_input(INPUT_POST, 'claveAnteriorTxt', FILTER_SANITIZE_SPECIAL_CHARS));
             $clave = trim(filter_input(INPUT_POST, 'claveTxt', FILTER_SANITIZE_SPECIAL_CHARS));
             $confirmar = trim(filter_input(INPUT_POST, 'confirmarTxt', FILTER_SANITIZE_SPECIAL_CHARS));
             if (
@@ -264,7 +265,7 @@ class Docente extends conectar
                 header($mensaje);
                 exit;
             } else {
-                if ($this->existeClave($identidad, $idUsuario)) {
+                if ($this->existeClave($claveAnteriorTxt, $idUsuario)) {
                     if ($clave == $confirmar) {
                         $clave = sha1($confirmar);
                         $sql = "UPDATE usuario set clave = '" . $clave . "' where id = '" . $idUsuario . "';";

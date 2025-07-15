@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-    
     <title>Inscripción Docente Unicesar</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Tablero/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="icon" type="image/jpg" href="images/icono.png" />
@@ -24,7 +21,6 @@
             background-repeat: no-repeat;
             background-image: url(images/fondoupc.jpeg);
             background-position: absolute;
-        
     }
     
     .floating-message {
@@ -57,9 +53,7 @@
         }
     </style>
 </head>
-
 <body>
-    
     <div class="fondoHeadHome">
         <div class="row" id="centered">
             <div class="col-xs-12">
@@ -69,8 +63,6 @@
                     </div>
                     <div class="panel-body">
                         <div>
-
-
                         </div>
                             <form class="form-control-static" name="entradaFrm" id="entradaFrm"
                             action="Tablero/controller/Validar.php" method="POST">
@@ -124,9 +116,7 @@ if ($p->EsPeridoAbierto()) {
                                         target="_blank">
                                         <h3>ACUERDO 027 DEL 31 DE OCTUBRE DE 2024</h3>
                                     </a>
-                                    
                                  </div>
-                                  
                             </b> </small></div>
                 </div>
             </div>
@@ -139,7 +129,6 @@ if ($p->EsPeridoAbierto()) {
         <span class="close-btn" onclick="closeMessage()">&times;</span>
         <p>Recuerde que desde la entrada en vigencia del Acuerdo 027 del 31 de octubre de 2024 se cambi&oacute la forma de evaluar las hojas de vida de los aspirantes, la cual paso de cuantitativa a cualitativa.</p>
     </div>
-
     <script>
         // Mostrar el mensaje despu  s de que la p  gina cargue
         window.onload = function() {
@@ -157,7 +146,5 @@ if ($p->EsPeridoAbierto()) {
             document.getElementById('floatingMessage').style.display = 'none';
         }
     </script>
-    
 </body>
-
 </html>
