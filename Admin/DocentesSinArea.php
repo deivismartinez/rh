@@ -86,9 +86,9 @@ $url = "includes/".$usuario->getTipo().".php";
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="row">
+                                    <div class="row table-responsive">
                                         <div class="col-xs-12">
-                                            <div id="resultado">
+                                            <div id="resultado" class="table-responsive">
 
                                             </div>
                                         </div>
