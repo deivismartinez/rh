@@ -20,7 +20,7 @@ if (isset($usuario)) {
 
     $evaluadorId = $_GET['id'];
 
-    echo "<script>alert('$nombre');</script>";
+    //echo "<script>alert('$nombre');</script>";
     if (isset($evaluadorId)) {
         $eval->getUnEvaluador($evaluadorId);
         $facultadDepatamento = $eval->getNameFacultadDepartatamento($evaluadorId);
@@ -380,7 +380,7 @@ $opcionHabilitado = [
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-
+                console.log(xhr.responseText);
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
