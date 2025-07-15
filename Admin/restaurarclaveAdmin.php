@@ -104,29 +104,28 @@ $url = "includes/".$usuario->getTipo().".php";
                     <a href="Agregar.php">
                         <h4><i class="pe-7s-back"></i>Volver</h4>
                     </a>
-                    <h5>
-                        <?php echo $nombre; ?>
-                    </h5>
+                    
                 </div>
                 <div class="col-xs-12">
                     <div class="row" id="centered">
-                        <div class="col-xs-8">
+                        <div class="col-xs-11">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h2 class="panel-title">
                                         <h2>
                                             <p align=center><b>RESTAURACIÓN DE LA CLAVE DE LOS DOCENTES</b></p>
+                                            <p align=center><?php echo $nombre; ?></p>
                                         </h2>
                                     </h2>
                                 </div>
                                 <div class="panel-body">
                                     <form autocomplete="off" method="POST" action="" name="entradaFrm" id="entradaFrm">
                                         <div class="form-group">
-                                            <div class="col-xs-12">
+                                            <div class="col-xs-6">
                                                 <label for="identificacionTxt" class="control-label">Identificación (sin puntos) *</label>
                                                 <input value="" type="text" required class="form-control" id="identificacionTxt" name="identificacionTxt" placeholder="No. CC, TI, CE, RC">
                                             </div>
-                                            <div class="col-xs-12">
+                                            <div class="col-xs-6">
                                                 <label for="correoTxt" class="control-label">Correo electronico *</label>
                                                 <input value="" type="mail" autocomplete="new-mail" required class="form-control" id="correoTxt" name="correoTxt">
                                                 <input value="" type="hidden" id="token" name="token">
