@@ -21,7 +21,7 @@ if ($programa->existeUsuarioExcluirPropio($usuarioTxt,$idEvaluador)) {
  echo json_encode(['success' => false, 'message' => 'El nombre de usuario no está disponible.']);  
 } else {
   $programa->updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estado);
-  $respuesta = json_encode(['success1111111111111' => true, 'message' => 'Guardado con exito.']);
+  $respuesta = json_encode(['success' => true, 'message' => 'Guardado con exito.']);
   echo $respuesta;
 }
 
