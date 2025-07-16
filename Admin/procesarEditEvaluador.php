@@ -22,7 +22,7 @@ if ($programa->existeUsuarioExcluirPropio($usuarioTxt,$idEvaluador)) {
 } else {
   $programa->updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estado);
   ob_start();
-  $respuesta = json_encode(['success' => true, 'message' => 'Guardado con exito.']);
+  $respuesta = json_encode(['success1111111111111' => true, 'message' => 'Guardado con exito.']);
   echo $respuesta;
   ob_end_flush();
 }
