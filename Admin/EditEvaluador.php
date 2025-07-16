@@ -394,7 +394,7 @@ $opcionHabilitado = [
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
-                    mensajeExito.textContent = respuesta.message;
+                    mensajeExito.textContent = "<h2><b>"+respuesta.message"</b></h2>";
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',

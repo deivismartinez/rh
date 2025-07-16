@@ -406,14 +406,12 @@ class Programas extends conectar
         }
     }
 
-
-
     public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
     {
         if (!isset($_SESSION['usuario'])) {
             header('Location: AccesoNoautorizado.html');
         }
-        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  habilitado = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
+        $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "', correo = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  habilitado = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
     }
     
