@@ -49,8 +49,6 @@ class Usuario extends conectar {
             $sql = "SELECT id FROM docente where email='" . $correo . "' and documentoidentidad ='" . $identidad . "';";
             $datos = pg_query($this->db, $sql);
             $result= pg_fetch_array($datos);
-            //var_dump($sql);
-            //if (is_array($result)) {
             while ($row = $result) {
                 return true;
             }
@@ -255,7 +253,7 @@ class Usuario extends conectar {
                 $respuesta = $email->enviar($titulo,$mensaje);///este es el metodo smtp por gmail
                 /////////////////////////////////
                 //$respuesta = mail($para, $titulo, $mensaje, $cabeceras);////ESTE ES EL METODO 
-                var_dump($respuesta);
+                //var_dump($respuesta);
             } catch (Exception $error) {
                 $respuesta = false;
                 //echo "error: ". $error->getMessage(); exit();
@@ -341,7 +339,7 @@ class Usuario extends conectar {
                 $respuesta = $email->enviar($titulo,$mensaje);///este es el metodo smtp por gmail
                 /////////////////////////////////
                 //$respuesta = mail($para, $titulo, $mensaje, $cabeceras);////ESTE ES EL METODO 
-                var_dump($respuesta);
+                //var_dump($respuesta);
             } catch (Exception $error) {
                 $respuesta = false;
                 //echo "error: ". $error->getMessage(); exit();

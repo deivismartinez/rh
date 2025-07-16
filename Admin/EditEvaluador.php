@@ -412,18 +412,14 @@ $opcionHabilitado = [
                     });
 
                     setTimeout(function() {
-                        // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                         window.location.href = 'NewEvaluador.php';
                     }, 2000); // O un t
-                    //  window.location.reload();                   
                 } else {
                     alert("error");
                     mensajeError.textContent = respuesta.message;
                 }
             }
         };
-
-
         return false; // Prevenir el envío del formulario hasta que se complete la validación
     }
     
