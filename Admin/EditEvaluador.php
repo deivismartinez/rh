@@ -395,6 +395,7 @@ $opcionHabilitado = [
 
                 if (respuesta.success) {
                     mensajeExito.textContent = respuesta.message;
+                    Swal.fire('¡Hola!', 'Esto es una alerta bonita 😍', 'success');
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -405,7 +406,6 @@ $opcionHabilitado = [
                     });
 
                     setTimeout(function() {
-                        Swal.fire('¡Hola!', 'Esto es una alerta bonita 😍', 'success');
                         window.location.href = 'NewEvaluador.php';
                     }, 5000); // O un t
                 } else {
