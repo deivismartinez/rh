@@ -371,15 +371,10 @@ $opcionHabilitado = [
         // Limpiar mensajes previos
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
-
-
-
         // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesarEditEvaluador.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-
 
         xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
@@ -393,8 +388,6 @@ $opcionHabilitado = [
 
 
  xhr.onreadystatechange = function() {
-                console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
-                console.log(xhr.responseText);
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
                 console.log(xhr.responseText);
