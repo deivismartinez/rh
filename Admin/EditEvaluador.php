@@ -389,8 +389,6 @@ $opcionHabilitado = [
 
  xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
-                console.log(xhr.responseText);
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
@@ -439,8 +437,20 @@ $opcionHabilitado = [
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesarEditPassword.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
+        
+        xhr.send(
+            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&rolCmb=" + encodeURIComponent(rol) +
+            "&sedeCmb=" + encodeURIComponent(sede) +
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
+            "&id=" + encodeURIComponent(id) +
+            "&estadoCmb=" + encodeURIComponent(estado)
+        );
+xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
+                console.log(xhr.responseText);
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
@@ -458,7 +468,7 @@ $opcionHabilitado = [
                     setTimeout(function() {
                         // window.location.reload(); // Recarga la página para mostrar los nuevos datos.
                         window.location.href = 'NewEvaluador.php';
-                    }, 2000); // O un t
+                    }, 3000); // O un t
                     //  window.location.reload();                   
                 } else {
                     Swal.fire('¡No actualizado!', respuesta.message+' 😍', 'error');
@@ -466,19 +476,6 @@ $opcionHabilitado = [
                 }
             }
         };
-
-
-        xhr.send(
-            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
-            "&programaCmb=" + encodeURIComponent(programaCmb) +
-            "&rolCmb=" + encodeURIComponent(rol) +
-            "&sedeCmb=" + encodeURIComponent(sede) +
-            "&usuarioTxt=" + encodeURIComponent(nombreUsuario) +
-            "&id=" + encodeURIComponent(id) +
-            "&estadoCmb=" + encodeURIComponent(estado)
-        );
-
-
 
         return false; // Prevenir el envío del formulario hasta que se complete la validación
     }
