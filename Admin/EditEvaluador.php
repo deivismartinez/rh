@@ -72,7 +72,7 @@ $opcionHabilitado = [
     <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
     <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
     <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             padding-top: 8px;
@@ -406,6 +406,7 @@ $opcionHabilitado = [
 
                     setTimeout(function() {
                         alert(respuesta.message);
+                        Swal.fire('¡Hola!', 'Esto es una alerta bonita 😍', 'success');
                         window.location.href = 'NewEvaluador.php';
                     }, 2000); // O un t
                 } else {
