@@ -405,10 +405,9 @@ $opcionHabilitado = [
                     });
 
                     setTimeout(function() {
-                        alert(respuesta.message);
                         Swal.fire('¡Hola!', 'Esto es una alerta bonita 😍', 'success');
                         window.location.href = 'NewEvaluador.php';
-                    }, 2000); // O un t
+                    }, 5000); // O un t
                 } else {
                     alert("error");
                     mensajeError.textContent = respuesta.message;
