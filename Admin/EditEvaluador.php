@@ -394,7 +394,7 @@ $opcionHabilitado = [
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
-                    mensajeExito.textContent = "<h2><b>"+respuesta.message+"</b></h2>";
+                    mensajeExito.textContent = respuesta.message;
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -405,6 +405,7 @@ $opcionHabilitado = [
                     });
 
                     setTimeout(function() {
+                        alert(respuesta.message);
                         window.location.href = 'NewEvaluador.php';
                     }, 2000); // O un t
                 } else {
