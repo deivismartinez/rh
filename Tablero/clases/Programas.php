@@ -410,11 +410,7 @@ class Programas extends conectar
 
     public function updateEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
     {
-        session_start();
-        if (isset($_SESSION['usuario'])) {
-            $usuario = $_SESSION['usuario'];
-            $id = $usuario->getId();
-        } else {
+        if (!isset($_SESSION['usuario'])) {
             header('Location: AccesoNoautorizado.html');
         }
         $sql = "UPDATE usuario SET nombre = '" . $nombreCompletoTxt . "', usuario = '" . $usuarioTxt . "' , facultad_id = '" . $programaCmb . "' , tipo = '" . $rolCmb . "' ,  sede = '" . $sedeCmb . "' ,  habilitado = '" . $estadoCmb . "' WHERE id = " . $idEvaluador . " ";
