@@ -34,7 +34,7 @@ var_dump($resultadoTraido);
                         if ($resultadoTraido->getTipo()=='EVALUADOR') {
                             header('Location: ../../Admin/inicioEvaluador.php'); 
                         }else{
-                            header('Location: ../../Admin/inicioAdmin.php');
+                            header('Location: ../../Admin/Agregar.php');
                         }
                     }
                     
