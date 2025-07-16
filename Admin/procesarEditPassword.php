@@ -15,9 +15,9 @@ $sedeCmb = strtoupper(filter_input(INPUT_POST, 'sedeCmb', FILTER_SANITIZE_SPECIA
 $usuarioTxt = strtoupper(filter_input(INPUT_POST, 'usuarioTxt', FILTER_SANITIZE_SPECIAL_CHARS));
 $idEvaluador = strtoupper(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS));
 $estado = strtoupper(filter_input(INPUT_POST, 'estadoCmb', FILTER_SANITIZE_SPECIAL_CHARS));
-$programa->updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estado);
+$programa->updatePasswordEvaluador($idEvaluador);
 header('Content-Type: application/json');
-$respuesta = json_encode(['success' => true, 'message' => 'Guardado con exito.']);
+$respuesta = json_encode(['success' => true, 'message' => 'Clave actualizada']);
 echo $respuesta;   
 
 

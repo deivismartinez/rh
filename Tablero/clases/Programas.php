@@ -415,16 +415,12 @@ class Programas extends conectar
         pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
     }
     
-     public function updatePasswordEvaluador($nombreCompletoTxt, $programaCmb, $rolCmb, $sedeCmb, $usuarioTxt, $idEvaluador, $estadoCmb)
-    {
-        session_start();
-        if (isset($_SESSION['usuario'])) {
-            $user = new Usuario();
-            $user->sendEmailEvaluador($usuarioTxt);
-        } else {
+     public function updatePasswordEvaluador($idEvaluador){
+        if (!isset($_SESSION['usuario'])) {
             header('Location: AccesoNoautorizado.html');
         }
-
+        $sql = "UPDATE usuario SET clave = sha1('UPC@2025') WHERE id = " . $idEvaluador . " ";
+        pg_query($this->db, $sql) or die('La consulta fallo: ' . pg_last_error());
     }
 
 

@@ -436,20 +436,16 @@ $opcionHabilitado = [
         mensajeError.textContent = "";
         mensajeExito.textContent = "";
 
-
-
-        // Realizar la validación con AJAX
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "procesarEditPassword.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.status);
-                console.log(xhr.readyState);
                 const respuesta = JSON.parse(xhr.responseText);
 
                 if (respuesta.success) {
                     mensajeExito.textContent = respuesta.message;
+                    Swal.fire('¡Actualizando!', respuesta.message+' 😍', 'success');
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -465,6 +461,7 @@ $opcionHabilitado = [
                     }, 2000); // O un t
                     //  window.location.reload();                   
                 } else {
+                    Swal.fire('¡No actualizado!', respuesta.message+' 😍', 'error');
                     mensajeError.textContent = respuesta.message;
                 }
             }
