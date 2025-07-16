@@ -395,7 +395,7 @@ $opcionHabilitado = [
 
                 if (respuesta.success) {
                     mensajeExito.textContent = respuesta.message;
-                    Swal.fire('¡Hola!', 'Esto es una alerta bonita 😍', 'success');
+                    Swal.fire('¡Actualizando!', respuesta.message+' 😍', 'success');
                     demo.initChartist();
                     $.notify({
                         icon: 'pe-7s-notebook',
@@ -407,9 +407,9 @@ $opcionHabilitado = [
 
                     setTimeout(function() {
                         window.location.href = 'NewEvaluador.php';
-                    }, 5000); // O un t
+                    }, 3000); // O un t
                 } else {
-                    alert("error");
+                    Swal.fire('¡No actualizado!', respuesta.message+' 😍', 'error');
                     mensajeError.textContent = respuesta.message;
                 }
             }
