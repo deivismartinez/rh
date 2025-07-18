@@ -233,6 +233,7 @@ if (isset($_SESSION['usuario'])) {
 <script>
 function filtrarFacultad() {
     const facultadTxt = document.getElementById('facultadTxt').value;
+    const alcanceCmb = document.getElementById('posgradoCmb').value;
     
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "procesar_filtro_facultad.php", true);
@@ -245,7 +246,8 @@ function filtrarFacultad() {
     };
 
     // Enviar el valor del filtro al servidor
-    xhr.send("facultadTxt=" + encodeURIComponent(facultadTxt));
+    xhr.send("facultadTxt=" + encodeURIComponent(facultadTxt)+
+            "&alcanceCmb=" + encodeURIComponent(alcanceCmb));
 }
 </script>
 </html>

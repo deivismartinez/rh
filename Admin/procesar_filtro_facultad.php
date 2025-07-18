@@ -5,10 +5,14 @@ $conexion = new conectar(); // Instancia la conexión a la base de datos
 $db = $conexion->conectar(); // Obtener la conexión
 
 $facultadTxt = $_POST['facultadTxt'];
+$alcanceCmb = $_POST['alcanceCmb'];
+$alcanceCmbI='';
+if($alcanceCmb=='PREGRADO'){$alcanceCmbI='f';}else{if($alcanceCmb=='POSGRADO'){$alcanceCmbI='t';}else{$alcanceCmbI='%';}}
 
 // Modificar la consulta para agregar el filtro del nombre
-$sql = "SELECT ROW_NUMBER() OVER () AS row_number, nombre,estado,CASE WHEN posgrado = 't' THEN 'Posgrado' WHEN posgrado = 'f' THEN 'Pregrado' END as posgrado,id FROM facultad
-        WHERE nombre ILIKE '%$facultadTxt%'";
+$sql = "SELECT ROW_NUMBER() OVER () AS row_number, nombre,
+    estado,CASE WHEN posgrado = 't' THEN 'Posgrado' WHEN posgrado = 'f' THEN 'Pregrado' END as posgrado,id FROM facultad
+        WHERE nombre ILIKE '%$facultadTxt%' and posgrado like '$alcanceCmbI'";
 
 
 $datos = pg_query($db, $sql);
