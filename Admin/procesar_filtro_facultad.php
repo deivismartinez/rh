@@ -12,7 +12,7 @@ if($alcanceCmb=='false'){$alcanceCmbI=' and posgrado is false';}else{if($alcance
 // Modificar la consulta para agregar el filtro del nombre
 $sql = "SELECT ROW_NUMBER() OVER () AS row_number, nombre,
     estado,CASE WHEN posgrado = 't' THEN 'Posgrado' WHEN posgrado = 'f' THEN 'Pregrado' END as posgrado,id FROM facultad
-        WHERE nombre ILIKE '%$facultadTxt%' $alcanceCmb";
+        WHERE nombre ILIKE '%$facultadTxt%' $alcanceCmbI";
 var_dump($sql);
 $datos = pg_query($db, $sql);
 
