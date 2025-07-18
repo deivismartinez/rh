@@ -116,7 +116,6 @@ $url = "includes/".$usuario->getTipo().".php";
                                                 <OPTION value="true">POSGRADO</OPTION>
                                             </select>
                                         </div>
-
                                         <div class="col-xs-3">
                                             <br>
                                             <input type="submit" value="Guardar" class="btn btn-primary" />
@@ -124,7 +123,6 @@ $url = "includes/".$usuario->getTipo().".php";
                                     </div>
                                 </form>
                             </div>
-
                             <div class="row">
                                 <div class="col-xs-12">
                                     <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
@@ -148,7 +146,6 @@ $url = "includes/".$usuario->getTipo().".php";
                                                     <td><?php echo $arreglo[0] ?></td>
                                                     <td><?php echo $arreglo[1] ?></td>
                                                     <td><?php echo $arreglo[2] ?></td>
-
                                                     <?php
                                                     $urlVer = "EditProgram.php?id=" . $arreglo[3];
                                                     ?>
@@ -185,5 +182,25 @@ $url = "includes/".$usuario->getTipo().".php";
 <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
+<script>
+function filtrarFacultad() {
+    const facultadTxt = document.getElementById('facultadTxt').value;
+    const alcanceCmb = document.getElementById('posgradoCmb').value;
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "procesar_filtro_program.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Actualizar la tabla con los datos filtrados
+            document.getElementById('mi-tabla').innerHTML = xhr.responseText;
+        }
+    };
+
+    // Enviar el valor del filtro al servidor
+    xhr.send("facultadTxt=" + encodeURIComponent(facultadTxt)+
+            "&alcanceCmb=" + encodeURIComponent(alcanceCmb));
+}
+</script>
 
 </html>
