@@ -196,23 +196,14 @@ if (isset($_SESSION['usuario'])) {
 
                                             <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
                                                 <thead>
-                                                    <tr>
-                                                        <th>Área</th>
-                                                        <th>Asignaturas</th>
-                                                    </tr>
+                                                    
                                                 </thead>
                                                 <tbody>
                                                     <!-- Aquí se llenarán las filas dinámicamente -->
                                                 </tbody>
                                             </table>
-
                                         </div>
-
                                     </div>
-
-
-
-
                                 </div>
                                 <div class="panel-footer">
                                     &copy; <script>
@@ -260,6 +251,7 @@ if (isset($_SESSION['usuario'])) {
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="../General/assets/js/demo.js"></script>
+<script>
 $(document).ready(function () {
 
 demo.initChartist();
@@ -319,7 +311,12 @@ timer: 4000
 
         // Limpia las filas existentes
         limpiarTabla();
-
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            // Rellena las celdas con el nombre de la facultad y el área
+            cell1.innerHTML = 'Área';
+            cell2.innerHTML = 'Asignaturas';
         // Rellena la tabla con los datos recibidos
         areas.forEach(function(area) {
             var row = table.insertRow();
