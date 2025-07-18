@@ -14,7 +14,6 @@ $sql = "SELECT ROW_NUMBER() OVER () AS row_number, nombre,
     estado,CASE WHEN posgrado = 't' THEN 'Posgrado' WHEN posgrado = 'f' THEN 'Pregrado' END as posgrado,id FROM facultad
         WHERE nombre ILIKE '%$facultadTxt%' and posgrado ILIKE '$alcanceCmbI'";
 
-var_dump($sql);
 $datos = pg_query($db, $sql);
 
 // Generar la tabla con los resultados
