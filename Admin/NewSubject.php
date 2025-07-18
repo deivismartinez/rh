@@ -308,10 +308,11 @@ timer: 4000
 
     function llenarTabla(areas) {
         var table = document.getElementById("mi-tabla").getElementsByTagName('tbody')[0]; // Obtiene el tbody
+        var thead = document.getElementById("mi-tabla").getElementsByTagName('thead')[0]; // Obtiene el tbody
 
         // Limpia las filas existentes
         limpiarTabla();
-        var row = table.insertRow();
+        var row = thead.insertRow();
         var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             // Rellena las celdas con el nombre de la facultad y el área
