@@ -6,7 +6,7 @@ $db = $conexion->conectar(); // Obtener la conexión
 
 $nombreCompletoTxt = $_POST['nombreCompletoTxt'];
 $programaCmb = $_POST['programaCmb'];
-$facultadCmb = $_POST['$facultadCmb'];
+$facultadCmb = $_POST['facultadCmb'];
 $rolCmb = $_POST['rolCmb'];
 $sedeCmb = $_POST['sedeCmb'];
 $usuarioTxt = $_POST['usuarioTxt'];
