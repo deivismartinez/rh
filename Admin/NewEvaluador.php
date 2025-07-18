@@ -387,6 +387,7 @@ if (isset($usuario)) {
     const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
         const nombreUsuario = document.getElementById('usuarioTxt').value;
         const programaCmb = document.getElementById('programaCmb').value;
+        const facultadCmb = document.getElementById('facultadCmb').value;
         const rol = document.getElementById('rolCmb').value;
         const sede = document.getElementById('sedeCmb').value;
     
@@ -404,6 +405,7 @@ if (isset($usuario)) {
     xhr.send(
             "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
             "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&facultadCmb=" + encodeURIComponent(facultadCmb) +
             "&rolCmb=" + encodeURIComponent(rol) +
             "&sedeCmb=" + encodeURIComponent(sede) +
             "&usuarioTxt=" + encodeURIComponent(nombreUsuario)
