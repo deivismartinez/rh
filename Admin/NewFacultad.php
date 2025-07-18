@@ -144,7 +144,7 @@ if (isset($_SESSION['usuario'])) {
                                         </div>
                                         <div class="col-xs-3">
                                             <label for="telefono">Alcance</label>
-                                            <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
+                                            <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="filtrarFacultad();">
                                                 <OPTION value="">[SELECCIONE]</OPTION>
                                                 <OPTION value="false">PREGRADO</OPTION>
                                                 <OPTION value="true">POSGRADO</OPTION>
