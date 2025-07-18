@@ -22,7 +22,6 @@ $sql = "SELECT ROW_NUMBER() OVER () AS row_number, u.nombre as nombre, u.correo 
         INNER JOIN programa as p ON p.id = u.facultad_id 
         INNER JOIN facultad as f ON f.id = p.facultad_id 
         WHERE u.sede ILIKE '%$sedeCmb%' and u.tipo ILIKE '%$rolCmb%' and u.correo ILIKE '%$usuarioTxt%' and u.nombre ILIKE '%$nombreCompletoTxt%' $facultadCmb $programaCmb";
-var_dump($sql);
 $datos = pg_query($db, $sql);
 
 // Generar la tabla con los resultados
