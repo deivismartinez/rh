@@ -14,7 +14,6 @@ if($alcanceCmb=='false'){$alcanceCmbI=' and postgrado is false';}else{if($alcanc
 // Modificar la consulta para agregar el filtro del nombre
 $sql = "SELECT p.nombre as program,f.nombre as facultad, CASE when postgrado = 'true' then 'POSGRADO' else 'PREGRADO' end as alcance, p.id "
         . "FROM programa p inner join facultad f on (p.facultad_id=f.id) where p.nombre ILIKE '%$programTxt%' $facultadCmb $alcanceCmbI order by f.nombre, p.nombre desc";
-var_dump($sql);
 $datos = pg_query($db, $sql);
 
 // Generar la tabla con los resultados

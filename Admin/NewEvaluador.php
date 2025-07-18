@@ -2,9 +2,6 @@
 require_once("../Tablero/vo/UsuarioVO.php");
 require_once("../Tablero/clases/Programas.php");
 require_once("../Tablero/clases/Gestion.php");
-//require_once("../Tablero/vo/DocenteVO.php");
-//require_once("../Tablero/clases/Docente.php");
-//require_once("../Tablero/vo/PeridoVO.php");
 session_start();
 $usuario = $_SESSION['usuario'];
 $archivo = "hvd" . $usuario->getId();
@@ -136,7 +133,7 @@ if (isset($usuario)) {
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label for="">Usuario *</label>
-                                                    <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="">
+                                                    <input value="" required="true" type="text" class="form-control" name="usuarioTxt" id="usuarioTxt" placeholder="" onkeyup="filtrarUsuarios();">
                                                 </div>
                                             </div>
                                         </div>
@@ -147,9 +144,9 @@ if (isset($usuario)) {
                                                     <select class="form-control" id="facultadCmb" name="facultadCmb"
                                                         required="true" onchange=<?php
                                                                                     if ($programa->esPostgrados($usuario->getId())) {
-                                                                                        echo '"cargarProgPost(this.value)"';
+                                                                                        echo '"cargarProgPost(this.value);filtrarUsuarios();"';
                                                                                     } else {
-                                                                                        echo '"cargarProgramas(this.value)"';
+                                                                                        echo '"cargarProgramas(this.value);filtrarUsuarios();"';
                                                                                     }
                                                                                     ?>>
                                                         <option value="">SELECCIONE</option>
@@ -159,7 +156,6 @@ if (isset($usuario)) {
                                                         } else {
                                                             $facultades = $programa->getFacultadesDocente();
                                                         }
-
                                                         foreach ($facultades as $arregloFac) {
                                                             echo '<OPTION value="' . $arregloFac[0] . '">' . $arregloFac[1] . '</OPTION>';
                                                         }
@@ -168,13 +164,11 @@ if (isset($usuario)) {
                                                     <?php
                                                     ?>
                                                 </div>
-
-
                                                 <div class="col-xs-6">
                                                     <label for="departamento">Departamento</label>
                                                     <div id="comboProg">
                                                         <select class="form-control" id="programaCmb" name="programaCmb"
-                                                            required="true">
+                                                                required="true" onchange="filtrarUsuarios();">
                                                             <option value="">SELECCIONE</option>
                                                             <?php
                                                             $program = $programa->getProgramasDocente(0);
@@ -189,14 +183,11 @@ if (isset($usuario)) {
 
                                             </div>
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col-xs-12">
-
                                                 <div class="col-xs-3">
                                                     <label for="">Rol *</label>
-                                                    <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="">
+                                                    <select class="form-control" id="rolCmb" name="rolCmb" required="true" onchange="filtrarUsuarios();">
                                                         <OPTION value="">[SELECCIONE]</OPTION>
                                                         <OPTION value="DECANO">DECANO</OPTION>
                                                         <OPTION value="EVALUADOR">EVALUADOR</OPTION>
@@ -204,49 +195,34 @@ if (isset($usuario)) {
                                                         <OPTION value="RH">RH</OPTION>
                                                     </select>
                                                 </div>
-
                                                 <div class="col-xs-3">
                                                     <label for="">Sede *</label>
-
-                                                    <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="">
+                                                    <select class="form-control" id="sedeCmb" name="sedeCmb" required="true" onchange="filtrarUsuarios();">
                                                         <OPTION value="">[SELECCIONE]</OPTION>
                                                         <OPTION value="A DISTANCIA">A DISTANCIA</OPTION>
                                                         <OPTION value="AGUACHICA">AGUACHICA</OPTION>
                                                         <OPTION value="VALLEDUPAR">VALLEDUPAR</OPTION>
                                                     </select>
                                                 </div>
-
                                                 <div class="col-xs-3">
                                                     <label for="">Contraseña</label>
                                                     <input value="" type="password" class="form-control" name="seguridadTxt" id="seguridadTxt" required="true" placeholder="">
                                                 </div>
-
                                                 <div class="col-xs-3">
                                                     <label for="">Confirmar contraseña</label>
                                                     <input value="" type="password" class="form-control" name="seguridadTxtRep" id="seguridadTxtRep" required="true" placeholder="">
                                                 </div>
-
-
                                                 <div class="col-xs-3">
                                                     <br>
                                                     <input type="submit" value="Guardar" class="btn btn-primary" />
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row">
-                                            <!-- Mostrar mensaje de error si existe -->
-                                            
-
                                             <div id="mensaje-error" class="error"></div>
                                             <div id="mensaje-exito" class="success"></div>
-
                                         </div>
-
-
                                     </form>
-
-
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <table cellspacing="5" cellpadding="3" id="mi-tabla" class="table-bordered table-sm tabla">
@@ -409,6 +385,10 @@ if (isset($usuario)) {
 
   function filtrarUsuarios() {
     const nombreCompleto = document.getElementById('nombreCompletoTxt').value;
+        const nombreUsuario = document.getElementById('usuarioTxt').value;
+        const programaCmb = document.getElementById('programaCmb').value;
+        const rol = document.getElementById('rolCmb').value;
+        const sede = document.getElementById('sedeCmb').value;
     
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "procesar_filtro.php", true);
@@ -421,48 +401,14 @@ if (isset($usuario)) {
     };
 
     // Enviar el valor del filtro al servidor
-    xhr.send("nombreCompletoTxt=" + encodeURIComponent(nombreCompleto));
+    xhr.send(
+            "nombreCompletoTxt=" + encodeURIComponent(nombreCompleto) +
+            "&programaCmb=" + encodeURIComponent(programaCmb) +
+            "&rolCmb=" + encodeURIComponent(rol) +
+            "&sedeCmb=" + encodeURIComponent(sede) +
+            "&usuarioTxt=" + encodeURIComponent(nombreUsuario)
+        );
 }
-
-   /*document.addEventListener('DOMContentLoaded', function () {
-    const table = document.querySelector('.mi-tabla');
-    const headers = table.querySelectorAll('th[data-sort]');
-
-    headers.forEach(header => {
-        header.addEventListener('click', () => {
-            const sortBy = header.getAttribute('data-sort');
-            sortTable(table, sortBy);
-        });
-    });
-});
-
-function sortTable(table, sortBy) {
-    const rows = Array.from(table.querySelectorAll('tbody tr'));
-    const isAscending = header.classList.toggle('asc');
-
-    rows.sort((a, b) => {
-        const aText = a.querySelector(`td:nth-child(${getColumnIndex(sortBy)})`).textContent;
-        const bText = b.querySelector(`td:nth-child(${getColumnIndex(sortBy)})`).textContent;
-
-        return isAscending 
-            ? aText.localeCompare(bText, undefined, { numeric: true }) 
-            : bText.localeCompare(aText, undefined, { numeric: true });
-    });
-
-    rows.forEach(row => table.querySelector('tbody').appendChild(row));
-}
-
-function getColumnIndex(sortBy) {
-    const columns = {
-        'nombre': 2, // Número de columna (1-based)
-        'correo': 3,
-        'nombre_programa': 4,
-        'tipo': 5,
-        'estado': 6,
-        'sede': 7
-    };
-    return columns[sortBy];
-} */
 
 </script>
 
