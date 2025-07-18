@@ -27,7 +27,7 @@ while ($row = pg_fetch_assoc($datos)) {
     echo "<tr>";
     echo "<td>" . $number . "</td>";
     echo "<td>" . htmlspecialchars($row['program']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['falcultad']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['facultad']) . "</td>";
     echo "<td>" . htmlspecialchars($row['alcance']) . "</td>";
    
 
