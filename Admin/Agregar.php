@@ -116,7 +116,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                     <div class="col-xs-2">
                                         <div class="card">
                                             <a href="NuevoPrograma.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/programa.png" alt="">
+                                            <img class="card-img-top" src="../images/programa.png">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Programas</h5>
@@ -128,7 +128,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                     <div class="col-xs-2">
                                         <div class="card">
                                             <a href="NewFacultad.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/departamento.png" alt="">
+                                            <img class="card-img-top" src="../images/departamento.png">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Facultad</h5>
