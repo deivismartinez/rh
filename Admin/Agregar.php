@@ -78,9 +78,9 @@ $url = "includes/".$usuario->getTipo().".php";
                             <div class="panel-body">
                                 <div class="col-xs-12">
                                     <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                        <div class="card">
                                             <a href="NewEvaluador.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/evaluador.png" alt="" style="width:90%">
+                                            <img class="card-img-top" src="../images/evaluador.png" alt="">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Evaluadores</h5>
@@ -90,9 +90,9 @@ $url = "includes/".$usuario->getTipo().".php";
                                         </div>
                                     </div>
                                     <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                        <div class="card">
                                             <a href="NewSubject.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/perfil.png" alt="" style="width:90%">
+                                            <img class="card-img-top" src="../images/perfil.png" alt="">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Asignatura</h5>
@@ -102,9 +102,9 @@ $url = "includes/".$usuario->getTipo().".php";
                                         </div>
                                     </div>
                                     <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                        <div class="card">
                                             <a href="NewArea.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/area.png" alt="" style="width:90%">
+                                            <img class="card-img-top" src="../images/area.png" alt="">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Área</h5>
@@ -114,9 +114,9 @@ $url = "includes/".$usuario->getTipo().".php";
                                         </div>
                                     </div>
                                     <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                        <div class="card">
                                             <a href="NuevoPrograma.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/programa.png" alt="" style="width:90%">
+                                            <img class="card-img-top" src="../images/programa.png" alt="">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Programas</h5>
@@ -126,9 +126,9 @@ $url = "includes/".$usuario->getTipo().".php";
                                         </div>
                                     </div>
                                     <div class="col-xs-2">
-                                        <div class="card" style="width:130px">
+                                        <div class="card">
                                             <a href="NewFacultad.php" class="btn btn-primary">
-                                            <img class="card-img-top" src="../images/departamento.png" alt="" style="width:90%">
+                                            <img class="card-img-top" src="../images/departamento.png" alt="">
                                             <div class="card-body">
                                                 <div class="col-xs-12">
                                                     <h5 class="card-title">Facultad</h5>
