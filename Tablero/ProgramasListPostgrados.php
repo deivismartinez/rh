@@ -1,4 +1,4 @@
-<select required="true" name="programaCmb" id="programaCmb" class="form-control" onchange="cargarAreas(this.value)">
+<select required="true" name="programaCmb" id="programaCmb" class="form-control" onchange="cargarAreas(this.value);filtrarUsuarios();">
     <option value="">SELECCIONE</option>
     <?php
      require_once "../Tablero/vo/UsuarioVO.php";
