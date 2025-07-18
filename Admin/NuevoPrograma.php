@@ -92,7 +92,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                     <div class="row">
                                         <div class="col-xs-3">
                                             <label for="telefono">Facultad</label>
-                                            <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="">
+                                            <select class="form-control" id="facultadCmb" name="facultadCmb" required="true" onchange="filtrarProgram()">
                                                 <option value="">SELECCIONE</option>
                                                 <?php
                                                 $facultades = $p->getFacultadesDocentePostgrado();
@@ -105,12 +105,12 @@ $url = "includes/".$usuario->getTipo().".php";
                                         <div class="col-xs-3">
                                             <label for="telefono">Nombre del nuevo Programa</label>
                                             <div id="comboProg">
-                                                <input class="form-control" type="text" id="programTxt" name="programTxt" required="true">
+                                                <input class="form-control" type="text" id="programTxt" name="programTxt" required="true" onkeyup="filtrarProgram()">
                                             </div>
                                         </div>
                                         <div class="col-xs-3">
                                             <label for="telefono">Alcance</label>
-                                            <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="">
+                                            <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="filtrarProgram()">
                                                 <OPTION value="">[SELECCIONE]</OPTION>
                                                 <OPTION value="false">PREGRADO</OPTION>
                                                 <OPTION value="true">POSGRADO</OPTION>
@@ -183,7 +183,7 @@ $url = "includes/".$usuario->getTipo().".php";
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
 <script>
-function filtrarFacultad() {
+function filtrarProgram() {
     const facultadTxt = document.getElementById('facultadTxt').value;
     const alcanceCmb = document.getElementById('posgradoCmb').value;
     
