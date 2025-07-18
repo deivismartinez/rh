@@ -325,7 +325,8 @@ timer: 4000
     function limpiarTabla() {
         var table = document.getElementById("mi-tabla");
         var rowCount = table.rows.length;
-        for (var i = rowCount - 1; i > 0; i--) {
+        alert(rowCount);
+        for (var i = rowCount - 1; i >= 0; i--) {
             table.deleteRow(i);
         }
     }
