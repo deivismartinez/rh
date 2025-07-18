@@ -110,7 +110,7 @@ $url = "includes/".$usuario->getTipo().".php";
                                         </div>
                                         <div class="col-xs-3">
                                             <label for="telefono">Alcance</label>
-                                            <select class="form-control" id="posgradoCmb" name="posgradoCmb" required="true" onchange="filtrarProgram()">
+                                            <select class="form-control" id="alcanceCmb" name="alcanceCmb" required="true" onchange="filtrarProgram()">
                                                 <OPTION value="">[SELECCIONE]</OPTION>
                                                 <OPTION value="false">PREGRADO</OPTION>
                                                 <OPTION value="true">POSGRADO</OPTION>
@@ -184,8 +184,9 @@ $url = "includes/".$usuario->getTipo().".php";
 <script src="../Tablero/assets/js/demo.js"></script>
 <script>
 function filtrarProgram() {
-    const facultadTxt = document.getElementById('facultadTxt').value;
-    const alcanceCmb = document.getElementById('posgradoCmb').value;
+    const programTxt = document.getElementById('programTxt').value;
+    const facultadCmb = document.getElementById('facultadCmb').value;
+    const alcanceCmb = document.getElementById('alcanceCmb').value;
     
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "procesar_filtro_program.php", true);
@@ -198,7 +199,8 @@ function filtrarProgram() {
     };
 
     // Enviar el valor del filtro al servidor
-    xhr.send("facultadTxt=" + encodeURIComponent(facultadTxt)+
+    xhr.send("programTxt=" + encodeURIComponent(programTxt)+
+            "&facultadCmb=" + encodeURIComponent(facultadCmb)+
             "&alcanceCmb=" + encodeURIComponent(alcanceCmb));
 }
 </script>
