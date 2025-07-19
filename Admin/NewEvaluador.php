@@ -272,6 +272,8 @@ if (isset($usuario)) {
 
                                 </div>
                                 <div class="panel-footer">
+                                    <button onclick="imprimirTabla()">Imprimir tabla</button>
+
                                     &copy; <script>
                                         document.write(new Date().getFullYear())
                                     </script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica
@@ -285,6 +287,7 @@ if (isset($usuario)) {
     </div>
 
 </body>
+
 <script src="../General/js/jquery-1.10.2.js"></script>
 <script src="../General/js/bootstrap.min.js"></script>
 
@@ -305,6 +308,21 @@ if (isset($usuario)) {
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="../General/assets/js/demo.js"></script>
+
+<script>
+function imprimirTabla() {
+    var contenido = document.getElementById('mi-tabla').outerHTML;
+    var ventana = window.open('', '', 'height=500,width=800');
+    ventana.document.write('<html><head><title>Impresión de Tabla</title>');
+    ventana.document.write('<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; }</style>');
+    ventana.document.write('</head><body >');
+    ventana.document.write(contenido);
+    ventana.document.write('</body></html>');
+    ventana.document.close();
+    ventana.print();
+}
+</script>
+
 
 <script>
     function validarUsuario() {
