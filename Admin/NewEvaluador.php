@@ -310,18 +310,48 @@ if (isset($usuario)) {
 <script src="../General/assets/js/demo.js"></script>
 
 <script>
+<script>
 function imprimirTabla() {
     var contenido = document.getElementById('mi-tabla').outerHTML;
-    var ventana = window.open('', '', 'height=500,width=800');
+
+    // Abre una ventana nueva
+    var ventana = window.open('', '', 'height=600,width=800');
+
+    // Escribe el contenido en la ventana nueva
     ventana.document.write('<html><head><title>Impresión de Tabla</title>');
-    ventana.document.write('<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; }</style>');
-    ventana.document.write('</head><body >');
+    
+    // Estilos para la tabla y el encabezado
+    ventana.document.write(`
+        <style>
+            body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
+            h1 { margin-bottom: 0; }
+            h3 { margin-top: 5px; color: #555; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border: 1px solid black; padding: 8px; }
+        </style>
+    `);
+
+    ventana.document.write('</head><body>');
+
+    // ✅ Aquí va el encabezado que quieres mostrar
+    ventana.document.write('<h1>Listado de Participantes</h1>');
+    ventana.document.write('<h3>Evento Especial - Julio 2025</h3>');
+    ventana.document.write('<p>Fecha de impresión: ' + new Date().toLocaleDateString() + '</p>');
+
+    // Inserta la tabla
     ventana.document.write(contenido);
+
     ventana.document.write('</body></html>');
     ventana.document.close();
-    ventana.print();
+
+    // Espera a que cargue y luego imprime
+    ventana.onload = function () {
+        ventana.print();
+        ventana.close();
+    };
 }
 </script>
+
 
 
 <script>
