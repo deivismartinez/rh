@@ -310,7 +310,6 @@ if (isset($usuario)) {
 <script src="../General/assets/js/demo.js"></script>
 
 <script>
-<script>
 function imprimirTabla() {
     var contenido = document.getElementById('mi-tabla').outerHTML;
 
