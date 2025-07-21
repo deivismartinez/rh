@@ -1,4 +1,5 @@
-
+<?php
+echo '
                 <ul class="nav">
                     <li>
                         <a href="Agregar.php">
@@ -26,5 +27,4 @@
                         </a>
                     </li>
                 </ul>
-               
-           
+           ';

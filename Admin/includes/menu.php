@@ -1,5 +1,5 @@
-
-                <ul class="nav">
+<?php
+echo '                <ul class="nav">
                     <li >
                         <a href="inicioAdmin.php">
                             <i class="pe-7s-photo-gallery"></i>
@@ -31,7 +31,4 @@
                             <p>Salir</p>
                         </a>
                     </li>
-                    
-                </ul>
-               
-           
+                </ul>';

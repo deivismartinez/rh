@@ -74,7 +74,7 @@ if (isset($_SESSION['usuario'])) {
                         Consulta de Inscritos a el Departamento
                     </a>
                 </div>
-                <?php include("includes/menuEvaluador.html");?>
+                <?php include("includes/menuEvaluador.php");?>
             </div>
         </div>
 

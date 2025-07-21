@@ -83,7 +83,7 @@ if (isset($_SESSION['usuario'])) {
                             Gestionar Evaluadores.
                         </a>
                     </div>
-                    <?php include("includes/menuAdmin.html");?>
+                    <?php include("includes/menuAdmin.php");?>
                 </div>
             </div>
 

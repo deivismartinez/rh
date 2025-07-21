@@ -106,7 +106,7 @@ if ($p->EsPeridoAbierto()) {
                     <div class="panel-footer"><small>&copy; <b>
                                 <script>
                                 document.write(new Date().getFullYear())
-                                </script>2018
+                                </script>
                                 <a href="http://www.unicesar.edu.co/"> Unicesar </a>
                                 <div align="center">
                                     <a

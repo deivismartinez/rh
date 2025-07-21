@@ -73,7 +73,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['administrador'])) {
                             Consulta de Inscritos a el Departamento
                         </a>
                     </div>
-                    <?php include("../Admin/includes/menuAdmin.html");?>
+                    <?php include("../Admin/includes/menuAdmin.php");?>
                 </div>
             </div>
 

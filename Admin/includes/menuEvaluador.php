@@ -1,3 +1,5 @@
+<?php
+echo '
 <ul class="nav">
     <li class="active">
         <a href="../Admin/inicioEvaluador.php">
@@ -18,4 +20,4 @@
             <p>Salir</p>
         </a>
     </li>
-</ul>
+</ul>';
