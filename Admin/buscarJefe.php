@@ -14,9 +14,7 @@ $buscar = filter_input(INPUT_POST, 'b', FILTER_SANITIZE_SPECIAL_CHARS);
 $area = filter_input(INPUT_POST, 'area', FILTER_SANITIZE_SPECIAL_CHARS);
 $prog = filter_input(INPUT_POST, 'prog', FILTER_SANITIZE_SPECIAL_CHARS);
 
-//if (!empty($buscar)) {
     buscar($buscar,$programa, $usuario,$area,$prog);
-//}
 
 function buscar($criterio,$programa, $docente,$area,$prog) {
     cabeza();

@@ -33,7 +33,7 @@ class Estudios extends conectar {
     //     return false;
     // }
 
-    public function pertenecePregrado($id_docente='0', $idEstudio) {
+    public function pertenecePregrado($id_docente, $idEstudio) {
         //$id = $usuario->getId();
         try{
         $sql = "SELECT id FROM pregrado where docente_id= " . $id_docente . " AND id=".$idEstudio.";";
