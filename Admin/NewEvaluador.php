@@ -17,8 +17,7 @@ if (isset($usuario)) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../Tablero/assets/img/favicon.ico">
@@ -31,7 +30,6 @@ if (isset($usuario)) {
     <link href="../Tablero/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
     <link href="../Tablero/assets/css/demo.css" rel="stylesheet" />
     <link href="../Tablero/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
     <style>
         body {
             padding-top: 8px;
@@ -71,11 +69,8 @@ if (isset($usuario)) {
             text-align: left;
         }
     </style>
-
 </head>
-
 <body>
-
     <div class="wrapper">
         <div class="sidebar" data-color="green" data-image="../images/sidebar-5.jpg">
             <div class="sidebar-wrapper">
@@ -85,10 +80,8 @@ if (isset($usuario)) {
                     </a>
                 </div>
                 <?php include("includes/menuAdmin.php"); ?>
-
             </div>
         </div>
-
         <div class="main-panel">
             <nav class="navbar navbar-default navbar-fixed">
                 <div class="container-fluid">
@@ -104,8 +97,7 @@ if (isset($usuario)) {
                     <div class="collapse navbar-collapse">
                     </div>
                 </div>
-            </nav>
-            
+            </nav>            
             <div class="content">
             <div class="col-xs-4">
                     <a href="Agregar.php">
@@ -121,8 +113,6 @@ if (isset($usuario)) {
                                     Información Básica del evaluador
                                 </div>
                                 <div class="panel-body">
-
-
                                     <form id="formulario" onsubmit="return validarUsuario()" method="post">
 
                                         <div class="row">
@@ -179,8 +169,6 @@ if (isset($usuario)) {
                                                         </select>
                                                     </div>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                         <div class="row">
@@ -235,9 +223,7 @@ if (isset($usuario)) {
                                                         <th><span>Tipo</span></th>
                                                         <th><span>Estado</span></th>
                                                         <th><span>Sede</span></th>
-                                                        <th><span></span></th>
-
-                                                        
+                                                        <th><span></span></th>                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -268,12 +254,9 @@ if (isset($usuario)) {
                                         </div>
 
                                     </div>
-
-
                                 </div>
                                 <div class="panel-footer">
                                     <button onclick="imprimirTabla()">Imprimir tabla</button>
-
                                     &copy; <script>
                                         document.write(new Date().getFullYear())
                                     </script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para Vicerrectoria Académica
@@ -332,9 +315,9 @@ function imprimirTabla() {
 
     ventana.document.write('</head><body>');
 
-    // ✅ Aquí va el encabezado que quieres mostrar
-    ventana.document.write('<h1>Listado de Participantes</h1>');
-    ventana.document.write('<h3>Evento Especial - Julio 2025</h3>');
+    // Aquí va el encabezado que quieres mostrar
+    ventana.document.write('<h1>Usuarios registrados</h1>');
+    ventana.document.write('<h3></h3>');
     ventana.document.write('<p>Fecha de impresión: ' + new Date().toLocaleDateString() + '</p>');
 
     // Inserta la tabla

@@ -167,6 +167,13 @@ $url = "includes/".$usuario->getTipo().".php";
                                 </div>
                             </div>
                         </div>
+                        <div class="panel-footer">
+                                     <button onclick="imprimirTabla()">Imprimir tabla</button>
+                                    &copy; <script>
+                                        document.write(new Date().getFullYear())
+                                    </script> <a href="http://www.unicesar.edu.co">Unicesar</a>, creado para
+                                    Vicerrectoria Académica
+                                </div>
                     </div>
                 </div>
             </div>
@@ -182,6 +189,48 @@ $url = "includes/".$usuario->getTipo().".php";
 <script src="../Tablero/assets/js/bootstrap-notify.js"></script>
 <script src="../Tablero/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 <script src="../Tablero/assets/js/demo.js"></script>
+
+<script>
+function imprimirTabla() {
+    var contenido = document.getElementById('mi-tabla').outerHTML;
+
+    // Abre una ventana nueva
+    var ventana = window.open('', '', 'height=600,width=800');
+
+    // Escribe el contenido en la ventana nueva
+    ventana.document.write('<html><head><title>Impresión de Tabla</title>');
+    
+    // Estilos para la tabla y el encabezado
+    ventana.document.write(`
+        <style>
+            body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
+            h1 { margin-bottom: 0; }
+            h3 { margin-top: 5px; color: #555; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border: 1px solid black; padding: 8px; }
+        </style>
+    `);
+
+    ventana.document.write('</head><body>');
+
+    // Aquí va el encabezado que quieres mostrar
+    ventana.document.write('<h1>Programa Académico</h1>');
+    ventana.document.write('<h3></h3>');
+    ventana.document.write('<p>Fecha de impresión: ' + new Date().toLocaleDateString() + '</p>');
+
+    // Inserta la tabla
+    ventana.document.write(contenido);
+
+    ventana.document.write('</body></html>');
+    ventana.document.close();
+
+    // Espera a que cargue y luego imprime
+    ventana.onload = function () {
+        ventana.print();
+        ventana.close();
+    };
+}
+</script>
 <script>
 function filtrarProgram() {
     const programTxt = document.getElementById('programTxt').value;
