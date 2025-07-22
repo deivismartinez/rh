@@ -15,10 +15,10 @@ $prog = filter_input(INPUT_POST, 'prog', FILTER_SANITIZE_SPECIAL_CHARS);
 
 //if (!empty($buscar)) {
 buscar($buscar, $programa, $usuario, $area, $prog);
+
 //}
 
-function buscar($criterio, $programa, $docente, $area, $prog)
-{
+function buscar($criterio, $programa, $docente, $area, $prog) {
     cabeza();
     require_once "../Tablero/clases/Docente.php";
     $docentes = new Docente();
@@ -28,7 +28,6 @@ function buscar($criterio, $programa, $docente, $area, $prog)
     foreach ($lista as $arreglo) {
         $i = $i + 1;
         $docente->setId($arreglo[6]);
-
         ?>
         <tr>
             <td><?php echo $i ?></td>
@@ -39,20 +38,19 @@ function buscar($criterio, $programa, $docente, $area, $prog)
             <td><?php echo $arreglo[4] ?></td>
             <td><?php echo $arreglo[6] ?></td>
             <?php
-$urlVer = "../Tablero/controller/VerJefe.php?id=" . $arreglo[5] . "&nombre=" . $arreglo[1] . "&tipo=1";
-        ?>
+            $urlVer = "Ver.php?id=" . $arreglo[5] . "&nombre=" . $arreglo[1] . "&tipo=1";
+            ?>
             <td>
                 <a data-toggle="tooltip" title="Ver información" href="<?php echo $urlVer; ?>"><i class="pe-7s-credit"></i></a>
             </td>
         </tr>
         <?php
-}
+    }
     echo '</tbody>
         </table>';
 }
 
-function cabeza()
-{
+function cabeza() {
     echo '<table cellspacing="0" cellpadding="0" id="mi-tabla" class="table scrollme table-bordered">
                                                 <thead>
                                                     <tr>
