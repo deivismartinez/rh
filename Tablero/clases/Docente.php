@@ -79,7 +79,6 @@ class Docente extends conectar
             . "WHERE docente.nombre like '%" . $dto . "%' and programa_id=" . $idPrograma
             . " and docenteperfil.perfil_id  " . $area . " and docente.sede like '" . $sede . "' "
             . " and docente.id not in (SELECT docente_id FROM calificacion where estado ='CALIFICADO') order by apellidos, docente.nombre;";
-    var_dump($sql);
         $datos = pg_query($this->db, $sql);
         $arreglo = array();
         while ($row = pg_fetch_array($datos)) {
